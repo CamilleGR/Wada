@@ -1,9 +1,7 @@
 ![BD.png](https://bitbucket.org/repo/AyrkMq/images/637403110-BD.png) Web Application d'analyse de données
-
-
-
-
-Bonsoir à tous ! Ici on peut travailler tous ensemble sur notre même projet.
+<br/>
+Bonsoir à tous !
+ Ici on peut travailler tous ensemble sur notre même projet.
 vous pouvez trouver un tuto sur git juste ici : http://openclassrooms.com/courses/gerez-vos-codes-source-avec-git
 
 sinon si vous le voulez vous pouvez tout simplement vous servir de l'interface web de BitBucket mais faites attentions à ce que votre code soit bon avant de le commit et de le push ! Sinon vous allez tout casser ... 
