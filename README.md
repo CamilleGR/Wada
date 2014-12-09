@@ -22,3 +22,7 @@ Quelques règles à suivre :
 
 Si vous respectez ces règles tous devrait bien se passer ;) 
 Bon courage !
+
+( Voici un petit schéma qui résume un peu le projet, cependant il se peut qu'il y ait 2 ou 3 modifications à faire ) 
+
+![Schema projet .jpg](https://bitbucket.org/repo/AyrkMq/images/3266933839-Schema%20projet%20.jpg)
