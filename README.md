@@ -10,6 +10,7 @@ sinon si vous le voulez vous pouvez tout simplement vous servir de l'interface w
 
 Quelques règles à suivre : 
 
+**SI VOUS N'ÊTES PAS SURE DE VOTRE COUP, CRÉEZ UNE NOUVELLE BRANCHE**
 -> Avant de commencer à travailler je fais une pull request
 
 -> Quand je fais une modification importante, je commit et surtout je précise dans le message ce que j'ai modifié !
