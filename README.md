@@ -1,4 +1,4 @@
-![BD.png](https://bitbucket.org/repo/AyrkMq/images/637403110-BD.png) Web Application d'analyse interractive de données sur un HDFS
+![BD.png](http://www.cgerin-roze.fr/img/BD.png) Web Application d'analyse interractive de données sur un HDFS
 
 
 
