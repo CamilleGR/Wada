@@ -27,4 +27,4 @@ Bon courage !
 ( Voici un petit schéma qui résume un peu le projet, cependant il se peut qu'il y ait 2 ou 3 modifications à faire ) 
 
 
-![Schema.jpg](https://bitbucket.org/repo/AyrkMq/images/2222719487-Schema.jpg)
+![Schema.jpg](http://gyazo.com/f29e17a7c322e115e8546f9a9eec0ef9)
