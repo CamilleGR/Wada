@@ -23,14 +23,32 @@ class MyServiceActor extends Actor with MyService {
 // this trait defines our service behavior independently from the service actor
 trait MyService extends HttpService {
 
+  val myname = "Camille"
+
+
+
   val myRoute =
     path("") {
-      get {
+      get { //On définie ce qui est envoyé SI on utilise la méthode GET
         respondWithMediaType(`text/html`) { // XML is marshalled to `text/xml` by default, so we simply override here
-          complete {
+          complete { // on ajoute un bloc {} pour mettre notre variable : Voir ligne 34
             <html>
               <body>
-                <h1>Say hello to <i>spray-routing</i> on <i>spray-can</i>!</h1>
+                <h1> Dis bonjour à {myname} !! </h1>
+
+                <p> Utilisation de GET : </p>
+              </body>
+            </html>
+          }
+        }
+      }~ post { //On définie ce qui est envoyé SI on utilise la méthode POST
+
+        respondWithMediaType(`text/html`) { // XML is marshalled to `text/xml` by default, so we simply override here
+          complete { // on ajoute un bloc {} pour mettre notre variable : Voir ligne 34
+            <html>
+              <body>
+                <h1> Dis bonjour à {myname} !! </h1>
+                <p> Utilisation de POST</p>
               </body>
             </html>
           }
