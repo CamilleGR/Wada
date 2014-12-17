@@ -4,6 +4,7 @@ import akka.actor.Actor
 import spray.routing._
 import spray.http._
 import MediaTypes._
+import java.io._
 
 // we don't implement our route structure directly in the service actor because
 // we want to be able to test it independently, without having to spin up an actor
@@ -25,6 +26,9 @@ trait MyService extends HttpService {
 
   val myname = "Camille"
 
+  val writer = new PrintWriter(new File("test.txt" ))
+  writer.write("Hello Scala") // Exemple concret pour l'écriture d'un fichier avec scala ... Difficulté 5 étoiles
+  writer.close()
 
 
   val myRoute =
