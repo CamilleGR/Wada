@@ -30,27 +30,40 @@ trait MyService extends HttpService {
   val myRoute =
     path("") {
       get { //On définie ce qui est envoyé SI on utilise la méthode GET
-        respondWithMediaType(`text/html`) { // XML is marshalled to `text/xml` by default, so we simply override here
-          complete { // on ajoute un bloc {} pour mettre notre variable : Voir ligne 34
-            <html>
-              <body>
-                <h1> Dis bonjour à {myname} !! </h1>
+        formFields("user", "password") { (user, password) =>  //Les paramètres des méthodes GET/POST sont mentionnés par la fonction formFields
+          respondWithMediaType(`text/html`) { // XML is marshalled to `text/xml` by default, so we simply override here
+           complete {
+             // on ajoute un bloc {} pour mettre notre variable : Voir ligne 34
+             <html>
+               <body>
+                 <h1>Dis bonjour à
+                   {myname}
+                   !!</h1>
 
-                <p> Utilisation de GET : </p>
-              </body>
-            </html>
+                 <p>Utilisation de GET :</p>
+                 <p>user : {user}</p> <!-- On affiche notre paramètre...-->
+                 <p>password : {password}</p>
+               </body>
+             </html>
+           }
           }
         }
       }~ post { //On définie ce qui est envoyé SI on utilise la méthode POST
-
-        respondWithMediaType(`text/html`) { // XML is marshalled to `text/xml` by default, so we simply override here
-          complete { // on ajoute un bloc {} pour mettre notre variable : Voir ligne 34
-            <html>
-              <body>
-                <h1> Dis bonjour à {myname} !! </h1>
-                <p> Utilisation de POST</p>
-              </body>
-            </html>
+        formFields("user", "password") { (user, password) => //Les paramètres des méthodes GET/POST sont mentionnés par la fonction formFields
+          respondWithMediaType(`text/html`) { // XML is marshalled to `text/xml` by default, so we simply override here
+            complete {
+              // on ajoute un bloc {} pour mettre notre variable : Voir ligne 34
+              <html>
+                <body>
+                  <h1>Dis bonjour à
+                    {myname}
+                    !!</h1>
+                  <p>Utilisation de POST :</p>
+                  <p>user : {user}</p>
+                  <p>password : {password}</p>
+                </body>
+              </html>
+            }
           }
         }
       }
