@@ -26,5 +26,6 @@ Bon courage !
 
 ( Voici un petit schéma qui résume un peu le projet, cependant il se peut qu'il y ait 2 ou 3 modifications à faire ) 
 
+Si vous avez des questions à me poser vous pouvez toujours les poser sur la mailing list ! Bon courage à tous !
 
 ![Schema.jpg](http://www.cgerin-roze.fr/img/Schema.jpg)
