@@ -1,4 +1,4 @@
-![BD.png](http://www.cgerin-roze.fr/img/BD.png) Web Application d'analyse interractive de données sur un HDFS
+![BD.png](http://i.gyazo.com/fc1a00352eda1b3d524ddd521fa65491.png) Web Application d'analyse interractive de données sur un HDFS
 
 
 
