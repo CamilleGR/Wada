@@ -53,7 +53,7 @@ trait MyService extends HttpService {
           }
         }
       }~ post { //On définie ce qui est envoyé SI on utilise la méthode POST
-        formFields("user", "password") { (user, password) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
+        formFields("demande", "nomFichier", "attribut", "segment".as[Int]) { (demande, nomFichier, attribut, segment) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
           respondWithMediaType(`text/html`) { // XML is marshalled to `text/xml` by default, so we simply override here
             complete {
               // on ajoute un bloc {} pour mettre notre variable : Voir ligne 34
@@ -63,8 +63,6 @@ trait MyService extends HttpService {
                     {myname}
                     !!</h1>
                   <p>Utilisation de POST :</p>
-                  <p>user : {user}</p>
-                  <p>password : {password}</p>
                 </body>
               </html>
             }
