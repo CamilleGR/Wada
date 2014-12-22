@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BigDataProject.iml" filepath="$PROJECT_DIR$/BigDataProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WebService/.idea/modules/webservice.iml" filepath="$PROJECT_DIR$/WebService/.idea/modules/webservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WebService/.idea/modules/webservice-build.iml" filepath="$PROJECT_DIR$/WebService/.idea/modules/webservice-build.iml" />
+    </modules>
+  </component>
+</project>
