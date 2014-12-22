@@ -44,6 +44,8 @@ trait TestSpark extends HttpService {
       data.apply(0).foreach{r => writer.write(r + "\n")}
       writer.close()
     }
+    
+    sc.stop()
   }
 
   val myRoute =
