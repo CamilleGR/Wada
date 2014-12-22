@@ -28,23 +28,27 @@ trait TestSpark extends HttpService {
 
     val conf = new SparkConf().setAppName("test").setMaster("local")
     val sc = new SparkContext(conf)
-    val textFile = sc.textFile("scripts/" + nomFichier + ".csv").collect()
-    val data = textFile.map(_.split(",")) // Convertir un fichier csv en tableau
+    val textFile = sc.textFile("scripts/" + nomFichier + ".csv")
 
     var writer:PrintWriter = null
     var nameFile:String = null
     if (demande.equals("satistiques")) { // Création d'un fichier csv contenant les statistiques pour l'attribut donnée
       nameFile = nomFichier + attribut + ".csv"
       writer = new PrintWriter(new File("WebService/src/test/" + nameFile))
+
+      val data = textFile.map(_.split(","))
       // Algorithme de calcul des statistiques à faire
     }
     else if (demande.equals("listeAttributs")) { // Création d'un fichier txt contenant tous les attributs ligne par ligne
       nameFile = "attributs" + nomFichier + ".txt"
       writer = new PrintWriter(new File("WebService/src/test/" + nameFile))
-      data.apply(0).foreach{r => writer.write(r + "\n")}
+      
+      val data = textFile.first().split(',')
+      data.foreach{r => writer.write(r + "\n")}
+      
       writer.close()
     }
-    
+
     sc.stop()
   }
 
