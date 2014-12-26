@@ -21,4 +21,4 @@ libraryDependencies ++= {
 
 libraryDependencies += "org.apache.spark" %% "spark-core" % "1.2.0"
 
-Revolver.settings
+Revolver.settings.settings

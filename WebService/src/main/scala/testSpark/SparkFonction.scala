@@ -1,6 +1,6 @@
 package testSpark
 
-import java.io.{File, PrintWriter}
+import java.io.{File,PrintWriter}
 
 class SparkFonction {
   /*
