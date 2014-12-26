@@ -1,5 +1,7 @@
 package testSpark
 
+import java.io.{File, PrintWriter}
+
 class SparkFonction {
   /*
   Fonction permettant de retourner la valeur minimale d'une colonne d'un tableau à 2 dimensions
@@ -53,5 +55,26 @@ class SparkFonction {
       tabR(j-1) = Array(min+ (max/seg)*(j-1) + " à " + min+ (max/seg)*j, nb + "")
     }
     return tabR
+  }
+  
+  /* 
+  Fonction qui crée un fichier csv à partir d'un tableau à deux dimensions
+  @args :
+  nom:String -> Le nom du fichier à créer
+  chemin:String -> Le chemin du fichier
+  tab:Array[Array[String]] -> Tableau à deux dimensions à convertir
+  */
+  def creerCsv(nom:String, chemin:String, tab:Array[Array[String]]): Unit = {
+    val writer = new PrintWriter(new File(chemin + nom + ".csv"))
+    
+    for (i <- 0 to tab.length-1) {
+      for (j <- 0 to tab(i).length-1) {
+        writer.write(tab(i)(j))
+        if (j < tab(i).length-1) writer.write(",")
+      }
+      writer.write("\n")
+    }
+    
+    writer.close()
   }
 }
