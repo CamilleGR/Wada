@@ -30,30 +30,17 @@ trait TestSpark extends HttpService {
     val sc = new SparkContext(conf)
     val textFile = sc.textFile("scripts/" + nomFichier + ".csv")
 
-    var writer:PrintWriter = null
-    var nameFile:String = null
     if (demande.equals("statistiques")) { // Création d'un fichier csv contenant les statistiques pour l'attribut donnée
-      nameFile = nomFichier + attribut + ".csv"
-      writer = new PrintWriter(new File("WebService/src/test/" + nameFile))
 
       val data = textFile.map(_.split(",")).collect()
-      // Algorithme de calcul des statistiques à faire
 
       val function = new SparkFonction()
       val tab = function.segmentNum(segment, 1, data) // pour l'instant le calcule ne se fait que pour l'attribut de la deuxième colonne, donc fonction de recherche de la colonne de l'attribut à faire
-      for (i <- 0 to tab.length-1) {
-        for (j <- 0 to tab(i).length-1) {
-          writer.write(tab(i)(j))
-          if (j < tab(i).length-1) writer.write(",")
-        }
-        writer.write("\n")
-      }
-
-      writer.close()
+      function.creerCsv(nomFichier + attribut, "WebService/src/test/", tab)
     }
     else if (demande.equals("listeAttributs")) { // Création d'un fichier txt contenant tous les attributs ligne par ligne
-      nameFile = "attributs" + nomFichier + ".txt"
-      writer = new PrintWriter(new File("WebService/src/test/" + nameFile))
+      val nameFile = "attributs" + nomFichier + ".txt"
+      val writer = new PrintWriter(new File("WebService/src/test/" + nameFile))
 
       val data = textFile.first().split(',')
       data.foreach{r => writer.write(r + "\n")}
