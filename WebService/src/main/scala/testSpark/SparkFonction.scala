@@ -66,6 +66,7 @@ class SparkFonction {
   */
   def creerCsv(nom:String, chemin:String, tab:Array[Array[String]]): Unit = {
     val writer = new PrintWriter(new File(chemin + nom + ".csv"))
+    writer.write("categorie,valeur\n")
     
     for (i <- 0 to tab.length-1) {
       for (j <- 0 to tab(i).length-1) {
