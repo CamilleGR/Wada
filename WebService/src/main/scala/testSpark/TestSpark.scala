@@ -24,6 +24,8 @@ class TestSparkActor extends Actor with TestSpark {
 // this trait defines our service behavior independently from the service actor
 trait TestSpark extends HttpService {
 
+  def listeAttributs(file:String):String = "Liste a definir" // Fonction à définir, mais là j'ai la flemme - signé Camille
+
   def traitementPost(demande:String, nomFichier:String, attribut:String, segment:Int) = {
 
     val conf = new SparkConf().setAppName("test").setMaster("local")
@@ -58,13 +60,35 @@ trait TestSpark extends HttpService {
         formFields("demande", "nomFichier", "attribut", "segment".as[Int]) { (demande, nomFichier, attribut, segment) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
           traitementPost(demande, nomFichier, attribut, segment)
           respondWithMediaType(`text/html`) { // XML is marshalled to `text/xml` by default, so we simply override here
-            complete {
-              // on ajoute un bloc {} pour mettre notre variable
-              <html>
-                <body>
-                  <h1>Le fichier crée se trouve dans WebService/src/test</h1>
-                </body>
-              </html>
+            if(demande.equals("listeAttributs")){
+                 complete {
+                    // on ajoute un bloc {} pour mettre notre variable
+                    <html>
+                      <body>
+                       <h1>Chargement de la liste des attributs, vous serez redirigé sur la page ...</h1>
+                      </body>
+                    </html>
+                  }
+
+            }else if(demande.equals("statistiques")){
+                    complete {
+                      <html>
+                        <body>
+                          <h1>Chargement des statistiques, vous serez redirigé sur la page ...</h1>
+                          <script> Document.setLocation.href='cheminVerslapage?attributs="{listeAttributs(nomFichier)}"'</script>
+                        </body>
+                      </html>
+              }
+
+            }else {
+                    complete {
+                      <html>
+                        <body>
+                          <h1>Error 418 : I'm a Tea Pot</h1>
+                        </body>
+                     </html>
+                    }
+
             }
           }
         }
