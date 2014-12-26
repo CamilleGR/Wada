@@ -36,7 +36,8 @@ trait TestSpark extends HttpService {
 
       val function = new SparkFonction()
       val tab = function.segmentNum(segment, 1, data) // pour l'instant le calcule ne se fait que pour l'attribut de la deuxième colonne, donc fonction de recherche de la colonne de l'attribut à faire
-      function.creerCsv(nomFichier + attribut, "WebService/src/test/", tab)
+      val tabPrc = function.prcTab(tab)
+      function.creerCsv(nomFichier + attribut, "WebService/src/test/", tabPrc)
     }
     else if (demande.equals("listeAttributs")) { // Création d'un fichier txt contenant tous les attributs ligne par ligne
       val nameFile = "attributs" + nomFichier + ".txt"

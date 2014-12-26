@@ -77,4 +77,19 @@ class SparkFonction {
     
     writer.close()
   }
+
+  def prcTab(tab:Array[Array[String]]):Array[Array[String]]={
+    var total=0;
+    for(i<- 0 to tab.length-1){
+      total+=tab(i)(1).toInt;
+    }
+
+    var tabR = Array.ofDim[String](tab.length, 2);
+    for(i<- 0 to tab.length-1){
+      tabR(i)(0)=tab(i)(0);
+      tabR(i)(1)=(tab(i)(1).toFloat/total.toFloat *100) +"";
+
+    }
+    return tabR;
+  }
 }
