@@ -33,7 +33,7 @@ trait TestSpark extends HttpService {
 
     if(true){// Ici il faudra traiter les différents types de fichier, pour l'instant on estime que c'est un .csv
         val file = sc.textFile(file);
-        ret = file.collect()(0); // trouver une solution pour ne pas charger TOUS le fichier mais juste la premiere ligne
+        ret = file.first(); // trouver une solution pour ne pas charger TOUS le fichier mais juste la premiere ligne
     }
 
     return ret;
