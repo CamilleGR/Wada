@@ -24,12 +24,24 @@ class TestSparkActor extends Actor with TestSpark {
 // this trait defines our service behavior independently from the service actor
 trait TestSpark extends HttpService {
 
-  def listeAttributs(file:String):String = "Liste a definir" // Fonction à définir, mais là j'ai la flemme - signé Camille
+  val conf = new SparkConf().setAppName("test").setMaster("local")
+  val sc = new SparkContext(conf)
+
+
+  def listeAttributs(file:String):String = {
+    var ret = "";
+
+    if(true){// Ici il faudra traiter les différents types de fichier, pour l'instant on estime que c'est un .csv
+        val file = sc.textFile(file);
+        ret = file.collect()(0); // trouver une solution pour ne pas charger TOUS le fichier mais juste la premiere ligne
+    }
+
+    return ret;
+  }
+
 
   def traitementPost(demande:String, nomFichier:String, attribut:String, segment:Int) = {
 
-    val conf = new SparkConf().setAppName("test").setMaster("local")
-    val sc = new SparkContext(conf)
     val textFile = sc.textFile("scripts/" + nomFichier + ".csv")
 
     if (demande.equals("statistiques")) { // Création d'un fichier csv contenant les statistiques pour l'attribut donnée
