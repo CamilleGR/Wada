@@ -62,7 +62,7 @@ trait TestSpark extends HttpService {
                     <html>
                       <body>
                         <h1>Chargement de la liste des attributs, vous serez redirigé sur la page ...</h1>
-                        <script>Document.setLocation.href='cheminVerslapage?attributs="{listeAttributs(nomFichier)}"'</script>
+                        <script>window.location='http://cheminVerslapage?attributs={listeAttributs(nomFichier)}'</script>
                       </body>
                     </html>
                   }
