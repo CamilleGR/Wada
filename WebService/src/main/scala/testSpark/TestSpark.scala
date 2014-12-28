@@ -48,7 +48,9 @@ trait TestSpark extends HttpService {
     val function = new SparkFonction()
     val tab = function.segmentNum(segment, 1, data) // pour l'instant le calcule ne se fait que pour l'attribut de la deuxième colonne, donc fonction de recherche de la colonne de l'attribut à faire
     val tabPrc = function.prcTab(tab)
-    function.creerCsv(nomFichier + attribut, "WebService/src/test/", tabPrc)
+    val cheminFichierStats = function.creerCsv(nomFichier + attribut, "WebService/src/test/", tabPrc)
+    
+    cheminFichierStats
   }
 
   val myRoute =
@@ -68,11 +70,12 @@ trait TestSpark extends HttpService {
                   }
 
             }else if(demande.equals("statistiques")){
-                  traitementPost(demande, nomFichier, attribut, segment)
+                  val fichier = traitementPost(demande, nomFichier, attribut, segment)
                   complete {
                       <html>
                         <body>
                           <h1>Chargement des statistiques, vous serez redirigé sur la page ...</h1>
+                          <script>window.location='http://cheminVerslapage?fichier={fichier}'</script>
                         </body>
                       </html>
               }

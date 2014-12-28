@@ -63,8 +63,9 @@ class SparkFonction {
   nom:String -> Le nom du fichier à créer
   chemin:String -> Le chemin du fichier
   tab:Array[Array[String]] -> Tableau à deux dimensions à convertir
+  @returns: String -> Chemin du fichier crée
   */
-  def creerCsv(nom:String, chemin:String, tab:Array[Array[String]]): Unit = {
+  def creerCsv(nom:String, chemin:String, tab:Array[Array[String]]): String = {
     val writer = new PrintWriter(new File(chemin + nom + ".csv"))
     writer.write("categorie,valeur\n")
     
@@ -77,6 +78,8 @@ class SparkFonction {
     }
     
     writer.close()
+    
+    chemin + nom + ".csv"
   }
 
   def prcTab(tab:Array[Array[String]]):Array[Array[String]]={
