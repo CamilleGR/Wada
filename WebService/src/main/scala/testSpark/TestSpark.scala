@@ -4,6 +4,7 @@ import java.io._
 
 import akka.actor.Actor
 import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.graphx._
 import spray.http.MediaTypes._
 import spray.routing._
 
