@@ -27,13 +27,13 @@ trait TestSpark extends HttpService {
   val conf = new SparkConf().setAppName("test").setMaster("local")
   val sc = new SparkContext(conf)
 
-
   def listeAttributs(file:String):String = {
     var ret = "";
 
-    if(true){// Ici il faudra traiter les différents types de fichier, pour l'instant on estime que c'est un .csv
-        val file = sc.textFile(file);
-        ret = file.first(); // trouver une solution pour ne pas charger TOUS le fichier mais juste la premiere ligne
+    if (true) {
+      // Ici il faudra traiter les différents types de fichier, pour l'instant on estime que c'est un .csv
+      val textfile = sc.textFile("scripts/" + file);
+      ret = textfile.first(); // trouver une solution pour ne pas charger TOUS le fichier mais juste la premiere ligne
     }
 
     return ret;
@@ -42,52 +42,37 @@ trait TestSpark extends HttpService {
 
   def traitementPost(demande:String, nomFichier:String, attribut:String, segment:Int) = {
 
-    val textFile = sc.textFile("scripts/" + nomFichier + ".csv")
+    val textFile = sc.textFile("scripts/" + nomFichier)
+    val data = textFile.map(_.split(",")).collect()
 
-    if (demande.equals("statistiques")) { // Création d'un fichier csv contenant les statistiques pour l'attribut donnée
-
-      val data = textFile.map(_.split(",")).collect()
-
-      val function = new SparkFonction()
-      val tab = function.segmentNum(segment, 1, data) // pour l'instant le calcule ne se fait que pour l'attribut de la deuxième colonne, donc fonction de recherche de la colonne de l'attribut à faire
-      val tabPrc = function.prcTab(tab)
-      function.creerCsv(nomFichier + attribut, "WebService/src/test/", tabPrc)
-    }
-    else if (demande.equals("listeAttributs")) { // Création d'un fichier txt contenant tous les attributs ligne par ligne
-      val nameFile = "attributs" + nomFichier + ".txt"
-      val writer = new PrintWriter(new File("WebService/src/test/" + nameFile))
-
-      val data = textFile.first().split(',')
-      data.foreach{r => writer.write(r + "\n")}
-
-      writer.close()
-    }
-
-    sc.stop()
+    val function = new SparkFonction()
+    val tab = function.segmentNum(segment, 1, data) // pour l'instant le calcule ne se fait que pour l'attribut de la deuxième colonne, donc fonction de recherche de la colonne de l'attribut à faire
+    val tabPrc = function.prcTab(tab)
+    function.creerCsv(nomFichier + attribut, "WebService/src/test/", tabPrc)
   }
 
   val myRoute =
     path("") {
       post { //On définie ce qui est envoyé SI on utilise la méthode POST
         formFields("demande", "nomFichier", "attribut", "segment".as[Int]) { (demande, nomFichier, attribut, segment) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
-          traitementPost(demande, nomFichier, attribut, segment)
           respondWithMediaType(`text/html`) { // XML is marshalled to `text/xml` by default, so we simply override here
             if(demande.equals("listeAttributs")){
                  complete {
                     // on ajoute un bloc {} pour mettre notre variable
                     <html>
                       <body>
-                       <h1>Chargement de la liste des attributs, vous serez redirigé sur la page ...</h1>
+                        <h1>Chargement de la liste des attributs, vous serez redirigé sur la page ...</h1>
+                        <script>Document.setLocation.href='cheminVerslapage?attributs="{listeAttributs(nomFichier)}"'</script>
                       </body>
                     </html>
                   }
 
             }else if(demande.equals("statistiques")){
-                    complete {
+                  traitementPost(demande, nomFichier, attribut, segment)
+                  complete {
                       <html>
                         <body>
                           <h1>Chargement des statistiques, vous serez redirigé sur la page ...</h1>
-                          <script> Document.setLocation.href='cheminVerslapage?attributs="{listeAttributs(nomFichier)}"'</script>
                         </body>
                       </html>
               }
