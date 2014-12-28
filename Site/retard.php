@@ -6,24 +6,28 @@
     <link rel="stylesheet" type="text/css" href="styles.css"/>
   </head>
 
-  <body> <br/><br/><br/>
+  <body> 
+    <center>
+      
+      <?php include "menu.html"; ?>
 
 
-    <?php include "menu.html"; ?>
-    
-
-    <div class="wrapper">
-    <center> <p> Quel liste d'attribue ? ( pas forcemet le mm nomvre d'attribut ) => donc PHP ! </p></center>
-    <div class="toggle_radio">
-      <input type="radio" class="toggle_option" id="first_toggle" name="toggle_option">
-      <input type="radio" checked class="toggle_option" id="second_toggle" name="toggle_option">
-      <input type="radio" class="toggle_option" id="third_toggle" name="toggle_option">
-      <label for="first_toggle"><p>Sondage age</p></label>
-      <label for="second_toggle"><p>Sondage Profession</p></label>
-      <label for="third_toggle"><p>Sondage Avis</p></label>
-        <div class="toggle_option_slider"></div>
-    </div>
+      <form action="graphe.php" method="post">
+        <fieldset class="radioset">
+          <ul>
+            <?php
+              $tabliste = explode(";", $_GET['listeAttributs']);
+              foreach ($tabliste as $key => $value)
+                echo "<li><input type=radio name=radio[]><label>$value</label></li>";
+            ?>
+          </ul>
+        </fieldset>
+        <button>Visualiser</button>
+      </form>
 
 
+    </center>
   </body>
 </html>
+
+

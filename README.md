@@ -1,4 +1,4 @@
-![BD.png](http://i.gyazo.com/fc1a00352eda1b3d524ddd521fa65491.png) Web Application d'analyse interractive de données sur un HDFS
+![BD.png](http://cgerin-roze.fr/img/Wada.png)
 
 
 

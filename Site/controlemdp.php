@@ -10,6 +10,7 @@
     {
         ob_start();
         header('Location: index.html');
+        header("Cache-Control: no-store, no-cache, must-revalidate");
         ob_end_flush(); 
     }
 ?>

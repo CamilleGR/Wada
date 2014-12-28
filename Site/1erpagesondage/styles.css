@@ -3,37 +3,24 @@
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro); /* pr radio button */
 
-@import url("http://fonts.googleapis.com/css?family=Montserrat:400,700");/* pr le boutton de la page sodnage.php */
-
-@import url(http://fonts.googleapis.com/css?family=Indie+Flower);/* pr le style d'ecriture */
-
-
 
 html { 
-  margin:80;
+  margin:50;
   padding:50;
   background: url(images/img4.jpg) no-repeat center fixed; 
   -webkit-background-size: cover; /* pour anciens Chrome et Safari */
   background-size: cover; /* version standardisée */
 }
 
-body
-{
-  margin:100px;
-  margin-left: 16em;
 
-}
 
-p
-{
-  font-family: 'Indie Flower', cursive;
-  /*font-family: Comic Sans MS, cursive, sans-serif;*/
-  line-height:80px; /* espace entre lignes */
-  font-size: xx-large;
-  font-weight:bold;
-  text-align:center;
-  color:#333333;
-}
+
+
+
+
+
+
+
 
 
 
@@ -190,8 +177,6 @@ height: 100%;
 
 /************************************   CSS DU SELECTEUR    **********************************************/
 select {
-    position: relative;
-    top: 50px; /* fixe l'espace du bouton avec le top */
     padding:3px;
     margin: 0;
     -webkit-border-radius:4px;
@@ -327,6 +312,15 @@ label {
 
 
 
+
+
+
+
+
+
+
+
+
 /************************************   CSS DE LA PAGE GRAPHE.PHP    **********************************************/
 .graphCamembert{
 position: relative;
@@ -341,159 +335,4 @@ left : 20%;
 }
 .graphDiagramme2{
   
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/************************************   css DU CARDE DES RADIO BUTTON SONDAGE.PHP    **********************************************/
-.radioset 
-  {
-    border: 0;
-    border-radius: .5em;
-    background: #333333;
-    box-shadow: 0 3px 15px -5px;
-    min-width: 16em;
-    max-width: 30em;
-    margin: auto;
-  }
-  
-  ul 
-  {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    position: relative;
-  }
-
-  li
-  {
-    margin-top: 15px;
-    display: inline-block;
-    position: relative;
-    width: 25%;
-  }
-
-  label
-  {
-    line-height: 30px;
-    padding-bottom: 40px;
-    display: block;
-    color: white;
-    font-variant: small-caps;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/************************************   CSS POUR LE BOUTTON VISUALISER DE LA PAGE SONDAGE.PHP    **********************************************/
-
-button {
-  position: absolute;
-  top: 25em; /* fixe l'espace du bouton avec le top */
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  background: #333333;
-  border: 0;
-  line-height: 40px;
-  padding: 0px 40px;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  outline: none;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 14px;
-  color: #6ACD79;
-  box-shadow: 1px 1px 20px 1px;
-}
-button:hover:after {
-  content: '';
-  position: absolute;
-  width: 200px;
-  left: -200px;
-  -webkit-transform: skewX(-20deg);
-  -moz-transform: skewX(-20deg);
-  -o-transform: skewX(-20deg);
-  -ms-transform: skewX(-20deg);
-  transform: skewX(-20deg);
-  background-image: -webkit-linear-gradient(left, transparent, #6ACD79, transparent);
-  background-image: -moz-linear-gradient(left, transparent, #6ACD79, transparent);
-  background-image: -o-linear-gradient(left, transparent, #6ACD79, transparent);
-  background-image: -ms-linear-gradient(left, transparent, #6ACD79, transparent);
-  background-image: linear-gradient(to right, transparent, #6ACD79, transparent);
-  height: 50px;
-  -webkit-animation: shine 0.7s ease;
-  -moz-animation: shine 0.7s ease;
-  -o-animation: shine 0.7s ease;
-  -ms-animation: shine 0.7s ease;
-  animation: shine 0.7s ease;
-}
-@-moz-keyframes shine {
-  100% {
-    left: 200px;
-  }
-}
-@-webkit-keyframes shine {
-  100% {
-    left: 200px;
-  }
-}
-@-o-keyframes shine {
-  100% {
-    left: 200px;
-  }
-}
-@-ms-keyframes shine {
-  100% {
-    left: 200px;
-  }
-}
-@keyframes shine {
-  100% {
-    left: 200px;
-  }
 }

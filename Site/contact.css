@@ -1,9 +1,27 @@
-
-
-
 /************************************   MENU DU HEADER    **********************************************/
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 @import url(http://fonts.googleapis.com/css?family=Titillium+Web:300);
+
+@import url(http://fonts.googleapis.com/css?family=Indie+Flower);/* pr le style d'ecriture */
+
+
+body
+{
+  margin:30px;
+  margin-left: 16em;
+}
+p
+{
+  font-family: 'Indie Flower', cursive;
+  /*font-family: Comic Sans MS, cursive, sans-serif;*/
+  font-size: xx-large;
+  line-height: 180%;
+  font-weight:bold;
+  text-align:center;
+  color:#333333;
+}
+
+
 
 .fa-2x {
 font-size: 2em;
