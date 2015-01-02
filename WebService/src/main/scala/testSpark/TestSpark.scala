@@ -4,9 +4,10 @@ import java.io._
 
 import akka.actor.Actor
 import org.apache.spark.{SparkConf, SparkContext}
-import org.apache.spark.graphx._
+import org.apache.spark.SparkContext._
 import spray.http.MediaTypes._
 import spray.routing._
+import org.apache.spark.sql.{SchemaRDD, SQLContext}
 
 // we don't implement our route structure directly in the service actor because
 // we want to be able to test it independently, without having to spin up an actor
@@ -27,41 +28,83 @@ trait TestSpark extends HttpService {
 
   val conf = new SparkConf().setAppName("test").setMaster("local")
   val sc = new SparkContext(conf)
+  val sqlContext = new SQLContext(sc)
+  val function = new SparkFonction() //Pour executer les fonctions dans la classe SparkFonction
 
+  /*
+Fonction qui retourne l'extension d'un nom de fichier
+@args :
+name:String -> nom du fichier
+@returns: String -> extension du fichier
+*/
+  def getExtension(name:String):String = {
+    var ret = ""
+    for(i<- name.lastIndexOf('.')+1 to name.length-1 ){
+      ret += name.charAt(i);
+    }
+    return ret;
+  }
+
+  /*
+  Fonction qui retourne la liste des attributs d'un fichier
+  @args :
+  file:String -> nom du fichier
+  @returns: String -> liste des atributs séparés par des virgules
+  */
   def listeAttributs(file:String):String = {
     var ret = "";
+    val extension = getExtension(file)
 
-    if (true) {
-      // Ici il faudra traiter les différents types de fichier, pour l'instant on estime que c'est un .csv
+    if ( extension=="csv" || extension=="tsv" ) { //Si c'est un csv ou tsv
       val textfile = sc.textFile("scripts/" + file);
-      ret = textfile.first(); // trouver une solution pour ne pas charger TOUS le fichier mais juste la premiere ligne
+      ret = textfile.first(); //On charge la ligne de l'entête (la première)
+    }
+    else if (extension == "json") {
+      val textFile = sqlContext.jsonFile("scripts/" + file)
+      var tabR = new Array[String](0)
+      textFile.schema.fieldNames.foreach(r => tabR :+= r) //On récupère les attributs
+      ret = tabR.mkString(",") //On les associe avec un separateur
     }
 
     return ret;
   }
 
-
   def traitementPost(demande:String, nomFichier:String, attribut:String, segment:Int) = {
+    var array:Array[String] = null
+    var tab:Array[(String,Int)] = new Array[(String, Int)](0)
 
-    val textFile = sc.textFile("scripts/" + nomFichier)
-    val data = textFile.map(_.split(",")).collect()
+    if (getExtension(nomFichier)=="csv" || getExtension(nomFichier)=="tsv") { //Si c'est un csv ou tsv...
+      val textFile = sc.textFile("scripts/" + nomFichier) //On charge le fichier avec spark, le type de textFile est RDD[Array[String]]
+      val sep = function.separateur(textFile) //On récupère le séparateur du csv/tsv
+      val data = textFile.map(_.split(sep)) //On crée un RDD[Array[String]] qui correspond, en fonction du separateur
+      val col = function.colAttribut(data, attribut) //On récupère le numero de colonne
 
-    val function = new SparkFonction()
-    val tab = function.segmentNum(segment, 1, data) // pour l'instant le calcule ne se fait que pour l'attribut de la deuxième colonne, donc fonction de recherche de la colonne de l'attribut à faire
-    val tabPrc = function.prcTab(tab)
-    val cheminFichierStats = function.creerCsv(nomFichier + attribut, "WebService/src/test/", tabPrc)
-    
-    cheminFichierStats
+      //!!!A faire : fonction pour connaitre le type de valeur de la colonne, Réels ou String
+        //tab = function.segmentNum(segment, col, data) // <- Si c'est un Réel on execute segmentNum
+        tab = function.segmentStringArray(segment,col,data) // <- Si c'est un String on execute segmentStringArray
+    }
+    else if (getExtension(nomFichier)=="json") {
+      import sqlContext.createSchemaRDD
+      val textFile = sqlContext.jsonFile("scripts/" + nomFichier)//On charge le fichier avec spark, le type de textFile est SchemaRDD
+      textFile.registerTempTable("textFile") //On enregistre le SchemaRDD comme une table SQL
+
+      //!!!A faire : fonction pour connaitre le type de valeur de la colonne, Réels ou String
+        //tab = function.segmentNum(sqlContext,segment,attribut,"textFile") // <- Si c'est un Réel on execute segmentNum
+        tab = function.segmentStringArray(sqlContext,segment,attribut,"textFile") // <- Si c'est un String on execute segmentStringArray
+    }
+    val tabPrc = function.prcTab(tab) //On convertit les valeurs en pourcentage
+    val cheminFichierStats = function.creerCsv(nomFichier + attribut, "WebService/src/test/", tabPrc) //On crée le fichier CSV à renvoyer à la webApp
+
+    cheminFichierStats //On renvoit le chemin du fichier crée
   }
 
   val myRoute =
     path("") {
       post { //On définie ce qui est envoyé SI on utilise la méthode POST
         formFields("demande", "nomFichier", "attribut", "segment".as[Int]) { (demande, nomFichier, attribut, segment) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
-          respondWithMediaType(`text/html`) { // XML is marshalled to `text/xml` by default, so we simply override here
-            if(demande.equals("listeAttributs")){
+          respondWithMediaType(`text/html`) {
+            if(demande.equals("listeAttributs")){ //Dans le cas d'une demande de la liste des attributs, on renvoit en GET les attributs separés par des virgules
                  complete {
-                    // on ajoute un bloc {} pour mettre notre variable
                     <html>
                       <body>
                         <h1>Chargement de la liste des attributs, vous serez redirigé sur la page ...</h1>
@@ -70,7 +113,7 @@ trait TestSpark extends HttpService {
                     </html>
                   }
 
-            }else if(demande.equals("statistiques")){
+            }else if(demande.equals("statistiques")){ //Dans le cas d'une demande des stats, on renvoit en GET le chemin du fichier crée contenant les stats
                   val fichier = traitementPost(demande, nomFichier, attribut, segment)
                   complete {
                       <html>
@@ -81,7 +124,7 @@ trait TestSpark extends HttpService {
                       </html>
               }
 
-            }else {
+            }else { //Bon ça c'est Camille, voila...
                     complete {
                       <html>
                         <body>
@@ -89,7 +132,6 @@ trait TestSpark extends HttpService {
                         </body>
                      </html>
                     }
-
             }
           }
         }
