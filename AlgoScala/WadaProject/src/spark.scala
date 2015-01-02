@@ -97,7 +97,7 @@ def prcTab(tab:Array[Array[String]]):Array[Array[String]]={
 }
 
 /*
-val file = sc.textFile("WadaProject/res/code_postaux_v201410.csv")
+val file = sc.textFile("WadaProject/res/exemple.csv")
 var tc = file.collect()
 val nbAtt = 4;
 
