@@ -6,6 +6,7 @@ import org.apache.spark.SparkContext._
 import org.apache.spark.rdd._
 import java.lang.Math
 
+import org.apache.spark.sql.catalyst.types.{LongType, FloatType, IntegerType, DoubleType}
 import org.apache.spark.sql.{SQLContext, SchemaRDD}
 
 class SparkFonction {
@@ -217,5 +218,52 @@ class SparkFonction {
     }
 
     return -1
+  }
+
+  /*
+  Fonction POUR FICHIERS CSV/TSV qui permet de savoir si la colonne n'est constitué que de réels ou non
+  @args :
+  file:RDD[Array[String]] -> RDD d'un csv/tsv
+  col:Int -> La colonne en question
+  @returns: Boolean -> true si colonne numerique, false sinon
+  */
+  def colNumerique(file:RDD[Array[String]],col:Int) : Boolean = {
+    var ar = file.map(r => r(col))
+    val header = ar.first()
+    ar = ar.filter( line => !line.equals(header))
+
+    if (false) { //Methode 1
+      try {
+        ar.foreach(r => r.toDouble)
+        return true
+      }
+      catch {
+        case e: Exception => return false
+      }
+    }
+
+    if (true) { //Methode 2
+      return ar.filter(line => !line.matches("(-?[0-9]+(?:\\.[0-9]+)?)")).count() == 0
+    }
+
+    return false
+  }
+
+  /*
+  Fonction POUR FICHIERS CSV/TSV qui permet de savoir si la colonne n'est constitué que de réels ou non
+  @args :
+  sqlContext:SQLContext -> le SQLContext pour l'execution de requete SQL
+  file:SchemaRDD -> SchemaRDD d'un JSON
+  col:String -> Nom de la colonne en question
+  @returns: Boolean -> true si colonne numerique, false sinon
+  */
+  def colNumerique(sqlContext:SQLContext, file:SchemaRDD,col:String) : Boolean = {
+    if(file.schema.apply(col).dataType.equals(IntegerType)
+      || file.schema.apply(col).dataType.equals(DoubleType)
+      || file.schema.apply(col).dataType.equals(FloatType)
+      || file.schema.apply(col).dataType.equals(LongType))
+      return true
+    else
+      return false
   }
 }
