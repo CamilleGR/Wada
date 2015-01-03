@@ -3,6 +3,7 @@ package testSpark
 import java.io._
 
 import akka.actor.Actor
+import org.apache.spark.sql.catalyst.types.IntegerType
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.SparkContext._
 import spray.http.MediaTypes._
@@ -79,8 +80,9 @@ name:String -> nom du fichier
       val data = textFile.map(_.split(sep)) //On crée un RDD[Array[String]] qui correspond, en fonction du separateur
       val col = function.colAttribut(data, attribut) //On récupère le numero de colonne
 
-      //!!!A faire : fonction pour connaitre le type de valeur de la colonne, Réels ou String
-        //tab = function.segmentNum(segment, col, data) // <- Si c'est un Réel on execute segmentNum
+      if (function.colNumerique(data,col))
+        tab = function.segmentNum(segment, col, data) // <- Si c'est un Réel on execute segmentNum
+      else
         tab = function.segmentStringArray(segment,col,data) // <- Si c'est un String on execute segmentStringArray
     }
     else if (getExtension(nomFichier)=="json") {
@@ -88,8 +90,9 @@ name:String -> nom du fichier
       val textFile = sqlContext.jsonFile("scripts/" + nomFichier)//On charge le fichier avec spark, le type de textFile est SchemaRDD
       textFile.registerTempTable("textFile") //On enregistre le SchemaRDD comme une table SQL
 
-      //!!!A faire : fonction pour connaitre le type de valeur de la colonne, Réels ou String
-        //tab = function.segmentNum(sqlContext,segment,attribut,"textFile") // <- Si c'est un Réel on execute segmentNum
+      if (function.colNumerique(sqlContext, textFile, attribut))
+        tab = function.segmentNum(sqlContext,segment,attribut,"textFile") // <- Si c'est un Réel on execute segmentNum
+      else
         tab = function.segmentStringArray(sqlContext,segment,attribut,"textFile") // <- Si c'est un String on execute segmentStringArray
     }
     val tabPrc = function.prcTab(tab) //On convertit les valeurs en pourcentage
