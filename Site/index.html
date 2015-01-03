@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="the Pure website.">
+    <title>WADA</title> 
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link rel="stylesheet" href="side-menu.css">
+
+</head>
+
+<body>
+	<div id="layout">
+		<a href="#menu" id="menuLink" class="menu-link"></a>
+		<div id="menu">
+			<div class="pure-menu pure-menu-open">
+				<a class="pure-menu-heading" href="index.html">START</a>
+				<ul>
+					<li><a href="org.html">HOME</a></li>
+					<li><a href="contact.html">CONTACT</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="main">
+			<div class="header">
+				<h1>WADA</h1>
+				<h2>Web Application for Data Analysis</h2>
+			</div>
+		</div>
+	</div>
+	<form action="" method="post" enctype="multipart/form-data">
+		<div class="input-file-container">
+			<input class="input-file" id="my-file" type="file">  
+			<label for="my-file" class="input-file-trigger" tabindex="0">Sélectionner un fichier...</label>  
+		</div>  
+		<p class="file-return"></p> 
+	</form>
+	<div class="gridcontainer clearfix">
+		<div class="grid_3">
+			<div class="fmcircle_out">
+				<a href="#web">
+					<div class="fmcircle_border">
+						<div class="fmcircle_in fmcircle_blue">
+							<span>Liste de fichier</span><img src="icon\fileliste2.png" alt="" />
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="grid_3">
+			<div class="fmcircle_out">
+				<a href="#branding">
+					<div class="fmcircle_border">
+						<div class="fmcircle_in fmcircle_green">
+							<span>Liste d'attribut</span><img src="icon\attr2.png" alt="" />
+						</div>
+					</div>
+				</a>		</div>
+		</div>
+		<div class="grid_3">
+			<div class="fmcircle_out">
+				<a href="#software">
+					<div class="fmcircle_border">
+						<div class="fmcircle_in fmcircle_red">
+							<span>Statistique</span><img src="icon\graph.png" alt="" />
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	    // ajout de la classe JS à HTML  
+	    document.querySelector("html").classList.add('js');  
+	       
+	    // initialisation des variables  
+	    var fileInput  = document.querySelector( ".input-file" ),    
+	        button     = document.querySelector( ".input-file-trigger" ),  
+	        the_return = document.querySelector(".file-return");  
+	       
+	    // action lorsque la "barre d'espace" ou "Entrée" est pressée  
+	    button.addEventListener( "keydown", function( event ) {  
+	        if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+	            fileInput.focus();  
+	        }  
+	    });  
+	       
+	    // action lorsque le label est cliqué  
+	    button.addEventListener( "click", function( event ) {  
+	       fileInput.focus();  
+	       return false;  
+	    });  
+	       
+	    // affiche un retour visuel dès que input:file change  
+	    fileInput.addEventListener( "change", function( event ) {    
+	        the_return.innerHTML = this.value;    
+	    });  
+	</script>	
+</body>
+</html>
