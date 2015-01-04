@@ -3,7 +3,6 @@ package testSpark
 import java.io._
 
 import akka.actor.Actor
-import org.apache.spark.sql.catalyst.types.IntegerType
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.SparkContext._
 import spray.http.MediaTypes._
