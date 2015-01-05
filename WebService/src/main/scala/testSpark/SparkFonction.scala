@@ -162,7 +162,7 @@ class SparkFonction {
 
     writer.close()
 
-    chemin + nom + ".csv"
+    nom + ".csv"
   }
 
   /*

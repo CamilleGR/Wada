@@ -6,6 +6,7 @@ import akka.actor.Actor
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.SparkContext._
 import spray.http.MediaTypes._
+import spray.http.StatusCodes
 import spray.routing._
 import org.apache.spark.sql.{SchemaRDD, SQLContext}
 
@@ -57,7 +58,11 @@ name:String -> nom du fichier
 
     if ( extension=="csv" || extension=="tsv" ) { //Si c'est un csv ou tsv
       val textfile = sc.textFile("scripts/" + file);
-      ret = textfile.first(); //On charge la ligne de l'entête (la première)
+      val sep = function.separateur(textfile)
+      ret = textfile
+        .map(r => r.split(sep))
+        .first()
+        .mkString(",")
     }
     else if (extension == "json") {
       val textFile = sqlContext.jsonFile("scripts/" + file)
@@ -95,7 +100,7 @@ name:String -> nom du fichier
         tab = function.segmentStringArray(sqlContext,segment,attribut,"textFile") // <- Si c'est un String on execute segmentStringArray
     }
     val tabPrc = function.prcTab(tab) //On convertit les valeurs en pourcentage
-    val cheminFichierStats = function.creerCsv(nomFichier + attribut, "WebService/src/test/", tabPrc) //On crée le fichier CSV à renvoyer à la webApp
+    val cheminFichierStats = function.creerCsv(nomFichier + attribut, "Site/", tabPrc) //On crée le fichier CSV à renvoyer à la webApp
 
     cheminFichierStats //On renvoit le chemin du fichier crée
   }
@@ -106,17 +111,20 @@ name:String -> nom du fichier
         formFields("demande", "nomFichier", "attribut", "segment".as[Int]) { (demande, nomFichier, attribut, segment) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
           respondWithMediaType(`text/html`) {
             if(demande.equals("listeAttributs")){ //Dans le cas d'une demande de la liste des attributs, on renvoit en GET les attributs separés par des virgules
-                 complete {
+                 /*
+                  complete {
                     <html>
                       <body>
                         <h1>Chargement de la liste des attributs, vous serez redirigé sur la page ...</h1>
                         <script>window.location='http://cheminVerslapage?attributs={listeAttributs(nomFichier)}'</script>
                       </body>
                     </html>
-                  }
+                  }*/
+              redirect("http://localhost/Site/getListeAttributs.php?attributs=" + {listeAttributs(nomFichier)}, StatusCodes.PermanentRedirect)
 
             }else if(demande.equals("statistiques")){ //Dans le cas d'une demande des stats, on renvoit en GET le chemin du fichier crée contenant les stats
                   val fichier = traitementPost(demande, nomFichier, attribut, segment)
+              /*
                   complete {
                       <html>
                         <body>
@@ -124,7 +132,9 @@ name:String -> nom du fichier
                           <script>window.location='http://cheminVerslapage?fichier={fichier}'</script>
                         </body>
                       </html>
-              }
+              }*/
+              redirect("http://localhost/BD/Site/graphe.php?fichier=" + {fichier}, StatusCodes.PermanentRedirect)
+
 
             }else { //Bon ça c'est Camille, voila...
                     complete {
