@@ -84,17 +84,13 @@ name:String -> nom du fichier
       textFile.schema.fieldNames.foreach(r => tabR :+= r) //On récupère les attributs
       ret = tabR.mkString(",") //On les associe avec un separateur
     }
+    else
+      throw new Exception()
 
     return ret;
   }
 
   def traitementPost(nomFichier:String, attribut:String, segment:Int):String = {
-    /*try {
-      sc.textFile("scripts/" + nomFichier)
-    } catch {
-      case e : InvalidInputException => redirect("http://localhost/", StatusCodes.PermanentRedirect)
-        return null
-    }*/
     var array:Array[String] = null
     var tab:Array[(String,Int)] = new Array[(String, Int)](0)
 
@@ -119,6 +115,8 @@ name:String -> nom du fichier
       else
         tab = function.segmentStringArray(sqlContext,segment,attribut,"textFile") // <- Si c'est un String on execute segmentStringArray
     }
+    else
+      throw new Exception()
     val tabPrc = function.prcTab(tab) //On convertit les valeurs en pourcentage
     val cheminFichierStats = function.creerCsv(nomFichier + "_" + attribut, "AlgoScala/WadaProject/res/", tabPrc) //On crée le fichier CSV à renvoyer à la webApp
 
