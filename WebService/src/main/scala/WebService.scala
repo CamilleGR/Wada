@@ -120,7 +120,7 @@ name:String -> nom du fichier
         tab = function.segmentStringArray(sqlContext,segment,attribut,"textFile") // <- Si c'est un String on execute segmentStringArray
     }
     val tabPrc = function.prcTab(tab) //On convertit les valeurs en pourcentage
-    val cheminFichierStats = function.creerCsv(nomFichier + "_" + attribut, "AlgoScala/WadaProject/res/", tab) //On crée le fichier CSV à renvoyer à la webApp
+    val cheminFichierStats = function.creerCsv(nomFichier + "_" + attribut, "AlgoScala/WadaProject/res/", tabPrc) //On crée le fichier CSV à renvoyer à la webApp
 
     cheminFichierStats //On renvoit le chemin du fichier crée
   }

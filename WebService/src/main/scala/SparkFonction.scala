@@ -151,7 +151,7 @@ class SparkFonction {
   tab:Array[(String,Float)] -> tableau de stats
   @returns: String -> Chemin du fichier crée
   */
-  def creerCsv(nom:String, chemin:String, tab:Array[(String, Int)]): String = {
+  def creerCsv(nom:String, chemin:String, tab:Array[(String, Float)]): String = {
     val writer = new PrintWriter(new File(chemin + nom + ".csv")) //On crée un fichier csv en Scala
     writer.write("categorie,valeur\n")  //On écrit son entête
 
