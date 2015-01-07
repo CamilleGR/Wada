@@ -1,12 +1,14 @@
 import java.io._
 
 import akka.actor.Actor
+import org.apache.hadoop.mapred.InvalidInputException
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.SparkContext._
 import spray.http.MediaTypes._
 import spray.http.StatusCodes
 import spray.routing._
 import org.apache.spark.sql.{SchemaRDD, SQLContext}
+import spray.util.LoggingContext
 
 // we don't implement our route structure directly in the service actor because
 // we want to be able to test it independently, without having to spin up an actor
@@ -19,7 +21,21 @@ class WebServiceActor extends Actor with WebService {
   // this actor only runs our route, but you could add
   // other things here, like request stream processing
   // or timeout handling
-  def receive = runRoute(myRoute)
+  def receive = runRoute((handleExceptions(RouteExceptionHandler))(myRoute))
+
+  implicit def RouteExceptionHandler(implicit log: LoggingContext) =
+    ExceptionHandler {
+      case e: Exception =>
+        respondWithMediaType(`text/html`) {
+          complete {
+            <html>
+              <body>
+                <h1>Error 418 : I'm a Tea Pot</h1>
+              </body>
+            </html>
+          }
+        }
+    }
 }
 
 // this trait defines our service behavior independently from the service actor
@@ -72,7 +88,13 @@ name:String -> nom du fichier
     return ret;
   }
 
-  def traitementPost(demande:String, nomFichier:String, attribut:String, segment:Int) = {
+  def traitementPost(nomFichier:String, attribut:String, segment:Int):String = {
+    /*try {
+      sc.textFile("scripts/" + nomFichier)
+    } catch {
+      case e : InvalidInputException => redirect("http://localhost/", StatusCodes.PermanentRedirect)
+        return null
+    }*/
     var array:Array[String] = null
     var tab:Array[(String,Int)] = new Array[(String, Int)](0)
 
@@ -98,7 +120,7 @@ name:String -> nom du fichier
         tab = function.segmentStringArray(sqlContext,segment,attribut,"textFile") // <- Si c'est un String on execute segmentStringArray
     }
     val tabPrc = function.prcTab(tab) //On convertit les valeurs en pourcentage
-    val cheminFichierStats = function.creerCsv(nomFichier + attribut, "AlgoScala/WadaProject/res/", tabPrc) //On crée le fichier CSV à renvoyer à la webApp
+    val cheminFichierStats = function.creerCsv(nomFichier + "_" + attribut, "AlgoScala/WadaProject/res/", tabPrc) //On crée le fichier CSV à renvoyer à la webApp
 
     cheminFichierStats //On renvoit le chemin du fichier crée
   }
@@ -107,7 +129,6 @@ name:String -> nom du fichier
     path("") {
       post { //On définie ce qui est envoyé SI on utilise la méthode POST
         formFields("demande", "nomFichier", "attribut", "segment".as[Int]) { (demande, nomFichier, attribut, segment) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
-          respondWithMediaType(`text/html`) {
             if(demande.equals("listeAttributs")){ //Dans le cas d'une demande de la liste des attributs, on renvoit en GET les attributs separés par des virgules
               /*
                complete {
@@ -121,7 +142,7 @@ name:String -> nom du fichier
               redirect("http://localhost/Site/getListeAttributs.php?attributs=" + {listeAttributs(nomFichier)}, StatusCodes.PermanentRedirect)
 
             }else if(demande.equals("statistiques")){ //Dans le cas d'une demande des stats, on renvoit en GET le chemin du fichier crée contenant les stats
-            val fichier = traitementPost(demande, nomFichier, attribut, segment)
+            val fichier = traitementPost(nomFichier, attribut, segment)
               /*
                   complete {
                       <html>
@@ -135,15 +156,16 @@ name:String -> nom du fichier
 
 
             }else { //Bon ça c'est Camille, voila...
-              complete {
-                <html>
-                  <body>
-                    <h1>Error 418 : I'm a Tea Pot</h1>
-                  </body>
-                </html>
+              respondWithMediaType(`text/html`) {
+                complete {
+                  <html>
+                   <body>
+                     <h1>Error 418 : I'm a Tea Pot</h1>
+                   </body>
+                 </html>
+                }
               }
             }
-          }
         }
       }
     }
