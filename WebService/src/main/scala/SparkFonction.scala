@@ -34,7 +34,9 @@ class SparkFonction {
     for(i <- 1 to seg) {
       //On regroupe les valeurs en seg parties distincts, elles sont donc regroupés par parties comprises entre min+(max/seg)*(j-1) et min+(max/seg)*(i)
       tabR :+= ((min+ (max/seg)*(i-1)) + " à " + (min+ (max/seg)*i),
-        data.filter(r => r.toDouble >= min+(max/seg)*(i-1) &&  r.toDouble <= min+(max/seg)*i).count().toInt)
+        if (i < seg) data.filter(r => r.toDouble >= min+(max/seg)*(i-1) &&  r.toDouble < min+(max/seg)*i).count().toInt
+        else data.filter(r => r.toDouble >= min+(max/seg)*(i-1) &&  r.toDouble <= min+(max/seg)*i).count().toInt
+        )
     }
 
     return tabR
@@ -65,7 +67,8 @@ class SparkFonction {
 
     for(i <- 1 to seg) {
       //On regroupe les valeurs en seg parties distincts, elles sont donc regroupés par parties comprises entre min+(max/seg)*(j-1) et min+(max/seg)*(i)
-      nb = sqlContext.sql("SELECT count(*) FROM " + tab + " WHERE " + col + ">=" + temp*(i-1) + " AND " + col + "<=" + (temp*i)).map(t => t(0).toString).first().toInt //On execute la requete SQL qui correspond
+      val sign = if (i < seg) "<" else "<="
+      nb = sqlContext.sql("SELECT count(*) FROM " + tab + " WHERE " + col + ">=" + temp*(i-1) + " AND " + col + sign  +  (temp*i)).map(t => t(0).toString).first().toInt //On execute la requete SQL qui correspond
       tabR :+= ((min+ (max/seg)*(i-1)) + " à " + (min+ (max/seg)*i), nb)
     }
 
@@ -148,7 +151,7 @@ class SparkFonction {
   tab:Array[(String,Float)] -> tableau de stats
   @returns: String -> Chemin du fichier crée
   */
-  def creerCsv(nom:String, chemin:String, tab:Array[(String, Float)]): String = {
+  def creerCsv(nom:String, chemin:String, tab:Array[(String, Int)]): String = {
     val writer = new PrintWriter(new File(chemin + nom + ".csv")) //On crée un fichier csv en Scala
     writer.write("categorie,valeur\n")  //On écrit son entête
 
