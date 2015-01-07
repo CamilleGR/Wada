@@ -1,5 +1,3 @@
-package testSpark
-
 import java.io._
 
 import akka.actor.Actor
@@ -12,7 +10,7 @@ import org.apache.spark.sql.{SchemaRDD, SQLContext}
 
 // we don't implement our route structure directly in the service actor because
 // we want to be able to test it independently, without having to spin up an actor
-class TestSparkActor extends Actor with TestSpark {
+class WebServiceActor extends Actor with WebService {
 
   // the HttpService trait defines only one abstract member, which
   // connects the services environment to the enclosing actor or test
@@ -25,7 +23,7 @@ class TestSparkActor extends Actor with TestSpark {
 }
 
 // this trait defines our service behavior independently from the service actor
-trait TestSpark extends HttpService {
+trait WebService extends HttpService {
 
   val conf = new SparkConf().setAppName("test").setMaster("local")
   val sc = new SparkContext(conf)
@@ -57,7 +55,7 @@ name:String -> nom du fichier
     val extension = getExtension(file)
 
     if ( extension=="csv" || extension=="tsv" ) { //Si c'est un csv ou tsv
-      val textfile = sc.textFile("scripts/" + file);
+    val textfile = sc.textFile("scripts/" + file);
       val sep = function.separateur(textfile)
       ret = textfile
         .map(r => r.split(sep))
@@ -79,10 +77,10 @@ name:String -> nom du fichier
     var tab:Array[(String,Int)] = new Array[(String, Int)](0)
 
     if (getExtension(nomFichier)=="csv" || getExtension(nomFichier)=="tsv") { //Si c'est un csv ou tsv...
-      val textFile = sc.textFile("scripts/" + nomFichier) //On charge le fichier avec spark, le type de textFile est RDD[Array[String]]
-      val sep = function.separateur(textFile) //On récupère le séparateur du csv/tsv
-      val data = textFile.map(_.split(sep)) //On crée un RDD[Array[String]] qui correspond, en fonction du separateur
-      val col = function.colAttribut(data, attribut) //On récupère le numero de colonne
+    val textFile = sc.textFile("scripts/" + nomFichier) //On charge le fichier avec spark, le type de textFile est RDD[Array[String]]
+    val sep = function.separateur(textFile) //On récupère le séparateur du csv/tsv
+    val data = textFile.map(_.split(sep)) //On crée un RDD[Array[String]] qui correspond, en fonction du separateur
+    val col = function.colAttribut(data, attribut) //On récupère le numero de colonne
 
       if (function.colNumerique(data,col))
         tab = function.segmentNum(segment, col, data) // <- Si c'est un Réel on execute segmentNum
@@ -100,7 +98,7 @@ name:String -> nom du fichier
         tab = function.segmentStringArray(sqlContext,segment,attribut,"textFile") // <- Si c'est un String on execute segmentStringArray
     }
     val tabPrc = function.prcTab(tab) //On convertit les valeurs en pourcentage
-    val cheminFichierStats = function.creerCsv(nomFichier + attribut, "Site/", tabPrc) //On crée le fichier CSV à renvoyer à la webApp
+    val cheminFichierStats = function.creerCsv(nomFichier + attribut, "AlgoScala/WadaProject/res/", tabPrc) //On crée le fichier CSV à renvoyer à la webApp
 
     cheminFichierStats //On renvoit le chemin du fichier crée
   }
@@ -111,19 +109,19 @@ name:String -> nom du fichier
         formFields("demande", "nomFichier", "attribut", "segment".as[Int]) { (demande, nomFichier, attribut, segment) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
           respondWithMediaType(`text/html`) {
             if(demande.equals("listeAttributs")){ //Dans le cas d'une demande de la liste des attributs, on renvoit en GET les attributs separés par des virgules
-                 /*
-                  complete {
-                    <html>
-                      <body>
-                        <h1>Chargement de la liste des attributs, vous serez redirigé sur la page ...</h1>
-                        <script>window.location='http://cheminVerslapage?attributs={listeAttributs(nomFichier)}'</script>
-                      </body>
-                    </html>
-                  }*/
+              /*
+               complete {
+                 <html>
+                   <body>
+                     <h1>Chargement de la liste des attributs, vous serez redirigé sur la page ...</h1>
+                     <script>window.location='http://cheminVerslapage?attributs={listeAttributs(nomFichier)}'</script>
+                   </body>
+                 </html>
+               }*/
               redirect("http://localhost/Site/getListeAttributs.php?attributs=" + {listeAttributs(nomFichier)}, StatusCodes.PermanentRedirect)
 
             }else if(demande.equals("statistiques")){ //Dans le cas d'une demande des stats, on renvoit en GET le chemin du fichier crée contenant les stats
-                  val fichier = traitementPost(demande, nomFichier, attribut, segment)
+            val fichier = traitementPost(demande, nomFichier, attribut, segment)
               /*
                   complete {
                       <html>
@@ -137,13 +135,13 @@ name:String -> nom du fichier
 
 
             }else { //Bon ça c'est Camille, voila...
-                    complete {
-                      <html>
-                        <body>
-                          <h1>Error 418 : I'm a Tea Pot</h1>
-                        </body>
-                     </html>
-                    }
+              complete {
+                <html>
+                  <body>
+                    <h1>Error 418 : I'm a Tea Pot</h1>
+                  </body>
+                </html>
+              }
             }
           }
         }
