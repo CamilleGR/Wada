@@ -1,0 +1,31 @@
+<!DOCTYPE HTML5>
+<html>
+	<head>
+		<title> Test webHDFS </title>
+		<link rel="stylesheet" type="text/css" href="style.css" media="all"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	</head>
+	
+	<body>
+	<form id="form">
+	    <p> Operation à executer <input type="text" name="operation" id="op" /></p>
+	    <input type="submit" />
+	</form>
+	
+	
+	<script>
+	
+	document.getElementById("form").onsubmit=function(){
+	    var op = document.getElementById("op").value;
+	    var ip = "192.168.1.32";
+	    var port = "50075"
+	    var chemin = "http://"+ip+":"+port+"/webhdfs/v1/?op="+op;
+		document.location.href=chemin;
+		alert(chemin);
+	}
+
+	</script>
+</body>
+
+
+</html>
