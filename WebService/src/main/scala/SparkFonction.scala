@@ -1,11 +1,8 @@
-package testSpark
+import java.io.{File, PrintWriter}
 
-import java.io.{File,PrintWriter}
-import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.rdd._
-import java.lang.Math
-
+import org.apache.spark.sql.catalyst.types.{DoubleType, FloatType, IntegerType, LongType}
 import org.apache.spark.sql.{SQLContext, SchemaRDD}
 
 class SparkFonction {
@@ -32,12 +29,16 @@ class SparkFonction {
     val min = data.reduce((a, b) => Math.min(a.toDouble, b.toDouble).toString).toDouble //On calcule la valeur minimale
     val max = data.reduce((a, b) => Math.max(a.toDouble, b.toDouble).toString).toDouble //et maximale
 
+    val temp = (max-min)/seg
+
     var tabR = new Array[(String,Int)](0)
 
     for(i <- 1 to seg) {
       //On regroupe les valeurs en seg parties distincts, elles sont donc regroupés par parties comprises entre min+(max/seg)*(j-1) et min+(max/seg)*(i)
-      tabR :+= ((min+ (max/seg)*(i-1)) + " à " + (min+ (max/seg)*i),
-        data.filter(r => r.toDouble >= min+(max/seg)*(i-1) &&  r.toDouble <= min+(max/seg)*i).count().toInt)
+      tabR :+= ((min+temp*(i-1)) + " à " + (min+temp*i),
+        if (i < seg) data.filter(r => r.toDouble >= min+temp*(i-1) &&  r.toDouble < min+temp*i).count().toInt
+        else data.filter(r => r.toDouble >= min+temp*(i-1) &&  r.toDouble <= min+temp*i).count().toInt
+        )
     }
 
     return tabR
@@ -62,14 +63,15 @@ class SparkFonction {
     //En JSON, l'entête ne se trouve pas dans le SchemaRDD, donc pas besoin de le retirer
 
     var nb:Int = 0
-    var temp = min+(max/seg)
+    val temp = (max-min)/seg
 
     var tabR = new Array[(String,Int)](0)
 
     for(i <- 1 to seg) {
       //On regroupe les valeurs en seg parties distincts, elles sont donc regroupés par parties comprises entre min+(max/seg)*(j-1) et min+(max/seg)*(i)
-      nb = sqlContext.sql("SELECT count(*) FROM " + tab + " WHERE " + col + ">=" + temp*(i-1) + " AND " + col + "<=" + (temp*i)).map(t => t(0).toString).first().toInt //On execute la requete SQL qui correspond
-      tabR :+= ((min+ (max/seg)*(i-1)) + " à " + (min+ (max/seg)*i), nb)
+      val sign = if (i < seg) "<" else "<="
+      nb = sqlContext.sql("SELECT count(*) FROM " + tab + " WHERE " + col + ">=" + min+temp*(i-1) + " AND " + col + sign  +  (min+temp*i)).map(t => t(0).toString).first().toInt //On execute la requete SQL qui correspond
+      tabR :+= (min+temp*(i-1) + " à " + min+temp*i, nb)
     }
 
     return tabR
@@ -161,7 +163,7 @@ class SparkFonction {
 
     writer.close()
 
-    chemin + nom + ".csv"
+    nom + ".csv"
   }
 
   /*
@@ -217,5 +219,52 @@ class SparkFonction {
     }
 
     return -1
+  }
+
+  /*
+  Fonction POUR FICHIERS CSV/TSV qui permet de savoir si la colonne n'est constitué que de réels ou non
+  @args :
+  file:RDD[Array[String]] -> RDD d'un csv/tsv
+  col:Int -> La colonne en question
+  @returns: Boolean -> true si colonne numerique, false sinon
+  */
+  def colNumerique(file:RDD[Array[String]],col:Int) : Boolean = {
+    var ar = file.map(r => r(col))
+    val header = ar.first()
+    ar = ar.filter( line => !line.equals(header))
+
+    if (false) { //Methode 1
+      try {
+        ar.foreach(r => r.toDouble)
+        return true
+      }
+      catch {
+        case e: Exception => return false
+      }
+    }
+
+    if (true) { //Methode 2
+      return ar.filter(line => !line.matches("(-?[0-9]+(?:\\.[0-9]+)?)")).count() == 0
+    }
+
+    return false
+  }
+
+  /*
+  Fonction POUR FICHIERS CSV/TSV qui permet de savoir si la colonne n'est constitué que de réels ou non
+  @args :
+  sqlContext:SQLContext -> le SQLContext pour l'execution de requete SQL
+  file:SchemaRDD -> SchemaRDD d'un JSON
+  col:String -> Nom de la colonne en question
+  @returns: Boolean -> true si colonne numerique, false sinon
+  */
+  def colNumerique(sqlContext:SQLContext, file:SchemaRDD,col:String) : Boolean = {
+    if(file.schema.apply(col).dataType.equals(IntegerType)
+      || file.schema.apply(col).dataType.equals(DoubleType)
+      || file.schema.apply(col).dataType.equals(FloatType)
+      || file.schema.apply(col).dataType.equals(LongType))
+      return true
+    else
+      return false
   }
 }
