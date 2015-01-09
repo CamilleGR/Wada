@@ -1,12 +1,8 @@
-package testSpark
+import java.io.{File, PrintWriter}
 
-import java.io.{File,PrintWriter}
-import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.rdd._
-import java.lang.Math
-
-import org.apache.spark.sql.catalyst.types.{LongType, FloatType, IntegerType, DoubleType}
+import org.apache.spark.sql.catalyst.types.{DoubleType, FloatType, IntegerType, LongType}
 import org.apache.spark.sql.{SQLContext, SchemaRDD}
 
 class SparkFonction {
@@ -33,12 +29,16 @@ class SparkFonction {
     val min = data.reduce((a, b) => Math.min(a.toDouble, b.toDouble).toString).toDouble //On calcule la valeur minimale
     val max = data.reduce((a, b) => Math.max(a.toDouble, b.toDouble).toString).toDouble //et maximale
 
+    val temp = (max-min)/seg
+
     var tabR = new Array[(String,Int)](0)
 
     for(i <- 1 to seg) {
       //On regroupe les valeurs en seg parties distincts, elles sont donc regroupés par parties comprises entre min+(max/seg)*(j-1) et min+(max/seg)*(i)
-      tabR :+= ((min+ (max/seg)*(i-1)) + " à " + (min+ (max/seg)*i),
-        data.filter(r => r.toDouble >= min+(max/seg)*(i-1) &&  r.toDouble <= min+(max/seg)*i).count().toInt)
+      tabR :+= ((min+temp*(i-1)) + " à " + (min+temp*i),
+        if (i < seg) data.filter(r => r.toDouble >= min+temp*(i-1) &&  r.toDouble < min+temp*i).count().toInt
+        else data.filter(r => r.toDouble >= min+temp*(i-1) &&  r.toDouble <= min+temp*i).count().toInt
+        )
     }
 
     return tabR
@@ -63,14 +63,15 @@ class SparkFonction {
     //En JSON, l'entête ne se trouve pas dans le SchemaRDD, donc pas besoin de le retirer
 
     var nb:Int = 0
-    var temp = min+(max/seg)
+    val temp = (max-min)/seg
 
     var tabR = new Array[(String,Int)](0)
 
     for(i <- 1 to seg) {
       //On regroupe les valeurs en seg parties distincts, elles sont donc regroupés par parties comprises entre min+(max/seg)*(j-1) et min+(max/seg)*(i)
-      nb = sqlContext.sql("SELECT count(*) FROM " + tab + " WHERE " + col + ">=" + temp*(i-1) + " AND " + col + "<=" + (temp*i)).map(t => t(0).toString).first().toInt //On execute la requete SQL qui correspond
-      tabR :+= ((min+ (max/seg)*(i-1)) + " à " + (min+ (max/seg)*i), nb)
+      val sign = if (i < seg) "<" else "<="
+      nb = sqlContext.sql("SELECT count(*) FROM " + tab + " WHERE " + col + ">=" + min+temp*(i-1) + " AND " + col + sign  +  (min+temp*i)).map(t => t(0).toString).first().toInt //On execute la requete SQL qui correspond
+      tabR :+= (min+temp*(i-1) + " à " + min+temp*i, nb)
     }
 
     return tabR
