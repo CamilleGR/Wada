@@ -13,9 +13,8 @@ import scala.util.matching.Regex.Match
 
 def stringToArray(filtre :String):Array[Array[String]] = {
 
-  var nbFiltre:Int =filtre.count(_ == ';') // calcule le nombre de ; et donc le nb de filtre
-  var tabFiltre = Array.ofDim[String](nbFiltre+1,2) // crée un tableau 2 à dimmensions ou le nombre de ligne = ligneAttr+NbLigneFiltre
-  tabFiltre(0)={Array("attribut","op","val")}
+  var nbFiltre:Int =filtre.count(_ == ';')+1 // calcule le nombre de ; et donc le nb de filtre
+  var tabFiltre = Array.ofDim[Array[String]](nbFiltre) // crée un tableau 2 à dimmensions ou le nombre de ligne = ligneAttr+NbLigneFiltre
 
   var fullLineArray = filtre.split(";")// split la chaine de charactères = 1 ligne = 1 filtre
 
@@ -29,7 +28,7 @@ def stringToArray(filtre :String):Array[Array[String]] = {
    // println("\nLigne n° "+i+" Opérateur détécté : "+operatorUsed)
     var attrAndVar =fullLineArray(i-1).split(operatorUsed)
   //  print(" Attribut : "+attrAndVar(0)+" | Valeur : "+attrAndVar(1))
-    tabFiltre(i)={Array(attrAndVar(0),operatorUsed, attrAndVar(1))}
+    tabFiltre(i-1)={Array(attrAndVar(0),operatorUsed, attrAndVar(1))}
 
   }
 
