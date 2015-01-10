@@ -1,0 +1,58 @@
+p,li{
+font-family: "Courrier New", Courrier, monospace;
+font-size:20px;
+}
+
+.frame {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background-color: #EEEEEE;
+    border: 1px solid #AAAAAA;
+    overflow: hidden;
+}
+#sideBar {
+    position: fixed;
+    width: 15vw;
+    height: 100vh;
+    padding-top: 10vh;
+    top: 0px;
+    left: 0px;
+    border-right: 1px solid #AAAAAA;
+}
+#mainWrap {
+    margin-left: 20vw;
+    padding: 2em;
+}
+ul {
+    width: 100%;
+    padding: 0;
+    list-style: none;
+}
+#bt1 {
+    border-top: 1px solid #AAAAAA;
+    width: 100%;
+}
+.border {
+    border-bottom: 1px solid #AAAAAA;
+    width: 100%;
+}
+.tools {
+    background-color: #EEEEEE;
+}
+
+.borderTop {
+    height: 40px;
+    border-bottom: 1px solid #AAAAAA;
+    margin: auto;
+}
+.sizeIcon {
+    font-size: 40px;
+    margin-left: 1em;
+}
+.barTool {
+    text-align: left;
+    margin-left: 0.5em;
+    font-size: 30px;
+    color: black;
+}

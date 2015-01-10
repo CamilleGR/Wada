@@ -1,0 +1,103 @@
+html,body{
+overflow:hidden;
+}
+/* FORME ------------*/
+a img {
+    border: none;
+}
+a {
+    text-decoration: none;
+    outline: 0;
+    color: black;
+}
+
+.upload_wrap_width{
+    width:40vw;
+    
+}
+
+#content{
+    padding:5em;
+    
+}
+
+.border{
+    border:1px solid black;
+    border-radius: 5px;
+    padding: 2em;
+}
+
+
+
+/* MENU ------------*/
+
+#menu_content{
+    margin-bottom: 3em;
+}
+
+#menu {
+
+    position: relative;
+    margin: 0;
+        
+}
+#menu li {
+    margin-left:4em;
+    list-style: none;
+    display: inline;
+}
+
+/* UPLOAD ------------*/
+
+#filedrag
+{
+	/*display: none;*/
+	font-weight: bold;
+	text-align: center;
+	padding: 1em 0;
+	width:40vw;
+	min-width:300px;
+	height:20vh;
+	min-height:160px;
+	
+	margin: 0 auto;
+	
+	color: #555;
+	border: 2px dashed #555;
+	border-radius: 12px;
+	cursor: default;
+}
+
+#filedrag.hover
+{
+	color: #00f;
+	border-color: #00f;
+	border-style: solid;
+	box-shadow: inset 0 3px 4px #888;
+}
+
+.margin_auto{
+    margin: 0 auto;
+}
+
+
+
+#progress p
+{
+    display: block;
+    width: 240px;
+    padding: 2px 5px;
+    margin: 2px 0;
+    border: 1px inset #446;
+    border-radius: 5px;
+}
+
+#progress p.success
+{
+    background: #0c0 none 0 0 no-repeat;
+}
+
+#progress p.failed
+{
+    background: #c00 none 0 0 no-repeat;
+}
