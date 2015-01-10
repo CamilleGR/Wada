@@ -1,5 +1,7 @@
 html,body{
 overflow:hidden;
+margin:0 auto;
+width:1024px;
 }
 /* FORME ------------*/
 a img {
@@ -16,27 +18,33 @@ a {
     
 }
 
-#content{
-    padding:5em;
-    
-}
-
 .border{
-    border:1px solid black;
-    border-radius: 5px;
+    background-color:#EBEBEB;
+    border-radius: 4px;
     padding: 2em;
 }
 
+.content{
+    height:100%;
+}
 
+.icon1{
+    font-size: 60px;
+}
+
+.icon2{
+    font-size: 50px;
+}
 
 /* MENU ------------*/
 
 #menu_content{
     margin-bottom: 3em;
+    margin-top:3em;
 }
 
 #menu {
-
+    
     position: relative;
     margin: 0;
         

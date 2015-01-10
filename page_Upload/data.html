@@ -1,26 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Data viz</title>
-    
-	<script src="js/d3.min.js" charset="utf-8"></script>
-	<link rel="stylesheet" type="text/css" href="css/diagram.css">
-    
-	
-	
-	
-</head>
-<body>
-	<div>
-		<button id="data1">Data1</button>
-		<button id="data2">Data2</button>
-		<button id="data3">Data3</button>
-	</div>
-    <div id="diagram">
-		
-	</div>
+	<head>
+		<title>Data viz</title>
 
-	
-	<script src="js/histo.js"></script>
-</body>
+		<script src="js/d3.min.js" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/diagram.css">
+		<link rel="stylesheet" type="text/css" href="css/field.css">
+		<link rel="stylesheet" type="text/css" href="media/foundation-icons.css">
+
+	</head>
+	<body>
+
+		<div id="menu_content" class="border">
+			<ul id="menu" class="margin_auto">
+				<li>
+					<a href="index.html"><em class="fi-home icon2"></em>&nbsp;&nbsp;Index</a>
+				</li>
+				<li>
+					<a href="data.html"><em class="fi-graph-bar icon2"></em>&nbsp;&nbsp;Graphiques</a>
+				</li>
+				<li>
+					<a href="page_post.html"><em class="fi-arrow-down icon2"></em>&nbsp;&nbsp;Upload</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="content" class="border">
+			<button id="data1">
+				Data1
+			</button>
+			<button id="data2">
+				Data2
+			</button>
+			<button id="data3">
+				Data3
+			</button>
+			<div id="diagram">
+
+			</div>
+		</div>
+
+		<script src="js/histo.js"></script>
+	</body>
 </html>

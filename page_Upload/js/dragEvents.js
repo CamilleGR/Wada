@@ -2,6 +2,8 @@
  * @author user
  */
 
+// Chargement de fichiers par "Drag & Drop" 
+
 // getElementById
 function $id(id) {
 	return document.getElementById(id);
