@@ -18,7 +18,7 @@ def stringToArray(filtre :String):Array[Array[String]] = {
 
   var fullLineArray = filtre.split(";")// split la chaine de charactères = 1 ligne = 1 filtre
 
-  var operatorList="([<!>]?=)|([<>]".r // Liste des opérateurs pris en charge , le .r le rend comme une expréssion REGEX / ancien regex : [<!>=]=
+  var operatorList="([<!>]?=)|([<>])".r // Liste des opérateurs pris en charge , le .r le rend comme une expréssion REGEX / ancien regex : [<!>=]=
 
   for(i <- 1 to nbFiltre)
   {
