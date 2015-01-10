@@ -60,44 +60,42 @@ class SparkFonction {
   tab:Array[String] -> Tableau de filtres
   @returns: :RDD[Array[String]] -> RDD filtré
   */
-	def filtreCSV (file:RDD[Array[String]] , tab:Array[String]) :RDD[Array[String]] = {}
+	def filtreCSV (file:RDD[Array[String]] , tab:Array[String]) :RDD[Array[String]] = {
 		
 		if(getExtension(file.name).equals("csv")){		//Verification de l'extension
 			var i=0 
 			var j=0
 			for (i <-tab){				//Parcours des filtres
-				j += 1 ;
-				if(colNumerique(file, colAttribut(file, tab(0)(j)+""))){	//Si le filtre concerne un attribut numérique :
-					if(tab(1)(j).equals("=") ){
-						file.filter(line => line.contains(tab(2)(j)))	//Filtre =
-					}else if(tab(1)(j).equals("<") ){			// MARCHE PAS :'(	
-						/*var colonneRDD = file.map(valeurRDD => valeurRDD(colAttribut(file, tab(0)(j)+"")))
-    						val keys = colonneRDD.first()
-    						colonneRDD = colonneRDD.filter( line => !line.equals(keys))
-						return file.filter(line => colonneRDD < tab(2)(j)))*/
-					}else if(tab(1)(j).equals(">") ){			// MARCHE PAS :'(
-						/*var colonneRDD = file.map(valeurRDD => valeurRDD(colAttribut(file, tab(0)(j
-+"")))
-    						val keys = colonneRDD.first()
-    						colonneRDD = colonneRDD.filter( line => !line.equals(keys))
-						return file.filter(line => colonneRDD >tab(2)(j)))*/
-					}else{
-						//Erreur
-					} 
-				}else {					//Si le filtre concerne un attribut non numérique :
+			  j += 1 ;
+			  if(colNumerique(file, colAttribut(file, tab(0)(j)+""))){	//Si le filtre concerne un attribut numérique :
+			    if(tab(1)(j).equals("=")
+				||tab(1)(j).equals("!=")
+				 ||tab(1)(j).equals("<")
+				  ||tab(1)(j).equals(">")
+				   ||tab(1)(j).equals("<=")
+				    ||tab(1)(j).equals(">=")){
+				tab(1)(j)+"" match{
+				  case "=" => file.filter(line => line.contains(tab(2)(j)))
+				  case "!=" => file.filter(line => !line.contains(tab(2)(j)))
+				  case "<" => file.filter(line => line(colAttribut(file, tab(0)(j)+"")).toInt < tab(2)(j).toInt)
+				  case ">" => file.filter(line => line(colAttribut(file, tab(0)(j)+"")).toInt > tab(2)(j).toInt)
+				  case "<=" => file.filter(line => line(colAttribut(file, tab(0)(j)+"")).toInt <= tab(2)(j).toInt)
+				  case ">=" => file.filter(line => line(colAttribut(file, tab(0)(j)+"")).toInt >= tab(2)(j).toInt)
+				}/*match*/
+			    }/*if ||*/
+			  }/*if att*/else {				//Si le filtre concerne un attribut non numérique :
 					if(tab(1)(j).equals("=")){
 						file.filter(line => line.contains(tab(2)(j)))	//Filtre
-					}else {
-						// Erreur
-					}
-				}
-			}
-		}else {
-			//Erreur
-		}
+					}/*if "="*/else {
+						//return file
+					}/*else "="*/
+			  }/*else att*/
+			}/* for */
+		}/*if csv*/else {
+			//return file
+		}/*else csv*/
 		return file
 	}
-
 
   /*
   Fonction de filtre POUR FICHIERS Json a partir d'un tableau de filtres
@@ -139,3 +137,16 @@ class SparkFonction {
 		return file
 	}
 }
+
+
+ //Partie Test
+	object test {
+		def main(args: Array[String]) {
+			var filtre = Array("nom de la commune","=","Pontoise")
+			val file = sc.textFile("exemple.csv")
+			file.map(line => line.split("'"))
+			println(file)
+		}
+	}
+
+
