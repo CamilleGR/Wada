@@ -34,6 +34,7 @@
 
 	*/
 	function sendForm(){
+		var xml = new XMLHttpRequest();
 	    var op= 	document.getElementById("op").value;
 	    var ip= 	document.getElementById("ip").value;
 	    var port= 	document.getElementById("port").value;
@@ -44,9 +45,15 @@
 	//document.getElementById("form").action=requete;
 	//document.getElementById("form").method=method;	CELA NE MARCHE PAS AVEC LE FORMULAIRE, AUCUNE IDÉE DE POURQUOI !!!! 
 	//document.forms["form"].submit();
+		
 	document.location.href=requete; // Redirection vers la requete qui a été construite
 	//alert(requete);
+	
+	//Traiter les requêtes en php
+
+	
 	}
+	
 
 	</script>
 </body>
