@@ -81,19 +81,19 @@ class SparkFonction {
 				  case ">" => file.filter(line => line(colAttribut(file, tab(0)(j)+"")).toInt > tab(2)(j).toInt)
 				  case "<=" => file.filter(line => line(colAttribut(file, tab(0)(j)+"")).toInt <= tab(2)(j).toInt)
 				  case ">=" => file.filter(line => line(colAttribut(file, tab(0)(j)+"")).toInt >= tab(2)(j).toInt)
-				}/*match*/
-			    }/*if ||*/
-			  }/*if att*/else {				//Si le filtre concerne un attribut non numérique :
-					if(tab(1)(j).equals("=")){
-						file.filter(line => line.contains(tab(2)(j)))	//Filtre
-					}/*if "="*/else {
-						//return file
-					}/*else "="*/
-			  }/*else att*/
-			}/* for */
-		}/*if csv*/else {
-			//return file
-		}/*else csv*/
+				}
+			    }
+			  }else {				//Si le filtre concerne un attribut non numérique :
+				if(tab(1)(j).equals("=")){
+					file.filter(line => line.contains(tab(2)(j)))	//Filtre
+				}else {
+					return file
+				}
+			  }
+			}
+		}else {
+			return file
+		}
 		return file
 	}
 
@@ -101,52 +101,63 @@ class SparkFonction {
   Fonction de filtre POUR FICHIERS Json a partir d'un tableau de filtres
   @args :
   sqlContext:SQLContext -> le SQLContext pour l'execution de requete SQL
-  file:SchemaRDD -> SchemaRDD d'un json
-  tab:Array[String] -> Tableau de filtres
+  table:String -> SchemaRDD d'un json
+  tab:Array[String] -> Nom de la table SQL
   @returns: :SchemaRDD -> SchemaRDD filtré
   */
-	def filtreJson (sqlContext:SQLContext, file:SchemaRDD,tab:Array[String]) :SchemaRDD = {
+	def filtreJson (sqlContext:SQLContext, file:SchemaRDD,table:String,tab:Array[String]) :SchemaRDD = {
 
 		if(getExtension(file.name).equals("json")){		//Verification de l'extension
 			var i=0 
 			var j=0
-			for (i <-tab){	//Parcours des filtres
-				j += j ;
-				if(colNumerique(sqlContext , file, tab(0)(j)+"")){		//Si le filtre concerne un attribut numérique :
-					if(tab(1)(j).equals("=") ){
-						//Filtrer Json Numerique = filtre
-					}else if(tab(1)(j).equals("<") ){
-						//Filtrer Json Numerique < filtre
-					}else if(tab(1)(j).equals(">") ){
-						//Filtrer Json Numerique > filtre
-					}else{
-						//Erreur
-					} 
-				}else {						//Si le filtre concerne un attribut non numérique :
-					if(tab(1)(j).equals("=")){
-						//Filtrer Json Non Numerique
-					}else {
-						// Erreur
-					}
+			var req=""
+			for (i <- tab){				//Parcours des filtres
+			  j += 1 ;
+			  if(colNumerique(sqlContext, file , tab(0)(j)+"")){	//Si le filtre concerne un attribut numérique :
+			    if(tab(1)(j).equals("=")
+				||tab(1)(j).equals("!=")
+				 ||tab(1)(j).equals("<")
+				  ||tab(1)(j).equals(">")
+				   ||tab(1)(j).equals("<=")
+				    ||tab(1)(j).equals(">=")){
+					/*
+				tab(1)(j)+"" match{		//Filtre
+				  case "=" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)=tab(2)(j))
+				  case "!=" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)!=tab(2)(j))
+				  case "<" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)<tab(2)(j))
+				  case ">" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)>tab(2)(j))
+				  case "<=" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)<=tab(2)(j))
+				  case ">=" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)>=tab(2)(j))
 				}
-			}
-		}else {
-			//Erreur
-		}
-
+					*/
+				sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j) + tab(1)(j) + tab(2)(j))
+			    } 
+			  }else {				//Si le filtre concerne un attribut non numérique :
+				if(tab(1)(j).equals("=")){
+					sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j) + tab(1)(j) + tab(2)(j)) //Filtre
+				}else {
+					return file
+				}
+			  } 
+			} 
+		}else { 
+			return file
+		} 
 		return file
 	}
-}
 
 
- //Partie Test
+
+ //Partie Test 
+/*
 	object test {
 		def main(args: Array[String]) {
 			var filtre = Array("nom de la commune","=","Pontoise")
 			val file = sc.textFile("exemple.csv")
 			file.map(line => line.split("'"))
-			println(file)
+			println(filtreCSV(file , filtre))
+
 		}
 	}
-
-
+*/
+}
