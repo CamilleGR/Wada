@@ -7,21 +7,37 @@
 	</head>
 	
 	<body>
-	<form id="form">
-	    <p> Operation à executer <input type="text" name="operation" id="op" /></p>
-	    <input type="submit" />
-	</form>
+		
+
+		<p> IP------- <input type="text" name="ip" id="ip" value="192.168.1.32"/></p>
+		<p> Port----- <input type="text" name="port" id="port" value="50070"/></p>
+		<p> Method--- <input type="text" name="method" id="method" value="POST"/> </p>
+		<p> Chemin--- <input type="text" name="path" id="path" /> </p>
+		<p> Operation <input type="text" name="op" id="op" value="GETHOMEDIRECTORY"/></p>
+		<input type="submit" onclick="sendForm()"/>
+
 	
 	
 	<script>
 	
-	document.getElementById("form").onsubmit=function(){
-	    var op = document.getElementById("op").value;
-	    var ip = "192.168.1.32";
-	    var port = "50070"
-	    var chemin = "http://"+ip+":"+port+"/webhdfs/v1/?op="+op;
-		document.location.href=chemin;
-		alert(chemin);
+	/*	Marche pour un GETHOMEDIRECTORY / LISTSTATUS, il faut modifier le code pour pouvoir charger les fichiers sur le HDFS
+		Selon rémi, on doit pouvoir envoyer une requête POST avec un $.post() de ajax, puis il faudra faire un 2e formulaire ( à envoyer
+		avec la méthode PUT et le nom du fichier à l'intérieur.
+		Bon courage ;)
+	*/
+	function sendForm(){
+	    var op= 	document.getElementById("op").value;
+	    var ip= 	document.getElementById("ip").value;
+	    var port= 	document.getElementById("port").value;
+	    var method= document.getElementById("method").value;
+	    var path= 	document.getElementById("path").value;
+	   
+	    var requete="http://"+ip+":"+port+"/webhdfs/v1/"+path+"?op="+op;
+	//document.getElementById("form").action=requete;
+	//document.getElementById("form").method=method;	CELA NE MARCHE PAS AVEC LE FORMULAIRE, AUCUNE IDÉE DE POURQUOI !!!! 
+	//document.forms["form"].submit();
+	document.location.href=requete; // Redirection vers la requete qui a été construite
+	//alert(requete);
 	}
 
 	</script>
