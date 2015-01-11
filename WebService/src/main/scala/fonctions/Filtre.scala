@@ -42,7 +42,7 @@ object Filtre extends Serializable {
       var j=0
       for (i <-tab){				//Parcours des filtres
         j += 1 ;
-        if(Colonne.numerique(file, Colonne.IndiceAttribut(file, tab(0)(j)+""))){	//Si le filtre concerne un attribut numérique :
+        if(Colonne.numerique(file, Colonne.indiceAttribut(file, tab(0)(j)+""))){	//Si le filtre concerne un attribut numérique :
           if(tab(1)(j).equals("=")
             ||tab(1)(j).equals("!=")
             ||tab(1)(j).equals("<")
@@ -52,10 +52,10 @@ object Filtre extends Serializable {
             tab(1)(j)+"" match{
               case "=" => file.filter(line => line.contains(tab(2)(j)))
               case "!=" => file.filter(line => !line.contains(tab(2)(j)))
-              case "<" => file.filter(line => line(Colonne.IndiceAttribut(file, tab(0)(j)+"")).toInt < tab(2)(j).toInt)
-              case ">" => file.filter(line => line(Colonne.IndiceAttribut(file, tab(0)(j)+"")).toInt > tab(2)(j).toInt)
-              case "<=" => file.filter(line => line(Colonne.IndiceAttribut(file, tab(0)(j)+"")).toInt <= tab(2)(j).toInt)
-              case ">=" => file.filter(line => line(Colonne.IndiceAttribut(file, tab(0)(j)+"")).toInt >= tab(2)(j).toInt)
+              case "<" => file.filter(line => line(Colonne.indiceAttribut(file, tab(0)(j)+"")).toInt < tab(2)(j).toInt)
+              case ">" => file.filter(line => line(Colonne.indiceAttribut(file, tab(0)(j)+"")).toInt > tab(2)(j).toInt)
+              case "<=" => file.filter(line => line(Colonne.indiceAttribut(file, tab(0)(j)+"")).toInt <= tab(2)(j).toInt)
+              case ">=" => file.filter(line => line(Colonne.indiceAttribut(file, tab(0)(j)+"")).toInt >= tab(2)(j).toInt)
             }
           }
         }else {				//Si le filtre concerne un attribut non numérique :
