@@ -9,7 +9,7 @@ class WebServiceActor extends Actor with WebService {
 
   def actorRefFactory = context
 
-  def receive = runRoute((handleExceptions(RouteExceptionHandler))(myRoute))
+  def receive = runRoute/*((handleExceptions(RouteExceptionHandler))*/(myRoute)//)
 
   implicit def RouteExceptionHandler(implicit log: LoggingContext) =
     ExceptionHandler {
@@ -34,24 +34,26 @@ trait WebService extends HttpService {
   val lienCible = "http://localhost/BD/WebService/src/TestForm/form.php" //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
   val cheminSource = "scripts/" //Le chemin ou serons récupérés les fichiers Big-Data
 
-  val myRoute =
-    path("") {
-      post { //On définie ce qui est envoyé SI on utilise la méthode POST
-        formFields("demande", "nomFichier", "attribut", "segment".as[Int], "filtre") { (demande, nomFichier, attribut, segment, filtre) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
-
-          if(demande.equals("listeAttributs")){ //Dans le cas d'une demande de la liste des attributs, on renvoit en GET les attributs separés par des virgules, ainsi que le nom du fichier
-              redirect({lienCible} + "?attributs=" + {traitement.listeAttributs(nomFichier)} + "&nomFichier=" + {nomFichier}, StatusCodes.PermanentRedirect)
-          }
-
-          else if(demande.equals("statistiques")){ //Dans le cas d'une demande des stats, on renvoit en GET le chemin du fichier crée contenant les stats, ainsi que le nombre de tuples lus, et (si la colonne est numerique) le minimum, le maximum, la moyenne
-            val fichier = traitement.traitementPost(cheminSource, cheminCible, nomFichier, attribut, segment, filtre)
-            val stats = if(fichier(2)!="") "&stats=" + fichier(2) else ""
-            redirect({lienCible} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + {stats}, StatusCodes.PermanentRedirect)
-          }
-
-          else throw new Exception()
+  val myRoute = {
+    path("attributs") {
+      post {
+        formFields("nomFichier") { nomFichier =>
+          //Dans le cas d'une demande de la liste des attributs, on renvoit en GET les attributs separés par des virgules, ainsi que le nom du fichier
+          redirect({lienCible} + "?attributs=" + {traitement.listeAttributs(nomFichier)} + "&nomFichier=" + {nomFichier}, StatusCodes.PermanentRedirect)
+        }
+      }
+    } ~
+    path("stats") {
+      post {
+        //On définie ce qui est envoyé SI on utilise la méthode POST
+        formFields("nomFichier", "attribut", "segment".as[Int], "filtre") { (nomFichier, attribut, segment, filtre) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
+          //Dans le cas d'une demande des stats, on renvoit en GET le chemin du fichier crée contenant les stats, ainsi que le nombre de tuples lus, et (si la colonne est numerique) le minimum, le maximum, la moyenne
+          val fichier = traitement.traitementPost(cheminSource, cheminCible, nomFichier, attribut, segment)
+          val stats = if (fichier(2) != "") "&stats=" + fichier(2) else ""
+          redirect({lienCible} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + {stats}, StatusCodes.PermanentRedirect)
         }
       }
     }
+  }
 }
 
