@@ -1,5 +1,5 @@
 
-d3.csv("data3.csv", function (data) {  
+ d3.csv("data3.csv", function (data) { //   --------------------------------------------------------	NOM OU CHEMIN DU CSV ------------------------------------------------------ // 
 
         data.forEach( function (d) {
             d.value = parseInt(d.value); // ----------------------------------------------------------- value est le 2eme attribut dans MON fichier csv en local, il faudra le modifier avec l'attribut de VOTRE csv
@@ -121,7 +121,6 @@ d3.csv("data3.csv", function (data) {
 
 });
  
-setTimeout(donut,535); 
  
 function donut () {
 
