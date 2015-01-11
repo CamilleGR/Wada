@@ -1,8 +1,8 @@
 
- d3.csv("data3.csv", function (data) { //   --------------------------------------------------------	NOM OU CHEMIN DU CSV ------------------------------------------------------ // 
+ d3.csv("data3.csv", function (data) { //   NOM OU CHEMIN DU CSV ---------------------------------- // 
 
         data.forEach( function (d) {
-            d.value = parseInt(d.value); // ----------------------------------------------------------- value est le 2eme attribut dans MON fichier csv en local, il faudra le modifier avec l'attribut de VOTRE csv
+            d.value = parseInt(d.value); // value est le 2eme attribut dans MON fichier csv en local, il faudra le modifier avec l'attribut de VOTRE csv
         });
 
 
@@ -16,7 +16,7 @@
 
 
         var xscale = d3.scale.ordinal()
-                .domain(data.slice(0,numBars).map(function (d) { return d.label; })) // ------------------------------------------------------------------- Pareil pour label , c'est le 1er attribut il faudra le changer 
+                .domain(data.slice(0,numBars).map(function (d) { return d.label; })) //  Pareil pour label , c'est le 1er attribut il faudra le changer 
                 .rangeBands([0, width]),
             yscale = d3.scale.linear()
                 .domain([0, d3.max(data, function (d) { return d.value; })])
