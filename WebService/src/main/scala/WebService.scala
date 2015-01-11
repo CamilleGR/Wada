@@ -9,7 +9,7 @@ class WebServiceActor extends Actor with WebService {
 
   def actorRefFactory = context
 
-  def receive = runRoute/*((handleExceptions(RouteExceptionHandler))*/(myRoute)//)
+  def receive = runRoute(handleExceptions(RouteExceptionHandler)(myRoute))
 
   implicit def RouteExceptionHandler(implicit log: LoggingContext) =
     ExceptionHandler {
