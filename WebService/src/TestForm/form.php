@@ -10,8 +10,7 @@
         <?php
         	$fp = fopen('listefichiers.txt', 'r');
 	?>
-	<p> <form method="POST" action="http://localhost:8080/">
-		<input type="hidden" name="demande" value="listeAttributs" />
+	<p> <form method="POST" action="http://localhost:8080/attributs">
 		<select name="nomFichier">
 			<?php 
 				while (!feof($fp)){
@@ -20,9 +19,6 @@
 				}
 			?>
 		</select>
-		<input type="hidden" name="attribut" value="" />
-		<input type="hidden" name="segment" value=0 />
-		<input type="hidden" name="filtre" value="" />
 		<input type="submit" />
 	</form></p>
 	
@@ -32,8 +28,7 @@
 		$fichier = $_GET['nomFichier'];
 		echo '<h2>'.$fichier.'</h2>';
         ?>
-		<p><form method="POST" action="http://localhost:8080/">
-                	<input type="hidden" name="demande" value="statistiques"/>
+		<p><form method="POST" action="http://localhost:8080/stats">
             		<input type="hidden" name="nomFichier" value="<?php echo $fichier?>"/>
 			<label>Attributs<select name="attribut">
 			<?php
