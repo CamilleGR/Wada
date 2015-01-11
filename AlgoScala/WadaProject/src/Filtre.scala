@@ -29,5 +29,17 @@ def stringToArray(filtre :String):Array[Array[String]] = {
 
   }
 
-  return tabFiltre
+   tabFiltre
+}
+
+def comparaison(a:Int ,b:Int,op:String): Boolean =
+{
+  if(op.equals(">")) a>b
+  else if (op.equals(">=")) a>=b
+  else if (op.equals("<")) a<b
+  else if (op.equals("<=")) a<=b
+  else if (op.equals("!=")) a!=b
+  else if (op.equals("=")) a==b
+  else
+    false
 }
