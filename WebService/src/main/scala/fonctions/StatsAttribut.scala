@@ -71,7 +71,7 @@ object StatsAttribut {
       valMin = min+temp*(i-1)
       valMax = min+temp*(i)
 
-      nb = sqlContext.sql("SELECT count(*) FROM " + tab + " WHERE " + col + ">=" + valMin.toLong + " AND " + col + sign + valMax).map(t => t(0).toString).first().toInt //On execute la requete SQL qui correspond
+      nb = sqlContext.sql("SELECT count(*) FROM " + tab + " WHERE " + col + ">=" + (if (valMin>1000000) valMin.toLong else valMin) + " AND " + col + sign + (if (valMax>1000000) valMax.toLong else valMax)).map(t => t(0).toString).first().toInt //On execute la requete SQL qui correspond
       tabR :+= (valMin + " à " + valMax, nb)
     }
 
