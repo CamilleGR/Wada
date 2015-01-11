@@ -24,6 +24,14 @@
 		Selon rémi, on doit pouvoir envoyer une requête POST avec un $.post() de ajax, puis il faudra faire un 2e formulaire ( à envoyer
 		avec la méthode PUT et le nom du fichier à l'intérieur.
 		Bon courage ;)
+		
+		Pour upload un fichier :
+		- On utilise curl -i -X PUT "http://192.168.1.32:50070/webhdfs/v1/chemin.../?op=CREATE
+		- On reçoit un petit texte avec HTTP REDIRECTION, copier la l'adresse location ( il faut quand même modifier l'ip de la machine ) 			et la mettre à la place de la requête qu'on avait précédement.
+		- On obtient quelque chose comme ça 
+		curl -i -X PUT "http://192.168.1.32:50075/webhdfs/v1/testWeb/newFile?op=CREATE&namenoderpcaddress=192.168.1.32:8020&overwrite=false"
+		-T test.csv 
+
 	*/
 	function sendForm(){
 	    var op= 	document.getElementById("op").value;
