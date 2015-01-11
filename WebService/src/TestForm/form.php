@@ -48,7 +48,7 @@
             	if(isset($_GET["fichier"])) {
                 	$fichier = $_GET["fichier"];
                 	echo "<h2> fichier $fichier crée<h2>";
-			echo "<button id=\"data1\"></button>";
+			echo "<button id=\"data1\">Graphique</button>";
 			echo "<script>d3.select(\"#data1\")
         .on(\"click\", function(d,i) {
             createHistogram('".$fichier."');
