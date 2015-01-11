@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -48,6 +48,11 @@
             	if(isset($_GET["fichier"])) {
                 	$fichier = $_GET["fichier"];
                 	echo "<h2> fichier $fichier crée<h2>";
+			echo "<button id=\"data1\"></button>";
+			echo "<script>d3.select(\"#data1\")
+        .on(\"click\", function(d,i) {
+            createHistogram('".$fichier."');
+        });</script>";
             	}
             	if(isset($_GET["count"])) {
                		$count = $_GET["count"];
@@ -60,6 +65,10 @@
                 	echo "<p> moy : $stats[2]</p>";
             	}
         ?>
+	<div id="diagram" styel="width:"700px"; height:"400px":">
 
+			</div>
+	
+	<script src="js/histo.js"></script>
     </body>
 </html>
