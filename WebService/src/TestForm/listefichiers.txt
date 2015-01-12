@@ -1,3 +1,8 @@
-data2.json
-data1.csv
-data4.csv
+score.csv
+score.json
+banque.csv
+banque.tsv
+banque.json
+sondage.csv
+sondage.tsv
+sondage.json

@@ -3,7 +3,7 @@ var margin = {
 	right : 40,
 	bottom : 40,
 	left : 40
-}, width = 600 - margin.left - margin.right, height = 300 - margin.top - margin.bottom, barWidth = 30;
+}, width = 1000 - margin.left - margin.right, height = 300 - margin.top - margin.bottom, barWidth = 30;
 
 var svg = d3.select("#diagram").append("svg").attr("id","charts").attr("width", width + margin.left + margin.right)
 												.attr("height", height + margin.top + margin.bottom).append("g")

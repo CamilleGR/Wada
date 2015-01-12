@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
 	<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+	<link rel="stylesheet" type="text/css" href="css/diagram.css">
+	<script src="js/d3.min.js"></script>
     </head>
     <body>
         <h1> Formulaire de test </h1>
@@ -38,7 +40,7 @@
 				}
 			?>
 			</select></label><br />
-            		<label>segments : <input type="text" name="segment" value="0"/></label><br />
+            		<label>segments : <input type="text" name="segment" value="2"/></label><br />
             		<label>filtre : <input type="text" name="filtre"/</label><br />
             		<input type="submit"/>
  		</form></p>
@@ -47,12 +49,8 @@
 		}
             	if(isset($_GET["fichier"])) {
                 	$fichier = $_GET["fichier"];
-                	echo "<h2> fichier $fichier crée<h2>";
-			echo "<button id=\"data1\">Graphique</button>";
-			echo "<script>d3.select(\"#data1\")
-        .on(\"click\", function(d,i) {
-            createHistogram('".$fichier."');
-        });</script>";
+                	echo "<h2> fichier $fichier crée</h2>";
+			echo "<button id=\"data1\" onclick=\"createHistogram('".$fichier."')\">Graphique</button>";
             	}
             	if(isset($_GET["count"])) {
                		$count = $_GET["count"];
@@ -65,7 +63,7 @@
                 	echo "<p> moy : $stats[2]</p>";
             	}
         ?>
-	<div id="diagram" styel="width:"700px"; height:"400px":">
+	<div id="diagram" style="width:"1000px"; height:"400px":">
 
 			</div>
 	
