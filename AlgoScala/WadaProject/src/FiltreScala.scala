@@ -5,10 +5,7 @@ import org.apache.spark.rdd._
 import org.apache.spark.sql.catalyst.types.{DoubleType, FloatType, IntegerType, LongType}
 import org.apache.spark.sql.{SQLContext, SchemaRDD}
 
-
-class SparkFonction {
-
-  def colAttribut(file:RDD[Array[String]],attribut:String):Int = {
+  def indiceAttribut(file:RDD[Array[String]],attribut:String):Int = {
     val header = file.first()
 
     for (i <- 0 to header.length-1) {
@@ -19,22 +16,17 @@ class SparkFonction {
 
     return -1
   }
-
-
-  def colNumerique(file:RDD[Array[String]],col:Int) : Boolean = {
+  
+   def numerique(file: RDD[Array[String]], col: Int) : Boolean = {
     var ar = file.map(r => r(col))
     val header = ar.first()
-    ar = ar.filter( line => !line.equals(header))
+    ar = ar.filter(line => !line.equals(header))
 
-    if (true) { //Methode 2
-      return ar.filter(line => !line.matches("(-?[0-9]+(?:\\.[0-9]+)?)")).count() == 0
-    }
-
-    return false
+    return ar.filter(line => !line.matches("^(-?[0-9]+(?:\\.[0-9]+)?)$")).count() == 0
   }
 
 
-  def colNumerique(sqlContext:SQLContext, file:SchemaRDD,col:String) : Boolean = {
+  def numerique(sqlContext:SQLContext, file:SchemaRDD,col:String) : Boolean = {
     if(file.schema.apply(col).dataType.equals(IntegerType)
       || file.schema.apply(col).dataType.equals(DoubleType)
       || file.schema.apply(col).dataType.equals(FloatType)
@@ -44,15 +36,6 @@ class SparkFonction {
       return false
   }
 
-
-  def getExtension(name:String):String = {
-    var ret = ""
-    for(i<- name.lastIndexOf('.')+1 to name.length-1 ){
-      ret += name.charAt(i);
-    }
-    return ret;
-  }
-
   /*
   Fonction de filtre POUR FICHIERS CSV/TSV a partir d'un tableau de filtres
   @args :
@@ -60,41 +43,35 @@ class SparkFonction {
   tab:Array[String] -> Tableau de filtres
   @returns: :RDD[Array[String]] -> RDD filtré
   */
-	def filtreCSV (file:RDD[Array[String]] , tab:Array[String]) :RDD[Array[String]] = {
+	def filtreCSV (file:RDD[Array[String]] , tab:Array[Array[String]]) :RDD[Array[String]] = {
 		
-		if(getExtension(file.name).equals("csv")){		//Verification de l'extension
-			var i=0 
-			var j=0
-			for (i <-tab){				//Parcours des filtres
-			  j += 1 ;
-			  if(colNumerique(file, colAttribut(file, tab(0)(j)+""))){	//Si le filtre concerne un attribut numérique :
-			    if(tab(1)(j).equals("=")
-				||tab(1)(j).equals("!=")
-				 ||tab(1)(j).equals("<")
-				  ||tab(1)(j).equals(">")
-				   ||tab(1)(j).equals("<=")
-				    ||tab(1)(j).equals(">=")){
-				tab(1)(j)+"" match{
-				  case "=" => file.filter(line => line.contains(tab(2)(j)))
-				  case "!=" => file.filter(line => !line.contains(tab(2)(j)))
-				  case "<" => file.filter(line => line(colAttribut(file, tab(0)(j)+"")).toInt < tab(2)(j).toInt)
-				  case ">" => file.filter(line => line(colAttribut(file, tab(0)(j)+"")).toInt > tab(2)(j).toInt)
-				  case "<=" => file.filter(line => line(colAttribut(file, tab(0)(j)+"")).toInt <= tab(2)(j).toInt)
-				  case ">=" => file.filter(line => line(colAttribut(file, tab(0)(j)+"")).toInt >= tab(2)(j).toInt)
-				}
-			    }
-			  }else {				//Si le filtre concerne un attribut non numérique :
-				if(tab(1)(j).equals("=")){
-					file.filter(line => line.contains(tab(2)(j)))	//Filtre
-				}else {
-					return file
-				}
-			  }
+		var rdd : RDD[Array[String]] = file
+		var j=0
+
+		for(j <- tab){		
+						
+			if(numerique(file, indiceAttribut(file,j(0)+""))){	//Si le filtre concerne un attribut numérique:	
+									
+				j(1)+"" match{
+						
+					case "=" => rdd = rdd.filter(line => line.contains(j(2)))
+					case "!=" => rdd = rdd.filter(line => !line.contains(j(2)))
+					case "<" => rdd = rdd.filter(line => line(indiceAttribut(rdd, j(0)+"")).toInt < j(2).toInt)
+					case ">" => rdd = rdd.filter(line => line(indiceAttribut(rdd, j(0)+"")).toInt > j(2).toInt)
+					case "<=" => rdd = rdd.filter(line => line(indiceAttribut(rdd, j(0)+"")).toInt <= j(2).toInt)
+					case ">=" => rdd = rdd.filter(line => line(indiceAttribut(rdd, j(0)+"")).toInt >= j(2).toInt)
+							
+				}	    
+			}else {				//Si le filtre concerne un attribut non numérique :
+			
+				if(j(1).equals("=")){
+						
+					rdd = rdd.filter(line => line.contains(j(2)))
+							
+				}							
 			}
-		}else {
-			return file
 		}
-		return file
+		return rdd
 	}
 
   /*
@@ -103,61 +80,62 @@ class SparkFonction {
   sqlContext:SQLContext -> le SQLContext pour l'execution de requete SQL
   table:String -> SchemaRDD d'un json
   tab:Array[String] -> Nom de la table SQL
-  @returns: :SchemaRDD -> SchemaRDD filtré
+  @returns: :String -> Fin de requête SQL commençant par " WHERE"...
+
+	!! On ne peut pas utiliser colNumerique sans SchemaRDD !!!
   */
-	def filtreJson (sqlContext:SQLContext, file:SchemaRDD,table:String,tab:Array[String]) :SchemaRDD = {
+	def filtreJson(sqlContext:SQLContext ,file:SchemaRDD,table:String, tab:Array[Array[String]]) :String = {
 
-		if(getExtension(file.name).equals("json")){		//Verification de l'extension
-			var i=0 
-			var j=0
-			var req=""
-			for (i <- tab){				//Parcours des filtres
-			  j += 1 ;
-			  if(colNumerique(sqlContext, file , tab(0)(j)+"")){	//Si le filtre concerne un attribut numérique :
-			    if(tab(1)(j).equals("=")
-				||tab(1)(j).equals("!=")
-				 ||tab(1)(j).equals("<")
-				  ||tab(1)(j).equals(">")
-				   ||tab(1)(j).equals("<=")
-				    ||tab(1)(j).equals(">=")){
-					/*
-				tab(1)(j)+"" match{		//Filtre
-				  case "=" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)=tab(2)(j))
-				  case "!=" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)!=tab(2)(j))
-				  case "<" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)<tab(2)(j))
-				  case ">" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)>tab(2)(j))
-				  case "<=" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)<=tab(2)(j))
-				  case ">=" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)>=tab(2)(j))
-				}
-					*/
-				sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j) + tab(1)(j) + tab(2)(j))
-			    } 
-			  }else {				//Si le filtre concerne un attribut non numérique :
-				if(tab(1)(j).equals("=")){
-					sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j) + tab(1)(j) + tab(2)(j)) //Filtre
-				}else {
-					return file
-				}
-			  } 
-			} 
-		}else { 
-			return file
-		} 
-		return file
+		var j=0 
+		var numLigne = 0
+		var req="WHERE"
+		for (j <- tab){														// Parcours des filtres
+				
+			if (numLigne>0) req += " AND"			// Si il y a plusieurs filtres
+				
+				if(numerique(sqlContext, file , j(0)+"")){		// Si le filtre concerne un attribut numérique:		
+									 
+						if(j(1).equals("=")
+			 			 ||j(1).equals("!=")
+			 			 ||j(1).equals("<")
+						 ||j(1).equals(">")
+					  	 ||j(1).equals("<=")
+						 ||j(1).equals(">=")){	
+						 
+							req += " "+j(0)+" "+j(1)+" "+j(2)
+							
+						}
+									 							
+				}else {	
+																			// Si le filtre concerne un attribut non numérique :
+					if(j(1).equals("=")
+			 		 ||j(1).equals("!=")){ 
+			 		 
+					req += " "+j(0)+" "+j(1)+" "+j(2)
+					
+					}
+				} 							
+				numLigne += 1 
+		}	
+		return req+";"
 	}
-
-
 
  //Partie Test 
-/*
-	object test {
-		def main(args: Array[String]) {
-			var filtre = Array("nom de la commune","=","Pontoise")
-			val file = sc.textFile("exemple.csv")
-			file.map(line => line.split("'"))
-			println(filtreCSV(file , filtre))
 
-		}
-	}
-*/
-}
+		//Test Json
+	var filtre = Array(Array("age",">=","10"),Array("age","<","20"))
+	val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+	var file = sqlContext.jsonFile("../BigDataProject/AlgoScala/WadaProject/src/data2.json")
+	file.registerTempTable("test")
+	println(filtreJson(sqlContext ,file , "test", filtre))
+
+
+
+		//Test CSV
+	val filtre2 = Array(Array("value","=","25"),Array("label","=","one"))
+	
+	val file2 = sc.textFile("../BigDataProject/scripts/data3.csv")
+	val data = file2.map(line => line.split(","))
+	
+	filtreCSV(data, filtre2).foreach(r => r.foreach(println))
+
