@@ -71,20 +71,23 @@ class Traitement {
                              le nombre de lignes
                              les stats (min,max,moyenne) (si colonne de valeurs numeriques)
   */
-  def traitementPost(cheminSource: String, cheminCible: String, nomFichier: String, attribut: String, segment: Int): Array[String] = {
+  def traitementPost(cheminSource: String, cheminCible: String, nomFichier: String, attribut: String, segment: Int, filtre: String): Array[String] = {
     var tab = new Array[(String, Int)](0)
     var stats = ""
     var nbRow:Long = 0
 
     if (Fichier.extension(nomFichier)=="csv" || Fichier.extension(nomFichier)=="tsv") { //Si c'est un csv ou tsv...
-    val textFile = sc.textFile(cheminSource + nomFichier) //On charge le fichier avec spark, le type de textFile est RDD[Array[String]]
-    val sep = Csv.separateur(textFile) //On récupère le séparateur du csv/tsv
+      val textFile = sc.textFile(cheminSource + nomFichier) //On charge le fichier avec spark, le type de textFile est RDD[Array[String]]
+      val sep = Csv.separateur(textFile) //On récupère le séparateur du csv/tsv
 
       var data = textFile.map(_.split(sep)) //On crée un RDD[Array[String]] qui correspond, en fonction du separateur
       val col = Colonne.indiceAttribut(data, attribut) //On récupère le numero de colonne
 
-      val header = data.first()
-      data = data.filter(line => !line.apply(0).equals(header.apply(0)))
+      if (!filtre.equals("")) data = Filtre.filtreCSV(data, filtre)
+      else {
+        val header = data.first()
+        data = data.filter(line => !line.apply(0).equals(header.apply(0)))
+      }
 
       nbRow = data.count()
 
@@ -98,14 +101,17 @@ class Traitement {
     else if (Fichier.extension(nomFichier)=="json") {
       val textFile = sqlContext.jsonFile(cheminSource + nomFichier)//On charge le fichier avec spark, le type de textFile est SchemaRDD
       textFile.registerTempTable("textFile") //On enregistre le SchemaRDD comme une table SQL
-      nbRow = Statistiques.nbTuples(sqlContext, "textFile")
+
+      val filtreTable = if(filtre.equals("")) "" else Filtre.filtreJson(sqlContext, textFile, filtre)
+
+      nbRow = Statistiques.nbTuples(sqlContext, "textFile", filtreTable)
 
       if (Colonne.numerique(sqlContext, textFile, attribut)) {
-        tab = StatsAttribut.numerique(sqlContext, segment, attribut, "textFile") // <- Si c'est un Réel on execute segmentNum
-        stats = Statistiques.otherStats(sqlContext, "textFile", attribut)
+        tab = StatsAttribut.numerique(sqlContext, segment, attribut, "textFile", filtreTable) // <- Si c'est un Réel on execute segmentNum
+        stats = Statistiques.otherStats(sqlContext, "textFile", attribut, filtreTable)
       }
       else
-        tab = StatsAttribut.chaine(sqlContext,segment,attribut,"textFile") // <- Si c'est un String on execute segmentStringArray
+        tab = StatsAttribut.chaine(sqlContext,segment,attribut,"textFile", filtreTable) // <- Si c'est un String on execute segmentStringArray
     }
     else
       throw new Exception()

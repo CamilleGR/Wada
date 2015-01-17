@@ -25,99 +25,94 @@ object Filtre extends Serializable {
        var attrAndVar =fullLineArray(i-1).split(operatorUsed)
        tabFiltre(i-1)={Array(attrAndVar(0),operatorUsed, attrAndVar(1))}
      }
+
      return tabFiltre
    }
 
   /*
   Fonction de filtre POUR FICHIERS CSV/TSV a partir d'un tableau de filtres
   @args :
-  file:RDD[Array[String]] -> RDD d'un csv/tsv
-  tab:Array[String] -> Tableau de filtres
+  file:RDD[Array[String]]       -> RDD d'un csv/tsv
+  filtre: String                -> chaine de caractère contenant les filtres séparés par des points-virgule
   @returns: :RDD[Array[String]] -> RDD filtré
   */
-  def filtreCSV (file:RDD[Array[String]] , tab:Array[String]) :RDD[Array[String]] = {
+  def filtreCSV (file:RDD[Array[String]] , filtre: String) :RDD[Array[String]] = {
 
-    if(Fichier.extension(file.name).equals("csv")){		//Verification de l'extension
-    var i=0
-      var j=0
-      for (i <-tab){				//Parcours des filtres
-        j += 1 ;
-        if(Colonne.numerique(file, Colonne.indiceAttribut(file, tab(0)(j)+""))){	//Si le filtre concerne un attribut numérique :
-          if(tab(1)(j).equals("=")
-            ||tab(1)(j).equals("!=")
-            ||tab(1)(j).equals("<")
-            ||tab(1)(j).equals(">")
-            ||tab(1)(j).equals("<=")
-            ||tab(1)(j).equals(">=")){
-            tab(1)(j)+"" match{
-              case "=" => file.filter(line => line.contains(tab(2)(j)))
-              case "!=" => file.filter(line => !line.contains(tab(2)(j)))
-              case "<" => file.filter(line => line(Colonne.indiceAttribut(file, tab(0)(j)+"")).toInt < tab(2)(j).toInt)
-              case ">" => file.filter(line => line(Colonne.indiceAttribut(file, tab(0)(j)+"")).toInt > tab(2)(j).toInt)
-              case "<=" => file.filter(line => line(Colonne.indiceAttribut(file, tab(0)(j)+"")).toInt <= tab(2)(j).toInt)
-              case ">=" => file.filter(line => line(Colonne.indiceAttribut(file, tab(0)(j)+"")).toInt >= tab(2)(j).toInt)
-            }
-          }
-        }else {				//Si le filtre concerne un attribut non numérique :
-          if(tab(1)(j).equals("=")){
-            file.filter(line => line.contains(tab(2)(j)))	//Filtre
-          }else {
-            return file
-          }
+    val tab = stringToArray(filtre)
+    val header = file.first()
+    var rdd : RDD[Array[String]] = file.filter(line => !line.apply(0).equals(header.apply(0)))
+    var j=0
+
+    for(j <- tab){
+
+      if(Colonne.numerique(file, Colonne.indiceAttribut(file,j(0)+""))){	//Si le filtre concerne un attribut numérique:
+
+        j(1)+"" match{
+
+          case "=" => rdd = rdd.filter(line => line.contains(j(2)))
+          case "!=" => rdd = rdd.filter(line => !line.contains(j(2)))
+          case "<" => rdd = rdd.filter(line => line(Colonne.indiceAttribut(rdd, j(0)+"")).toInt < j(2).toInt)
+          case ">" => rdd = rdd.filter(line => line(Colonne.indiceAttribut(rdd, j(0)+"")).toInt > j(2).toInt)
+          case "<=" => rdd = rdd.filter(line => line(Colonne.indiceAttribut(rdd, j(0)+"")).toInt <= j(2).toInt)
+          case ">=" => rdd = rdd.filter(line => line(Colonne.indiceAttribut(rdd, j(0)+"")).toInt >= j(2).toInt)
+
+        }
+      }else {				//Si le filtre concerne un attribut non numérique :
+
+        if(j(1).equals("=")){
+
+          rdd = rdd.filter(line => line.contains(j(2)))
+
         }
       }
-    }else {
-      return file
     }
-    return file
+    return rdd
   }
 
   /*
   Fonction de filtre POUR FICHIERS Json a partir d'un tableau de filtres
   @args :
   sqlContext:SQLContext -> le SQLContext pour l'execution de requete SQL
-  table:String -> SchemaRDD d'un json
-  tab:Array[String] -> Nom de la table SQL
-  @returns: :SchemaRDD -> SchemaRDD filtré
-  */
-  def filtreJson (sqlContext:SQLContext, file:SchemaRDD,table:String,tab:Array[String]) :SchemaRDD = {
+  file: SchemaRDD       -> SchemaRDD d'un json
+  filtre: String        -> chaine de caractère contenant les filtres séparés par des points-virgule
+  @returns: :String     -> Fin de requête SQL commençant à placer dans une clause where
 
-    if(Fichier.extension(file.name).equals("json")){		//Verification de l'extension
-    var i=0
-      var j=0
-      var req=""
-      for (i <- tab){				//Parcours des filtres
-        j += 1 ;
-        if(Colonne.numerique(sqlContext, file , tab(0)(j)+"")){	//Si le filtre concerne un attribut numérique :
-          if(tab(1)(j).equals("=")
-            ||tab(1)(j).equals("!=")
-            ||tab(1)(j).equals("<")
-            ||tab(1)(j).equals(">")
-            ||tab(1)(j).equals("<=")
-            ||tab(1)(j).equals(">=")){
-            /*
-          tab(1)(j)+"" match{		//Filtre
-            case "=" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)=tab(2)(j))
-            case "!=" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)!=tab(2)(j))
-            case "<" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)<tab(2)(j))
-            case ">" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)>tab(2)(j))
-            case "<=" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)<=tab(2)(j))
-            case ">=" => req = sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j)>=tab(2)(j))
-          }
-            */
-            sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j) + tab(1)(j) + tab(2)(j))
-          }
-        }else {				//Si le filtre concerne un attribut non numérique :
-          if(tab(1)(j).equals("=")){
-            sqlContext.sql("SELECT * FROM " + table + " WHERE " + tab(0)(j) + tab(1)(j) + tab(2)(j)) //Filtre
-          }else {
-            return file
-          }
+	!! On ne peut pas utiliser colNumerique sans SchemaRDD !!!
+  */
+  def filtreJson(sqlContext:SQLContext ,file:SchemaRDD, filtre:String) :String = {
+
+    val tab = stringToArray(filtre)
+    var j=0
+    var numLigne = 0
+    var req=""
+    for (j <- tab){														// Parcours des filtres
+
+      if (numLigne>0) req += " AND "			// Si il y a plusieurs filtres
+
+      if(Colonne.numerique(sqlContext, file , j(0)+"")){		// Si le filtre concerne un attribut numérique:
+
+        if(j(1).equals("=")
+          ||j(1).equals("!=")
+          ||j(1).equals("<")
+          ||j(1).equals(">")
+          ||j(1).equals("<=")
+          ||j(1).equals(">=")){
+
+          req += j(0) + j(1) + j(2)
+
+        }
+
+      }else {
+        // Si le filtre concerne un attribut non numérique :
+        if(j(1).equals("=")
+          ||j(1).equals("!=")){
+
+          req += j(0) + j(1)+ "\'" + j(2) + "\'"
+
         }
       }
-    }else {
-      return file
+      numLigne += 1
     }
-    return file
+    return req
   }
 }

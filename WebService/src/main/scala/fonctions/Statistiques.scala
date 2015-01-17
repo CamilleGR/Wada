@@ -3,6 +3,8 @@ package fonctions
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SQLContext
 
+import scala.collection.mutable.ArrayBuffer
+
 object Statistiques {
   /*
   Fonction qui retourne la moyenne d'un RDD[String]
@@ -13,10 +15,6 @@ object Statistiques {
   private def moyenne(tab: RDD[String]): Double = {
     tab.reduce((x,y) => (x.toDouble + y.toDouble).toString).toDouble/tab.count()
   }
-/*
-  private def mediane(tab: RDD[String]): Double = {
-    tab
-  }*/
 
   /*
   Fonction qui retourne le nombre de ligne d'une table SQL en fonction de ses filtres
@@ -26,8 +24,9 @@ object Statistiques {
   filtre: String          -> ligne de filtre à ajouter dans une clause where
   @returns: Long          -> nombre de ligne de la table
   */
-  def nbTuples(sQLContext: SQLContext, tab: String): Long = {
-    return sQLContext.sql("SELECT count(*) FROM " + tab).map(t => t(0).toString).first().toLong
+  def nbTuples(sQLContext: SQLContext, tab: String, filtre: String): Long = {
+    val where = if(filtre=="") "" else " WHERE " + filtre
+    return sQLContext.sql("SELECT count(*) FROM " + tab + where).map(t => t(0).toString).first().toLong
   }
 
   /*
@@ -55,10 +54,11 @@ object Statistiques {
   filtre: String          -> String de filtre à ajouter dans la clause where
   @returns: String        -> liste des statisitques séparés par des virgules
   */
-  def otherStats(sQLContext: SQLContext, tab: String, col: String): String = {
-    val min = sQLContext.sql("SELECT min(" + col + ") FROM " + tab).map(t => t(0).toString).first().toDouble //On calcule la valeur minimale
-    val max = sQLContext.sql("SELECT max(" + col + ") FROM " + tab).map(t => t(0).toString).first().toDouble //et maximale
-    val moy = sQLContext.sql("SELECT avg(" + col + ") FROM " + tab).map(t => t(0).toString).first().toDouble
+  def otherStats(sQLContext: SQLContext, tab: String, col: String, filtre: String): String = {
+    val where = if(filtre=="") "" else " WHERE " + filtre
+    val min = sQLContext.sql("SELECT min(" + col + ") FROM " + tab + where).map(t => t(0).toString).first().toDouble //On calcule la valeur minimale
+    val max = sQLContext.sql("SELECT max(" + col + ") FROM " + tab + where).map(t => t(0).toString).first().toDouble //et maximale
+    val moy = sQLContext.sql("SELECT avg(" + col + ") FROM " + tab + where).map(t => t(0).toString).first().toDouble
 
     return min + "," + max + "," + moy
   }

@@ -59,12 +59,14 @@ object StatsAttribut {
   tab: String                   -> Nom de la table SQL
   @returns: Array[(String,Int)] -> Tableau regroupant les valeurs de la colonne $col du taleau $tab en $seg segment
   */
-  def numerique(sqlContext: SQLContext, seg: Int, col: String, tab: String): Array[(String,Int)] = {
+  def numerique(sqlContext: SQLContext, seg: Int, col: String, tab: String, filtre: String): Array[(String,Int)] = {
 
     if(seg<=0)return null;
 
-    val min = sqlContext.sql("SELECT min(" + col + ") FROM " + tab).map(t => t(0).toString).first().toDouble //On calcule la valeur minimale
-    val max = sqlContext.sql("SELECT max(" + col + ") FROM " + tab).map(t => t(0).toString).first().toDouble //et maximale
+    var where = if(filtre=="") "" else " WHERE " + filtre
+
+    val min = sqlContext.sql("SELECT min(" + col + ") FROM " + tab + where).map(t => t(0).toString).first().toDouble //On calcule la valeur minimale
+    val max = sqlContext.sql("SELECT max(" + col + ") FROM " + tab + where).map(t => t(0).toString).first().toDouble //et maximale
 
     //En JSON, l'entête ne se trouve pas dans le SchemaRDD, donc pas besoin de le retirer
 
@@ -73,6 +75,8 @@ object StatsAttribut {
 
     var valMin:Double = 0
     var valMax:Double = 0
+
+    where = if(filtre=="") "" else " AND " + filtre
 
     var tabR = new Array[(String,Int)](0)
 
@@ -83,7 +87,7 @@ object StatsAttribut {
       valMin = min+temp*(i-1)
       valMax = min+temp*(i)
 
-      nb = sqlContext.sql("SELECT count(*) FROM " + tab + " WHERE " + col + ">=" + (if (valMin>1000000) valMin.toLong else valMin) + " AND " + col + sign + (if (valMax>1000000) valMax.toLong else valMax)).map(t => t(0).toString).first().toInt //On execute la requete SQL qui correspond
+      nb = sqlContext.sql("SELECT count(*) FROM " + tab + " WHERE " + col + ">=" + (if (valMin>1000000) valMin.toLong else valMin) + " AND " + col + sign + (if (valMax>1000000) valMax.toLong else valMax) + where).map(t => t(0).toString).first().toInt //On execute la requete SQL qui correspond
       tabR :+= (valMin + " à " + valMax, nb)
     }
 
@@ -137,9 +141,10 @@ object StatsAttribut {
   tab: String                   -> Nom de la table SQL
   @returns: Array[(String,Int)] -> Tableau regroupant les valeurs de la colonne $col du taleau $tab en $seg segment
   */
-  def chaine(sqlContext: SQLContext, seg: Int, col: String, array: String): Array[(String,Int)] = {
-    val total = sqlContext.sql("SELECT COUNT(*) FROM " + array).map(t => t(0).toString).first().toInt //On calcul le nombre total de ligne pour calculer la valeur de la dernière ligne
-    val data = sqlContext.sql("SELECT " + col + ", COUNT(" + col + ") AS C FROM " + array + " GROUP BY " + col + " ORDER BY C DESC").map(t => (t(0).toString, t(1).toString.toInt)) //On regroupe les valeurs egales dans la première colonne et on entre dans la deuxième le nombre de fois qu'elles aparaissent
+  def chaine(sqlContext: SQLContext, seg: Int, col: String, array: String, filtre: String): Array[(String,Int)] = {
+    val where = if(filtre=="") "" else " WHERE " + filtre
+    val total = sqlContext.sql("SELECT COUNT(*) FROM " + array + where).map(t => t(0).toString).first().toInt //On calcul le nombre total de ligne pour calculer la valeur de la dernière ligne
+    val data = sqlContext.sql("SELECT " + col + ", COUNT(" + col + ") AS C FROM " + array + where + " GROUP BY " + col + " ORDER BY C DESC").map(t => (t(0).toString, t(1).toString.toInt)) //On regroupe les valeurs egales dans la première colonne et on entre dans la deuxième le nombre de fois qu'elles aparaissent
 
     if (seg >= data.count()) { //Si le nombre de segments est plus grand ou egal au nombre de ligne du tableau généré, on peut directement renvoyer toutes ses lignes
       return data.take(total.toInt)
