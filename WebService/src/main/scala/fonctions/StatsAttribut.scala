@@ -6,6 +6,24 @@ import org.apache.spark.SparkContext._
 
 object StatsAttribut {
   /*
+  Fonction à placer dans une map, permet de trier les lignes d'un RDD en tranches
+  @args :
+  line; Double                    -> Ligne du RDD
+  min: Double                     -> valeur minimum
+  max: Double                     -> valeur maximun
+  segments: Int                   -> le nombre de tranche
+  @returns: ((Int, String), Int)  -> ((indice pour le tri, chaine de caractères de la tranche), 1 pour reduceByKey)
+   */
+  def tranche(line: Double, min: Double, max: Double, segments: Int): ((Int, String), Int) = {
+    val temp = (max-min)/segments
+
+    for (i <- 1 to segments) {
+      if (line.toDouble >= temp*(i-1) && line.toDouble < temp*i) return ((i, (min + temp*(i-1)) + " à " + (min + temp*i)),1)
+    }
+
+    return ((segments, (min + temp*(segments-1)) + " à " + (min + temp*segments)), 1)
+  }
+  /*
   Fonction POUR LES FICHIERS CSV retournant un Array[(String,Int)] qui regroupe les valeurs NUMERIQUE
   d'une colonne d'un autre tableau en plusieurs segments (ex : 0 à 10, 10 à 20 ...)
   @args :
@@ -18,22 +36,16 @@ object StatsAttribut {
 
     if(seg<=0)return null;
 
-    val data = tab.map(r => r(col))  //On ne garde que la colonne en question
+    var data = tab.map(r => r(col))  //On ne garde que la colonne en question
 
     val min = data.reduce((a, b) => Math.min(a.toDouble, b.toDouble).toString).toDouble //On calcule la valeur minimale
     val max = data.reduce((a, b) => Math.max(a.toDouble, b.toDouble).toString).toDouble //et maximale
 
-    val temp = (max-min)/seg
-
-    var tabR = new Array[(String,Int)](0)
-
-    for(i <- 1 to seg) {
-      //On regroupe les valeurs en seg parties distincts, elles sont donc regroupés par parties comprises entre min+(max/seg)*(j-1) et min+(max/seg)*(i)
-      tabR :+= ((min+temp*(i-1)) + " à " + (min+temp*i),
-        if (i < seg) data.filter(r => r.toDouble >= (min+temp*(i-1)) &&  r.toDouble < (min+temp*i)).count().toInt
-        else data.filter(r => r.toDouble >= (min+temp*(i-1)) &&  r.toDouble <= (min+temp*i)).count().toInt
-        )
-    }
+    val tabR = data.map(r => tranche(r.toDouble, min, max, seg))
+      .reduceByKey((x,y) => x + y)
+      .sortByKey()
+      .map(r => (r._1._2,r._2))
+      .collect()
 
     return tabR
   }
