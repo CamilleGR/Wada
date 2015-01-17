@@ -30,8 +30,8 @@ class WebServiceActor extends Actor with WebService {
 trait WebService extends HttpService {
 
   val traitement = new Traitement
-  val cheminCible = "WebService/src/TestForm/" //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
-  val lienCible = "http://localhost/BD/WebService/src/TestForm/form.php" //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
+  val cheminCible = "SiteIntegration/" //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
+  val lienCible = "http://localhost/BD/SiteIntegration/" //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
   val cheminSource = "scripts/" //Le chemin ou serons récupérés les fichiers Big-Data
 
   val myRoute = {
@@ -39,7 +39,7 @@ trait WebService extends HttpService {
       post {
         formFields("nomFichier") { nomFichier =>
           //Dans le cas d'une demande de la liste des attributs, on renvoit en GET les attributs separés par des virgules, ainsi que le nom du fichier
-          redirect({lienCible} + "?attributs=" + {traitement.listeAttributs(nomFichier)} + "&nomFichier=" + {nomFichier}, StatusCodes.PermanentRedirect)
+          redirect({lienCible} + "sondage.php?attributs=" + {traitement.listeAttributs(nomFichier)} + "&nomFichier=" + {nomFichier}, StatusCodes.PermanentRedirect)
         }
       }
     } ~
@@ -50,8 +50,8 @@ trait WebService extends HttpService {
           //Dans le cas d'une demande des stats, on renvoit en GET le chemin du fichier crée contenant les stats, ainsi que le nombre de tuples lus, et (si la colonne est numerique) le minimum, le maximum, la moyenne
           val fichier = traitement.traitementPost(cheminSource, cheminCible, nomFichier, attribut, segment, filtre)
           val stats = if (fichier(2) != "") "&stats=" + fichier(2) else ""
-          val kmean = if (fichier(3) != "") "&kmean=" + fichier(3) else ""
-          redirect({lienCible} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + {stats} + {kmean}, StatusCodes.PermanentRedirect)
+          val kmean = if (fichier(3) != "") "&kmean=" + fichier(3) else "".replace(" ", "")
+          redirect({lienCible} + "graphe.php?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + {stats} + {kmean}, StatusCodes.PermanentRedirect)
         }
       }
     }
