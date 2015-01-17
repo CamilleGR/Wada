@@ -50,7 +50,7 @@
             	if(isset($_GET["fichier"])) {
                 	$fichier = $_GET["fichier"];
                 	echo "<h2> fichier $fichier crée</h2>";
-			echo "<button id=\"data1\" onclick=\"createHistogram('".$fichier."')\">Graphique</button>";
+					echo "<button id=\"data1\" onclick=\"createHistogram('".$fichier."')\">Graphique</button>";
             	}
             	if(isset($_GET["count"])) {
                		$count = $_GET["count"];
@@ -61,6 +61,16 @@
                 	echo "<p> min : $stats[0]</p>";
                 	echo "<p> max : $stats[1]</p>";
                 	echo "<p> moy : $stats[2]</p>";
+            	}
+            	if(isset($_GET["stats"])) {
+            		$kmean = explode(";", $_GET["kmean"]);
+            		echo "<h3> Kmean </h3>";
+            		echo '<p>';
+            		foreach ($kmean as $val) {
+            			$ligne = explode(",", $val);
+    					echo $ligne[0].' -> '.$ligne[1].'<br />';
+            		}
+            		echo '</p>';
             	}
         ?>
 	<div id="diagram" style="width:"1000px"; height:"400px":">

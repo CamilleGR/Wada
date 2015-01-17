@@ -9,7 +9,7 @@ class WebServiceActor extends Actor with WebService {
 
   def actorRefFactory = context
 
-  def receive = runRoute(handleExceptions(RouteExceptionHandler)(myRoute))
+  def receive = runRoute/*(handleExceptions(RouteExceptionHandler)*/(myRoute)//)
 
   implicit def RouteExceptionHandler(implicit log: LoggingContext) =
     ExceptionHandler {
@@ -50,7 +50,8 @@ trait WebService extends HttpService {
           //Dans le cas d'une demande des stats, on renvoit en GET le chemin du fichier crée contenant les stats, ainsi que le nombre de tuples lus, et (si la colonne est numerique) le minimum, le maximum, la moyenne
           val fichier = traitement.traitementPost(cheminSource, cheminCible, nomFichier, attribut, segment, filtre)
           val stats = if (fichier(2) != "") "&stats=" + fichier(2) else ""
-          redirect({lienCible} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + {stats}, StatusCodes.PermanentRedirect)
+          val kmean = if (fichier(3) != "") "&kmean=" + fichier(3) else ""
+          redirect({lienCible} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + {stats} + {kmean}, StatusCodes.PermanentRedirect)
         }
       }
     }
