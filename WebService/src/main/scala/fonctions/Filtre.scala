@@ -30,6 +30,24 @@ object Filtre extends Serializable {
    }
 
   /*
+  Fonction qui compare 2 valeurs de type Double
+  @args :
+  val1: Double      -> Première valeur
+  val2: Double      -> Deuxième valeur
+  sign: String      -> Signe de comparaison
+  @return: Boolean  -> Si l'expression retourne vrai ou faux
+   */
+  def compare(val1: Double, val2: Double, sign: String): Boolean = {
+    if (sign=="=") val1 == val2
+    else if (sign=="!=") val1 != val2
+    else if (sign=="<") val1 < val2
+    else if (sign==">") val1 > val2
+    else if (sign=="<=") val1 <= val2
+    else if (sign==">=") val1 >= val2
+    else false
+  }
+
+  /*
   Fonction de filtre POUR FICHIERS CSV/TSV a partir d'un tableau de filtres
   @args :
   file:RDD[Array[String]]       -> RDD d'un csv/tsv
@@ -45,25 +63,13 @@ object Filtre extends Serializable {
 
     for(j <- tab){
 
-      if(Colonne.numerique(file, Colonne.indiceAttribut(file,j(0)+""))){	//Si le filtre concerne un attribut numérique:
-
-        j(1)+"" match{
-
-          case "=" => rdd = rdd.filter(line => line.contains(j(2)))
-          case "!=" => rdd = rdd.filter(line => !line.contains(j(2)))
-          case "<" => rdd = rdd.filter(line => line(Colonne.indiceAttribut(rdd, j(0)+"")).toInt < j(2).toInt)
-          case ">" => rdd = rdd.filter(line => line(Colonne.indiceAttribut(rdd, j(0)+"")).toInt > j(2).toInt)
-          case "<=" => rdd = rdd.filter(line => line(Colonne.indiceAttribut(rdd, j(0)+"")).toInt <= j(2).toInt)
-          case ">=" => rdd = rdd.filter(line => line(Colonne.indiceAttribut(rdd, j(0)+"")).toInt >= j(2).toInt)
-
-        }
-      }else {				//Si le filtre concerne un attribut non numérique :
-
-        if(j(1).equals("=")){
-
-          rdd = rdd.filter(line => line.contains(j(2)))
-
-        }
+      if(Colonne.numerique(rdd, Colonne.indiceAttribut(file,j(0)+""))){	//Si le filtre concerne un attribut numérique:
+        val col = Colonne.indiceAttribut(file, j(0))
+        rdd = rdd.filter(line => compare(line(col).toDouble, j(2).toDouble, j(1)))
+      }
+      else {				//Si le filtre concerne un attribut non numérique :
+        if(j(1).equals("=")) rdd = rdd.filter(line => line.contains(j(2)))
+        else if (j(1).equals("!=")) rdd = rdd.filter(line => !line.contains(j(2)))
       }
     }
     return rdd
