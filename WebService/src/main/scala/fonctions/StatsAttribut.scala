@@ -1,5 +1,7 @@
 package fonctions
 
+import java.text.DecimalFormat
+
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SQLContext
 import org.apache.spark.SparkContext._
@@ -16,12 +18,12 @@ object StatsAttribut {
    */
   def tranche(line: Double, min: Double, max: Double, segments: Int): ((Int, String), Int) = {
     val temp = (max-min)/segments
-
+    val formatter = new DecimalFormat("#.##")
     for (i <- 1 to segments) {
-      if (line.toDouble >= temp*(i-1) && line.toDouble < temp*i) return ((i, (min + temp*(i-1)) + " à " + (min + temp*i)),1)
+      if (line.toDouble >= temp*(i-1) && line.toDouble < temp*i) return ((i, formatter.format(min + temp*(i-1)).replace(',','.') + " à " + formatter.format(min + temp*i).replace(',','.')),1)
     }
 
-    return ((segments, (min + temp*(segments-1)) + " à " + (min + temp*segments)), 1)
+    return ((segments, formatter.format(min + temp*(segments-1)).replace(',','.') + " à " + formatter.format(min + temp*segments).replace(',','.')), 1)
   }
   /*
   Fonction POUR LES FICHIERS CSV retournant un Array[(String,Int)] qui regroupe les valeurs NUMERIQUE
@@ -72,7 +74,7 @@ object StatsAttribut {
 
     var nb:Int = 0
     val temp = (max-min)/seg
-
+    val formatter = new DecimalFormat("#.##")
     var valMin:Double = 0
     var valMax:Double = 0
 
@@ -88,7 +90,7 @@ object StatsAttribut {
       valMax = min+temp*(i)
 
       nb = sqlContext.sql("SELECT count(*) FROM " + tab + " WHERE " + col + ">=" + (if (valMin>1000000) valMin.toLong else valMin) + " AND " + col + sign + (if (valMax>1000000) valMax.toLong else valMax) + where).map(t => t(0).toString).first().toInt //On execute la requete SQL qui correspond
-      tabR :+= (valMin + " à " + valMax, nb)
+      tabR :+= (formatter.format(valMin).replace(',','.') + " à " + formatter.format(valMax).replace(',','.'), nb)
     }
 
     return tabR
