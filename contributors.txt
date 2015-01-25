@@ -8,14 +8,26 @@
 
 	- Publication about any work realized using the SOFTWARE must mention it.
 	
-	-The team is 
+	- The team for the back-end part is 
 	
-	Camille GERIN-ROZE (IUT Villetaneuse)
-	Youssef SAIH (IUT Villetaneuse)
-	Hugo SANSON (IUT Villetaneuse)
-	Ali KARAMI (IUT Villetaneuse)
-	Oscar ODIC (IUT Villetaneuse)
-	Alex CHIN  (IUT Villetaneuse)
+	Camille GERIN-ROZE	(IUT Villetaneuse)
+	Youssef SAIH 		(IUT Villetaneuse)
+	Hugo SANSON 		(IUT Villetaneuse)
+	Ali KARAMI 		(IUT Villetaneuse)
+	Oscar ODIC 		(IUT Villetaneuse)
+	Alex CHIN  		(IUT Villetaneuse)
+	Mickael ROCHON		(IUT Villetaneuse)
+	
+	- The team for the front-end part is 
+	
+	Fatima KEHILI 		(IUT Villetaneuse)
+	Eliot ALANMANOU		(IUT Villetaneuse)
+	Ali KARAMI 		(IUT Villetaneuse)
+	Moaz CHAUDRY  		(IUT Villetaneuse)
+	Livio CHAN TUNG 	(IUT Villetaneuse)
+	Khouloud LAYOUNI SOUA 	(IUT Villetaneuse)
+	Adrien JAROSZ 		(IUT Villetaneuse)
+	
 	
 	-Supervized by 
 	Mustapha Lebbah (LIPN Laboratory)
