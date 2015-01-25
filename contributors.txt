@@ -1,6 +1,24 @@
-Camille GERIN-ROZE
-Youssef SAIH
-Hugo SANSON
-Ali KARAMI
-Oscar ODIC
-Alex CHIN
+
+	- the word code refers to project titled Web Application for Data Analysis (WADA) .
+
+	- the word AUTHORS stand for Paris 13 University and Villetaneuse IUT.  
+	
+	- The SOFTWARE may be reproduced for personal use only. In particular, any
+	  copy addressed to a third party, even free of charge, would be fraudulent.
+
+	- Publication about any work realized using the SOFTWARE must mention it.
+	
+	-The team is 
+	
+	Camille GERIN-ROZE (IUT Villetaneuse)
+	Youssef SAIH (IUT Villetaneuse)
+	Hugo SANSON (IUT Villetaneuse)
+	Ali KARAMI (IUT Villetaneuse)
+	Oscar ODIC (IUT Villetaneuse)
+	Alex CHIN  (IUT Villetaneuse)
+	
+	-Supervized by 
+	Mustapha Lebbah (LIPN Laboratory)
+	Tugdual Sarazin (LIPN Laboratory)
+	Mohammed Ghesmoune (LIPN Laboratory)
+	
