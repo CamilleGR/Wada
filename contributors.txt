@@ -33,4 +33,5 @@
 	Mustapha Lebbah (LIPN Laboratory)
 	Tugdual Sarazin (LIPN Laboratory)
 	Mohammed Ghesmoune (LIPN Laboratory)
+	Hanane Azzag (LIPN Laboratory)
 	
