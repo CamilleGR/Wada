@@ -75,7 +75,8 @@ class Traitement {
     var tab = new Array[(String, Int)](0)
     var stats = ""
     var nbRow:Long = 0
-    var kmeans = ""
+    var moyenneSegment = ""
+    var mediane = ""
 
     if (Fichier.extension(nomFichier)=="csv" || Fichier.extension(nomFichier)=="tsv") { //Si c'est un csv ou tsv...
       val textFile = sc.textFile(cheminSource + nomFichier) //On charge le fichier avec spark, le type de textFile est RDD[Array[String]]
@@ -91,11 +92,12 @@ class Traitement {
       }
 
       nbRow = data.count()
+      mediane = Statistiques.mediane(data.map(r => r(col)))
 
       if (Colonne.numerique(data,col)) {
         tab = StatsAttribut.numerique(segment, col, data) // <- Si c'est un Réel on execute segmentNum
         stats = Statistiques.otherStats(data, col)
-        kmeans = Statistiques.StringKmean(Statistiques.kmean(segment, col, data))
+        moyenneSegment = Statistiques.StringMoyenneSegment(Statistiques.moyenneSegment(segment, col, data))
       }
       else
         tab = StatsAttribut.chaine(segment,col,data) // <- Si c'est un String on execute segmentStringArray
@@ -119,6 +121,6 @@ class Traitement {
       throw new Exception()
     val nomFichierStats = Csv.creer(nomFichier + "_" + attribut, cheminCible, tab) //On crée le fichier CSV à renvoyer à la webApp
 
-    return Array[String](nomFichierStats, nbRow.toString, stats, kmeans)
+    return Array[String](nomFichierStats, nbRow.toString, stats, moyenneSegment, mediane)
   }
 }

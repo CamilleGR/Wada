@@ -17,22 +17,30 @@ object Statistiques {
     tab.reduce((x,y) => (x.toDouble + y.toDouble).toString).toDouble/tab.count()
   }
 
-  def kmean(seg: Int, col: Int, tab: org.apache.spark.rdd.RDD[Array[String]]):ArrayBuffer[(String,Double)] = {
+  def mediane(tab: RDD[String]) : String = {
+    val med = tab.map(x => (x,1))
+                 .reduceByKey((x,y) => x+y)
+                 .map(x => (x._2,x._1))
+                 .sortByKey(false)
+                 .first()._2
+    return med
+  }
+
+  def moyenneSegment(seg: Int, col: Int, tab: org.apache.spark.rdd.RDD[Array[String]]):ArrayBuffer[(String,Double)] = {
 
     val min = tab.map(r => r(col)).reduce((a,b)=> Math.min(a.toDouble,b.toDouble).toString).toDouble
     val max = tab.map(r => r(col)).reduce((a,b)=> Math.max(a.toDouble,b.toDouble).toString).toDouble
     val segment = (max-min)/seg
-    println("min = " + min + "\nmax = " + max)
     var array = tab.map(r => r(col))
     var ret = new ArrayBuffer[(String,Double)];
 
     for(i:Int<-0 to seg-1){
-      ret :+= (min+segment*i +"-"+ (min+segment*(i+1)),tab.map(r=>r(col).toDouble).filter(r => r>min+segment*i && r<min+segment*(i+1)).mean)}
+      ret :+= (min+segment*i +" - "+ (min+segment*(i+1)),tab.map(r=>r(col).toDouble).filter(r => r>min+segment*i && r<min+segment*(i+1)).mean)}
 
     return ret
   }
 
-  def StringKmean(arrayBuffer: ArrayBuffer[(String,Double)]): String = {
+  def StringMoyenneSegment(arrayBuffer: ArrayBuffer[(String,Double)]): String = {
     var ret = ""
 
     for (i <- 0 to arrayBuffer.length-1) {

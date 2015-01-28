@@ -24,11 +24,11 @@
                 echo '<li><input type=radio name=attribut value='.$value.' ><label>'.$value.'</label></li>';
             ?>
           </ul>
-        </fieldset> 
 	<p>
 		<label>Nombre de segments : <input type="text" name="segment" value="2"/></label>
         	<label>Filtres : <input type="text" name="filtre" value=""/></label>
 	</p>
+        </fieldset> 
         <button>Visualiser</button>
 
 

@@ -73,10 +73,14 @@
                 	echo "max : $stats[1]<br />";
                 	echo "moy : $stats[2]<br />";
             	}
+            	if(isset($_GET["med"])) {
+			$mediane = $_GET["med"];
+                	echo "mediane : $mediane <br />";
+            	}
 		echo '</p>';
-            	if(isset($_GET["kmean"])) {
-            		$kmean = explode(";", $_GET["kmean"]);
-            		echo "<h2> Kmean </h2>";
+            	if(isset($_GET["moy"])) {
+            		$kmean = explode(";", $_GET["moy"]);
+            		echo "<h2> Moyennes par tranche </h2>";
             		echo '<h3>';
             		foreach ($kmean as $val) {
             			$ligne = explode(",", $val);
