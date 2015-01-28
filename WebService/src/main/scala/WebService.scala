@@ -30,7 +30,7 @@ class WebServiceActor extends Actor with WebService {
 trait WebService extends HttpService {
 
   val traitement = new Traitement
-  val cheminCible = "SiteIntegration/" //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
+  val cheminCible = "../SiteIntegration/" //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
   val lienCible = "http://localhost/BD/SiteIntegration/" //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
   val cheminSource = "scripts/" //Le chemin ou serons récupérés les fichiers Big-Data
 
