@@ -147,7 +147,6 @@ object StatsAttribut {
     val where = if(filtre=="") "" else " WHERE " + filtre
     val total = sqlContext.sql("SELECT COUNT(*) FROM " + array + where).map(t => t(0).toString).first().toInt //On calcul le nombre total de ligne pour calculer la valeur de la dernière ligne
     val data = sqlContext.sql("SELECT " + col + ", COUNT(" + col + ") AS C FROM " + array + where + " GROUP BY " + col + " ORDER BY C DESC").map(t => (t(0).toString, t(1).toString.toInt)) //On regroupe les valeurs egales dans la première colonne et on entre dans la deuxième le nombre de fois qu'elles aparaissent
-
     if (seg >= data.count()) { //Si le nombre de segments est plus grand ou egal au nombre de ligne du tableau généré, on peut directement renvoyer toutes ses lignes
       return data.take(total.toInt)
     }
@@ -173,6 +172,14 @@ object StatsAttribut {
                     .map(r => (r._1.toDouble, (r._2._1, r._2._2, r._2._3/r._2._4)))
                     .sortByKey()
                     .map(r => (formatter.format(r._1.toDouble).replace(',','.'),r._2))
+
+    return data.collect()
+  }
+
+  def grapheMinMaxMoy(sqlContext: SQLContext, col1: String, col2: String, array: String, filtre: String): Array[(String, (Double, Double, Double))] = {
+    val where = if(filtre=="") "" else " WHERE " + filtre
+
+    val data = sqlContext.sql("SELECT " + col1 + ", min(" + col2 + "), max(" + col2 + "), avg(" + col2 + ") FROM " + array + where + " GROUP BY " + col1 + " ORDER BY " + col1).map(t => (t(0).toString, (t(1).toString.toDouble, t(2).toString.toDouble, t(3).toString.toDouble)))
 
     return data.collect()
   }
