@@ -42,4 +42,17 @@ object Csv {
 
      nom + ".csv"
    }
+
+  def creer(nom: String, chemin: String, tab: Array[(String, (Double, Double, Double))]): String = {
+    val writer = new PrintWriter(new File(chemin + nom + ".csv"))
+    writer.write("label,min,max,moy\n")
+
+    for (i <- 0 to tab.length-1) {
+      writer.write(tab(i)._1 + "," + tab(i)._2._1 + "," + tab(i)._2._2 + "," + tab(i)._2._3 + "\n")
+    }
+
+    writer.close()
+
+    nom + ".csv"
+  }
 }

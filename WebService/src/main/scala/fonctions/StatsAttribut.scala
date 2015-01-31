@@ -164,4 +164,16 @@ object StatsAttribut {
       return tab;
     }
   }
+
+  def grapheMinMaxMoy(col1: Int, col2: Int, array: RDD[Array[String]]): Array[(String, (Double, Double, Double))] = {
+    val formatter = new DecimalFormat("#.##")
+
+    val data = array.map(r => (r(col1), (r(col2).toDouble, r(col2).toDouble, r(col2).toDouble, 1)))
+                    .reduceByKey((x,y) => (Math.min(x._1,y._1), Math.max(x._2,y._2), x._3 + y._3, x._4 + y._4))
+                    .map(r => (r._1.toDouble, (r._2._1, r._2._2, r._2._3/r._2._4)))
+                    .sortByKey()
+                    .map(r => (formatter.format(r._1.toDouble).replace(',','.'),r._2))
+
+    return data.collect()
+  }
 }
