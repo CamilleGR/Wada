@@ -188,11 +188,8 @@ object StatsAttribut {
     return data.collect()
   }
 
-  def KmeansClusters(data:RDD[Array[String]]): Unit = {
+  def KmeansClusters(data:RDD[Array[String]], numClusters: Int, numIterations: Int): Unit = {
     val parsedData = data.map(s => Vectors.dense(s.map(_.toDouble))).cache()
-
-    val numClusters = 2
-    val numIterations = 20
     val clusters = KMeans.train(parsedData, numClusters, numIterations)
 
     return clusters.clusterCenters
