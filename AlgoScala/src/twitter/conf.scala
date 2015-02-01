@@ -32,7 +32,7 @@ oauthConf.setOAuthConsumerKey(ConsumerKey)
 oauthConf.setOAuthConsumerSecret(ConsumerSecret)
 
 var auth = new twitter4j.auth.OAuthAuthorization(oauthConf.build()) // Création de l'objet pour créer le stream plus tard
-var filter = Array("neige") 				// On recherche les Tweets qui contiennent "JeSuisCharlie"
+var filter = Array("TheVoice") 				// On recherche les Tweets qui contiennent "JeSuisCharlie"
 var fields = Array("text")
 var jssc = new JavaStreamingContext(ssc)			// Création d'un JavaStreamingContext ... Me demandez pas pourquoi
 var tweets = TwitterUtils.createStream(jssc,auth,filter,StorageLevel.MEMORY_ONLY) //Création du flux

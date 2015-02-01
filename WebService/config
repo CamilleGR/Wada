@@ -1,0 +1,8 @@
+
+
+#Pas d'espace, pas de quote, et bien repsecter les majuscule. L'ordre n'a pas d'importance et vous pouvez
+    écrire sans problème entre les lignes, mais surtout pas après votre chemin
+
+CHEMIN_CIBLE=../SiteIntegration/
+LIEN_CIBLE=http://localhost/BD/SiteIntegration/
+CHEMIN_SOURCE=../scripts/
