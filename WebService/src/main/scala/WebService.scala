@@ -7,6 +7,7 @@ import spray.util.LoggingContext
 import HttpMethods._
 import spray.httpx.RequestBuilding._
 
+
 class WebServiceActor extends Actor with WebService {
 
   def actorRefFactory = context
@@ -31,10 +32,13 @@ class WebServiceActor extends Actor with WebService {
 
 trait WebService extends HttpService {
 
+  val servConf = new ServConfig
+  servConf.conf
+  
   val traitement = new Traitement
-  val cheminCible = "../SiteIntegration/" //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
-  val lienCible = "http://localhost/BD/SiteIntegration/" //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
-  val cheminSource = "scripts/" //Le chemin ou serons récupérés les fichiers Big-Data
+  val cheminCible = servConf.cheminCible//Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
+  val lienCible = servConf.lienCible //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
+  val cheminSource = servConf.cheminSource //Le chemin ou serons récupérés les fichiers Big-Data
 
   val myRoute = {
     path("attributs") {
