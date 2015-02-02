@@ -1,0 +1,100 @@
+function pieChart(target, width, height, data) {
+
+    radius = Math.min(width, height) / 2;
+
+var color = d3.scale.ordinal()
+    .range(["#3366CC", "#FF0000","#FF9900", "#088A08", "#FF0040", "#40FF00", "#990099"]);
+
+var arc = d3.svg.arc()
+    .outerRadius(radius - 0)
+    .innerRadius(radius - radius);
+
+var pie = d3.layout.pie()
+
+    .value(function(d) { return d.value; });
+
+var svg = d3.select(target).append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+
+
+
+  data.forEach(function(d) {
+    d.value = +d.value;
+  });
+
+   g = svg.selectAll("rect")
+      .data(pie(data))
+    .enter().append("g")
+      .attr("class", "arc");
+
+  g.append("path")
+      .attr("d", arc)
+	  .on('mouseover', function(d,i) {
+				d3.select(this)
+				.attr("class", "baro")
+				.append("title")
+					.text(function(d) {
+					return " La valeur est de :  " + d.data.value;
+				});				} )
+	.on('mouseout', function(d) {
+				d3.select(this)
+				.attr("class", "bari");
+			})
+	
+	  .transition()
+    .ease("bounce")
+    .duration(2000)
+    .attrTween("d", tweenPie)
+      .style("fill", function(d) { return color(d.data.label); });
+			
+	  
+
+
+  g.append("text")
+      .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+      .style("text-anchor", "middle")
+      .text(function(d) { return d.data.label; });
+
+}
+
+	  function tweenPie(b) {
+  b.innerRadius = 0;
+  var i = d3.interpolate({startAngle: 0, endAngle: 0}, b);
+  return function(t) { return arc(i(t)); };
+}
+
+
+
+function createPieChart(target, width, height, filename) {
+	d3.csv(filename, function(error, data) {
+
+		pieChart(target, width, height, data);
+
+	});
+}
+
+function createViz() {
+	
+	var datan = "data/data1.csv";
+	progressUp(".progress-bar", 10);
+	
+	myPieChart(datan);
+	progressUp(".progress-bar", 20);
+	$(window).resize(function() {
+		myPieChart(datan);
+	});
+	optiondd("#opt1","#title1", " Files History");
+	openFiles();
+	saveSvg();
+	
+}
+
+
+function myPieChart(datan) {
+	var outputDiv = "#out1";
+	createPieChart(outputDiv, $(outputDiv).width(), Math.max($(outputDiv).height(), $(window).height() / 2), datan);
+}

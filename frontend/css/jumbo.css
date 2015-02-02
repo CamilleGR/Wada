@@ -1,0 +1,27 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.inline-form input {
+
+  display: inline-block;
+
+  width: 100px;
+
+}
+
+.thead{
+	border-bottom: 1px solid black;
+	margin: AUto;
+	padding:0.5em;
+}
+.tcell{
+	border-bottom: 1px solid black;
+	margin: 1em;
+	padding:0.5em;
+}
+
+.form-control {width:120px;}
+.popover {max-width:400px;}
