@@ -123,4 +123,47 @@ class Traitement {
 
     return Array[String](nomFichierStats, nbRow.toString, stats, moyenneSegment, mediane)
   }
+
+  def traitementPost(cheminSource: String, cheminCible: String, nomFichier: String, attribut1: String, attribut2: String, filtre: String): Array[String] = {
+    var tab = new Array[(String, (Double, Double, Double))](0)
+    var stats = ""
+    var nbRow:Long = 0
+    var mediane = ""
+
+    if (Fichier.extension(nomFichier)=="csv" || Fichier.extension(nomFichier)=="tsv") {
+      val textFile = sc.textFile(cheminSource + nomFichier) //On charge le fichier avec spark, le type de textFile est RDD[Array[String]]
+      val sep = Csv.separateur(textFile) //On récupère le séparateur du csv/tsv
+      var data = textFile.map(_.split(sep)) //On crée un RDD[Array[String]] qui correspond, en fonction du separateur
+      val col1 = Colonne.indiceAttribut(data, attribut1) //On récupère le numero de colonne
+      val col2 = Colonne.indiceAttribut(data, attribut2) //On récupère le numero de colonne
+
+      if (!filtre.equals("")) data = Filtre.filtreCSV(data, filtre)
+      else {
+        val header = data.first()
+        data = data.filter(line => !line.apply(0).equals(header.apply(0)))
+      }
+
+      nbRow = data.count()
+      mediane = Statistiques.mediane(data.map(r => r(col2)))
+
+      tab = StatsAttribut.grapheMinMaxMoy(col1, col2, data)
+      stats = Statistiques.otherStats(data, col2)
+    }
+    else if (Fichier.extension(nomFichier)=="json") {
+      val textFile = sqlContext.jsonFile(cheminSource + nomFichier)//On charge le fichier avec spark, le type de textFile est SchemaRDD
+      textFile.registerTempTable("textFile") //On enregistre le SchemaRDD comme une table SQL
+
+      val filtreTable = if(filtre.equals("")) "" else Filtre.filtreJson(sqlContext, textFile, filtre)
+
+      nbRow = Statistiques.nbTuples(sqlContext, "textFile", filtreTable)
+
+      tab = StatsAttribut.grapheMinMaxMoy(sqlContext, attribut1, attribut2, "textFile", filtreTable)
+      stats = Statistiques.otherStats(sqlContext, "textFile", attribut2, filtreTable)
+    }
+    else
+      throw new Exception()
+    val nomFichierStats = Csv.creer(nomFichier + " " + attribut1 + "_" + attribut2, cheminCible, tab) //On crée le fichier CSV à renvoyer à la webApp
+
+    return Array[String](nomFichierStats, nbRow.toString, stats, mediane)
+  }
 }
