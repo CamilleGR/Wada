@@ -34,7 +34,10 @@ function pieChart(target,colors, width, height, data) {
 	data.forEach(function(d) {
 		d.value = +d.value;
 	});
-
+	
+	create_table(data);
+	
+	
 	g = svg.selectAll("rect").data(pie(data)).enter().append("g").attr("class", "arc");
 	
 	

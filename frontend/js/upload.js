@@ -5,6 +5,13 @@ var dz;
 function load_dataset(csv) {
   var data = d3.csv.parse(csv)
   create_table(data);
+  progressUp(".progress-bar", 100);
+  
+  $("#collapseOne").removeClass("in");
+  $("#collapseOne").addClass("collapsing");
+  $("#collapseOne").removeClass("collapsing");
+  $("#collapseOne").addClass("collapse");
+  
 }
 
 // create a table with column headers, types, and data
@@ -15,10 +22,10 @@ function create_table(data) {
   var stats = d3.select("#stats")
     .html("")
 
-  stats.append("div").attr("class","active")
+  stats.append("div")
     .text("Columns : " + keys.length)
 
-  stats.append("div").attr("class","actvie")
+  stats.append("div")
     .text("Rows : " + data.length)
 
   d3.select("#table")
