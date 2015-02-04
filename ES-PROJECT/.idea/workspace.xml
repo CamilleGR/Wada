@@ -4,10 +4,10 @@
     <list default="true" id="285b803e-78fb-4d93-aa3c-c6747ef9884f" name="Default" comment="" />
     <ignored path="ES-PROJECT.iws" />
     <ignored path=".idea/workspace.xml" />
-    <ignored path="$USER_HOME$/Documents/GitHub/ES-PROJECT/out/" />
-    <ignored path="$USER_HOME$/Documents/GitHub/ES-PROJECT/target/" />
-    <ignored path="$USER_HOME$/Documents/GitHub/ES-PROJECT/project/project/target/" />
-    <ignored path="$USER_HOME$/Documents/GitHub/ES-PROJECT/project/target/" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/project/project/target/" />
+    <ignored path="$PROJECT_DIR$/project/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +29,7 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="build.sbt" pinned="false" current-in-tab="false">
-        <entry file="file://C:/bigdataproject/git/BigDataProject/ElasticSearchProject/ES-PROJECT/build.sbt">
+        <entry file="file://C:/bigdataproject/git/BigDataProject/ES-PROJECT/build.sbt">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
               <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
@@ -39,7 +39,7 @@
         </entry>
       </file>
       <file leaf-file-name="Setup.scala" pinned="false" current-in-tab="true">
-        <entry file="file://C:/bigdataproject/git/BigDataProject/ElasticSearchProject/ES-PROJECT/src/main/scala/Setup.scala">
+        <entry file="file://C:/bigdataproject/git/BigDataProject/ES-PROJECT/src/main/scala/Setup.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="896">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -55,13 +55,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/Documents/GitHub/ES-PROJECT/build.sbt" />
-        <option value="$USER_HOME$/Documents/GitHub/ES-PROJECT/src/main/scala/setup.scala" />
-        <option value="$USER_HOME$/Documents/GitHub/ES-PROJECT/src/main/scala/Setup1.java" />
-        <option value="$USER_HOME$/Documents/GitHub/ES-PROJECT/src/main/scala/Setup1.scala" />
-        <option value="$USER_HOME$/Documents/GitHub/ES-PROJECT/src/main/scala/Setupd.scala" />
-        <option value="$USER_HOME$/Documents/GitHub/ES-PROJECT/src/main/scala/Setupd.java" />
-        <option value="$USER_HOME$/Documents/GitHub/ES-PROJECT/src/main/scala/Setup.scala" />
+        <option value="$PROJECT_DIR$/build.sbt" />
+        <option value="$PROJECT_DIR$/src/main/scala/setup.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/Setup1.java" />
+        <option value="$PROJECT_DIR$/src/main/scala/Setup1.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/Setupd.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/Setupd.java" />
+        <option value="$PROJECT_DIR$/src/main/scala/Setup.scala" />
         <option value="C:/bigdataproject/git/BigDataProject/ElasticSearchProject/ES-PROJECT/src/main/scala/Setup.scala" />
       </list>
     </option>
@@ -102,6 +102,12 @@
               <option name="myItemId" value="ES-PROJECT" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ES-PROJECT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ES-PROJECT" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -127,7 +133,7 @@
     <configuration default="false" name="Scala Console" type="ScalaScriptConsoleRunConfiguration" factoryName="Scala Console" temporary="true">
       <module name="es-project" />
       <setting name="vmparams4" value="-Djline.terminal=NONE" />
-      <setting name="workingDirectory" value="$USER_HOME$/Documents/GitHub/ES-PROJECT" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
       <setting name="consoleArgs" value="-usejavacp" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
@@ -196,7 +202,7 @@
       <setting name="package" value="" />
       <setting name="vmparams" value="" />
       <setting name="params" value="" />
-      <setting name="workingDirectory" value="$USER_HOME$/Documents/GitHub/ES-PROJECT" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
       <setting name="searchForTest" value="Across module dependencies" />
       <setting name="testName" value="" />
       <setting name="testKind" value="Class" />
@@ -212,7 +218,7 @@
       <setting name="package" value="" />
       <setting name="vmparams" value="" />
       <setting name="params" value="" />
-      <setting name="workingDirectory" value="$USER_HOME$/Documents/GitHub/ES-PROJECT" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
       <setting name="searchForTest" value="Across module dependencies" />
       <setting name="testName" value="" />
       <setting name="testKind" value="Class" />
@@ -228,7 +234,7 @@
     <configuration default="true" type="ScalaScriptConsoleRunConfiguration" factoryName="Scala Console">
       <module name="" />
       <setting name="vmparams4" value="-Djline.terminal=NONE" />
-      <setting name="workingDirectory" value="$USER_HOME$/Documents/GitHub/ES-PROJECT" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
       <setting name="consoleArgs" value="-usejavacp" />
       <method />
     </configuration>
@@ -237,7 +243,7 @@
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Documents/GitHub/ES-PROJECT" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
@@ -260,7 +266,7 @@
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Documents/GitHub/ES-PROJECT" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="OUTPUT_DIRECTORY" />
       <option name="ANNOTATION_TYPE" />
       <option name="ENV_VARIABLES" />
@@ -333,7 +339,7 @@
       <setting name="package" value="" />
       <setting name="vmparams" value="" />
       <setting name="params" value="" />
-      <setting name="workingDirectory" value="$USER_HOME$/Documents/GitHub/ES-PROJECT" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
       <setting name="searchForTest" value="Across module dependencies" />
       <setting name="testName" value="" />
       <setting name="testKind" value="Class" />
@@ -362,18 +368,18 @@
           <key>
             <ExternalProjectPojo>
               <option name="name" value="ES-PROJECT" />
-              <option name="path" value="$USER_HOME$/Documents/GitHub/ES-PROJECT" />
+              <option name="path" value="$PROJECT_DIR$" />
             </ExternalProjectPojo>
           </key>
           <value>
             <list>
               <ExternalProjectPojo>
                 <option name="name" value="es-project" />
-                <option name="path" value="$USER_HOME$/Documents/GitHub/ES-PROJECT" />
+                <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
                 <option name="name" value="es-project-build" />
-                <option name="path" value="$USER_HOME$/Documents/GitHub/ES-PROJECT/project" />
+                <option name="path" value="$PROJECT_DIR$/project" />
               </ExternalProjectPojo>
             </list>
           </value>
@@ -396,7 +402,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -451,7 +457,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/bigdataproject/git/BigDataProject/ElasticSearchProject/ES-PROJECT/build.sbt">
+    <entry file="file://C:/bigdataproject/git/BigDataProject/ES-PROJECT/build.sbt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="510">
           <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
@@ -459,7 +465,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/bigdataproject/git/BigDataProject/ElasticSearchProject/ES-PROJECT/src/main/scala/Setup.scala">
+    <entry file="file://C:/bigdataproject/git/BigDataProject/ES-PROJECT/src/main/scala/Setup.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="544">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
@@ -469,7 +475,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/bigdataproject/git/BigDataProject/ElasticSearchProject/ES-PROJECT/build.sbt">
+    <entry file="file://C:/bigdataproject/git/BigDataProject/ES-PROJECT/build.sbt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="510">
           <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
@@ -477,7 +483,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/bigdataproject/git/BigDataProject/ElasticSearchProject/ES-PROJECT/src/main/scala/Setup.scala">
+    <entry file="file://C:/bigdataproject/git/BigDataProject/ES-PROJECT/src/main/scala/Setup.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -494,7 +500,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/bigdataproject/git/BigDataProject/ElasticSearchProject/ES-PROJECT/build.sbt">
+    <entry file="file://C:/bigdataproject/git/BigDataProject/ES-PROJECT/build.sbt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
           <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
@@ -502,7 +508,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/bigdataproject/git/BigDataProject/ElasticSearchProject/ES-PROJECT/src/main/scala/Setup.scala">
+    <entry file="file://C:/bigdataproject/git/BigDataProject/ES-PROJECT/src/main/scala/Setup.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="896">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
