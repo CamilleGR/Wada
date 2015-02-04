@@ -1,0 +1,1422 @@
+[debug] :: resolving dependencies :: es-project#es-project$sources_javadoc_2.11;1.0
+[debug] 	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool]
+[debug] 	validate = true
+[debug] 	refresh = false
+[debug] resolving dependencies for configuration 'compile'
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->default(compile)]
+[info] Resolving org.scala-lang#scala-library;2.11.5 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@25dcddb5
+[debug] sbt-chain: module revision found in cache: org.scala-lang#scala-library;2.11.5
+[debug] 	local: revision in cache: org.scala-lang#scala-library;2.11.5
+[debug] 	found org.scala-lang#scala-library;2.11.5 in sbt-chain
+[debug] 	[2.11.5] org.scala-lang#scala-library;2.11.5
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->default(compile)]
+[info] Resolving org.scalastuff#esclient_2.11;1.0.0 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@76bd7f00
+[debug] sbt-chain: module revision found in cache: org.scalastuff#esclient_2.11;1.0.0
+[debug] 	local: revision in cache: org.scalastuff#esclient_2.11;1.0.0
+[debug] 	found org.scalastuff#esclient_2.11;1.0.0 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->default(compile)]
+[info] Resolving org.elasticsearch#elasticsearch;1.0.0 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@c69c314
+[debug] sbt-chain: module revision found in cache: org.elasticsearch#elasticsearch;1.0.0
+[debug] 	local: revision in cache: org.elasticsearch#elasticsearch;1.0.0
+[debug] 	found org.elasticsearch#elasticsearch;1.0.0 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->default(compile)]
+[info] Resolving org.apache.lucene#lucene-core;4.6.1 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@5fc8553b
+[debug] sbt-chain: module revision found in cache: org.apache.lucene#lucene-core;4.6.1
+[debug] 	local: revision in cache: org.apache.lucene#lucene-core;4.6.1
+[debug] 	found org.apache.lucene#lucene-core;4.6.1 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->default(compile)]
+[info] Resolving org.apache.lucene#lucene-analyzers-common;4.6.1 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@3c2bd09d
+[debug] sbt-chain: module revision found in cache: org.apache.lucene#lucene-analyzers-common;4.6.1
+[debug] 	local: revision in cache: org.apache.lucene#lucene-analyzers-common;4.6.1
+[debug] 	found org.apache.lucene#lucene-analyzers-common;4.6.1 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->default(compile)]
+[info] Resolving org.apache.lucene#lucene-codecs;4.6.1 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@397cb3d0
+[debug] sbt-chain: module revision found in cache: org.apache.lucene#lucene-codecs;4.6.1
+[debug] 	local: revision in cache: org.apache.lucene#lucene-codecs;4.6.1
+[debug] 	found org.apache.lucene#lucene-codecs;4.6.1 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->default(compile)]
+[info] Resolving org.apache.lucene#lucene-queries;4.6.1 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@1303e648
+[debug] sbt-chain: module revision found in cache: org.apache.lucene#lucene-queries;4.6.1
+[debug] 	local: revision in cache: org.apache.lucene#lucene-queries;4.6.1
+[debug] 	found org.apache.lucene#lucene-queries;4.6.1 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->default(compile)]
+[info] Resolving org.apache.lucene#lucene-memory;4.6.1 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@ce3f25f
+[debug] sbt-chain: module revision found in cache: org.apache.lucene#lucene-memory;4.6.1
+[debug] 	local: revision in cache: org.apache.lucene#lucene-memory;4.6.1
+[debug] 	found org.apache.lucene#lucene-memory;4.6.1 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->default(compile)]
+[info] Resolving org.apache.lucene#lucene-highlighter;4.6.1 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@32c7b80
+[debug] sbt-chain: module revision found in cache: org.apache.lucene#lucene-highlighter;4.6.1
+[debug] 	local: revision in cache: org.apache.lucene#lucene-highlighter;4.6.1
+[debug] 	found org.apache.lucene#lucene-highlighter;4.6.1 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->default(compile)]
+[info] Resolving org.apache.lucene#lucene-queryparser;4.6.1 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@1b339c62
+[debug] sbt-chain: module revision found in cache: org.apache.lucene#lucene-queryparser;4.6.1
+[debug] 	local: revision in cache: org.apache.lucene#lucene-queryparser;4.6.1
+[debug] 	found org.apache.lucene#lucene-queryparser;4.6.1 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->default(compile)]
+[info] Resolving org.apache.lucene#lucene-sandbox;4.6.1 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@505cd12
+[debug] sbt-chain: module revision found in cache: org.apache.lucene#lucene-sandbox;4.6.1
+[debug] 	local: revision in cache: org.apache.lucene#lucene-sandbox;4.6.1
+[debug] 	found org.apache.lucene#lucene-sandbox;4.6.1 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->default(compile)]
+[info] Resolving jakarta-regexp#jakarta-regexp;1.4 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@45852c49
+[debug] sbt-chain: module revision found in cache: jakarta-regexp#jakarta-regexp;1.4
+[debug] 	local: revision in cache: jakarta-regexp#jakarta-regexp;1.4
+[debug] 	found jakarta-regexp#jakarta-regexp;1.4 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->default(compile)]
+[info] Resolving org.apache.lucene#lucene-suggest;4.6.1 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@6e228541
+[debug] sbt-chain: module revision found in cache: org.apache.lucene#lucene-suggest;4.6.1
+[debug] 	local: revision in cache: org.apache.lucene#lucene-suggest;4.6.1
+[debug] 	found org.apache.lucene#lucene-suggest;4.6.1 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->default(compile)]
+[info] Resolving org.apache.lucene#lucene-misc;4.6.1 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@471c96e9
+[debug] sbt-chain: module revision found in cache: org.apache.lucene#lucene-misc;4.6.1
+[debug] 	local: revision in cache: org.apache.lucene#lucene-misc;4.6.1
+[debug] 	found org.apache.lucene#lucene-misc;4.6.1 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->default(compile)]
+[info] Resolving org.apache.lucene#lucene-join;4.6.1 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@4449a514
+[debug] sbt-chain: module revision found in cache: org.apache.lucene#lucene-join;4.6.1
+[debug] 	local: revision in cache: org.apache.lucene#lucene-join;4.6.1
+[debug] 	found org.apache.lucene#lucene-join;4.6.1 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->default(compile)]
+[info] Resolving org.apache.lucene#lucene-grouping;4.6.1 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@47266e1a
+[debug] sbt-chain: module revision found in cache: org.apache.lucene#lucene-grouping;4.6.1
+[debug] 	local: revision in cache: org.apache.lucene#lucene-grouping;4.6.1
+[debug] 	found org.apache.lucene#lucene-grouping;4.6.1 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->default(compile)]
+[info] Resolving org.apache.lucene#lucene-spatial;4.6.1 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@7809d4cd
+[debug] sbt-chain: module revision found in cache: org.apache.lucene#lucene-spatial;4.6.1
+[debug] 	local: revision in cache: org.apache.lucene#lucene-spatial;4.6.1
+[debug] 	found org.apache.lucene#lucene-spatial;4.6.1 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->default(compile)]
+[info] Resolving com.spatial4j#spatial4j;0.3 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@2660275
+[debug] sbt-chain: module revision found in cache: com.spatial4j#spatial4j;0.3
+[debug] 	local: revision in cache: com.spatial4j#spatial4j;0.3
+[debug] 	found com.spatial4j#spatial4j;0.3 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->master]
+[debug] resolving dependencies for configuration 'runtime'
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [runtime]
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->master]
+[debug] resolving dependencies for configuration 'test'
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [test]
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [runtime]
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [test->master]
+[debug] resolving dependencies for configuration 'provided'
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [provided]
+[debug] resolving dependencies for configuration 'optional'
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [optional]
+[debug] resolving dependencies for configuration 'compile-internal'
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [compile-internal]
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->master]
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [optional]
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [provided]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile-internal->master]
+[debug] resolving dependencies for configuration 'runtime-internal'
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [runtime-internal]
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [runtime]
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->master]
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [optional]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime-internal->master]
+[debug] resolving dependencies for configuration 'test-internal'
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [test-internal]
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [test]
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [runtime]
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [compile->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [runtime->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [test->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [test->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [test->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [test->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [test->master]
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [optional]
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [provided]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scalastuff#esclient_2.11;1.0.0 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.elasticsearch#elasticsearch;1.0.0 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-core;4.6.1 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-analyzers-common;4.6.1 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-codecs;4.6.1 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queries;4.6.1 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-memory;4.6.1 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-highlighter;4.6.1 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-queryparser;4.6.1 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-sandbox;4.6.1 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jakarta-regexp#jakarta-regexp;1.4 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-suggest;4.6.1 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-misc;4.6.1 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-join;4.6.1 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-grouping;4.6.1 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.apache.lucene#lucene-spatial;4.6.1 [test-internal->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [test-internal->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [test-internal->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [test-internal->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->com.spatial4j#spatial4j;0.3 [test-internal->master]
+[debug] resolving dependencies for configuration 'plugin'
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [plugin]
+[debug] resolving dependencies for configuration 'sources'
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [sources]
+[debug] resolving dependencies for configuration 'docs'
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [docs]
+[debug] resolving dependencies for configuration 'pom'
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [pom]
+[debug] resolving dependencies for configuration 'scala-tool'
+[debug] == resolving dependencies for es-project#es-project$sources_javadoc_2.11;1.0 [scala-tool]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [scala-tool->default(compile)]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [scala-tool->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [scala-tool->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-library;2.11.5 [scala-tool->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-compiler;2.11.5 [scala-tool->default(compile)]
+[info] Resolving org.scala-lang#scala-compiler;2.11.5 ...
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-compiler;2.11.5 {scala-tool=[default(compile)]}
+[debug] sbt-chain: module revision found in cache: org.scala-lang#scala-compiler;2.11.5
+[debug] 	local: revision in cache: org.scala-lang#scala-compiler;2.11.5
+[debug] 	found org.scala-lang#scala-compiler;2.11.5 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-compiler;2.11.5 [scala-tool->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-compiler;2.11.5 [scala-tool->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-compiler;2.11.5 [scala-tool->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-reflect;2.11.5 [scala-tool->default(compile)]
+[info] Resolving org.scala-lang#scala-reflect;2.11.5 ...
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-reflect;2.11.5 {scala-tool=[default(compile)]}
+[debug] sbt-chain: module revision found in cache: org.scala-lang#scala-reflect;2.11.5
+[debug] 	local: revision in cache: org.scala-lang#scala-reflect;2.11.5
+[debug] 	found org.scala-lang#scala-reflect;2.11.5 in sbt-chain
+[debug] 	[2.11.5] org.scala-lang#scala-reflect;2.11.5
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-reflect;2.11.5 [scala-tool->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-reflect;2.11.5 [scala-tool->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang#scala-reflect;2.11.5 [scala-tool->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang.modules#scala-xml_2.11;1.0.3 [scala-tool->default(compile)]
+[info] Resolving org.scala-lang.modules#scala-xml_2.11;1.0.3 ...
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-xml_2.11;1.0.3 {scala-tool=[default(compile)]}
+[debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-xml_2.11;1.0.3
+[debug] 	local: revision in cache: org.scala-lang.modules#scala-xml_2.11;1.0.3
+[debug] 	found org.scala-lang.modules#scala-xml_2.11;1.0.3 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang.modules#scala-xml_2.11;1.0.3 [scala-tool->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang.modules#scala-xml_2.11;1.0.3 [scala-tool->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang.modules#scala-xml_2.11;1.0.3 [scala-tool->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.3 [scala-tool->default(compile)]
+[info] Resolving org.scala-lang.modules#scala-parser-combinators_2.11;1.0.3 ...
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.3 {scala-tool=[default(compile)]}
+[debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.3
+[debug] 	local: revision in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.3
+[debug] 	found org.scala-lang.modules#scala-parser-combinators_2.11;1.0.3 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.3 [scala-tool->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.3 [scala-tool->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.3 [scala-tool->master]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jline#jline;2.12 [scala-tool->default(compile)]
+[info] Resolving jline#jline;2.12 ...
+[debug] sbt-chain: Checking cache for: dependency: jline#jline;2.12 {scala-tool=[default(compile)]}
+[debug] sbt-chain: module revision found in cache: jline#jline;2.12
+[debug] 	local: revision in cache: jline#jline;2.12
+[debug] 	found jline#jline;2.12 in sbt-chain
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jline#jline;2.12 [scala-tool->runtime]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jline#jline;2.12 [scala-tool->compile]
+[debug] == resolving dependencies es-project#es-project$sources_javadoc_2.11;1.0->jline#jline;2.12 [scala-tool->master]
+[debug] 	resolved ivy file produced in cache
+[debug] :: downloading artifacts ::
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-library;2.11.5!scala-library.jar
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.scala-lang\scala-library\2.11.5\docs\scala-library-javadoc.jar
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.scala-lang\scala-library\2.11.5\srcs\scala-library-sources.jar
+[debug] 		tried http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.5/scala-library-2.11.5-javadoc.jar
+[info] downloading http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.5/scala-library-2.11.5-javadoc.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.5/scala-library-2.11.5-javadoc.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.5/scala-library-2.11.5-javadoc.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.5/scala-library-2.11.5-javadoc.jar
+[info] 	[SUCCESSFUL ] org.scala-lang#scala-library;2.11.5!scala-library.jar(doc) (45178ms)
+[debug] 		tried http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.5/scala-library-2.11.5-sources.jar
+[info] downloading http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.5/scala-library-2.11.5-sources.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.5/scala-library-2.11.5-sources.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.5/scala-library-2.11.5-sources.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.5/scala-library-2.11.5-sources.jar
+[info] 	[SUCCESSFUL ] org.scala-lang#scala-library;2.11.5!scala-library.jar(src) (2986ms)
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.scalastuff\esclient_2.11\1.0.0\docs\esclient_2.11-javadoc.jar
+[debug] 	[NOT REQUIRED] org.scalastuff#esclient_2.11;1.0.0!esclient_2.11.jar
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.scalastuff\esclient_2.11\1.0.0\srcs\esclient_2.11-sources.jar
+[debug] 		tried http://repo1.maven.org/maven2/org/scalastuff/esclient_2.11/1.0.0/esclient_2.11-1.0.0-javadoc.jar
+[info] downloading http://repo1.maven.org/maven2/org/scalastuff/esclient_2.11/1.0.0/esclient_2.11-1.0.0-javadoc.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/scalastuff/esclient_2.11/1.0.0/esclient_2.11-1.0.0-javadoc.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/scalastuff/esclient_2.11/1.0.0/esclient_2.11-1.0.0-javadoc.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/scalastuff/esclient_2.11/1.0.0/esclient_2.11-1.0.0-javadoc.jar
+[info] 	[SUCCESSFUL ] org.scalastuff#esclient_2.11;1.0.0!esclient_2.11.jar(doc) (1997ms)
+[debug] 		tried http://repo1.maven.org/maven2/org/scalastuff/esclient_2.11/1.0.0/esclient_2.11-1.0.0-sources.jar
+[info] downloading http://repo1.maven.org/maven2/org/scalastuff/esclient_2.11/1.0.0/esclient_2.11-1.0.0-sources.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/scalastuff/esclient_2.11/1.0.0/esclient_2.11-1.0.0-sources.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/scalastuff/esclient_2.11/1.0.0/esclient_2.11-1.0.0-sources.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/scalastuff/esclient_2.11/1.0.0/esclient_2.11-1.0.0-sources.jar
+[info] 	[SUCCESSFUL ] org.scalastuff#esclient_2.11;1.0.0!esclient_2.11.jar(src) (935ms)
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.elasticsearch\elasticsearch\1.0.0\docs\elasticsearch-javadoc.jar
+[debug] 	[NOT REQUIRED] org.elasticsearch#elasticsearch;1.0.0!elasticsearch.jar
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.elasticsearch\elasticsearch\1.0.0\srcs\elasticsearch-sources.jar
+[debug] 		tried http://repo1.maven.org/maven2/org/elasticsearch/elasticsearch/1.0.0/elasticsearch-1.0.0-javadoc.jar
+[debug] CLIENT ERROR: Not Found url=http://repo1.maven.org/maven2/org/elasticsearch/elasticsearch/1.0.0/elasticsearch-1.0.0-javadoc.jar
+[debug] 		tried http://repo1.maven.org/maven2/org/elasticsearch/elasticsearch/1.0.0/elasticsearch-1.0.0-sources.jar
+[info] downloading http://repo1.maven.org/maven2/org/elasticsearch/elasticsearch/1.0.0/elasticsearch-1.0.0-sources.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/elasticsearch/elasticsearch/1.0.0/elasticsearch-1.0.0-sources.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/elasticsearch/elasticsearch/1.0.0/elasticsearch-1.0.0-sources.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/elasticsearch/elasticsearch/1.0.0/elasticsearch-1.0.0-sources.jar
+[info] 	[SUCCESSFUL ] org.elasticsearch#elasticsearch;1.0.0!elasticsearch.jar(src) (6108ms)
+[warn] 	[FAILED     ] org.elasticsearch#elasticsearch;1.0.0!elasticsearch.jar(doc):  (0ms)
+[warn] ==== local: tried
+[warn]   C:\Users\Yosaii\.ivy2\local\org.elasticsearch\elasticsearch\1.0.0\docs\elasticsearch-javadoc.jar
+[warn] ==== public: tried
+[warn]   http://repo1.maven.org/maven2/org/elasticsearch/elasticsearch/1.0.0/elasticsearch-1.0.0-javadoc.jar
+[debug] 	[NOT REQUIRED] org.apache.lucene#lucene-core;4.6.1!lucene-core.jar
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-core\4.6.1\srcs\lucene-core-sources.jar
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-core\4.6.1\docs\lucene-core-javadoc.jar
+[debug] 		tried http://repo1.maven.org/maven2/org/apache/lucene/lucene-core/4.6.1/lucene-core-4.6.1-sources.jar
+[info] downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-core/4.6.1/lucene-core-4.6.1-sources.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-core/4.6.1/lucene-core-4.6.1-sources.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-core/4.6.1/lucene-core-4.6.1-sources.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/apache/lucene/lucene-core/4.6.1/lucene-core-4.6.1-sources.jar
+[info] 	[SUCCESSFUL ] org.apache.lucene#lucene-core;4.6.1!lucene-core.jar(src) (3830ms)
+[debug] 		tried http://repo1.maven.org/maven2/org/apache/lucene/lucene-core/4.6.1/lucene-core-4.6.1-javadoc.jar
+[info] downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-core/4.6.1/lucene-core-4.6.1-javadoc.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-core/4.6.1/lucene-core-4.6.1-javadoc.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-core/4.6.1/lucene-core-4.6.1-javadoc.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/apache/lucene/lucene-core/4.6.1/lucene-core-4.6.1-javadoc.jar
+[info] 	[SUCCESSFUL ] org.apache.lucene#lucene-core;4.6.1!lucene-core.jar(doc) (5273ms)
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-analyzers-common\4.6.1\docs\lucene-analyzers-common-javadoc.jar
+[debug] 	[NOT REQUIRED] org.apache.lucene#lucene-analyzers-common;4.6.1!lucene-analyzers-common.jar
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-analyzers-common\4.6.1\srcs\lucene-analyzers-common-sources.jar
+[debug] 		tried http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/4.6.1/lucene-analyzers-common-4.6.1-javadoc.jar
+[info] downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/4.6.1/lucene-analyzers-common-4.6.1-javadoc.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/4.6.1/lucene-analyzers-common-4.6.1-javadoc.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/4.6.1/lucene-analyzers-common-4.6.1-javadoc.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/4.6.1/lucene-analyzers-common-4.6.1-javadoc.jar
+[info] 	[SUCCESSFUL ] org.apache.lucene#lucene-analyzers-common;4.6.1!lucene-analyzers-common.jar(doc) (11079ms)
+[debug] 		tried http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/4.6.1/lucene-analyzers-common-4.6.1-sources.jar
+[info] downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/4.6.1/lucene-analyzers-common-4.6.1-sources.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/4.6.1/lucene-analyzers-common-4.6.1-sources.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/4.6.1/lucene-analyzers-common-4.6.1-sources.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/4.6.1/lucene-analyzers-common-4.6.1-sources.jar
+[info] 	[SUCCESSFUL ] org.apache.lucene#lucene-analyzers-common;4.6.1!lucene-analyzers-common.jar(src) (3232ms)
+[debug] 	[NOT REQUIRED] org.apache.lucene#lucene-codecs;4.6.1!lucene-codecs.jar
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-codecs\4.6.1\docs\lucene-codecs-javadoc.jar
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-codecs\4.6.1\srcs\lucene-codecs-sources.jar
+[debug] 		tried http://repo1.maven.org/maven2/org/apache/lucene/lucene-codecs/4.6.1/lucene-codecs-4.6.1-javadoc.jar
+[info] downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-codecs/4.6.1/lucene-codecs-4.6.1-javadoc.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-codecs/4.6.1/lucene-codecs-4.6.1-javadoc.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-codecs/4.6.1/lucene-codecs-4.6.1-javadoc.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/apache/lucene/lucene-codecs/4.6.1/lucene-codecs-4.6.1-javadoc.jar
+[info] 	[SUCCESSFUL ] org.apache.lucene#lucene-codecs;4.6.1!lucene-codecs.jar(doc) (1153ms)
+[debug] 		tried http://repo1.maven.org/maven2/org/apache/lucene/lucene-codecs/4.6.1/lucene-codecs-4.6.1-sources.jar
+[info] downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-codecs/4.6.1/lucene-codecs-4.6.1-sources.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-codecs/4.6.1/lucene-codecs-4.6.1-sources.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-codecs/4.6.1/lucene-codecs-4.6.1-sources.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/apache/lucene/lucene-codecs/4.6.1/lucene-codecs-4.6.1-sources.jar
+[info] 	[SUCCESSFUL ] org.apache.lucene#lucene-codecs;4.6.1!lucene-codecs.jar(src) (975ms)
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-queries\4.6.1\docs\lucene-queries-javadoc.jar
+[debug] 	[NOT REQUIRED] org.apache.lucene#lucene-queries;4.6.1!lucene-queries.jar
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-queries\4.6.1\srcs\lucene-queries-sources.jar
+[debug] 		tried http://repo1.maven.org/maven2/org/apache/lucene/lucene-queries/4.6.1/lucene-queries-4.6.1-javadoc.jar
+[info] downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-queries/4.6.1/lucene-queries-4.6.1-javadoc.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-queries/4.6.1/lucene-queries-4.6.1-javadoc.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-queries/4.6.1/lucene-queries-4.6.1-javadoc.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/apache/lucene/lucene-queries/4.6.1/lucene-queries-4.6.1-javadoc.jar
+[info] 	[SUCCESSFUL ] org.apache.lucene#lucene-queries;4.6.1!lucene-queries.jar(doc) (1645ms)
+[debug] 		tried http://repo1.maven.org/maven2/org/apache/lucene/lucene-queries/4.6.1/lucene-queries-4.6.1-sources.jar
+[info] downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-queries/4.6.1/lucene-queries-4.6.1-sources.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-queries/4.6.1/lucene-queries-4.6.1-sources.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-queries/4.6.1/lucene-queries-4.6.1-sources.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/apache/lucene/lucene-queries/4.6.1/lucene-queries-4.6.1-sources.jar
+[info] 	[SUCCESSFUL ] org.apache.lucene#lucene-queries;4.6.1!lucene-queries.jar(src) (928ms)
+[debug] 	[NOT REQUIRED] org.apache.lucene#lucene-memory;4.6.1!lucene-memory.jar
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-memory\4.6.1\docs\lucene-memory-javadoc.jar
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-memory\4.6.1\srcs\lucene-memory-sources.jar
+[debug] 		tried http://repo1.maven.org/maven2/org/apache/lucene/lucene-memory/4.6.1/lucene-memory-4.6.1-javadoc.jar
+[info] downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-memory/4.6.1/lucene-memory-4.6.1-javadoc.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-memory/4.6.1/lucene-memory-4.6.1-javadoc.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-memory/4.6.1/lucene-memory-4.6.1-javadoc.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/apache/lucene/lucene-memory/4.6.1/lucene-memory-4.6.1-javadoc.jar
+[info] 	[SUCCESSFUL ] org.apache.lucene#lucene-memory;4.6.1!lucene-memory.jar(doc) (930ms)
+[debug] 		tried http://repo1.maven.org/maven2/org/apache/lucene/lucene-memory/4.6.1/lucene-memory-4.6.1-sources.jar
+[info] downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-memory/4.6.1/lucene-memory-4.6.1-sources.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-memory/4.6.1/lucene-memory-4.6.1-sources.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-memory/4.6.1/lucene-memory-4.6.1-sources.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/apache/lucene/lucene-memory/4.6.1/lucene-memory-4.6.1-sources.jar
+[info] 	[SUCCESSFUL ] org.apache.lucene#lucene-memory;4.6.1!lucene-memory.jar(src) (792ms)
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-highlighter\4.6.1\docs\lucene-highlighter-javadoc.jar
+[debug] 	[NOT REQUIRED] org.apache.lucene#lucene-highlighter;4.6.1!lucene-highlighter.jar
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-highlighter\4.6.1\srcs\lucene-highlighter-sources.jar
+[debug] 		tried http://repo1.maven.org/maven2/org/apache/lucene/lucene-highlighter/4.6.1/lucene-highlighter-4.6.1-javadoc.jar
+[info] downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-highlighter/4.6.1/lucene-highlighter-4.6.1-javadoc.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-highlighter/4.6.1/lucene-highlighter-4.6.1-javadoc.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-highlighter/4.6.1/lucene-highlighter-4.6.1-javadoc.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/apache/lucene/lucene-highlighter/4.6.1/lucene-highlighter-4.6.1-javadoc.jar
+[info] 	[SUCCESSFUL ] org.apache.lucene#lucene-highlighter;4.6.1!lucene-highlighter.jar(doc) (1173ms)
+[debug] 		tried http://repo1.maven.org/maven2/org/apache/lucene/lucene-highlighter/4.6.1/lucene-highlighter-4.6.1-sources.jar
+[info] downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-highlighter/4.6.1/lucene-highlighter-4.6.1-sources.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-highlighter/4.6.1/lucene-highlighter-4.6.1-sources.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-highlighter/4.6.1/lucene-highlighter-4.6.1-sources.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/apache/lucene/lucene-highlighter/4.6.1/lucene-highlighter-4.6.1-sources.jar
+[info] 	[SUCCESSFUL ] org.apache.lucene#lucene-highlighter;4.6.1!lucene-highlighter.jar(src) (984ms)
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-queryparser\4.6.1\srcs\lucene-queryparser-sources.jar
+[debug] 	[NOT REQUIRED] org.apache.lucene#lucene-queryparser;4.6.1!lucene-queryparser.jar
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-queryparser\4.6.1\docs\lucene-queryparser-javadoc.jar
+[debug] 		tried http://repo1.maven.org/maven2/org/apache/lucene/lucene-queryparser/4.6.1/lucene-queryparser-4.6.1-sources.jar
+[info] downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-queryparser/4.6.1/lucene-queryparser-4.6.1-sources.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-queryparser/4.6.1/lucene-queryparser-4.6.1-sources.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-queryparser/4.6.1/lucene-queryparser-4.6.1-sources.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/apache/lucene/lucene-queryparser/4.6.1/lucene-queryparser-4.6.1-sources.jar
+[info] 	[SUCCESSFUL ] org.apache.lucene#lucene-queryparser;4.6.1!lucene-queryparser.jar(src) (1272ms)
+[debug] 		tried http://repo1.maven.org/maven2/org/apache/lucene/lucene-queryparser/4.6.1/lucene-queryparser-4.6.1-javadoc.jar
+[info] downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-queryparser/4.6.1/lucene-queryparser-4.6.1-javadoc.jar ...
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-queryparser/4.6.1/lucene-queryparser-4.6.1-javadoc.jar
+[debug] 	public: downloading http://repo1.maven.org/maven2/org/apache/lucene/lucene-queryparser/4.6.1/lucene-queryparser-4.6.1-javadoc.jar.sha1
+[debug] sha1 OK for http://repo1.maven.org/maven2/org/apache/lucene/lucene-queryparser/4.6.1/lucene-queryparser-4.6.1-javadoc.jar
+[info] 	[SUCCESSFUL ] org.apache.lucene#lucene-queryparser;4.6.1!lucene-queryparser.jar(doc) (3083ms)
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-sandbox\4.6.1\docs\lucene-sandbox-javadoc.jar
+[debug] 		tried C:\Users\Yosaii\.ivy2\local\org.apache.lucene\lucene-sandbox\4.6.1\srcs\lucene-sandbox-sources.jar
+[debug] 	[NOT REQUIRED] org.apache.lucene#lucene-sandbox;4.6.1!lucene-sandbox.jar
+[debug] 		tried http://repo1.maven.org/maven2/org/apache/lucene/lucene-sandbox/4.6.1/lucene-sandbox-4.6.1-javadoc.jar
