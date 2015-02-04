@@ -37,34 +37,16 @@ function optiondd(target, label, text) {
 	
 	
 }
-
-function myhistoG(datan) {
-	var outputDiv = "#out1";
-	
-	var barSize = 40;
-	createHistogram(outputDiv, $(outputDiv).width(), Math.max($(outputDiv).height(), $(window).height() / 2), barSize, datan);
-}
-
-function createViz() {
-	
-	var datan = "data/data3.csv";
-	progressUp(".progress-bar", 10);
-	
-	myhistoG(datan);
-	progressUp(".progress-bar", 20);
-	$(window).resize(function() {
-		myhistoG(datan);
-	});
-	optiondd("#opt1","#title1", "Files History");
-	openFiles();
-	saveSvg();
-	
-}
  
 
-function histo(target, width, height, barSize, data) {
-	var progress = 90;
+function histo(target, data) {
+	
+	var width = $(target).width();
+	var height = Math.max($(target).height(), $(window).height() / 2);
+	
+	var progress = 0;
 	progressUp(".progress-bar", progress);
+	
 	
 	var progress = 0;
 	progressUp(".progress-bar", progress);
@@ -77,20 +59,18 @@ function histo(target, width, height, barSize, data) {
 		left : 80
 	},
 	    width = width - margin.left - margin.right,
-	    height = height - margin.top - margin.bottom,
-	    barWidth =
-	    barSize;
+	    height = height - margin.top - margin.bottom;
 
 	d3.select(target).selectAll("svg").remove();
 
 	var svg = d3.select(target).append("svg").attr("id", "charts").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 	progress += 20;
 	progressUp(".progress-bar", progress);
-
-	var numBars = Math.round(width / barWidth);
-
+	
+	var numBars = Math.round(width / data.length*data.length);
+	
 	// Axes
-	var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+	var x = d3.scale.ordinal().rangeRoundBands([0, width], .05,0);
 
 	var y = d3.scale.linear().range([height, 0]);
 
@@ -100,11 +80,23 @@ function histo(target, width, height, barSize, data) {
 	
 	progress += 20;
 	progressUp(".progress-bar", progress);
-
+	
+	var keys;
+	data.forEach(function(d) {
+		keys = Object.keys(d);
+	});
+	alert(keys+" = "+keys.length);
+	
+	
 	data.forEach(function(d) {
 		d.value = parseInt(d.value);
+		if(d.value==0){
+			d.value = parseInt(d.moy);
+		}
 	});
-
+	
+	
+	
 	x.domain(data.slice(0, numBars).map(function(d) {
 		return d.label;
 	}));
@@ -112,10 +104,14 @@ function histo(target, width, height, barSize, data) {
 		return d.value;
 	})]);
 	
-	create_table(data);
+	
 
 	d3.selectAll(".axis").remove();
 	d3.selectAll(".bar").remove();
+	
+	var line = d3.svg.line().interpolate("basis")
+    .x(function(d) { return x(d.label); })
+    .y(function(d) { return y(d.value); });
 
 	svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis).selectAll("text").style("text-anchor", "start").attr("dx", "-0.5em").attr("dy", "1em").attr("transform", "rotate(0)");
 
@@ -126,9 +122,7 @@ function histo(target, width, height, barSize, data) {
 	sel.enter().append("rect").attr("class", "bar").style("fill", "steelblue");
 	
 	
-	var line = d3.svg.line()
-    .x(function(d) { return x(d.label); })
-    .y(function(d) { return y(d.value); });
+	
 	
 	sel.attr("x", function(d) {
 		return x(d.label);
@@ -169,9 +163,16 @@ function histo(target, width, height, barSize, data) {
 }
 
 /* Nouveau fichier Oscaro */
-function histoMinMaxMoy(target, width, height, barSize, data) {
+function histoMinMaxMoy(target, data) {
 	var progress = 90;
 	progressUp(".progress-bar", progress);
+	
+	var width = $(target).width();
+	
+	
+	
+	var height = Math.max($(target).height(), $(window).height() / 2);
+	
 	
 	var progress = 0;
 	progressUp(".progress-bar", progress);
@@ -184,9 +185,7 @@ function histoMinMaxMoy(target, width, height, barSize, data) {
 		left : 80
 	},
 	    width = width - margin.left - margin.right,
-	    height = height - margin.top - margin.bottom,
-	    barWidth =
-	    barSize;
+	    height = height - margin.top - margin.bottom;
 
 	d3.select(target).selectAll("svg").remove();
 
@@ -194,10 +193,10 @@ function histoMinMaxMoy(target, width, height, barSize, data) {
 	progress += 20;
 	progressUp(".progress-bar", progress);
 
-	var numBars = Math.round(width / barWidth);
+	var numBars = Math.round(width / data.length*data.length);
 
 	// Axes
-	var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+	var x = d3.scale.ordinal().rangeRoundBands([0, width], .05,0);
 
 	var y = d3.scale.linear().range([height, 0]);
 
@@ -209,7 +208,9 @@ function histoMinMaxMoy(target, width, height, barSize, data) {
 	progressUp(".progress-bar", progress);
 
 	data.forEach(function(d) {
+		
 		d.value = parseInt(d.moy);
+		
 	});
 
 	x.domain(data.slice(0, numBars).map(function(d) {
@@ -219,25 +220,54 @@ function histoMinMaxMoy(target, width, height, barSize, data) {
 		return d.max;
 	})]);
 	
-	create_table(data);
+	
 
 	d3.selectAll(".axis").remove();
 	d3.selectAll(".bar").remove();
 
 	svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis).selectAll("text").style("text-anchor", "start").attr("dx", "-0.5em").attr("dy", "1em").attr("transform", "rotate(0)");
-
-	svg.append("g").attr("class", "y axis").call(yAxis).append("text").attr("transform", "rotate(-90)").attr("y", 6).attr("dy", ".71em").style("text-anchor", "start");
+	/**************************************************.attr("transform", "translate(10,0)")*/
+	svg.append("g").attr("class", "y axis").call(yAxis).append("text").attr("transform", "rotate(-90)").attr("transform", "translate(5px,0px)").attr("y", 0).attr("dy", ".71em").style("text-anchor", "start");
+	
+	var sel = svg.selectAll(".bar").data(data);
+	
+	sel.enter().append("rect").attr("class", "bar").style("fill", "steelblue");
 	
 	
 	var line = d3.svg.line()
     .x(function(d) { return x(d.label); })
+    .y(function(d) { return y(d.value); });
+	
+	sel.attr("x", function(d,i) {
+		return x(d.label);
+	}).attr("width", x.rangeBand());
+
+	sel.attr("y", height).attr("height", 0);
+	
+	sel.on('mouseover', function(d, i) {
+		d3.select(this).attr("class", "baro").append("title").text(function(d) {
+			return d.label+" : " + d.value;
+		});
+	}).on('mouseout', function(d) {
+		d3.select(this).attr("class", "bari");
+	});
+	
+	sel.transition().attr("y", function(d) {
+		return y(d.value)-1;
+	}).attr("height", function(d) {
+		return height - y(d.value);
+	});
+
+	
+	var line = d3.svg.line().interpolate("basis")
+    .x(function(d) { return x(d.label); })
     .y(function(d) { return y(d.moy); });
     
-    var lineMin = d3.svg.line()
+    var lineMin = d3.svg.line().interpolate("basis")
     .x(function(d) { return x(d.label); })
     .y(function(d) { return y(d.min); });
     
-    var lineMax = d3.svg.line()
+    var lineMax = d3.svg.line().interpolate("basis")
     .x(function(d) { return x(d.label); })
     .y(function(d) { return y(d.max); });	
 	
@@ -258,7 +288,7 @@ function histoMinMaxMoy(target, width, height, barSize, data) {
       .attr("class", "linemi")
       .attr("d", lineMin) .on('mouseover', function(d, i) {
 		d3.select(this).append("title").text(function(d) {
-			return "Mini";
+			return "Min";
 		});
 	}).on('mouseout', function(d) {
 		d3.select(this);
@@ -288,39 +318,62 @@ function histoMinMaxMoy(target, width, height, barSize, data) {
 
 }
 
-function createHistogram(target, width, height, barSize, filename) {
+function createHistogram(target,filename) {
 	
 	$("#dl1").attr("download","data.csv").attr("href",filename);
 	
 	d3.csv(filename, function(error, data) {
 
-		histo(target, width, height, barSize, data);
+		histo(target, data);
+		create_table(data);
+	});
+}
 
+function loadHisto(data){
+	$("#dl1").attr("display","none");
+	var target = "#out1";
+	histo(target, data);
+	$(window).resize(function() {
+		histo(target, data);
+	});
+}
+
+function createHistogram2(target,filename) {
+	
+	$("#dl1").attr("download","data.csv").attr("href",filename);
+	
+	d3.csv(filename, function(error, data) {
+
+		histoMinMaxMoy(target, data);
+		create_table(data);
 	});
 }
 
 
-
+function myhistoG(datan) {
+	var outputDiv = "#out1";
+	
+	var barSize = 40;
+	createHistogram(outputDiv,datan);
+	$(window).resize(function() {
+		createHistogram(outputDiv,datan);
+	});
+}
 
 
 function myhistoGm3(datan) {
 	var outputDiv = "#out1";
 	
 	var barSize = 40;
-	createHistogram2(outputDiv, $(outputDiv).width(), Math.max($(outputDiv).height(), $(window).height() / 2), barSize, datan);
-}
-
-
-function createHistogram2(target, width, height, barSize, filename) {
+	createHistogram2(outputDiv, datan);
 	
-	$("#dl1").attr("download","data.csv").attr("href",filename);
-	
-	d3.csv(filename, function(error, data) {
-
-		histoMinMaxMoy(target, width, height, barSize, data);
-
+	$(window).resize(function() {
+		createHistogram2(outputDiv, datan);
 	});
 }
+
+
+
 
 
 function createViz2() {
@@ -330,10 +383,23 @@ function createViz2() {
 	
 	myhistoGm3(datan);
 	progressUp(".progress-bar", 20);
-	$(window).resize(function() {
-		myhistoGm3(datan);
-	});
+	
 	
 	
 }
 
+
+function createViz() {
+	
+	var datan = "data/data3.csv";
+	progressUp(".progress-bar", 10);
+	
+	myhistoG(datan);
+	progressUp(".progress-bar", 20);
+	
+	optiondd("#opt1","#title1", "Files History");
+	
+	openFiles();
+	
+	
+}
