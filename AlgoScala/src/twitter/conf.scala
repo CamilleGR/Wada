@@ -32,22 +32,36 @@ oauthConf.setOAuthConsumerKey(ConsumerKey)
 oauthConf.setOAuthConsumerSecret(ConsumerSecret)
 
 var auth = new twitter4j.auth.OAuthAuthorization(oauthConf.build()) // Création de l'objet pour créer le stream plus tard
-var filter = Array("TheVoice") 				// On recherche les Tweets qui contiennent "JeSuisCharlie"
+var filter = Array( 
+    "#ConfPR",
+    "#HUBDAY",
+    "Kiev",
+    "#Hollande",
+    "Moscou",
+    "Ukraine",
+    "Wikipédia",
+    "Merkel",
+    "Grèce",
+    "#Carlton") 
+    				// On recherche les Tweets qui contiennent les mots cles de filter
 var fields = Array("text")
 var jssc = new JavaStreamingContext(ssc)			// Création d'un JavaStreamingContext ... Me demandez pas pourquoi
 var tweets = TwitterUtils.createStream(jssc,auth,filter,StorageLevel.MEMORY_ONLY) //Création du flux
-tweets.print
-//var hashtag => tweets.flatmap(status => status.getText.split(" ").filter(_.startsWith("#")).print
-
+tweets.dstream.map(x=>(x.getCreatedAt,x.getText))
+tweets.dstream.saveAsTextFiles("Tweets/");
 
 def startStreamingFor(jssc:JavaStreamingContext,t:Int):Unit = {
 	jssc.start 	//-> Il faut rediriger le flux vers un fichier ( on pourrait même enregistrer sur le hdfs ... 
 	Thread.sleep(t) // On attend 5 seconde ...
-	jssc.stop 	//-> On arrête le flux	*/
+	jssc.stop(stopSparkContext=false)	//-> On arrête le flux	*/
 	}
 	
 	
 	
+
+   
+
+
 	
 	
 	
