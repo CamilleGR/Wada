@@ -1,10 +1,10 @@
-﻿label,value
-rayures,89
-poussieres,29
-taches,16
-hors tolerance,5
-fonctionnement,5
-erreur jugement,4
-GP822,3
-KZ458,2
-manquants,1
+﻿label,value,inverse
+rayures,89,70
+poussieres,29,2
+taches,16,3
+hors tolerance,5,4
+fonctionnement,5,6
+erreur jugement,4,16
+GP822,3,29
+KZ458,2,89
+manquants,1,110
