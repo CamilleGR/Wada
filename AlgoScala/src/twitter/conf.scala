@@ -6,6 +6,10 @@ import org.apache.spark.storage.StorageLevel
 import org.apache.spark.streaming.api.java.{JavaReceiverInputDStream, JavaDStream, JavaStreamingContext}
 import org.apache.spark.streaming.dstream.{ReceiverInputDStream, DStream}
 import twitter4j._
+import java.util.Date
+import java.text.SimpleDateFormat
+
+
 :load tweetFunction.scala
 
 val ssc = new StreamingContext(sc,Seconds(1))	//Création d'un nouveau StreamingContext
@@ -32,22 +36,35 @@ oauthConf.setOAuthConsumerKey(ConsumerKey)
 oauthConf.setOAuthConsumerSecret(ConsumerSecret)
 
 var auth = new twitter4j.auth.OAuthAuthorization(oauthConf.build()) // Création de l'objet pour créer le stream plus tard
-var filter = Array("TheVoice") 				// On recherche les Tweets qui contiennent "JeSuisCharlie"
+var filter = Array( 
+"#OnSenFoutDeLanniversaireDeNabilla"
+,"Pretty Woman"
+,"#ASKJNSPJ"
+,"#GHAEQG"
+,"#TesMocheCommePoppiGamesSi"
+,"#TwwetJaune");// On recherche les Tweets qui contiennent les mots cles de filter
+
+
 var fields = Array("text")
 var jssc = new JavaStreamingContext(ssc)			// Création d'un JavaStreamingContext ... Me demandez pas pourquoi
 var tweets = TwitterUtils.createStream(jssc,auth,filter,StorageLevel.MEMORY_ONLY) //Création du flux
-tweets.print
-//var hashtag => tweets.flatmap(status => status.getText.split(" ").filter(_.startsWith("#")).print
 
+//tweets.dstream.map(x=> x.getCreatedAt+";"+x.getText.replace(";",",").replace('\n',' ')).saveAsTextFiles("Tweets/tweet/tweet")
+tweets.dstream.map(x=> x.getCreatedAt).map(x=> (x,1)).reduceByKey((x,y)=>x+y).saveAsTextFiles("Tweets/reduce/reduce")
 
 def startStreamingFor(jssc:JavaStreamingContext,t:Int):Unit = {
 	jssc.start 	//-> Il faut rediriger le flux vers un fichier ( on pourrait même enregistrer sur le hdfs ... 
 	Thread.sleep(t) // On attend 5 seconde ...
-	jssc.stop 	//-> On arrête le flux	*/
+	jssc.stop(stopSparkContext=false)	//-> On arrête le flux	*/
 	}
 	
-	
-	
+jssc.start	
+Thread.sleep(60000)
+jssc.stop(stopSparkContext=false)
+
+val file = sc.textFile("Tweets/reduce/reduce*")
+
+
 	
 	
 	

@@ -1,6 +1,3 @@
-
-
-
 /* Supposé creer un element de type diagramme circulaire
 
  * @target : id de la cible DOM
@@ -9,83 +6,113 @@
  *
  * */
 
-function pieChart(target,colors, width, height, data) {
-
-	radius = Math.min(width, height) / 2;
-
+function pieChart(target, colors, data) {
+	var  progress = 0;
+	progressUp(".progress-bar", progress);
+	var width = $(target).width();
+	var height = Math.max($(target).height(), $(window).height() / 2);
+	
+	
+	//alert(radius);
 	var color = d3.scale.ordinal().range(colors);
-
-	var arc = d3.svg.arc().outerRadius(radius - 0).innerRadius(radius - radius);
-
-	var pie = d3.layout.pie().value(function(d) {
-		return d.value;
-	});
-	/*******/
-	progressUp(".progress-bar", 20);
-	/*******/
-	/**Refresh old svg'z*/
-	d3.select(target).selectAll("svg").remove();
 	
-	var svg = d3.select(target).append("svg").attr("width", width).attr("height", height).append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-	/*Remove place holders*/
-	d3.selectAll(".holder").remove();
-	
-	
+	var keys;
 	data.forEach(function(d) {
-		d.value = +d.value;
-	});
-	
-	create_table(data);
-	
-	
-	g = svg.selectAll("rect").data(pie(data)).enter().append("g").attr("class", "arc");
-	
-	
-	/*******/
-	progressUp(".progress-bar", 20);
-	/*******/
-	g.append("path").attr("d", arc).on('mouseover', function(d, i) {
-		d3.select(this).attr("class", "baro").append("title").text(function(d) {
-			return d.data.label+" : " + d.data.value;
+		keys = Object.keys(d);
+
+		keys.forEach(function(key) {
+			if (!isNaN(d[key])) {
+				d[key] = parseInt(d[key]);
+			}
 		});
-	}).on('mouseout', function(d) {
-		d3.select(this).attr("class", "bari");
-	}).style("fill", function(d) {
-		return color(d.data.label);
+
 	});
-	/*.transition().ease("bounce").duration(2000).attrTween("d", tweenPie).style("fill", function(d) {
-		return color(d.data.label);
-	});*/
+	d3.select(target).selectAll("svg").remove();
+	progress = 20;
+	progressUp(".progress-bar", progress);
+	
+	
+
+	var color = d3.scale.ordinal()
+    .range(colors);
 
 
-	function tweenPie(b) {
-	b.innerRadius = 0;
-	var i = d3.interpolate({
-		startAngle : 0,
-		endAngle : 0
-	}, b);
-	return function(t) {
-		return arc(i(t));
-	};
+    var nb = keys.length-1;
+
+var radius = Math.min(width, height)/Math.max(nb,2);
+
+var arc = d3.svg.arc()
+    .outerRadius(radius - 2)
+    .innerRadius(0);
+    //var div = d3.select(target).append(div).attr("class","row");
+    
+function pieFactory(nb,index){
+//div = div.append("div").attr("class","col-md-"+(12/index));
+
+
+
+var svg = d3.select(target).append("svg")
+    .attr("width", (width/nb)-nb*2)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + (width/nb) / 2 + "," + height / 2 + ")");
+
+
+
+var pie = d3.layout.pie()
+
+    .value(function(d) { return d[keys[index]]; });
+
+	progressUp(".progress-bar", progress);
+var  g = svg.selectAll("rect")
+      .data(pie(data))
+    .enter().append("g")
+      .attr("class", "arc");
+
+  g.append("path")
+      .attr("d", arc)
+      .style("fill", function(d) { return color(d.data[keys[0]]); });
+
+  g.append("text")
+      .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+      .style("text-anchor", "middle")
+      .text(function(d) { return d.data[keys[0]]; });
+     } 
+     
+    for(var i=0;i<nb;i++){
+    	
+    	pieFactory(nb,i+1);
+    	
+    }
+    
+    
+// Remove the placeholder.
+	d3.selectAll(".holder").remove();
+progress += 100;
+	progressUp(".progress-bar", progress);
+
 }
 
-	g.append("text").attr("transform", function(d) {
-		return "translate(" + arc.centroid(d) + ")";
-	}).style("text-anchor", "middle").text(function(d) {
-		return d.data.label;
-	});
-	
-	/*******/
-	progressUp(".progress-bar", 20);
-	/*******/
-	
-}
+function createPieChart(target, colors, filename) {
 
-function createPieChart(target,colors, width, height, filename) {
+	$("#dl1").attr("download", "data.csv").attr("href", filename);
+
 	d3.csv(filename, function(error, data) {
+		create_table(data);
+		pieChart(target, colors, data);
 
-		pieChart(target,colors, width, height, data);
+	});
+}
 
+function loadPie(data) {
+	$("#dl1").attr("display", "none");
+
+	var colors = get_random_color_set(10);
+
+	var target = "#out1";
+	pieChart(target, colors, data);
+	$(window).resize(function() {
+		pieChart(target, colors, data);
 	});
 }
 
@@ -93,19 +120,19 @@ function createVizPie() {
 
 	var datan = "data/data1.csv";
 	progressUp(".progress-bar", 0);
-	
+
 	var colors = get_random_color_set(10);
-	
-	myPieChart(datan,colors);
-	
+
+	myPieChart(datan, colors);
+
 	$(window).resize(function() {
-		myPieChart(datan,colors);
+		myPieChart(datan, colors);
 	});
 	progressUp(".progress-bar", 20);
 
 }
 
-function myPieChart(datan,colors) {
+function myPieChart(datan, colors) {
 	var outputDiv = "#out1";
-	createPieChart(outputDiv,colors, $(outputDiv).width(), Math.max($(outputDiv).height(), $(window).height() / 2), datan);
+	createPieChart(outputDiv, colors, datan);
 }

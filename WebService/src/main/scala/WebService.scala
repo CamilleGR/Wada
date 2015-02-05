@@ -61,6 +61,14 @@ trait WebService extends HttpService {
           redirect({lienCible} + "graphe.php?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + {stats} + {moy} + {mediane}, StatusCodes.PermanentRedirect)
         }
       }
+    } ~
+    path("graph") {
+      post {
+        formFields("nomFichier", "attribut1", "attribut2", "filtre") { (nomFichier, attribut1, attribut2, filtre) =>
+          val fichier = traitement.traitementPost(cheminSource, cheminCible, nomFichier, attribut1, attribut2, filtre)
+          redirect({lienCible} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + "&stats=" + {fichier(2)} + "&med=" + {fichier(3)}, StatusCodes.PermanentRedirect)
+        }
+      }
     }
   }
 }

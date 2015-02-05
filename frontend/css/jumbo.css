@@ -69,13 +69,7 @@ rect:first-child {
 .arc path {
 	stroke: #fff;
 }
-.baro {
-	opacity: 0.4;
-}
 
-.bari {
-	opacity: 1;
-}
 .bar text {
 	fill: #fff;
 }
@@ -83,7 +77,7 @@ rect:first-child {
 
 .line {
   fill: none;
-  stroke: steelblue;
+  /*stroke: steelblue;*/
   stroke-width: 1.5px;
 }
 
@@ -98,3 +92,51 @@ rect:first-child {
   stroke: red;
   stroke-width: 1.5px;
 }
+
+
+.bari{
+	opacity: 1 ;
+}
+
+.baro{
+	
+	opacity: 0.4;
+}
+
+/*****************TOOLTIP**********************/
+
+#uploaderIco {
+	font-size:2em;
+	margin:0.5em;
+}
+#uploader{
+	font-size:1.5em;
+	margin:0.5em;
+}
+
+.d3-tip {
+ 
+  z-index:20;
+}
+/*
+/* Creates a small triangle extender for the tooltip 
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  
+  width: 100%;
+  top:0;
+  color: rgba(200, 200, 200, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+  z-index:21;
+}
+*/
+/* Style northward tooltips differently 
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+*/

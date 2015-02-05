@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -191,7 +191,7 @@
 			<!-- Placed at the end of the document so the pages load faster -->
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 			<script src="js/d3.min.js"></script>
-			
+			<script src="js/d3.tip.js"></script>
 			
 			<!-- perso -->
 			<script src="js/common.js"></script>
@@ -202,9 +202,9 @@
 			<script>
 				$(document).ready(function() {
 					$("#credits").replaceWith(" { Bootstrap - " + $.fn.tooltip.Constructor.VERSION + ", JQuery - " + $.fn.jquery + ", D3.js - " + d3.version + " } ");
-
+					d3.select("#imgHolder").remove();
 					createViz();
-
+					
 					$(function() {
 						$('[data-toggle="popover"]').popover()
 					});

@@ -22,6 +22,15 @@ function get_random_color() {
 	return color;
 }
 
+function get_random_color2() {
+	var letters = '3456789'.split('');
+	var color = '#';
+	for (var i = 0; i < 3; i++) {
+		color += letters[Math.floor(Math.random() * letters.length)];
+	}
+	return color;
+}
+
 function get_random_color_set(nb) {
 	var colors = [];
 	var i = 0;
