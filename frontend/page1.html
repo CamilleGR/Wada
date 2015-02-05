@@ -108,7 +108,7 @@
 								<button type="button" class="btn btn-default btn-xs">
 									<span class="glyphicon glyphicon-option-horizontal"></span>
 								</button>
-								<a id="dl1" class="btn btn-default btn-xs" download="data.csv">Download <span class="glyphicon glyphicon-send"></span></a>
+								<a id="dl1" class="btn btn-default btn-xs" download="data.svg">Download svg <span class="glyphicon glyphicon-send"></span></a>
 
 							</div>
 						</div>
@@ -122,7 +122,7 @@
 							</div>
 						</div>
 						<div class="container holder">
-							<img id="imgHolder" class="holder" src="holder.js/90%x400" alt="Mickey" >
+							<img class="holder" src="holder.js/90%x400" alt="Mickey" >
 						</div>
 
 					</div>
@@ -204,7 +204,7 @@
 					$("#credits").replaceWith(" { Bootstrap - " + $.fn.tooltip.Constructor.VERSION + ", JQuery - " + $.fn.jquery + ", D3.js - " + d3.version + " } ");
 					
 					createVizPie();
-					d3.select("#imgHolder").remove();
+
 					$(function() {
 						$('[data-toggle="popover"]').popover()
 					});
