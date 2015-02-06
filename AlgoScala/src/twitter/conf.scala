@@ -12,7 +12,10 @@ import java.text.SimpleDateFormat
 
 :load tweetFunction.scala
 
-val ssc = new StreamingContext(sc,Seconds(1))	//Création d'un nouveau StreamingContext
+/*
+*	Flux configurer en minute => flux qui vise à faire des statistiques sur plus d'une heure
+*/
+val ssc = new StreamingContext(sc,Seconds(60))	//Création d'un nouveau StreamingContext
 
 /*
 *	Ici on rentre les clés qu'on obtient avec son compte de développeur twitter
@@ -36,34 +39,17 @@ oauthConf.setOAuthConsumerKey(ConsumerKey)
 oauthConf.setOAuthConsumerSecret(ConsumerSecret)
 
 var auth = new twitter4j.auth.OAuthAuthorization(oauthConf.build()) // Création de l'objet pour créer le stream plus tard
-var filter = Array( 
-"#OnSenFoutDeLanniversaireDeNabilla"
-,"Pretty Woman"
-,"#ASKJNSPJ"
-,"#GHAEQG"
-,"#TesMocheCommePoppiGamesSi"
-,"#TwwetJaune");// On recherche les Tweets qui contiennent les mots cles de filter
-
-
-var fields = Array("text")
+var filter = Array("#TheVoice");// On recherche les Tweets qui contiennent les mots cles de filter
 var jssc = new JavaStreamingContext(ssc)			// Création d'un JavaStreamingContext ... Me demandez pas pourquoi
 var tweets = TwitterUtils.createStream(jssc,auth,filter,StorageLevel.MEMORY_ONLY) //Création du flux
 
 //tweets.dstream.map(x=> x.getCreatedAt+";"+x.getText.replace(";",",").replace('\n',' ')).saveAsTextFiles("Tweets/tweet/tweet")
-tweets.dstream.map(x=> x.getCreatedAt).map(x=> (x,1)).reduceByKey((x,y)=>x+y).saveAsTextFiles("Tweets/reduce/reduce")
+// Pour récupérer les hashtag => +","+x.getText.split(" ").filter(_.startsWith("#")).mkString(" ")
 
-def startStreamingFor(jssc:JavaStreamingContext,t:Int):Unit = {
-	jssc.start 	//-> Il faut rediriger le flux vers un fichier ( on pourrait même enregistrer sur le hdfs ... 
-	Thread.sleep(t) // On attend 5 seconde ...
-	jssc.stop(stopSparkContext=false)	//-> On arrête le flux	*/
-	}
-	
-jssc.start	
-Thread.sleep(60000)
-jssc.stop(stopSparkContext=false)
+// On aurait pu récupérer les secondes comem ceci => +":"+x.getCreatedAt.getSeconds
+tweets.dstream.map(x=> x.getCreatedAt.getHours+":"+x.getCreatedAt.getMinutes).map(x=> (x,1)).reduceByKey((x,y)=>x+y).saveAsTextFiles("Tweets/reduce/TheVoice")
 
-val file = sc.textFile("Tweets/reduce/reduce*")
-
+jssc.start
 
 	
 	
