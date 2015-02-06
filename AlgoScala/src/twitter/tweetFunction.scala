@@ -39,3 +39,12 @@ import org.apache.spark.rdd._
 	
 	return chaineRet
 	}
+	
+	
+	
+def startStreamingFor(jssc:JavaStreamingContext,t:Int):Unit = {
+	jssc.start 	//-> Il faut rediriger le flux vers un fichier ( on pourrait même enregistrer sur le hdfs ... 
+	Thread.sleep(t) // On attend t seconde ...
+	jssc.stop(stopSparkContext=false)	//-> On arrête le flux	*/
+	}
+	
