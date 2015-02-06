@@ -55,4 +55,17 @@ object Csv {
 
     nom + ".csv"
   }
+
+  def creerKmeans(nom: String, chemin: String, tab: Array[(Int, Array[Double])]): String = {
+    val writer = new PrintWriter(new File(chemin + nom + ".csv"))
+    writer.write("centre,abscisse,ordonnee\n")
+
+    for (i <- 0 to tab.length-1) {
+      writer.write(tab(i)._1 + "," + tab(i)._2.apply(0) + "," + tab(i)._2(1) + "\n")
+    }
+
+    writer.close()
+
+    nom + ".csv"
+  }
 }

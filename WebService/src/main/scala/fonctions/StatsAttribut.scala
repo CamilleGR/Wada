@@ -2,12 +2,11 @@ package fonctions
 
 import java.text.DecimalFormat
 
-import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SQLContext
 import org.apache.spark.SparkContext._
 
-import org.apache.spark.mllib.clustering.KMeans
+import org.apache.spark.mllib.clustering.{KMeansModel, KMeans}
 import org.apache.spark.mllib.linalg.Vectors
 
 object StatsAttribut {
@@ -186,12 +185,5 @@ object StatsAttribut {
     val data = sqlContext.sql("SELECT " + col1 + ", min(" + col2 + "), max(" + col2 + "), avg(" + col2 + ") FROM " + array + where + " GROUP BY " + col1 + " ORDER BY " + col1).map(t => (t(0).toString, (t(1).toString.toDouble, t(2).toString.toDouble, t(3).toString.toDouble)))
 
     return data.collect()
-  }
-
-  def KmeansClusters(data:RDD[Array[String]], numClusters: Int, numIterations: Int): Unit = {
-    val parsedData = data.map(s => Vectors.dense(s.map(_.toDouble))).cache()
-    val clusters = KMeans.train(parsedData, numClusters, numIterations)
-
-    return clusters.clusterCenters
   }
 }
