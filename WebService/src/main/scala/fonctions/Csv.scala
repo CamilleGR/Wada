@@ -30,7 +30,7 @@ object Csv {
    tab:Array[(String,Float)]  -> tableau de stats
    @returns: String           -> Chemin du fichier crée
    */
-   def creer(nom: String, chemin: String, tab: Array[(String, Int)]): String = {
+   def creerStats(nom: String, chemin: String, tab: Array[(String, Int)]): String = {
      val writer = new PrintWriter(new File(chemin + nom + ".csv")) //On crée un fichier csv en Scala
      writer.write("label,value\n")  //On écrit son entête
 
@@ -43,7 +43,7 @@ object Csv {
      nom + ".csv"
    }
 
-  def creer(nom: String, chemin: String, tab: Array[(String, (Double, Double, Double))]): String = {
+  def creerGraphe(nom: String, chemin: String, tab: Array[(String, (Double, Double, Double))]): String = {
     val writer = new PrintWriter(new File(chemin + nom + ".csv"))
     writer.write("label,min,max,moy\n")
 

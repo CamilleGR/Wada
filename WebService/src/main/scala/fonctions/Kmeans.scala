@@ -5,9 +5,6 @@ import org.apache.spark.mllib.linalg.{Vector, Vectors, Matrix}
 import org.apache.spark.mllib.linalg.distributed.RowMatrix
 import org.apache.spark.rdd.RDD
 
-/**
- * Created by rtasbishop on 06/02/15.
- */
 object Kmeans {
   def convertRddToDouble(rdd: RDD[Array[String]]): RDD[Array[Double]] = {
     val nbCol = rdd.first.length
@@ -15,15 +12,9 @@ object Kmeans {
     for(i <- 0 to nbCol-1) {
       if (!Colonne.numerique(rdd,i)) {
         val tab = rdd.map(r => r(i)).distinct().collect()
-        println("\n\n\n\n\n\n\n\n\n\n\n")
-        tab.foreach(x => print(x + " | "))
-        println("\n\n\n\n\n\n\n\n\n\n\n")
         rddR = rddR.map(r => remplaceString(r, tableauDistinct(tab, r(i)), i))
       }
     }
-    println("\n\n\n\n\n\n\n\n\n\n\n")
-    println(rddR.first().foreach(x => print(x + " | ")))
-    println("\n\n\n\n\n\n\n\n\n\n\n")
     return rddR.map(r => r.map(s => s.toDouble))
   }
 
@@ -37,9 +28,6 @@ object Kmeans {
   def remplaceString(tab: Array[String], valeur: String, indice: Int): Array[String] = {
     var tabR = tab.clone()
     tabR.update(indice, valeur)
-    println("\n\n\n\n\n\n\n\n\n\n\n")
-    tabR.foreach(x => print(x + " | "))
-    println("\n\n\n\n\n\n\n\n\n\n\n")
     return tabR
   }
 

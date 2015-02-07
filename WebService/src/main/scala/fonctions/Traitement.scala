@@ -119,7 +119,7 @@ class Traitement {
     }
     else
       throw new Exception()
-    val nomFichierStats = Csv.creer(nomFichier + "_" + attribut, cheminCible, tab) //On crée le fichier CSV à renvoyer à la webApp
+    val nomFichierStats = Csv.creerStats(nomFichier + "_" + attribut, cheminCible, tab) //On crée le fichier CSV à renvoyer à la webApp
 
     return Array[String](nomFichierStats, nbRow.toString, stats, moyenneSegment, mediane)
   }
@@ -162,7 +162,7 @@ class Traitement {
     }
     else
       throw new Exception()
-    val nomFichierStats = Csv.creer(nomFichier + " " + attribut1 + "_" + attribut2, cheminCible, tab) //On crée le fichier CSV à renvoyer à la webApp
+    val nomFichierStats = Csv.creerGraphe(nomFichier + " " + attribut1 + "_" + attribut2, cheminCible, tab) //On crée le fichier CSV à renvoyer à la webApp
 
     return Array[String](nomFichierStats, nbRow.toString, stats, mediane)
   }
