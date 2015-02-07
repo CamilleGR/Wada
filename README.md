@@ -1,31 +1,12 @@
 ![BD.png](http://cgerin-roze.fr/img/Wada.png)
 
 
+Wada est un projet mené par des étudiants de l'Université Paris 13. 
+Le but de ce projet est de créer une application web permettant d'analyser des 'Big Datas'.
+Les données sont stockées sur un cluster HDFS et notre application doit permettre de visualiser et faire des statistiques sur ces données, pour cela notre application est divisé en 2 parties : 
+- La partie Frontend qui est une page web permettant de formuler les requêtes à notre web Service.
+- La partie Backend qui est un web service qui instancie des jobs spark sur les données.
 
-Bonsoir à tous !
- Ici on peut travailler tous ensemble sur notre même projet.
-vous pouvez trouver un tuto sur git juste ici : http://openclassrooms.com/courses/gerez-vos-codes-source-avec-git
-
-sinon si vous le voulez vous pouvez tout simplement vous servir de l'interface web de BitBucket mais faites attentions à ce que votre code soit bon avant de le commit et de le push ! Sinon vous allez tout casser ... 
-
-Quelques règles à suivre : 
-
-**SI VOUS N'ÊTES PAS SURE DE VOTRE COUP, CRÉEZ UNE NOUVELLE BRANCHE**
--> Avant de commencer à travailler je fais une pull request
-
--> Quand je fais une modification importante, je commit et surtout je précise dans le message ce que j'ai modifié !
-
--> Quand j'ai terminé de travailler, je push mon travail
-
--> Donner des noms explicite aux fichiers
-
--> Pensez à trier le travail en dossier, sinon, on va mourir ... 
-
-Si vous respectez ces règles tous devrait bien se passer ;) 
-Bon courage !
-
-( Voici un petit schéma qui résume un peu le projet, cependant il se peut qu'il y ait 2 ou 3 modifications à faire ) 
-
-Si vous avez des questions à me poser vous pouvez toujours les poser sur la mailing list ! Bon courage à tous !
+On peut donc schématiser l'application comme ceci : 
 
 ![Schema.jpg](http://www.cgerin-roze.fr/img/Schema.jpg)
