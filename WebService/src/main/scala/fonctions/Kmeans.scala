@@ -44,13 +44,26 @@ object Kmeans {
     return clusters
   }
 
+  def translation(indice: Int, nb: Double, array: Array[Double]): Array[Double] = {
+    val tab = array.clone
+    val newVal = nb + array(indice)
+    tab.update(indice, newVal)
+    return tab
+  }
+
   def kmeans(rdd: RDD[Array[String]], numClusters: Int, numIterations: Int): Array[(Int, Array[Double])]= {
     val data = convertRddToDouble(rdd)
 
     val dataProjected = projectionData(data)
     val centres = centresClusters(dataProjected, numClusters, numIterations)
 
-    val array = dataProjected.map(r => (centres.predict(r),r.toArray)).sortBy(r => r._1)
+    var array = dataProjected.map(r => (centres.predict(r),r.toArray)).sortBy(r => r._1)
+    for (i <- 0 to 1) {
+      val min = array.map(r => r._2(i)).reduce((x,y) => Math.min(x,y))
+      val max = array.map(r => r._2(i)).reduce((x,y) => Math.max(x,y))
+      val valeur = (max-min)/2 -max
+      array = array.map(r => (r._1, translation(i, valeur, r._2)))
+    }
 
     return array.collect()
   }
