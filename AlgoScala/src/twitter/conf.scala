@@ -47,9 +47,11 @@ var tweets = TwitterUtils.createStream(jssc,auth,filter,StorageLevel.MEMORY_ONLY
 // Pour récupérer les hashtag => +","+x.getText.split(" ").filter(_.startsWith("#")).mkString(" ")
 
 // On aurait pu récupérer les secondes comem ceci => +":"+x.getCreatedAt.getSeconds
-tweets.dstream.map(x=> x.getCreatedAt.getHours+":"+x.getCreatedAt.getMinutes).map(x=> (x,1)).reduceByKey((x,y)=>x+y).saveAsTextFiles("Tweets/reduce/TheVoice")
+tweets.dstream.map(x=> x.getCreatedAt.getHours+":"+x.getCreatedAt.getMinutes + ";" + x.getText.split(" ").filter(_.startsWith("#")).mkString(" ").replace(";","")).saveAsTextFiles("/media/BIOHAZARD/WADA/StreamTheVoice/TheVoice")
 
 jssc.start
+Thread.sleep(1800000)
+jssc.stop
 
 	
 	
