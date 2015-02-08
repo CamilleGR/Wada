@@ -4,6 +4,7 @@ import org.apache.spark.mllib.clustering.{KMeans, KMeansModel}
 import org.apache.spark.mllib.linalg.{Vector, Vectors, Matrix}
 import org.apache.spark.mllib.linalg.distributed.RowMatrix
 import org.apache.spark.rdd.RDD
+import org.apache.spark.sql.SchemaRDD
 
 object Kmeans {
   def convertRddToDouble(rdd: RDD[Array[String]]): RDD[Array[Double]] = {
@@ -44,9 +45,9 @@ object Kmeans {
     return clusters
   }
 
-  def translation(indice: Int, nb: Double, array: Array[Double]): Array[Double] = {
+  def simplificationVal(indice: Int, div: Double, add: Double, array: Array[Double]): Array[Double] = {
     val tab = array.clone
-    val newVal = nb + array(indice)
+    val newVal = (add + array(indice))/div
     tab.update(indice, newVal)
     return tab
   }
@@ -61,8 +62,8 @@ object Kmeans {
     for (i <- 0 to 1) {
       val min = array.map(r => r._2(i)).reduce((x,y) => Math.min(x,y))
       val max = array.map(r => r._2(i)).reduce((x,y) => Math.max(x,y))
-      val valeur = (max-min)/2 -max
-      array = array.map(r => (r._1, translation(i, valeur, r._2)))
+      val valeurAdd = (max-min)/2 -max
+      array = array.map(r => (r._1, simplificationVal(i, valeurAdd, (max/10), r._2)))
     }
 
     return array.collect()
