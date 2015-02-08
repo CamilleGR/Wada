@@ -45,7 +45,7 @@ trait WebService extends HttpService {
       post {
         formFields("nomFichier") { nomFichier =>
           //Dans le cas d'une demande de la liste des attributs, on renvoit en GET les attributs separés par des virgules, ainsi que le nom du fichier
-          redirect({lienCible} + "sondage.php?attributs=" + {traitement.listeAttributs(nomFichier)} + "&nomFichier=" + {nomFichier}, StatusCodes.PermanentRedirect)
+          redirect({lienCible} + "?attributs=" + {traitement.listeAttributs(nomFichier)} + "&nomFichier=" + {nomFichier}, StatusCodes.PermanentRedirect)
         }
       }
     } ~
@@ -54,19 +54,27 @@ trait WebService extends HttpService {
         //On définie ce qui est envoyé SI on utilise la méthode POST
         formFields("nomFichier", "attribut", "segment".as[Int], "filtre") { (nomFichier, attribut, segment, filtre) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
           //Dans le cas d'une demande des stats, on renvoit en GET le chemin du fichier crée contenant les stats, ainsi que le nombre de tuples lus, et (si la colonne est numerique) le minimum, le maximum, la moyenne
-          val fichier = traitement.traitementPost(cheminSource, cheminCible, nomFichier, attribut, segment, filtre)
+          val fichier = traitement.traitementStats(cheminSource, cheminCible, nomFichier, attribut, segment, filtre)
           val stats = if (fichier(2) != "") "&stats=" + fichier(2) else ""
           val moy = (if (fichier(3) != "") "&moy=" + fichier(3) else "").replace(" ", "+")
           val mediane = (if (fichier(4) != "") "&med=" + fichier(4) else "")
-          redirect({lienCible} + "graphe.php?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + {stats} + {moy} + {mediane}, StatusCodes.PermanentRedirect)
+          redirect({lienCible} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + {stats} + {moy} + {mediane}, StatusCodes.PermanentRedirect)
         }
       }
     } ~
     path("graph") {
       post {
         formFields("nomFichier", "attribut1", "attribut2", "filtre") { (nomFichier, attribut1, attribut2, filtre) =>
-          val fichier = traitement.traitementPost(cheminSource, cheminCible, nomFichier, attribut1, attribut2, filtre)
+          val fichier = traitement.traitementGraphe(cheminSource, cheminCible, nomFichier, attribut1, attribut2, filtre)
           redirect({lienCible} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + "&stats=" + {fichier(2)} + "&med=" + {fichier(3)}, StatusCodes.PermanentRedirect)
+        }
+      }
+    } ~
+    path("kmeans") {
+      post {
+        formFields("nomFichier", "nbClusters".as[Int], "filtre") { (nomFichier, nbClusters, filtre) =>
+          val fichier = traitement.traitementKmeans(cheminSource, cheminCible, nomFichier, nbClusters, filtre)
+          redirect({lienCible} + "?fichier=" + {fichier}, StatusCodes.PermanentRedirect)
         }
       }
     }

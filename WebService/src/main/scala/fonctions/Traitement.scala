@@ -1,7 +1,9 @@
 package fonctions
 
+import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SQLContext
-import org.apache.spark.{SparkContext, SparkConf}
+import org.apache.spark.sql.catalyst.expressions.Row
+import org.apache.spark.{sql, SparkContext, SparkConf}
 
 class Traitement {
   val conf = new SparkConf().setAppName("test").setMaster("local")
@@ -71,7 +73,7 @@ class Traitement {
                              le nombre de lignes
                              les stats (min,max,moyenne) (si colonne de valeurs numeriques)
   */
-  def traitementPost(cheminSource: String, cheminCible: String, nomFichier: String, attribut: String, segment: Int, filtre: String): Array[String] = {
+  def traitementStats(cheminSource: String, cheminCible: String, nomFichier: String, attribut: String, segment: Int, filtre: String): Array[String] = {
     var tab = new Array[(String, Int)](0)
     var stats = ""
     var nbRow:Long = 0
@@ -124,7 +126,7 @@ class Traitement {
     return Array[String](nomFichierStats, nbRow.toString, stats, moyenneSegment, mediane)
   }
 
-  def traitementPost(cheminSource: String, cheminCible: String, nomFichier: String, attribut1: String, attribut2: String, filtre: String): Array[String] = {
+  def traitementGraphe(cheminSource: String, cheminCible: String, nomFichier: String, attribut1: String, attribut2: String, filtre: String): Array[String] = {
     var tab = new Array[(String, (Double, Double, Double))](0)
     var stats = ""
     var nbRow:Long = 0
@@ -162,8 +164,43 @@ class Traitement {
     }
     else
       throw new Exception()
-    val nomFichierStats = Csv.creerGraphe(nomFichier + " " + attribut1 + "_" + attribut2, cheminCible, tab) //On crée le fichier CSV à renvoyer à la webApp
+    val nomFichierStats = Csv.creerGraphe(nomFichier + "_" + attribut1 + "_" + attribut2, cheminCible, tab) //On crée le fichier CSV à renvoyer à la webApp
 
     return Array[String](nomFichierStats, nbRow.toString, stats, mediane)
+  }
+
+  def traitementKmeans(cheminSource: String, cheminCible: String, nomFichier: String, nbClusters: Int, filtre: String): String = {
+    var textFile: RDD[Array[String]] = null
+
+    if (Fichier.extension(nomFichier)=="csv" || Fichier.extension(nomFichier)=="tsv") {
+      val data = sc.textFile(cheminSource + nomFichier)
+      val sep = Csv.separateur(data)
+      textFile = data.map(_.split(sep))
+      if (!filtre.equals("")) textFile = Filtre.filtreCSV(textFile, filtre)
+      else {
+        val header = textFile.first()
+        textFile = textFile.filter(line => !line.apply(0).equals(header.apply(0)))
+      }
+    }
+    else if (Fichier.extension(nomFichier)=="json") {
+      var data = sqlContext.jsonFile(cheminSource + nomFichier)
+      if (!filtre.equals("")) {
+        val filtreTable = Filtre.filtreJson(sqlContext, data, filtre)
+        data.registerTempTable("data")
+        data = sqlContext.sql("SELECT * FROM data WHERE " + filtreTable)
+      }
+      textFile = data.map(r => {
+        val array = new Array[String](r.length)
+        for(i <- 0 to r.length) {
+          array.update(i, r.getString(i))
+        }
+        array
+      })
+    }
+    else
+      throw new Exception()
+    val tab = Kmeans.kmeans(textFile, nbClusters, 0)
+    val nomFichierKmeans = Csv.creerKmeans(nomFichier + "_kmeans", cheminCible, tab)
+    return nomFichierKmeans
   }
 }
