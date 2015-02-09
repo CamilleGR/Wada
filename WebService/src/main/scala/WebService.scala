@@ -77,7 +77,18 @@ trait WebService extends HttpService {
           redirect({lienCible} + "?fichier=" + {fichier}, StatusCodes.PermanentRedirect)
         }
       }
-    }
+    } ~
+    path("evoTweets"){ // Pour regarder l'évolution des tweets
+    	/*post {
+    		formFields("fichiers","temps"){ (action,hashtags,temps) =>
+    	}
+    }*/
+  }~
+  path("stream"){ // Pour lancer ou arrêter un flux
+  /*post {
+    		formFields("action","hashtags","temps"){ (action,hashtags,temps) =>
+    	}
+    }*/
   }
 }
 
