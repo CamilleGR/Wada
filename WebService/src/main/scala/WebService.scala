@@ -77,6 +77,11 @@ trait WebService extends HttpService {
           redirect({lienCible} + "?fichier=" + {fichier}, StatusCodes.PermanentRedirect)
         }
       }
+    } ~
+    path("tweets"){
+    	/*post {
+    		formFields("action","hashtags","temps"){ (action,hashtags,temps) =>
+    	*/}
     }
   }
 }
