@@ -34,10 +34,12 @@ trait WebService extends HttpService {
 
   val servConf = new ServConfig
   servConf.conf
-  
+
   val traitement = new Traitement
-  val cheminCible = servConf.cheminCible//Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
-  val lienCible = servConf.lienCible //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
+  val cheminCible = servConf.cheminCible
+  //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
+  val lienCible = servConf.lienCible
+  //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
   val cheminSource = servConf.cheminSource //Le chemin ou serons récupérés les fichiers Big-Data
 
   val myRoute = {
@@ -49,46 +51,48 @@ trait WebService extends HttpService {
         }
       }
     } ~
-    path("stats") {
-      post {
-        //On définie ce qui est envoyé SI on utilise la méthode POST
-        formFields("nomFichier", "attribut", "segment".as[Int], "filtre") { (nomFichier, attribut, segment, filtre) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
-          //Dans le cas d'une demande des stats, on renvoit en GET le chemin du fichier crée contenant les stats, ainsi que le nombre de tuples lus, et (si la colonne est numerique) le minimum, le maximum, la moyenne
-          val fichier = traitement.traitementStats(cheminSource, cheminCible, nomFichier, attribut, segment, filtre)
-          val stats = if (fichier(2) != "") "&stats=" + fichier(2) else ""
-          val moy = (if (fichier(3) != "") "&moy=" + fichier(3) else "").replace(" ", "+")
-          val mediane = (if (fichier(4) != "") "&med=" + fichier(4) else "")
-          redirect({lienCible} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + {stats} + {moy} + {mediane}, StatusCodes.PermanentRedirect)
+      path("stats") {
+        post {
+          //On définie ce qui est envoyé SI on utilise la méthode POST
+          formFields("nomFichier", "attribut", "segment".as[Int], "filtre") { (nomFichier, attribut, segment, filtre) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
+            //Dans le cas d'une demande des stats, on renvoit en GET le chemin du fichier crée contenant les stats, ainsi que le nombre de tuples lus, et (si la colonne est numerique) le minimum, le maximum, la moyenne
+            val fichier = traitement.traitementStats(cheminSource, cheminCible, nomFichier, attribut, segment, filtre)
+            val stats = if (fichier(2) != "") "&stats=" + fichier(2) else ""
+            val moy = (if (fichier(3) != "") "&moy=" + fichier(3) else "").replace(" ", "+")
+            val mediane = (if (fichier(4) != "") "&med=" + fichier(4) else "")
+            redirect({lienCible} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + {stats} + {moy} + {mediane}, StatusCodes.PermanentRedirect)
+          }
         }
-      }
-    } ~
-    path("graph") {
-      post {
-        formFields("nomFichier", "attribut1", "attribut2", "filtre") { (nomFichier, attribut1, attribut2, filtre) =>
-          val fichier = traitement.traitementGraphe(cheminSource, cheminCible, nomFichier, attribut1, attribut2, filtre)
-          redirect({lienCible} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + "&stats=" + {fichier(2)} + "&med=" + {fichier(3)}, StatusCodes.PermanentRedirect)
+      } ~
+      path("graph") {
+        post {
+          formFields("nomFichier", "attribut1", "attribut2", "filtre") { (nomFichier, attribut1, attribut2, filtre) =>
+            val fichier = traitement.traitementGraphe(cheminSource, cheminCible, nomFichier, attribut1, attribut2, filtre)
+            redirect({lienCible} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + "&stats=" + {fichier(2)} + "&med=" + {fichier(3)}, StatusCodes.PermanentRedirect)
+          }
         }
-      }
-    } ~
-    path("kmeans") {
-      post {
-        formFields("nomFichier", "nbClusters".as[Int], "filtre") { (nomFichier, nbClusters, filtre) =>
-          val fichier = traitement.traitementKmeans(cheminSource, cheminCible, nomFichier, nbClusters, filtre)
-          redirect({lienCible} + "?fichier=" + {fichier}, StatusCodes.PermanentRedirect)
+      } ~
+      path("kmeans") {
+        post {
+          formFields("nomFichier", "nbClusters".as[Int], "filtre") { (nomFichier, nbClusters, filtre) =>
+            val fichier = traitement.traitementKmeans(cheminSource, cheminCible, nomFichier, nbClusters, filtre)
+            redirect({lienCible} + "?fichier=" + {fichier} + "&nbCentres=" + {nbClusters}, StatusCodes.PermanentRedirect)
+          }
         }
-      }
-    } ~
-    path("evoTweets"){ // Pour regarder l'évolution des tweets
-    	/*post {
-    		formFields("fichiers","temps"){ (action,hashtags,temps) =>
-    	}
-    }*/
-  }~
-  path("stream"){ // Pour lancer ou arrêter un flux
-  /*post {
-    		formFields("action","hashtags","temps"){ (action,hashtags,temps) =>
-    	}
-    }*/
+      } /*~
+      path("evoTweets") {
+        // Pour regarder l'évolution des tweets
+        /*post {
+          formFields("fichiers","temps"){ (action,hashtags,temps) =>
+        }
+      }*/
+      } ~
+      path("stream") {
+        // Pour lancer ou arrêter un flux
+        /*post {
+              formFields("action","hashtags","temps"){ (action,hashtags,temps) =>
+            }
+          }*/
+      }*/
   }
 }
-
