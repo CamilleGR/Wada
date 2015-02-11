@@ -1,4 +1,4 @@
-import java.util._
+/*import java.util._
 import org.apache.spark._
 import org.apache.spark.rdd.RDD
 import org.apache.spark.rdd._
@@ -26,5 +26,23 @@ def evolutionParTranche(sc:SparkContext, tranche:Int,  array:RDD[(String,Int)]):
 			tab+= array.filter(x=> x._1 >= inf && x._1<=sup).map(x => (inf , x._2)).reduceByKey((x , y) => x+y).first
 		}
 	return tab.toArray
-}
+}*/
 
+def evolutionParTrancheOpti(sc:SparkContext, tranche:Int, fileName:String): Array[(String,Int)] = {
+
+	var c = Calendar.getInstance();
+	var tab = ArrayBuffer.empty[(String,Int)]
+	var file = sc.textFile(fileName).map(x => x.split(";")(0)).filter(x=> x matches """[0-9]{2}:[0-9]{2}""")
+	var min = file.min
+	var max = file.max
+	c.set(Calendar.HOUR_OF_DAY,min.split(":")(0).toInt)
+	c.set(Calendar.MINUTE,min.split(":")(1).toInt)
+		while(c.get(HOUR_OF_DAY)+":"+c.get(MINUTE)<=max){
+			var inf = c.get(HOUR_OF_DAY)+":"+c.get(MINUTE)
+			c.add(MINUTE,tranche)
+			var sup = c.get(HOUR_OF_DAY)+":"+c.get(MINUTE)
+			var count = file.filter(line => inf <= line &&line<=sup).count.toInt
+			tab :+= (inf,count)
+		}
+		return tab.toArray
+}
