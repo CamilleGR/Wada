@@ -28,20 +28,3 @@ def evolutionParTranche(sc:SparkContext, tranche:Int,  array:RDD[(String,Int)]):
 	return tab.toArray
 }
 
-def evolutionParTranche2(sc:SparkContext, tranche:Int, fileName:String): Array[(String,Int)] = {
-
-	var c = Calendar.getInstance();
-	var tab = ArrayBuffer.empty[(String,Int)]
-	var file = sc.textFile(fileName).map(x => x.split(";")(0)).filter(x=> x matches """[0-9]{2}:[0-9]{2}""")
-	var min = file.min
-	var max = file.max
-	c.set(Calendar.HOUR_OF_DAY,min.split(":")(0).toInt)
-	c.set(Calendar.MINUTE,min.split(":")(1).toInt)
-		while(c.get(HOUR_OF_DAY)+":"+c.get(MINUTE)<=max){
-			var inf = c.get(HOUR_OF_DAY)+":"+c.get(MINUTE)
-			c.add(MINUTE,tranche)
-			var sup = c.get(HOUR_OF_DAY)+":"+c.get(MINUTE)
-			tab append file.filter(line => inf <= line &&line<=sup).map(x => (inf+"-"+sup,1)).reduceByKey((x,y)=>x+y).first
-		}
-		return tab.toArray
-}
