@@ -1,10 +1,11 @@
 package fonctions
 
+import java.text.DecimalFormat
+
 import org.apache.spark.mllib.clustering.{KMeans, KMeansModel}
 import org.apache.spark.mllib.linalg.{Vector, Vectors, Matrix}
 import org.apache.spark.mllib.linalg.distributed.RowMatrix
 import org.apache.spark.rdd.RDD
-import org.apache.spark.sql.SchemaRDD
 
 object Kmeans {
   def convertRddToDouble(rdd: RDD[Array[String]]): RDD[Array[Double]] = {
@@ -47,7 +48,8 @@ object Kmeans {
 
   def simplificationVal(indice: Int, div: Double, add: Double, array: Array[Double]): Array[Double] = {
     val tab = array.clone
-    val newVal = (add + array(indice))/div
+    val formatter = new DecimalFormat("#.###")
+    val newVal = formatter.format((add + array(indice))/div).replace(',','.').toDouble
     tab.update(indice, newVal)
     return tab
   }
