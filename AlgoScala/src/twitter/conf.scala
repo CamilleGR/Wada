@@ -48,11 +48,11 @@ var tweets = TwitterUtils.createStream(jssc,auth,filter,StorageLevel.MEMORY_ONLY
 
 // On aurait pu récupérer les secondes comem ceci => +":"+x.getCreatedAt.getSeconds
 tweets.dstream.map(x=> x.getCreatedAt.getHours+":"+x.getCreatedAt.getMinutes + ";" + x.getText.split(" ").filter(_.startsWith("#")).mkString(" ").replace(";","")).saveAsTextFiles("/media/BIOHAZARD/WADA/StreamTheVoice/TheVoice")
-
+/*
 jssc.start
-Thread.sleep(1800000)
+Thread.sleep(18000000)	// on attend 5h avant d'arreter le stream
 jssc.stop
-
+*/
 	
 	
 	
