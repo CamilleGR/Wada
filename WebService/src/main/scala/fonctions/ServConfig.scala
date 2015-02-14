@@ -7,10 +7,10 @@ import java.io._
 
 class ServConfig{
 
-  var cheminCible = "../SiteIntegration/" //Chemin vers lequel sera envoyé le csv generé
+  var cheminCible = "WebService/" //Chemin vers lequel sera envoyé le csv generé
   var lienCibleAttributs = "http://localhost/BD/SiteIntegration/sondage.php" //Le lien vers lequel sera envoyé le get contenant la liste des attributs
   var lienCibleStats = "http://localhost/BD/SiteIntegration/graphe.php" //Le lien vers lequel sera envoyé le get contenant le nom du fichier
-  var cheminSource = "../scripts/" //Le chemin ou serons récupérés les fichiers Big-Data
+  var cheminSource = "scripts/" //Le chemin ou serons récupérés les fichiers Big-Data
 
   def conf():Unit = {
 

@@ -62,8 +62,8 @@ object Kmeans {
     for (i <- 0 to 1) {
       val min = array.map(r => r._2(i)).reduce((x,y) => Math.min(x,y))
       val max = array.map(r => r._2(i)).reduce((x,y) => Math.max(x,y))
-      val valeurAdd = (max-min)/2 -max
-      array = array.map(r => (r._1, simplificationVal(i, valeurAdd, (max/10), r._2)))
+      val valeurAdd = (max-min)/2
+      array = array.map(r => (r._1, simplificationVal(i, valeurAdd/10, valeurAdd-max, r._2)))
     }
 
     return array.collect()

@@ -191,8 +191,8 @@ class Traitement {
       }
       textFile = data.map(r => {
         val array = new Array[String](r.length)
-        for(i <- 0 to r.length) {
-          array.update(i, r.getString(i))
+        for(i <- 0 to r.length-1) {
+          array.update(i, r.apply(i).toString)
         }
         array
       })
