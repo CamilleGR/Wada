@@ -62,7 +62,7 @@
                 	echo "<p> max : $stats[1]</p>";
                 	echo "<p> moy : $stats[2]</p>";
             	}
-            	if(isset($_GET["stats"])) {
+            	if(isset($_GET["kean"])) {
             		$kmean = explode(";", $_GET["kmean"]);
             		echo "<h3> Kmean </h3>";
             		echo '<p>';

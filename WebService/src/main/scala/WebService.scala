@@ -36,18 +36,18 @@ trait WebService extends HttpService {
   servConf.conf
 
   val traitement = new Traitement
-  val cheminCible = servConf.cheminCible
-  //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
-  val lienCible = servConf.lienCible
-  //Le lien vers lequel sera envoyé le get contenant le nom du fichier/la liste des attributs
-  val cheminSource = servConf.cheminSource //Le chemin ou serons récupérés les fichiers Big-Data
+
+  var cheminCible = servConf.cheminCible //Chemin vers lequel sera envoyé le csv generé
+  var lienCibleAttributs = servConf.lienCibleAttributs //Le lien vers lequel sera envoyé le get contenant la liste des attributs
+  var lienCibleStats = servConf.lienCibleStats //Le lien vers lequel sera envoyé le get contenant le nom du fichier
+  var cheminSource = servConf.cheminSource //Le chemin ou serons récupérés les fichiers Big-Data
 
   val myRoute = {
     path("attributs") {
       post {
         formFields("nomFichier") { nomFichier =>
           //Dans le cas d'une demande de la liste des attributs, on renvoit en GET les attributs separés par des virgules, ainsi que le nom du fichier
-          redirect({lienCible} + "?attributs=" + {traitement.listeAttributs(nomFichier)} + "&nomFichier=" + {nomFichier}, StatusCodes.PermanentRedirect)
+          redirect({lienCibleAttributs} + "?attributs=" + {traitement.listeAttributs(nomFichier)} + "&nomFichier=" + {nomFichier}, StatusCodes.PermanentRedirect)
         }
       }
     } ~
@@ -60,7 +60,7 @@ trait WebService extends HttpService {
             val stats = if (fichier(2) != "") "&stats=" + fichier(2) else ""
             val moy = (if (fichier(3) != "") "&moy=" + fichier(3) else "").replace(" ", "+")
             val mediane = (if (fichier(4) != "") "&med=" + fichier(4) else "")
-            redirect({lienCible} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + {stats} + {moy} + {mediane}, StatusCodes.PermanentRedirect)
+            redirect({lienCibleStats} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + {stats} + {moy} + {mediane}, StatusCodes.PermanentRedirect)
           }
         }
       } ~
@@ -68,7 +68,7 @@ trait WebService extends HttpService {
         post {
           formFields("nomFichier", "attribut1", "attribut2", "filtre") { (nomFichier, attribut1, attribut2, filtre) =>
             val fichier = traitement.traitementGraphe(cheminSource, cheminCible, nomFichier, attribut1, attribut2, filtre)
-            redirect({lienCible} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + "&stats=" + {fichier(2)} + "&med=" + {fichier(3)}, StatusCodes.PermanentRedirect)
+            redirect({lienCibleStats} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + "&stats=" + {fichier(2)} + "&med=" + {fichier(3)}, StatusCodes.PermanentRedirect)
           }
         }
       } ~
@@ -76,7 +76,7 @@ trait WebService extends HttpService {
         post {
           formFields("nomFichier", "nbClusters".as[Int], "filtre") { (nomFichier, nbClusters, filtre) =>
             val fichier = traitement.traitementKmeans(cheminSource, cheminCible, nomFichier, nbClusters, filtre)
-            redirect({lienCible} + "?fichier=" + {fichier} + "&nbCentres=" + {nbClusters}, StatusCodes.PermanentRedirect)
+            redirect({lienCibleStats} + "?fichier=" + {fichier} + "&nbCentres=" + {nbClusters}, StatusCodes.PermanentRedirect)
           }
         }
       } /*~

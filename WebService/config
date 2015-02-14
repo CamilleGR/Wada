@@ -4,5 +4,6 @@
     écrire sans problème entre les lignes, mais surtout pas après votre chemin
 
 CHEMIN_CIBLE=../SiteIntegration/
-LIEN_CIBLE=http://localhost/BD/SiteIntegration/
+LIEN_CIBLE_ATTRIBUTS=http://localhost/BD/SiteIntegration/sondage.php
+LIEN_CIBLE_STATS=http://localhost/BD/SiteIntegration/sondage.php
 CHEMIN_SOURCE=../scripts/
