@@ -91,7 +91,7 @@ object Kmeans {
     var array = new Array[Array[(String, Int)]](0)
 
     for (i <- 0 to numClusters-1) {
-      val lol = StatsAttribut.numerique(seg, col, data.filter(r => centres.predict(Vectors.dense(r)) == i).map(s => s.map(x => x.toString)))
+      array :+= StatsAttribut.numerique(seg, col, data.filter(r => centres.predict(Vectors.dense(r)) == i).map(s => s.map(x => x.toString)))
     }
 
     return array
