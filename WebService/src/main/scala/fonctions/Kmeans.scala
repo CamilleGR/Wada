@@ -83,26 +83,26 @@ object Kmeans {
     return array.collect()
   }
 
-  def kmeansArrayNumerique(rdd: RDD[Array[String]], numClusters: Int, numIterations: Int, seg: Int, col: Int): Array[RDD[(String, Int)]] = {
+  def kmeansArrayNumerique(rdd: RDD[Array[String]], numClusters: Int, numIterations: Int, seg: Int, col: Int): Array[Array[(String, Int)]] = {
     val data = convertRddToDouble(rdd)
 
     val centres = centresClusters(data.map(r => Vectors.dense(r)), numClusters, numIterations)
 
-    var array = new Array[RDD[(String, Int)]](0)
+    var array = new Array[Array[(String, Int)]](0)
 
     for (i <- 0 to numClusters-1) {
-      array :+= StatsAttribut.numerique(seg, col, data.filter(r => centres.predict(Vectors.dense(r)) == i).map(s => s.map(x => x.toString)))
+      val lol = StatsAttribut.numerique(seg, col, data.filter(r => centres.predict(Vectors.dense(r)) == i).map(s => s.map(x => x.toString)))
     }
 
     return array
   }
 
-  def kmeansArrayChaine(rdd: RDD[Array[String]], numClusters: Int, numIterations: Int, seg: Int, col: Int): Array[RDD[(String, Int)]] = {
+  def kmeansArrayChaine(rdd: RDD[Array[String]], numClusters: Int, numIterations: Int, seg: Int, col: Int): Array[Array[(String, Int)]] = {
     val data = convertRddToArrayStringDouble(rdd)
 
     val centres = centresClusters(data.map(r => Vectors.dense(r._2)), numClusters, numIterations)
 
-    var array = new Array[RDD[(String, Int)]](0)
+    var array = new Array[Array[(String, Int)]](0)
 
     for (i <- 0 to numClusters-1) {
       array :+= StatsAttribut.chaine(seg, col, data.filter(r => centres.predict(Vectors.dense(r._2)) == i).map(x => x._1))

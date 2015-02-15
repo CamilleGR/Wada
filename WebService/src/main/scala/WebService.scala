@@ -79,7 +79,15 @@ trait WebService extends HttpService {
             redirect({lienCibleStats} + "?fichier=" + {fichier} + "&nbCentres=" + {nbClusters}, StatusCodes.PermanentRedirect)
           }
         }
-      } /*~
+      } ~
+      path("kmeans_Stats") {
+        post {
+          formField("nomFichier", "nbClusters".as[Int], "attribut", "segment".as[Int], "filtre") { (nomFichier, nbClusters, attribut, segment, filtre) =>
+            val dossier = traitement.traitementKmeansStats(cheminSource, cheminCible, nomFichier, nbClusters, attribut, segment, filtre)
+            redirect({lienCibleStats} + "?dossier=" + {dossier} + "&nbClusters=" + {nbClusters}, StatusCodes.PermanentRedirect)
+          }
+        }
+      }/*~
       path("evoTweets") {
         // Pour regarder l'évolution des tweets
         /*post {

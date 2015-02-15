@@ -112,7 +112,7 @@ class Traitement {
 
       nbRow = Statistiques.nbTuples(sqlContext, "textFile", filtreTable)
 
-      if (Colonne.numerique(sqlContext, textFile, attribut)) {
+      if (Colonne.numerique(textFile, attribut)) {
         tab = StatsAttribut.numerique(sqlContext, segment, attribut, "textFile", filtreTable) // <- Si c'est un Réel on execute segmentNum
         stats = Statistiques.otherStats(sqlContext, "textFile", attribut, filtreTable)
       }
@@ -202,5 +202,51 @@ class Traitement {
     val tab = Kmeans.kmeans(textFile, nbClusters, 0)
     val nomFichierKmeans = Csv.creerKmeans(nomFichier + "_kmeans", cheminCible, tab)
     return nomFichierKmeans
+  }
+
+  def traitementKmeansStats(cheminSource: String, cheminCible: String, nomFichier: String, nbClusters: Int, attribut: String, segment: Int, filtre: String): Array[String] = {
+    var textFile: RDD[Array[String]] = null
+    var col = 0
+
+    if (Fichier.extension(nomFichier)=="csv" || Fichier.extension(nomFichier)=="tsv") {
+      val data = sc.textFile(cheminSource + nomFichier)
+      val sep = Csv.separateur(data)
+      textFile = data.map(_.split(sep))
+      col = Colonne.indiceAttribut(textFile, attribut)
+      if (!filtre.equals("")) textFile = Filtre.filtreCSV(textFile, filtre)
+      else {
+        val header = textFile.first()
+        textFile = textFile.filter(line => !line.apply(0).equals(header.apply(0)))
+      }
+    }
+    else if (Fichier.extension(nomFichier)=="json") {
+      var data = sqlContext.jsonFile(cheminSource + nomFichier)
+      col = Colonne.indiceAttribut(sqlContext, data, attribut)
+      if (!filtre.equals("")) {
+        val filtreTable = Filtre.filtreJson(sqlContext, data, filtre)
+        data.registerTempTable("data")
+        data = sqlContext.sql("SELECT * FROM data WHERE " + filtreTable)
+      }
+      textFile = data.map(r => {
+        val array = new Array[String](r.length)
+        for(i <- 0 to r.length-1) {
+          array.update(i, r.apply(i).toString)
+        }
+        array
+      })
+    }
+    else
+      throw new Exception()
+
+    var tab:Array[Array[(String, Int)]] = null
+    if (Colonne.numerique(textFile, col)) {
+      tab = Kmeans.kmeansArrayNumerique(textFile, nbClusters, 0, segment, col)
+    }
+    else {
+      tab = Kmeans.kmeansArrayChaine(textFile, nbClusters, 0, segment, col)
+    }
+    val nom = Csv.creerMultiplesStats(nomFichier + "_kmeans_" + attribut, cheminCible, tab)
+
+    return Array[String](nom, nbClusters.toString)
   }
 }

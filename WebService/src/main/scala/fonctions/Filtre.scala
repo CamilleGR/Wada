@@ -95,7 +95,7 @@ object Filtre extends Serializable {
 
       if (numLigne>0) req += " AND "			// Si il y a plusieurs filtres
 
-      if(Colonne.numerique(sqlContext, file , j(0)+"")){		// Si le filtre concerne un attribut numérique:
+      if(Colonne.numerique(file , j(0)+"")){		// Si le filtre concerne un attribut numérique:
 
         if(j(1).equals("=")
           ||j(1).equals("!=")

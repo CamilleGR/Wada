@@ -24,6 +24,11 @@ object Colonne {
     return -1
   }
 
+  def indiceAttribut(sQLContext: SQLContext, file: SchemaRDD, attribut: String): Int = {
+    file.registerTempTable("data")
+    val temp = sQLContext.sql("SELECT " + attribut + " FROM data").first.getString(0)
+    return file.first.indexOf(temp)
+  }
   /*
   Fonction POUR FICHIERS CSV/TSV qui permet de savoir si la colonne n'est constitué que de réels ou non
   @args :
@@ -45,7 +50,7 @@ object Colonne {
   col:String            -> Nom de la colonne en question
   @returns: Boolean     -> true si colonne numerique, false sinon
   */
-  def numerique(sqlContext: SQLContext, file: SchemaRDD, col: String) : Boolean = {
+  def numerique(file: SchemaRDD, col: String) : Boolean = {
     if(file.schema.apply(col).dataType.equals(IntegerType)
       || file.schema.apply(col).dataType.equals(DoubleType)
       || file.schema.apply(col).dataType.equals(FloatType)

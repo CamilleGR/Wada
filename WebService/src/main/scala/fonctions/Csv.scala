@@ -68,4 +68,19 @@ object Csv {
 
     nom + ".csv"
   }
+
+  def creerMultiplesStats(nom: String, chemin: String, tab: Array[Array[(String, Int)]]): String = {
+    (new File(chemin + nom)).mkdir
+
+    for (i <- 0 to tab.length-1) {
+      val writer = new PrintWriter(new File(chemin + nom + "/" + i + ".csv"))
+      writer.write("label,value\n")
+      for (j <- 0 to tab(i).length-1) {
+        writer.write(tab(i)(j)._1 + "," + tab(i)(j)._2 + "\n")
+      }
+      writer.close()
+    }
+
+    nom
+  }
 }
