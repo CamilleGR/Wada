@@ -6,16 +6,9 @@ import org.apache.spark.storage.StorageLevel
 import org.apache.spark.streaming.api.java.{JavaReceiverInputDStream, JavaDStream, JavaStreamingContext}
 import org.apache.spark.streaming.dstream.{ReceiverInputDStream, DStream}
 import twitter4j._
-import java.util.Date
-import java.text.SimpleDateFormat
-
-
 :load tweetFunction.scala
 
-/*
-*	Flux configurer en minute => flux qui vise à faire des statistiques sur plus d'une heure
-*/
-val ssc = new StreamingContext(sc,Seconds(60))	//Création d'un nouveau StreamingContext
+val ssc = new StreamingContext(sc,Seconds(1))	//Création d'un nouveau StreamingContext
 
 /*
 *	Ici on rentre les clés qu'on obtient avec son compte de développeur twitter
@@ -39,20 +32,22 @@ oauthConf.setOAuthConsumerKey(ConsumerKey)
 oauthConf.setOAuthConsumerSecret(ConsumerSecret)
 
 var auth = new twitter4j.auth.OAuthAuthorization(oauthConf.build()) // Création de l'objet pour créer le stream plus tard
-var filter = Array("#TheVoice");// On recherche les Tweets qui contiennent les mots cles de filter
+var filter = Array("neige") 				// On recherche les Tweets qui contiennent "JeSuisCharlie"
+var fields = Array("text")
 var jssc = new JavaStreamingContext(ssc)			// Création d'un JavaStreamingContext ... Me demandez pas pourquoi
 var tweets = TwitterUtils.createStream(jssc,auth,filter,StorageLevel.MEMORY_ONLY) //Création du flux
+tweets.print
+//var hashtag => tweets.flatmap(status => status.getText.split(" ").filter(_.startsWith("#")).print
 
-//tweets.dstream.map(x=> x.getCreatedAt+";"+x.getText.replace(";",",").replace('\n',' ')).saveAsTextFiles("Tweets/tweet/tweet")
-// Pour récupérer les hashtag => +","+x.getText.split(" ").filter(_.startsWith("#")).mkString(" ")
 
-// On aurait pu récupérer les secondes comem ceci => +":"+x.getCreatedAt.getSeconds
-tweets.dstream.map(x=> x.getCreatedAt.getHours+":"+x.getCreatedAt.getMinutes + ";" + x.getText.split(" ").filter(_.startsWith("#")).mkString(" ").replace(";","")).saveAsTextFiles("/media/BIOHAZARD/WADA/StreamTheVoice/TheVoice")
-/*
-jssc.start
-Thread.sleep(18000000)	// on attend 5h avant d'arreter le stream
-jssc.stop
-*/
+def startStreamingFor(jssc:JavaStreamingContext,t:Int):Unit = {
+	jssc.start 	//-> Il faut rediriger le flux vers un fichier ( on pourrait même enregistrer sur le hdfs ... 
+	Thread.sleep(t) // On attend 5 seconde ...
+	jssc.stop 	//-> On arrête le flux	*/
+	}
+	
+	
+	
 	
 	
 	
