@@ -14,7 +14,8 @@ object Kmeans {
     for(i <- 0 to nbCol-1) {
       if (!Colonne.numerique(rdd,i)) {
         val tab = rdd.map(r => r(i)).distinct().collect()
-        rddR = rddR.map(r => remplaceString(r, tableauDistinct(tab, r(i)), i))
+        val max = tab.length-1
+        rddR = rddR.map(r => remplaceString(r, indiceTableauDistinct(tab, r(i)), i, max))
       }
     }
     return rddR.map(r => r.map(s => s.toDouble))
@@ -26,22 +27,28 @@ object Kmeans {
     for(i <- 0 to nbCol-1) {
       if (!Colonne.numerique(rdd,i)) {
         val tab = rdd.map(r => r(i)).distinct().collect()
-        rddR = rddR.map(r => (r._1, remplaceString(r._2, tableauDistinct(tab, r._2(i)), i)))
+        val max = tab.length-1
+        rddR = rddR.map(r => (r._1, remplaceString(r._2, indiceTableauDistinct(tab, r._2(i)), i, max)))
       }
     }
     return rddR.map(r => (r._1,r._2.map(s => s.toDouble)))
   }
 
-  def tableauDistinct(tab: Array[String], valeur: String): String = {
+  def indiceTableauDistinct(tab: Array[String], valeur: String): String = {
     for (i <- 0 to tab.length-1) {
       if (valeur.equals(tab(i))) return i + ""
     }
     return "-1"
   }
 
-  def remplaceString(tab: Array[String], valeur: String, indice: Int): Array[String] = {
+  def remplaceString(tab: Array[String], valeur: String, indice: Int, max: Int): Array[String] = {
     var tabR = tab.clone()
-    tabR.update(indice, valeur)
+    tabR.update(indice, if(valeur==max.toString) 1.toString else 0.toString)
+    val nb = valeur.toInt
+    for(i <- 0 to max-1) {
+      if (i==nb) tabR :+= 1.toString
+      else tabR :+=0.toString
+    }
     return tabR
   }
 
