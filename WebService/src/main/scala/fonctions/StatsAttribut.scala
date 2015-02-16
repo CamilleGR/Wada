@@ -22,10 +22,11 @@ object StatsAttribut {
   def tranche(line: Double, min: Double, max: Double, segments: Int): ((Int, String), Int) = {
     val temp = (max-min)/segments
     val formatter = new DecimalFormat("#.##")
-    for (i <- 1 to segments) {
-      if (line.toDouble >= temp*(i-1) && line.toDouble < temp*i) return ((i, formatter.format(min + temp*(i-1)).replace(',','.') + " à " + formatter.format(min + temp*i).replace(',','.')),1)
+    for (i <- 1 to segments) {)
+      if (line.toDouble >= min + temp*(i-1) && line.toDouble < min + temp*i) {
+        return ((i, formatter.format(min + temp*(i-1)).replace(',','.') + " à " + formatter.format(min + temp*i).replace(',','.')),1)
+      }
     }
-
     return ((segments, formatter.format(min + temp*(segments-1)).replace(',','.') + " à " + formatter.format(min + temp*segments).replace(',','.')), 1)
   }
   /*
@@ -38,7 +39,6 @@ object StatsAttribut {
   @returns: Array[(String,Int)] -> Tableau regroupant les valeurs de la colonne $col du taleau $tab en $seg segment
   */
   def numerique(seg: Int, col: Int, tab: RDD[Array[String]]): Array[(String,Int)] = {
-
     if(seg<=0)return null;
 
     var data = tab.map(r => r(col))  //On ne garde que la colonne en question
