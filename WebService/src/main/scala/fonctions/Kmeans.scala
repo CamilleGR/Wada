@@ -22,14 +22,14 @@ object Kmeans {
 
   def convertRddToArrayStringDouble(rdd: RDD[Array[String]]): RDD[(Array[String], Array[Double])] = {
     val nbCol = rdd.first.length
-    var rddR = rdd.map(r => (r,new Array[Double](0)))
+    var rddR = rdd.map(r => (r,r))
     for(i <- 0 to nbCol-1) {
       if (!Colonne.numerique(rdd,i)) {
         val tab = rdd.map(r => r(i)).distinct().collect()
-        rddR = rddR.map(r => (r._1, remplaceString(r._1, tableauDistinct(tab, r._1(i)), i).map(x => x.toDouble)))
+        rddR = rddR.map(r => (r._1, remplaceString(r._2, tableauDistinct(tab, r._2(i)), i)))
       }
     }
-    return rddR
+    return rddR.map(r => (r._1,r._2.map(s => s.toDouble)))
   }
 
   def tableauDistinct(tab: Array[String], valeur: String): String = {

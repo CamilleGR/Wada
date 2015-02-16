@@ -24,10 +24,12 @@ object Colonne {
     return -1
   }
 
-  def indiceAttribut(sQLContext: SQLContext, file: SchemaRDD, attribut: String): Int = {
-    file.registerTempTable("data")
-    val temp = sQLContext.sql("SELECT " + attribut + " FROM data").first.getString(0)
-    return file.first.indexOf(temp)
+  def indiceAttribut(file: SchemaRDD, attribut: String): Int = {
+    val tab = file.schema.fieldNames
+    for (i <- 0 to tab.length-1) {
+      if (tab(i).equals(attribut)) return i
+    }
+    return -1
   }
   /*
   Fonction POUR FICHIERS CSV/TSV qui permet de savoir si la colonne n'est constitué que de réels ou non
