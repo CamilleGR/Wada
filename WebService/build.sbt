@@ -25,4 +25,14 @@ libraryDependencies += "org.apache.spark" %% "spark-sql" % "1.2.0"
 
 libraryDependencies += "org.apache.spark" %% "spark-mllib" % "1.2.0"
 
+libraryDependencies += "org.apache.spark" %% "spark-streaming" % "1.2.0"
+
+libraryDependencies += "org.apache.spark" %% "spark-streaming-twitter" % "1.2.0"
+
+libraryDependencies += "org.twitter4j" % "twitter4j-stream" % "3.0.3"
+
+resolvers ++= Seq(
+	  "Twitter4J Repository" at "http://twitter4j.org/maven2/"
+)
+
 Revolver.settings.settings
