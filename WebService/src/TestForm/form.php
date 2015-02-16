@@ -30,7 +30,7 @@
 		$fichier = $_GET['nomFichier'];
 		echo '<h2>'.$fichier.'</h2>';
         ?>
-		<p><form method="POST" action="http://localhost:8080/stats">
+		<p><form method="POST" action="http://localhost:8080/kmeans_Stats">
             		<input type="hidden" name="nomFichier" value="<?php echo $fichier?>"/>
 			<label>Attributs<select name="attribut">
 			<?php
@@ -41,7 +41,8 @@
 			?>
 			</select></label><br />
             		<label>segments : <input type="text" name="segment" value="2"/></label><br />
-            		<label>filtre : <input type="text" name="filtre"/</label><br />
+			<label>nbClusters : <input type="text" name="nbClusters"/></label><br />
+            		<label>filtre : <input type="text" name="filtre"/></label><br />
             		<input type="submit"/>
  		</form></p>
 

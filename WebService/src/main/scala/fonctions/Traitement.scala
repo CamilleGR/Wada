@@ -221,7 +221,7 @@ class Traitement {
     }
     else if (Fichier.extension(nomFichier)=="json") {
       var data = sqlContext.jsonFile(cheminSource + nomFichier)
-      col = Colonne.indiceAttribut(sqlContext, data, attribut)
+      col = Colonne.indiceAttribut(data, attribut)
       if (!filtre.equals("")) {
         val filtreTable = Filtre.filtreJson(sqlContext, data, filtre)
         data.registerTempTable("data")

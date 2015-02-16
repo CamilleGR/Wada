@@ -22,7 +22,7 @@ object StatsAttribut {
   def tranche(line: Double, min: Double, max: Double, segments: Int): ((Int, String), Int) = {
     val temp = (max-min)/segments
     val formatter = new DecimalFormat("#.##")
-    for (i <- 1 to segments) {)
+    for (i <- 1 to segments) {
       if (line.toDouble >= min + temp*(i-1) && line.toDouble < min + temp*i) {
         return ((i, formatter.format(min + temp*(i-1)).replace(',','.') + " à " + formatter.format(min + temp*i).replace(',','.')),1)
       }
