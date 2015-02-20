@@ -87,20 +87,24 @@ trait WebService extends HttpService {
             redirect({lienCibleStats} + "?dossier=" + {dossier} + "&nbClusters=" + {nbClusters}, StatusCodes.PermanentRedirect)
           }
         }
-      }/*~
-      path("evoTweets") {
-        // Pour regarder l'évolution des tweets
-        /*post {
-          formFields("fichiers","temps"){ (action,hashtags,temps) =>
-        }
-      }*/
-      } ~
-      path("stream") {
+      } ~ path("stream") {
         // Pour lancer ou arrêter un flux
-        /*post {
-              formFields("action","hashtags","temps"){ (action,hashtags,temps) =>
-            }
-          }*/
-      }*/
+        post {
+              formFields("hashtags","temps"){ (hashtags,temps) =>
+                respondWithMediaType(`text/html`) {
+                complete{
+                <html>
+                  <body>
+                    <h1>CREATION DU STREAM</h1>
+                      <p>{hashtags}</p>
+                      <p>{temps}</p>
+                  </body>
+                </html>
+                        }
+                  }
+              }
+
+              }
+          }
+      }
   }
-}
