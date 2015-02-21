@@ -43,6 +43,14 @@ object Csv {
      nom + ".csv"
    }
 
+  /*
+  Fonction qui crée un fichier csv à partir d'un tableau de (String, (Double, Double, Double))
+  @args :
+  nom:String                                    -> Le nom du fichier à créer
+  chemin:String                                 -> Le chemin du fichier
+  tab:Array[(String,(Double, Double, Double))]  -> tableau de stats
+  @returns: String                              -> Chemin du fichier crée
+  */
   def creerGraphe(nom: String, chemin: String, tab: Array[(String, (Double, Double, Double))]): String = {
     val writer = new PrintWriter(new File(chemin + nom + ".csv"))
     writer.write("label,min,max,moy\n")
@@ -56,6 +64,14 @@ object Csv {
     nom + ".csv"
   }
 
+  /*
+  Fonction qui crée un ficher csv à partir d'un tableau de Kmeans
+  @args :
+  nom: String                       -> Le nom du fichier à créer
+  chemin: String                    -> Le chemin du fichier
+  tab : Array[(Int, Array[Double])] -> tableau de stats
+  @return: String                   -> Nom du fichier crée
+  */
   def creerKmeans(nom: String, chemin: String, tab: Array[(Int, Array[Double])]): String = {
     val writer = new PrintWriter(new File(chemin + nom + ".csv"))
     writer.write("centre,abscisse,ordonnee\n")
@@ -69,6 +85,14 @@ object Csv {
     nom + ".csv"
   }
 
+  /*
+  Fonction qui crée plusieurs fichiers csv par clusters
+  @args :
+  nom: String                       -> Le nom du repertoire contenant les fichiers à créer
+  chemin: String                    -> Le chemin du repertoire
+  tab : Array[(Int, Array[Double])] -> tableau de stats
+  @return: String                   -> Nom du fichier crée
+  */
   def creerMultiplesStats(nom: String, chemin: String, tab: Array[Array[(String, Int)]]): String = {
     (new File(chemin + nom)).mkdir
 

@@ -167,6 +167,14 @@ object StatsAttribut {
     }
   }
 
+  /*
+  Fonction POUR LES FICHIERS CSV retournant un Array[(String,(Double, Double, Double)] qui calcul le max, le min et la moyenne d'un attribut numérique par rapport à un autre
+  @args :
+  col1: Int                                           -> Colonne de l'attribut en ordonnée
+  col2: Int                                           -> Colonne de l'attribut en abscisse
+  array: RDD[Array[String]]                           -> RDD de tableaux de string
+  @returns: Array[(String,(Double, Double, Double))]  -> Tableau regroupant les valeurs de la colonne $col du taleau $tab en $seg segment
+  */
   def grapheMinMaxMoy(col1: Int, col2: Int, array: RDD[Array[String]]): Array[(String, (Double, Double, Double))] = {
     val formatter = new DecimalFormat("#.##")
 
@@ -179,6 +187,15 @@ object StatsAttribut {
     return data.collect()
   }
 
+  /*
+  Equivalent de la fonction precedente pour les fichiers JSON
+  @args :
+  sqlContext: SQLContext                              -> le SQLContext pour l'execution de requete SQL
+  col1: String                                           -> Nom de la colonne de l'attribut en ordonnée
+  col2: String                                           -> Nom de la colonne de l'attribut en abscisse
+  array: String                                       -> Nom de la table SQL
+  @returns: Array[(String,(Double, Double, Double))]  -> Tableau regroupant les valeurs de la colonne $col du taleau $tab en $seg segment
+*/
   def grapheMinMaxMoy(sqlContext: SQLContext, col1: String, col2: String, array: String, filtre: String): Array[(String, (Double, Double, Double))] = {
     val where = if(filtre=="") "" else " WHERE " + filtre
 

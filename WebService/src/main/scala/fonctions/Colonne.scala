@@ -10,7 +10,7 @@ object Colonne {
   @args :
   file: RDD[String] -> RDD d'un csv/tsv
   attribut: String  -> l'attribut
-  @returns: Int  -> le numero de colonne
+  @returns: Int     -> le numero de colonne
   */
   def indiceAttribut(file: RDD[Array[String]], attribut: String): Int = {
     val header = file.first()
@@ -24,6 +24,13 @@ object Colonne {
     return -1
   }
 
+  /*
+  Equivalent de la fonction precedente pour les fichiers JSON
+  @args :
+  file: SchemaRDD   -> SchemaRDD d'un JSON
+  attribut: String  -> l'attribut
+  @returns: Int     -> le numero de colonne
+  */
   def indiceAttribut(file: SchemaRDD, attribut: String): Int = {
     val tab = file.schema.fieldNames
     for (i <- 0 to tab.length-1) {

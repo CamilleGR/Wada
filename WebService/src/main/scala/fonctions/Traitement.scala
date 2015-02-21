@@ -126,6 +126,19 @@ class Traitement {
     return Array[String](nomFichierStats, nbRow.toString, stats, moyenneSegment, mediane)
   }
 
+  /*
+  Fonction qui traite la demande de statistiques deux attributs numérique d'un fichier
+  @args :
+  cheminSource: String    -> chemin du repertoire du fichier lu
+  cheminCible: String     -> chemin du repertoire du fichier csv généré
+  nomFichier: String      -> nom du fichier
+  attribut1: String       -> attribut en ordonnée du graphe
+  attribut2: String       -> attribut en abscisse du graphe
+  filtre: String          -> les filtres sur le fichier
+  @returns: Array[String] -> le nom du fichier généré
+                             le nombre de lignes
+                             les stats (min,max,moyenne) (si colonne de valeurs numeriques)
+  */
   def traitementGraphe(cheminSource: String, cheminCible: String, nomFichier: String, attribut1: String, attribut2: String, filtre: String): Array[String] = {
     var tab = new Array[(String, (Double, Double, Double))](0)
     var stats = ""
@@ -169,6 +182,16 @@ class Traitement {
     return Array[String](nomFichierStats, nbRow.toString, stats, mediane)
   }
 
+  /*
+  Fonction qui traite la demande de representation du kmeans sur un fichier
+  @args :
+  cheminSource: String    -> chemin du repertoire du fichier lu
+  cheminCible: String     -> chemin du repertoire du fichier csv généré
+  nomFichier: String      -> nom du fichier
+  nbClusters: Int         -> le nombre de clusters
+  filtre: String          -> les filtres sur le fichier
+  @returns: String -> le nom du fichier généré
+  */
   def traitementKmeans(cheminSource: String, cheminCible: String, nomFichier: String, nbClusters: Int, filtre: String): String = {
     var textFile: RDD[Array[String]] = null
 
@@ -204,7 +227,19 @@ class Traitement {
     return nomFichierKmeans
   }
 
-  def traitementKmeansStats(cheminSource: String, cheminCible: String, nomFichier: String, nbClusters: Int, attribut: String, segment: Int, filtre: String): Array[String] = {
+  /*
+  Fonction qui traite la demande de stats sur plusieurs clusters d'un fichier à l'aide du kmeans
+  @args :
+  cheminSource: String    -> chemin du repertoire du fichier lu
+  cheminCible: String     -> chemin du repertoire des fichiers csv générés
+  nomFichier: String      -> nom du fichier
+  nbClusters: Int         -> le nombre de clusters
+  attribut: String        -> attribut sur lequel faire le calcul de stats
+  segment: Int            -> le nombre de segment
+  filtre: String          -> les filtres sur le fichier
+  @returns: String        -> le nom du repertoire contenant les fichiers générés
+  */
+  def traitementKmeansStats(cheminSource: String, cheminCible: String, nomFichier: String, nbClusters: Int, attribut: String, segment: Int, filtre: String): String = {
     var textFile: RDD[Array[String]] = null
     var col = 0
 
@@ -247,6 +282,6 @@ class Traitement {
     }
     val nom = Csv.creerMultiplesStats(nomFichier + "_kmeans_" + attribut, cheminCible, tab)
 
-    return Array[String](nom, nbClusters.toString)
+    return nom
   }
 }

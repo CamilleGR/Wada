@@ -87,12 +87,13 @@ trait WebService extends HttpService {
             redirect({lienCibleStats} + "?dossier=" + {dossier} + "&nbClusters=" + {nbClusters}, StatusCodes.PermanentRedirect)
           }
         }
-      } ~ path("stream") {
+      } ~
+      path("stream") {
         // Pour lancer ou arrêter un flux
         post {
-              formFields("hashtags","temps"){ (hashtags,temps) =>
-                respondWithMediaType(`text/html`) {
-                complete{
+          formFields("hashtags","temps"){ (hashtags,temps) =>
+            respondWithMediaType(`text/html`) {
+              complete{
                 <html>
                   <body>
                     <h1>CREATION DU STREAM</h1>
@@ -100,11 +101,10 @@ trait WebService extends HttpService {
                       <p>{temps}</p>
                   </body>
                 </html>
-                        }
-                  }
               }
-
-              }
+            }
           }
+        }
       }
   }
+}

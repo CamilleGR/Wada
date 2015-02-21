@@ -26,7 +26,15 @@ object Statistiques {
     return med
   }
 
-  def moyenneSegment(seg: Int, col: Int, tab: org.apache.spark.rdd.RDD[Array[String]]):ArrayBuffer[(String,Double)] = {
+  /*
+  Fonction qui calcul la moyenne par segment
+  @args :
+  seg: Int                                -> nombre de segments
+  col: Int                                -> colonne de l'attribut
+  tab: RDD[Array[String]]                 -> rdd de tableaux de string
+  @returns: ArrayBuffer[(String,Double)]  -> tableau de moyennes par segment
+  */
+  def moyenneSegment(seg: Int, col: Int, tab: RDD[Array[String]]):ArrayBuffer[(String,Double)] = {
 
     val min = tab.map(r => r(col)).reduce((a,b)=> Math.min(a.toDouble,b.toDouble).toString).toDouble
     val max = tab.map(r => r(col)).reduce((a,b)=> Math.max(a.toDouble,b.toDouble).toString).toDouble
