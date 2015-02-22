@@ -32,7 +32,7 @@ def evolutionParTrancheOpti(sc:SparkContext, tranche:Int, fileName:String): Arra
 
 	var c = Calendar.getInstance();
 	var tab = ArrayBuffer.empty[(String,Int)]
-	var file = sc.textFile(fileName).map(x => x.split(";")(0)).filter(x=> x matches """[0-9]{2}:[0-9]{2}""")
+	var file = sc.textFile(fileName).map(x => x.split(";")(0)).filter(x=> x matches """[0-9]{2}:[0-9]{2}""")//10 chiffres avant le ':'
 	var min = file.min
 	var max = file.max
 	c.set(Calendar.HOUR_OF_DAY,min.split(":")(0).toInt)
