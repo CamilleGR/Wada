@@ -1,6 +1,4 @@
-/**
- * Created by venessiel on 15/02/15.
- */
+package fonctions
 
 import fonctions.TwitterStreamUtil
 import org.apache.spark._
