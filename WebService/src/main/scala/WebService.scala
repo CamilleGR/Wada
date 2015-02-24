@@ -1,3 +1,5 @@
+import java.util.Calendar
+
 import akka.actor.Actor
 import fonctions.{Traitement}
 import spray.http.MediaTypes._
@@ -6,6 +8,8 @@ import spray.routing._
 import spray.util.LoggingContext
 import HttpMethods._
 import spray.httpx.RequestBuilding._
+import fonctions.TwitterStream
+import spray.http.DateTime
 
 
 class WebServiceActor extends Actor with WebService {
@@ -92,16 +96,26 @@ trait WebService extends HttpService {
         // Pour lancer ou arrêter un flux
         post {
           formFields("hashtags","temps"){ (hashtags,temps) =>
+            var tw = new TwitterStream(traitement.sc)
+            var cal = Calendar.getInstance()
+
+            var path = cheminSource+ "Stream/"+hashtags.split(";")(0).replace("#","").trim+"_"+cal.getTimeInMillis
             respondWithMediaType(`text/html`) {
               complete{
                 <html>
                   <body>
-                    <h1>CREATION DU STREAM</h1>
-                      <p>{hashtags}</p>
-                      <p>{temps}</p>
+                    <h1>Votre stream a bien été créé !</h1>
+                      <p>Enregistré dans : {path}</p>
+                      <p>Durée : {temps}</p>
+                      <p>Vous serez redirigé dans quelque secondes ...</p>
+                    <script>
+                    sleep(10);
+                    document.location.href="http://www.google.com";
+                    </script>
                   </body>
                 </html>
               }
+              tw.creerStream(hashtags.split(";") ,path, temps.toInt)
             }
           }
         }
