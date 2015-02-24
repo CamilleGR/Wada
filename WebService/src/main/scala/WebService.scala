@@ -100,6 +100,8 @@ trait WebService extends HttpService {
             var cal = Calendar.getInstance()
 
             var path = cheminSource+ "Stream/"+hashtags.split(";")(0).replace("#","").trim+"_"+cal.getTimeInMillis
+            tw.creerStream(hashtags.split(";") ,path, temps.toInt)
+
             respondWithMediaType(`text/html`) {
               complete{
                 <html>
@@ -115,7 +117,6 @@ trait WebService extends HttpService {
                   </body>
                 </html>
               }
-              tw.creerStream(hashtags.split(";") ,path, temps.toInt)
             }
           }
         }
