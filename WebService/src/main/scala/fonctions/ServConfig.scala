@@ -32,13 +32,13 @@ class ServConfig{
 
       while (temp != null) {
       
-        if (temp.equals("CHEMIN_CIBLE=")) {
+        if (temp.startsWith("CHEMIN_CIBLE=")) {
          	 this.cheminCible = temp.replace("CHEMIN_CIBLE=", "")
-        } else if (temp.equals("LIEN_CIBLE_ATTRIBUTS=")) {
+        } else if (temp.startsWith("LIEN_CIBLE_ATTRIBUTS=")) {
           	this.lienCibleAttributs = temp.replace("LIEN_CIBLE_ATTRIBUTS=", "")
-        } else if (temp.equals("LIEN_CIBLE_STATS=")) {
+        } else if (temp.startsWith("LIEN_CIBLE_STATS=")) {
           this.lienCibleStats = temp.replace("LIEN_CIBLE_STATS=", "")
-        } else if (temp.equals("CHEMIN_SOURCE=")) {
+        } else if (temp.startsWith("CHEMIN_SOURCE=")) {
          	 this.cheminSource = temp.replace("CHEMIN_SOURCE=", "")
         }
         temp = br.readLine()
