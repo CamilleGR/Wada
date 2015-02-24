@@ -1,4 +1,4 @@
-//package fonctions
+package fonctions
 
 /**
  * Created by venessiel on 23/02/15.
