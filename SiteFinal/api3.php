@@ -21,6 +21,13 @@
 
 	<h1> page 3 demandé pour API Twitter</h1>
 
+	<ul>
+		<li class="bouton_gauche btn btn-default"><a href="api1.php">Accueil</a></li>
+		<li class="bouton_gauche btn btn-default"><a href="api2.php">Formulaire</a></li>
+		<li class="bouton_gauche btn btn-default"><a href="api3.php">Stream</a></li>
+	</ul>
+	
+	
 	
 	</body>
 </html>
