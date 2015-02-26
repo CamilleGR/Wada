@@ -52,8 +52,8 @@
 					<div class="container">
 					<ul class="nav nav-pills">
 						<li role="presentation">
-							<!--<span id="uploaderIco" class="glyphicon glyphicon-open-file"></span>-->
-							<img id="uploaderIco" class="glyphicon glyphicon-open-file" src="img/upload.png" alt="Preview" width="50">
+							<!-- <span id="uploaderIco" class="glyphicon glyphicon-open-file"></span> -->
+							<!-- <img id="uploaderIco" class="glyphicon glyphicon-open-file" src="img/upload.png" alt="Preview" width="50"> -->
 						</li>
 						<li role="presentation">
 							<input type="file" id="uploader">

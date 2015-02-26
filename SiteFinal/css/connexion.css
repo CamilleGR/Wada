@@ -125,7 +125,7 @@ a:hover {
   box-shadow: 0px 0px 43px -10px black;
   position: absolute;
   left: 50%;
-  top: 70%;
+  top: 27em;
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);

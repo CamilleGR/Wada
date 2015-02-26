@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>Wada - Accueil</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <!-- Style particulier pour les titre h2  -->
+	<style type="text/css">
+		@font-face {  font-family: 'quadranta';		src: url('data/aspace_demo.otf') format('truetype');	font-weight: normal;	font-style: normal; }	 
+		h2 {  font-family:quadranta, sans-serif;	font-size:3em; }
+		h3{	font-family:quadranta, sans-serif;	font-size:2em; }
+	</style>
   </head>
 
 
@@ -18,14 +24,14 @@
 		<div class="jumbotron">
 			<div class="container">
 				<center><h2>Web Application for Data Analysis</h2></center>
-				<p> <center><h3>Visualiser vos données selon vos goûts !</h3></center> </p>
+				<p> <center><h3>Visualisez vos données selon vos goûts !</h3></center> </p>
 			</div>
 		</div>
 
 
 				
 				<!-- Proposition des graphiques de visualisations -->
-					<div class="row center-block">
+				<div class="row center-block">
 
 					<!-- texte explicatif --> 
 					<center><h4><em>
@@ -95,28 +101,12 @@
 								</div>
 							</div>
 
-					</div>
+							
+
+				</div>
 
 
 
 <!-- <p>{ Bootstrap - 3.3.2, JQuery - 1.11.2, D3.js - 3.4.13 }</p> -->
-</body>
-	<!-- Style particulier pour les titre h2  -->
-	<style type="text/css">
-		@font-face {
-			font-family: 'quadranta';
-			src: url('data/aspace_demo.otf') format('truetype');
-			font-weight: normal;
-			font-style: normal;
-		}	 
-		h2 {
-			font-family:quadranta, sans-serif;
-			font-size:3em;
-		}
-		h3{
-			font-family:quadranta, sans-serif;
-			font-size:2em;
-		}
-	</style>
-
+	</body>
 </html>
