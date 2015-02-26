@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="es-project"
+		module="es-project_2.11"
+		revision="1.0"
+		conf="pom"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
+		date="20150208155444"/>
+	<dependencies>
+ 		<groupId>org.elasticsearch</groupId>
+  		<artifactId>elasticsearch-hadoop</artifactId>
+  		<version>2.0.2</version>
+	</dependencies>
+</ivy-report>
