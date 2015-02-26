@@ -17,7 +17,11 @@
   <body>
     <?php include "menu.html"; ?>
 
-
+	<ul>
+		<li class="bouton_gauche btn btn-default" style="cursor: auto;"><a href="api1.php">Accueil</a></li>
+		<li class="bouton_gauche btn btn-default" style="cursor: auto;""><a href="api2.php">Formulaire</a></li>
+		<li class="bouton_gauche btn btn-default" style="cursor: auto;"><a href="api3.php">Stream</a></li>
+	</ul>
 
 		<!-- Header de la page  -->
 		<div class="jumbotron">
@@ -53,11 +57,11 @@
 	
 
 	<br><br><br><br><br>
-	<div class="lien" style="position:relative; left:100px">
+	<!--<div class="lien" style="position:relative; left:100px">
 		<a href="api2.php">Page 2 de l'API Twitter</a> </br>
 		<a href="api3.php">Page 3 de l'API Twitter</a>
 	</div>
-
-
+     -->
+	
 	</body>
 </html>
