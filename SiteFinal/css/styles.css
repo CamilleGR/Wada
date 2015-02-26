@@ -1,0 +1,378 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css); /* pour le menu */
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web:300);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro); /* pr radio button */
+@import url("http://fonts.googleapis.com/css?family=Montserrat:400,700");/* pr le boutton de la page sodnage.php */
+@import url(http://fonts.googleapis.com/css?family=Indie+Flower);/* pr le style d'ecriture */
+
+
+
+
+html { 
+  margin-left: 60px;
+  margin-top:0em;
+  /*background: url(images/img4.jpg) no-repeat center fixed; */
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
+}
+
+
+
+
+
+/************************************   MENU DU HEADER    **********************************************/
+
+.fa-2x {
+font-size: 2em;
+}
+.fa {
+position: relative;
+display: table-cell;
+width: 60px;
+height: 36px;
+text-align: center;
+vertical-align: middle;
+font-size:20px;
+}
+
+
+.main-menu:hover,nav.main-menu.expanded {
+width:250px;
+overflow:visible;
+}
+
+.main-menu {
+background:#101010;
+border-right:1px solid #e5e5e5;
+position:absolute;
+top:0;
+bottom:0;
+height:100%;
+left:0;
+width:60px;
+overflow:hidden;
+-webkit-transition:width .05s linear;
+transition:width .05s linear;
+-webkit-transform:translateZ(0) scale(1,1);
+z-index:1000;
+position: fixed;
+}
+
+.main-menu>ul {
+margin:7px 0;
+}
+
+.main-menu li {
+position:relative;
+display:block;
+width:250px;
+}
+
+.main-menu li>a {
+position:relative;
+display:table;
+border-collapse:collapse;
+border-spacing:0;
+color:#999;
+ font-family: arial;
+font-size: 14px;
+text-decoration:none;
+-webkit-transform:translateZ(0) scale(1,1);
+-webkit-transition:all .1s linear;
+transition:all .1s linear;
+  
+}
+
+.main-menu .nav-icon {
+position:relative;
+display:table-cell;
+width:60px;
+height:36px;
+text-align:center;
+vertical-align:middle;
+font-size:18px;
+}
+
+.main-menu .nav-text {
+position:relative;
+display:table-cell;
+vertical-align:middle;
+width:190px;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.main-menu>ul.logout {
+position:absolute;
+left:0;
+bottom:0;
+}
+
+.no-touch .scrollable.hover {
+overflow-y:hidden;
+}
+
+.no-touch .scrollable.hover:hover {
+overflow-y:auto;
+overflow:visible;
+}
+
+a:hover,a:focus {
+text-decoration:none;
+}
+
+nav {
+-webkit-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+-o-user-select:none;
+user-select:none;
+}
+
+nav ul,nav li {
+outline:0;
+margin:0;
+padding:0;
+}
+.main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
+color:#fff;
+background-color:#6ACD79;
+}
+.area {
+float: left;
+background: #e2e2e2;
+width: 100%;
+height: 100%;
+}
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/************************************   CSS DU SELECTEUR    **********************************************/
+select {
+    position: relative;
+    top: 50px; /* fixe l'espace du bouton avec le top */
+    padding:3px;
+    margin: 0;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    background: #333333;
+    color:#888;
+    border:none;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+}
+
+/* 100 px longueur du seleteur */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select {padding-right:5px}
+}
+
+label {
+    position:relative
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/************************************   CSS DU SELECTEUR    **********************************************/
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+*{
+  margin:0px;
+  padding:0px;
+}
+
+.wrapper {
+  margin: 100px 0;
+}
+.toggle_radio{
+  position: relative;
+  background: #333333;
+  margin: 4px auto;
+  overflow: hidden;
+  padding: 0 !important;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  position: relative;
+  height: 26px;
+  width: 800px;
+}
+.toggle_radio > * {
+  float: left;
+}
+.toggle_radio input[type=radio]{
+  display: none;
+  /*position: fixed;*/
+}
+.toggle_radio label{
+  font: 90%/1.618 "Source Sans Pro";
+  color: #7D7D74;
+  z-index: 0;
+  display: block;
+  width: 100px;
+  height: 20px;
+  margin: 3px 3px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 1;
+  text-align: center;
+}
+.toggle_option_slider{
+  width: 100px;
+  height: 20px;
+  position: absolute;
+  top: 3px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  transition: all .4s ease;
+}
+
+/* ici :
+/* concerne le paneau transparent des radio bouton 
+#first_toggle:checked ~ .toggle_option_slider{
+  background: #F0FFFF;
+  left: 3px;
+}
+#second_toggle:checked ~ .toggle_option_slider{
+  background: #F0FFFF;
+  left: 109px;
+}
+#third_toggle:checked ~ .toggle_option_slider{
+  background: #F0FFFF;
+  left: 215px;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/************************************   CSS DE LA PAGE GRAPHE.PHP    **********************************************/
+.graphCamembert{
+position: relative;
+top: 20%;
+left : 20%;
+}
+.graphDiagramme{
+
+}
+.graphCourbe{
+
+}
+.graphDiagramme2{
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/************************************   css DU CARDE DES RADIO BUTTON SONDAGE.PHP    **********************************************/
+.radioset 
+  {
+    border: 0;
+    border-radius: .5em;
+    background: #333333;
+    box-shadow: 0 3px 15px -5px;
+    min-width: 16em;
+    max-width: 30em;
+    margin: auto;
+  }
+  
+  ul 
+  {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    position: relative;
+  }
+
+  li
+  {
+    margin-top: 15px;
+    display: inline-block;
+    position: relative;
+    width: 25%;
+  }
+
+  label
+  {
+    line-height: 30px;
+    padding-bottom: 40px;
+    display: block;
+    color: white;
+    font-variant: small-caps;
+  }
