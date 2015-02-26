@@ -21,5 +21,8 @@ libraryDependencies ++= Seq(
         "org.apache.lucene" % "lucene-join" % "4.10.2",
         "org.apache.lucene" % "lucene-grouping" % "4.10.2",
         "org.apache.lucene" % "lucene-spatial" % "4.10.2",
-        "org.apache.lucene" % "lucene-expressions" % "4.10.2"
+        "org.apache.lucene" % "lucene-expressions" % "4.10.2",
+        "org.elasticsearch" % "elasticsearch-hadoop" % "2.0.2",
+        "org.elasticsearch" % "elasticsearch-hadoop-pig" % "2.0.2",
+        "org.elasticsearch" % "elasticsearch-hadoop-cascading" % "2.0.2"
 )
