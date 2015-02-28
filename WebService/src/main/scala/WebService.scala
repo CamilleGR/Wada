@@ -1,5 +1,4 @@
 import java.util.Calendar
-
 import akka.actor.Actor
 import fonctions.{Traitement}
 import spray.http.MediaTypes._
@@ -40,6 +39,7 @@ trait WebService extends HttpService {
   servConf.conf
 
   val traitement = new Traitement
+  var tw = new TwitterStream(traitement.sc)
 
   var cheminCible = servConf.cheminCible //Chemin vers lequel sera envoyé le csv generé
   var lienCibleAttributs = servConf.lienCibleAttributs //Le lien vers lequel sera envoyé le get contenant la liste des attributs
@@ -95,31 +95,22 @@ trait WebService extends HttpService {
       path("stream") {
         // Pour lancer ou arrêter un flux
         post {
-          formFields("hashtags","temps"){ (hashtags,temps) =>
-            var tw = new TwitterStream(traitement.sc)
-            var cal = Calendar.getInstance()
+          formFields("hashtags"){ (hashtags) =>
+            var path = cheminSource+ "Stream/"+hashtags.split(";")(0).replace("#","") +"/minute".replace("#","").trim
+            tw.creerStream(hashtags.split(";") ,path)
+            redirect("http://www.google.fr"+"?q="+{tw.lancerStream}, StatusCodes.PermanentRedirect)
 
-            var path = cheminSource+ "Stream/"+hashtags.split(";")(0).replace("#","").trim+"_"+cal.getTimeInMillis
-            tw.creerStream(hashtags.split(";") ,path, temps.toInt)
-
-            respondWithMediaType(`text/html`) {
-              complete{
-                <html>
-                  <body>
-                    <h1>Votre stream a bien été créé !</h1>
-                      <p>Enregistré dans : {path}</p>
-                      <p>Durée : {temps}</p>
-                      <p>Vous serez redirigé dans quelque secondes ...</p>
-                    <script>
-                    sleep(10);
-                    document.location.href="http://www.google.com";
-                    </script>
-                  </body>
-                </html>
-              }
-            }
           }
         }
+      } ~
+      path("stopstream") {
+
+      post {
+        formFields("action"){ (action) =>
+          val value = if (tw.estLance) tw.stopStream else false
+          redirect("http://www.google.fr" + "?q=" + {value}, StatusCodes.PermanentRedirect)}
+        }
       }
+    }
   }
-}
+
