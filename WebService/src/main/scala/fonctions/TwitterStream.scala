@@ -1,6 +1,5 @@
 package fonctions
 
-import fonctions.TwitterStreamUtil
 import org.apache.spark._
 import org.apache.spark.streaming._
 import org.apache.spark.streaming.StreamingContext._
@@ -19,7 +18,9 @@ class TwitterStream(sparkContext: SparkContext) extends java.io.Serializable {
 
   var sc = sparkContext
   var auth = creerAutorisation
-
+  var ssc:StreamingContext= null
+  var jssc:JavaStreamingContext=null
+  var estLance = false
   /*
   *@file : Fichier qui contiendra les 4 clés
   *
@@ -55,52 +56,54 @@ class TwitterStream(sparkContext: SparkContext) extends java.io.Serializable {
   *	Le flux se deroule pour un certain temps, apres il faudra faire une fonction qui permet d'executer le flux pour un temps indefini, puis
   *	une fonction pour arreter ce flux.
   */
-  def creerStream(tag: Array[String], path: String, time: Int): Unit = {
+  def creerStream(tag: Array[String], path: String): Unit = {
 
-    var ssc = new StreamingContext(sc, Seconds(60))
-    var jssc = new JavaStreamingContext(ssc)
+    this.ssc = new StreamingContext(sc, Seconds(60)) //mettre dans un controleur pour être par défaut
+    this.jssc = new JavaStreamingContext(ssc)
+
     var tweets = TwitterUtils.createStream(jssc, auth, tag, StorageLevel.MEMORY_ONLY) //Creation du flux
-    val tsu = new TwitterStreamUtil
-
-
-    tweets.dstream.map(x => {
-      var tab = x.getCreatedAt.toString.split(" ");
-      tab(0) = tab(5)
-      tab(4) = ""
-      tab(5) = ""
-      tab(3) = tab(3).substring(0, 5)
-      if (tab(1).equals("Jan")) {
-        tab(1) = "01"
-      } else if (tab(1).equals("Feb")) {
-        tab(1) = "02"
-      } else if (tab(1).equals("Mar")) {
-        tab(1) = "03"
-      } else if (tab(1).equals("Apr")) {
-        tab(1) = "04"
-      } else if (tab(1).equals("May")) {
-        tab(1) = "05"
-      } else if (tab(1).equals("Jun")) {
-        tab(1) = "06"
-      } else if (tab(1).equals("Jul")) {
-        tab(1) = "07"
-      } else if (tab(1).equals("Aug")) {
-        tab(1) = "08"
-      } else if (tab(1).equals("Sep")) {
-        tab(1) = "09"
-      } else if (tab(1).equals("Oct")) {
-        tab(1) = "10"
-      } else if (tab(1).equals("Nov")) {
-        tab(1) = "11"
-      } else if (tab(1).equals("Dec")) {
-        tab(1) = "12"
-      }
-      tab.mkString("")} + " ; " + x.getText.split(" ").filter(_.startsWith("#")).mkString(" ").replace(";", "")).saveAsTextFiles(path)
-
-    jssc.start
-    Thread.sleep(time * 60000) // on attend time minutes pour couper le flux
-    jssc.stop(stopSparkContext = false)
+  /*    case class TweetMachin(datetime:Date,hastags: Array[String]) {
+      def toString:String = datetime.getTime.toString+hashtags.mkString(" ")
+    }
+    twwets.dstream.map(x => TweetMachin(x.getCreatedAt,x.getText.split(" ")).map(_.toString)*/
+    tweets.dstream.map(x => x.getCreatedAt.getTime + " ; " + x.getText.split(" ").filter(_.startsWith("#")).mkString(" ").replace(";", "")).saveAsTextFiles(path)
   }
 
+  def lancerStream:Boolean = {
+    try {
+    this.jssc.start()
+    this.estLance = true
+    return true
+    }
+    catch {
+      case e:Exception => {
+      println("Impossible de lancer le stream")
+      e.printStackTrace()
+        return false
+      }
+    }
+
+  }
+
+  def stopStream:Boolean =  {
+    try {
+      if(jssc != null){
+      this.jssc.stop(stopSparkContext = false)
+      return true;
+      } else{
+        println("\n\n\nLE JSSC EST NULL \n\n\n")
+        return false
+      }
+    }
+    catch {
+      case e:Exception => {
+        println("Impossible d'arrêter le stream")
+        e.printStackTrace()
+        return false
+      }
+    }
+
+  }
 
 
 
