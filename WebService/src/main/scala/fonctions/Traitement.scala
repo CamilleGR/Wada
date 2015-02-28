@@ -6,7 +6,7 @@ import org.apache.spark.sql.catalyst.expressions.Row
 import org.apache.spark.{sql, SparkContext, SparkConf}
 
 class Traitement {
-  val conf = new SparkConf().setAppName("test").setMaster("local")
+  val conf = new SparkConf().setAppName("test").setMaster("local[*]")
   val sc = new SparkContext(conf)
   val sqlContext = new SQLContext(sc)
 
