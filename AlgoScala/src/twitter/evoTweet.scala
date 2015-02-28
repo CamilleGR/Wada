@@ -1,48 +1,23 @@
-/*import java.util._
-import org.apache.spark._
+import java.util.Date
+import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
-import org.apache.spark.rdd._
-import java.util.Calendar._
-import scala.collection.mutable._
-
-def evolutionParMinute(sc:SparkContext, fileName:String): RDD[(String,Int)] = return sc.textFile(fileName).map(x => x.split(";")(0)).filter(x=> x matches """[0-9]{2}:[0-9]{2}""").map(x => (x,1)).reduceByKey((x,y) => x+y)
+import scala.collection.mutable.ArrayBuffer
 
 
 
-def evolutionParTranche(sc:SparkContext, tranche:Int,  array:RDD[(String,Int)]): Array[(String,Int)] = {
-
-
-	var c = Calendar.getInstance();
-	var tab = ArrayBuffer.empty[(String,Int)]
-	var min = array.map(x => x._1).min
-	var max = array.map(x => x._1).max
-	c.set(Calendar.HOUR_OF_DAY,min.split(":")(0).toInt)
-	c.set(Calendar.MINUTE,min.split(":")(1).toInt)
-	
-		while(c.get(HOUR_OF_DAY)+":"+c.get(MINUTE)<=max){
-			var inf = c.get(HOUR_OF_DAY)+":"+c.get(MINUTE)
-			c.add(MINUTE,tranche)
-			var sup = c.get(HOUR_OF_DAY)+":"+c.get(MINUTE)
-			tab+= array.filter(x=> x._1 >= inf && x._1<=sup).map(x => (inf , x._2)).reduceByKey((x , y) => x+y).first
-		}
-	return tab.toArray
-}*/
-
-def evolutionParTrancheOpti(sc:SparkContext, tranche:Int, fileName:String): Array[(String,Int)] = {
-
-	var c = Calendar.getInstance();
-	var tab = ArrayBuffer.empty[(String,Int)]
-	var file = sc.textFile(fileName).map(x => x.split(";")(0)).filter(x=> x matches """[0-9]{2}:[0-9]{2}""")//10 chiffres avant le ':'
-	var min = file.min
-	var max = file.max
-	c.set(Calendar.HOUR_OF_DAY,min.split(":")(0).toInt)
-	c.set(Calendar.MINUTE,min.split(":")(1).toInt)
-		while(c.get(HOUR_OF_DAY)+":"+c.get(MINUTE)<=max){
-			var inf = c.get(HOUR_OF_DAY)+":"+c.get(MINUTE)
-			c.add(MINUTE,tranche)
-			var sup = c.get(HOUR_OF_DAY)+":"+c.get(MINUTE)
-			var count = file.filter(line => inf <= line &&line<=sup).count.toInt
-			tab :+= (inf,count)
-		}
-		return tab.toArray
+def evoTweet(sc:org.apache.spark.SparkContext,inter:Int,path:String):Array[(String,Int)] = {
+	var interval = 60000*inter
+	var file = sc.textFile(path)
+	var array = file.filter(x => !x.trim.equals(""))
+	.filter(x => x.split(";")(0).trim matches """[0-9]*""")
+	.map(x => x.split(";")(0).trim.toLong)
+	var temp = ArrayBuffer.empty[(String,Int)]
+	var min = array.min
+	var max = array.max
+	var i =1
+	while( min + i*interval < max ){
+		temp :+= ((new Date(min+i*interval)).toString,array.filter(x => x< min+i*interval && x>=min+(i-1)*interval).count.toInt)
+		i+=1
+	}
+	return temp.toArray
 }
