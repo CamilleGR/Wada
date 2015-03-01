@@ -43,7 +43,9 @@
 				//echo '<li><a href="./mondossier/' . $fichier . '">' . $fichier . '</a></li>';
 				
 				$liste = fopen('liste.json', 'a+');
-				$arr = array('id' => $i , 'name' => $fichier, 'price' => '| |'); // Petite precision on est oblige de laisser les cles id, name et price sinon la colonne se sera pa lu
+				$tmp = $fichier;
+				$mavariabe= "<a href=" . '.' .  "/data/$tmp >$tmp</a>";
+				$arr = array('id' => $i , 'name' => $mavariabe, 'price' => '| |'); // Petite precision on est oblige de laisser les cles id, name et price sinon la colonne se sera pa lu
 				array_push($json,$arr);
 				//print_r($fichier);
 				
@@ -63,7 +65,7 @@
 	?>
 
 
-	<p><center><h3> Base de donnée WADA </h3> <?php	echo '<p style="font-size:17px;"> ' . $nb_fichier .' tables </p>';	?></center></p>
+	<p><center><h3> Base de données WADA </h3> <?php	echo '<p style="font-size:17px;"> ' . $nb_fichier .' tables </p>';	?></center></p>
 		
 
 	
