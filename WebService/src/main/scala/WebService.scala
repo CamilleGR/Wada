@@ -1,13 +1,12 @@
 import java.util.Calendar
 import akka.actor.Actor
-import fonctions.{Traitement}
+import fonctions.{TraitementTweet, Traitement, TwitterStream}
 import spray.http.MediaTypes._
 import spray.http._
 import spray.routing._
 import spray.util.LoggingContext
 import HttpMethods._
 import spray.httpx.RequestBuilding._
-import fonctions.TwitterStream
 import spray.http.DateTime
 
 
@@ -110,7 +109,24 @@ trait WebService extends HttpService {
           val value = if (tw.estLance) tw.stopStream else false
           redirect("http://www.google.fr" + "?q=" + {value}, StatusCodes.PermanentRedirect)}
         }
+      }~
+      path("evoTweet"){
+        post {
+          formField("path","seg"){ (path,seg)=>
+            var tt= new TraitementTweet(traitement.sc)
+            respondWithMediaType(`text/html`) {
+              complete {
+                <html>
+                  <body>
+                    <h1>Chemin</h1>
+                    <p><i>{tt.traitement(path,seg.toInt,cheminCible+"/"+path.split("/")(path.split("/").length-1)+".csv")}</i></p>
+                  </body>
+                </html>
+              }
+            }
+        }
       }
+  }
     }
   }
 
