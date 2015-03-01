@@ -1,0 +1,61 @@
+   svg {
+            font: 10px sans-serif;
+        }
+        .bar {
+            stroke: white;
+            fill: steelBlue;
+        }
+        .axis path, .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+        rect.mover {
+            stroke: lightSteelBlue;
+            stroke-opacity: 0.3;
+            fill: lightSteelBlue;
+            fill-opacity: 0.1;
+        }
+       .bara {
+	   stroke: white;
+	   fill: Red;
+	   }
+	   
+	   body {
+		font: 10px sans-serif;
+		}
+		.arc path {
+		stroke: #fff;
+		}
+		.baro {
+		opacity: 0.4;
+		background-color: red;
+		}
+		
+		.bari {
+		opacity: 1;
+		}
+
+#diagram {
+border: 1px solid #666;
+width: 80%;
+padding: 40px;
+display: block;
+position: absolute;
+}
+#stat {
+border: 2px solid #666;
+width: 80%;
+padding: 10px;
+display: block;
+position: absolute;
+text-shadow: 0px 1px 1px #4d4d4d;
+color: #452;
+font: 15px 'LeagueGothicRegular';
+}
+#max {
+color:green;
+}
+#min{
+color:green;
+}
