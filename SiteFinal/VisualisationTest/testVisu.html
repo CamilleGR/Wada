@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WADA Visualisation</title>
+    
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+ <link rel="stylesheet" type="text/css" href="histo.css"/>
+  <link rel="stylesheet" type="text/css" href="courbe.css"/>
+
+	
+	<script src="visualisation.js"> </script>
+</head>
+<body>
+	<h1> WADA Visualisation </h1>
+		<button onclick="histo()" id="histoB" >Histogramme</button>
+		<button onclick="donut()" id="donutB" >Donut</button>
+		<button onclick="courbe()" id="courbeB">Courbe</button></br>
+	<div id ="stat">
+	 Le maximum est de : <span id="max"></span></br>
+	 Le minimum est de : <span id="min"></span>
+	</div>
+	<div  id="diagram">
+	</div>
+	
+
+   
+
+	
+
+</body>
+</html>
