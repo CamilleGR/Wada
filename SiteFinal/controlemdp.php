@@ -14,7 +14,7 @@
     if( isset($_POST['mdp']) and  ($_POST['mdp']=='bigdata' || $_POST['mdp']=='BIGDATA') and $co )
     {
         ob_start();
-        header('Location: getListeFichiers.php');
+        header('Location: accueil.php');
         setcookie('pseudo', $_POST['id'], time() + 365*24*3600, null, null, false, true);
         ob_end_flush(); 
     }
