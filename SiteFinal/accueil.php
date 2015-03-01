@@ -49,7 +49,7 @@
 										</div>
 									</a>
 									<div class="bg-light pad-ver">
-										<a href="histo.php"><h4 class="text-thin">Histogramme statique</h4></a> L’histogramme statique est un moyen rapide pour étudier la répartition d’une variable.
+										<a href="histo.php"><h4 class="text-thin">Histogramme</h4></a> L’histogramme statique est un moyen rapide pour étudier la répartition d’une variable.
 									</div>
 								</div>
 							</div>
