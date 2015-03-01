@@ -34,7 +34,7 @@
 	if($dossier = opendir('./data')){ //  le point indique dossier actuel | si l'ouverture s'est bien passé
 	
 		$liste = fopen('liste.json', 'w+'); // Creer un fichier qui va lister le contenu du repertoire et qui sera lu dans la table
-		$i=0;
+		$i=1;
 		$json = array();
 		while(false !== ($fichier = readdir($dossier))){
 			if($fichier != '.' && $fichier != '..') // on compte pas le dossier actuel et le precedent !
