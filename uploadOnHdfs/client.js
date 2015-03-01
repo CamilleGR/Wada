@@ -1,84 +1,62 @@
-console.log("Chargement du JS ...");
+$(document).ready( function(){
 
-define(['jquery'], function ($) {
-   	function _ajax_request(url, data, callback, type, method) {
-		if (jQuery.isFunction(data)) {
-			callback = data;
-			data = {};
-		}
-		return jQuery.ajax({
-			type: method,
-			url: url,
-			data: data,
-			success: callback,
-			dataType: type
-			});
-	}
+				console.log("Mise en place des variables ...");
 
-	jQuery.extend({
-		
-		delete_: function(url, data, callback, type) {
-			return _ajax_request(url, data, callback, type, 'DELETE');
-		}
-	});
-});
-	$(document).ready(function(){
+				var host = "localhost"
+				
+				var port = 50070;
+				
+				var path = "/webhdfs/v1/"
+				
+				var dir = "default/";
+				
+				var user = "user";
+				
+				var url = host+":"+port+path;
+				
+				//mettez le lien navigateur pour acceder au fichier curl.php
+				
+				var curl = "http://localhost/curl.php?adr=";
+				
+				var res;
+				
+				
+				$('.nav').click(function(){ 
+				
+					console.log("Parcourir dossier actuel");
+					op="?op=LISTSTATUS";
+					$.get( curl+url+op, function(data){ 
+						//synchronisation ...
+						$(data).each(function( i , val)
+							{ res+=val }); 
+						});
+					
+					console.log(res);
+				});
+				
+				$('.open').click(function(){
+				
+					console.log("Ouverture fichier et obtenir le path webhdfs ...");
 
-		console.log("Mise en place des variables ...");
-
-		var host = "http://localhost"
-		
-		var port = 50070;
-		
-		var path = "/webhdfs/v1/"
-		
-		var dir = "default/";
-		
-		var user = "user";
-		
-		var url = host+":"+port+path;
-		
-		var op;
-		
-		var res;
-		
-		
-		
-		$('.nav').click(function(){
-		
-			console.log("Parcourir dossier actuel");
-			op="?op=LISTSTATUS";
-			
-		
-			
-		});
-		
-		
-		$('.open').click(function(){
-		
-			console.log("Ouverture fichier et obtenir le path webhdfs ...");
-
-		});
-		
-		
-		$('.upload').click(function(){
-		
-		
-		});
-		
-		$('.delete').click(function(){
-		
-		});
-		
-		console.log("fin mise en place ...");
-		
-		
-		console.log("En attente ...");
-		
-
-
-	});
-
+				});
+				
+				
+				$('.upload').click(function(){
+				
+				
+				});
+				
+				$('.delete').click(function(){
+				
+				});
+				
+				console.log("fin mise en place ...");
+				
+				
+				console.log("En attente ...");
+				
+			}
+);
 
 
 
