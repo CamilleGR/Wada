@@ -19,10 +19,10 @@ class ServConfig{
     if(!f.exists()){
       f.createNewFile();
       var w = new FileWriter(f)
-      w.write("CHEMIN_CIBLE="+cheminCible)
-      w.write("LIEN_CIBLE_ATTRIBUTS="+lienCibleAttributs)
-      w.write("LIEN_CIBLE_STATS="+lienCibleAttributs)
-      w.write("CHEMIN_SOURCE="+cheminSource)
+      w.write("CHEMIN_CIBLE="+cheminCible+"\n")
+      w.write("LIEN_CIBLE_ATTRIBUTS="+lienCibleAttributs+"\n")
+      w.write("LIEN_CIBLE_STATS="+lienCibleAttributs+"\n")
+      w.write("CHEMIN_SOURCE="+cheminSource+"\n")
       w.close()
     }else {
 

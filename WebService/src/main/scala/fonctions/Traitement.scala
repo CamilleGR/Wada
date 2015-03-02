@@ -39,7 +39,7 @@ class Traitement {
   @returns: String  -> liste des atributs séparés par des virgules
   */
   private def listeAttributsCsvTsv(file: String): String = {
-    val textfile = sc.textFile("scripts/" + file);
+    val textfile = sc.textFile(file);
     val sep = Csv.separateur(textfile)
     return textfile
       .map(r => r.split(sep))
@@ -54,7 +54,7 @@ class Traitement {
   @returns: String  -> liste des atributs séparés par des virgules
   */
   private def listeAttributsJson(file: String): String = {
-    val textFile = sqlContext.jsonFile("scripts/" + file)
+    val textFile = sqlContext.jsonFile(file)
     var tabR = new Array[String](0)
     textFile.schema.fieldNames.foreach(r => tabR :+= r) //On récupère les attributs
     return tabR.mkString(",") //On les associe avec un separateur
