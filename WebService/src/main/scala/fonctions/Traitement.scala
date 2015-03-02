@@ -222,7 +222,7 @@ class Traitement {
     }
     else
       throw new Exception()
-    val tab = Kmeans.kmeans(textFile, nbClusters, 0)
+    val tab = Kmeans.kmeans(sc, textFile, nbClusters, 0)
     val nomFichierKmeans = Csv.creerKmeans(nomFichier + "_kmeans", cheminCible, tab)
     return nomFichierKmeans
   }
