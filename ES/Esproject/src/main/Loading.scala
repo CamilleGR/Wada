@@ -11,6 +11,12 @@ import scala.io.Source._
 
 
 class Loading {
+  /**
+   * Recharger un fichier depuis un répertoire local
+   * 
+   *  @param : Nom du fichier
+   *  @return: True or false
+   */
   
   def loadFile(fileName:String): Boolean = {
     
@@ -25,9 +31,26 @@ class Loading {
      
    true
   }
-  
+    /**
+   * Traitement d'un fichier CSV
+   * 
+   *  @param : Nom du fichier
+   *  @return: True or false
+   */
   def csv(fileName:String): Boolean = {true}
+    /**
+   * Traitement d'un fichier tsv
+   * 
+   *  @param : Nom du fichier
+   *  @return: True or false
+   */
   def tsv(fileName:String): Boolean = {true}
+    /**
+   * Traitement d'un fichier Json
+   * 
+   *  @param : Nom du fichier
+   *  @return: True or false
+   */
   def json(fileName:String): Boolean = {true}
 
 }
