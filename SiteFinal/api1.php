@@ -17,11 +17,7 @@
   <body>
     <?php include "menu.html"; ?>
 
-	<ul>
-		<li class="bouton_gauche btn btn-default" style="cursor: auto;"><a href="api1.php">Accueil</a></li>
-		<li class="bouton_gauche btn btn-default" style="cursor: auto;""><a href="api2.php">Formulaire</a></li>
-		<li class="bouton_gauche btn btn-default" style="cursor: auto;"><a href="api3.php">Stream</a></li>
-	</ul>
+	
 
 		<!-- Header de la page  -->
 		<div class="jumbotron">
@@ -31,7 +27,11 @@
 			</div>
 		</div>
 
-
+		<ul>
+			<li class="bouton_gauche btn btn-default" style="cursor: auto;"><a href="api1.php">Accueil</a></li>
+			<li class="bouton_gauche btn btn-default" style="cursor: auto;><a href="api2.php">Formulaire</a></li>
+			<li class="bouton_gauche btn btn-default" style="cursor: auto;"><a href="api3.php">Stream</a></li>
+		</ul>
 		<!-- texte explicatif --> 
 		<div class="text" style=" position:relative; left:100px; width:700px; text-align=center; font-size:17px;">
 			<p>Le principe est simple : Vous saisissez un hashtag ainsi que la durée du stream voulu et 
