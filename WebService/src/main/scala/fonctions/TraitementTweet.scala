@@ -68,6 +68,23 @@ class TraitementTweet(sparkContext:org.apache.spark.SparkContext){
 		case e : Exception => return false
 		}
 	}
+	
+	
+	def ArrayToJsonString(ar:Array[String],separateur:Char,label:String,value:String):String = {
+		 var str ="{\n\"evolution\" : [\n"
+
+		 var val1 = ar(0).split(separateur)(0)
+		 var val2 = ar(0).split(separateur)(1)
+
+		 str += "{\n\""+label+"\":\""+val1+"\",\n\""+value+"\":\""+val2+"\"\n}\n"
+
+		 for( i<- 1 to ar.length-1){
+			var temp = ar(i).split(separateur)
+			str += ",{\n\""+label+"\":\""+temp(0)+"\",\n\""+value+"\":\""+temp(1)+"\"\n}\n"
+		  }
+		  	str += "]}"
+    		return str
+	 }
 
 
 
