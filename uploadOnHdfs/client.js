@@ -16,7 +16,7 @@ $(document).ready( function(){
 				
 				//mettez le lien navigateur pour acceder au fichier curl.php
 				
-				var curl = "http://localhost/curl.php?adr=";
+				var curl = "curl.php?adr=";
 				
 				var res;
 				
@@ -25,13 +25,8 @@ $(document).ready( function(){
 				
 					console.log("Parcourir dossier actuel");
 					op="?op=LISTSTATUS";
-					$.get( curl+url+op, function(data){ 
-						//synchronisation ...
-						$(data).each(function( i , val)
-							{ res+=val }); 
-						});
-					
-					console.log(res);
+					res = executeCurl(curl+op);
+					$('div').html(res);
 				});
 				
 				$('.open').click(function(){
@@ -58,5 +53,11 @@ $(document).ready( function(){
 			}
 );
 
+function executeCurl( url )
+{
 
+	return $.get({
+	
+	} );
+}
 
