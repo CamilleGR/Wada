@@ -41,19 +41,57 @@ $(document).ready( function()
 			
 				
 				$('.open').click(function(){
-				
+					
+					op="";
 					console.log("Ouverture fichier et obtenir le path webhdfs ...");
+					$.get( curl ,
+					{
+						adr : url+op
+					}, function(reponse)
+						{
+							console.log("curl exécuté");
+							$("div").html(reponse);								
+							$('div').show();
+							$('div').hide(1000);
+						}
+					);
 
 				});
 				
 				
 				$('.upload').click(function(){
-				
+					op="";
+					console.log("Envoie de fichier, requête POST obvious ...");
+					$.post( curl ,
+					{
+						adr : url+op
+					}, function(reponse)
+						{
+							console.log("curl exécuté");
+							$("div").html(reponse);								
+							$('div').show();
+							$('div').hide(1000);
+						}
+					);
+
 				
 				});
 				
 				$('.delete').click(function(){
-				
+					op="";
+					console.log("Suppression requête delete ...");
+					$.post( curl ,
+					{
+						adr : url+op
+					}, function(reponse)
+						{
+							console.log("curl exécuté");
+							$("div").html(reponse);								
+							$('div').show();
+							$('div').hide(1000);
+						}
+					);
+
 				});
 				
 				console.log("fin mise en place ...");
