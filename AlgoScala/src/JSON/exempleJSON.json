@@ -1,0 +1,15 @@
+{
+"stats" = [
+	{"label":"Max","value":53},
+	{"label":"Min","value":42}],
+"EvoTweet" : [
+	{"label":"Sat Feb 28 22:04:02 CET 2015","value":63},
+	{"label":"Sat Feb 28 22:06:02 CET 2015","value":96},
+	{"label":"Sat Feb 28 22:08:02 CET 2015","value":61},
+	{"label":"Sat Feb 28 22:10:02 CET 2015","value":42},
+	{"label":"Sat Feb 28 22:12:02 CET 2015","value":44},
+	{"label":"Sat Feb 28 22:14:02 CET 2015","value":49},
+	{"label":"Sat Feb 28 22:16:02 CET 2015","value":103},
+	{"label":"Sat Feb 28 22:18:02 CET 2015","value":91},
+	{"label":"Sat Feb 28 22:20:02 CET 2015","value":48}]
+}
