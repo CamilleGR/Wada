@@ -1,3 +1,4 @@
+//Exemple d'utilisation du webhdfs ...
 $(document).ready( function()
 	{
 
@@ -5,11 +6,12 @@ $(document).ready( function()
 
 				var host = "localhost"
 				
-				var port = 50070;
+				var port = 50070, permission=755;
 				
 				var path = "/webhdfs/v1/"
 				
-				var dir = "default/";
+				//répertoire ou fichier courant lorsque le fichier est cliqué
+				var dir = "";
 				
 				var user = "user";
 				
@@ -19,15 +21,17 @@ $(document).ready( function()
 				
 				var curl = "curl.php";
 				
-		
+				var op, destination;
 				
+				//avec JsTreeFile utilisez ces fonctions ...
 				$('.nav').click(function() 
 				{
 					console.log("Parcourir dossier actuel");
-					op="?op=LISTSTATUS";
+					op="LISTSTATUS";
 					$.get( curl ,
 					{
-						adr : url+op
+						adr : url+dir,
+						op : op
 					}, function(reponse)
 						{
 							console.log("curl exécuté");
@@ -38,13 +42,32 @@ $(document).ready( function()
 					);
 				});
 						
-			
+				$('.info').click(function(){
+				
+					op="GETFILESTATUS";
+					$.get( curl ,
+					{
+						adr : url+dir,
+						op : op
+					}, function(reponse)
+						{
+							console.log("curl exécuté");
+							$("div").html(reponse);								
+							$('div').show();
+							$('div').hide(1000);
+							
+							
+						}
+					);
+				
+				
+				});
 				
 				$('.open').click(function(){
 					
 					op="";
 					console.log("Ouverture fichier et obtenir le path webhdfs ...");
-					$.get( curl ,
+					$.ajax( "PUT", curl ,
 					{
 						adr : url+op
 					}, function(reponse)
@@ -60,8 +83,41 @@ $(document).ready( function()
 				
 				
 				$('.upload').click(function(){
-					op="";
+					op="APPEND";
 					console.log("Envoie de fichier, requête POST obvious ...");
+					$.post( curl ,
+					{
+						adr : url+op
+					}, function(reponse)
+						{
+							console.log("curl exécuté");
+							$("div").html(reponse);								
+							$('div').show();
+							$('div').hide(1000);
+							
+							//si append fonctionne on peut recuperer le data node et y ajouter
+							$.post( curl, 
+							{
+								adr : reponse[1]
+							}, function(reponse)
+								{
+									$("div").html(reponse);								
+									$('div').show();
+									$('div').hide(1000);
+								}
+							);
+						}
+					);
+				}):
+					
+				
+				
+
+				
+				
+				$('.rename').click(function(){
+					op="RENAME";
+					console.log("Demande au serveur de changer ...");
 					$.post( curl ,
 					{
 						adr : url+op
@@ -76,9 +132,8 @@ $(document).ready( function()
 
 				
 				});
-				
 				$('.delete').click(function(){
-					op="";
+					op="DELETE";
 					console.log("Suppression requête delete ...");
 					$.post( curl ,
 					{
@@ -88,7 +143,7 @@ $(document).ready( function()
 							console.log("curl exécuté");
 							$("div").html(reponse);								
 							$('div').show();
-							$('div').hide(1000);
+							
 						}
 					);
 
