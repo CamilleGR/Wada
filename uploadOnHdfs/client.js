@@ -1,4 +1,5 @@
-$(document).ready( function(){
+$(document).ready( function()
+	{
 
 				console.log("Mise en place des variables ...");
 
@@ -16,18 +17,28 @@ $(document).ready( function(){
 				
 				//mettez le lien navigateur pour acceder au fichier curl.php
 				
-				var curl = "curl.php?adr=";
+				var curl = "curl.php";
 				
-				var res;
+		
 				
-				
-				$('.nav').click(function(){ 
-				
+				$('.nav').click(function() 
+				{
 					console.log("Parcourir dossier actuel");
 					op="?op=LISTSTATUS";
-					res = executeCurl(curl+op);
-					$('div').html(res);
+					$.get( curl ,
+					{
+						adr : url+op
+					}, function(reponse)
+						{
+							console.log("curl exécuté");
+							$("div").html(reponse);								
+							$('div').show();
+							$('div').hide(1000);
+						}
+					);
 				});
+						
+			
 				
 				$('.open').click(function(){
 				
@@ -50,14 +61,10 @@ $(document).ready( function(){
 				
 				console.log("En attente ...");
 				
-			}
+	}
 );
 
-function executeCurl( url )
-{
 
-	return $.get({
 	
-	} );
-}
+
 

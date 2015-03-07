@@ -9,7 +9,7 @@
 	
 	else
 	{
-		$result = file_get_contents('http://'.$_GET['curl']);
+		$result = file_get_contents( 'http://'.$_GET['adr']);
 		
 		echo $result;
 		
