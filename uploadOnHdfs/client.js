@@ -1,84 +1,63 @@
-console.log("Chargement du JS ...");
+$(document).ready( function(){
 
-define(['jquery'], function ($) {
-   	function _ajax_request(url, data, callback, type, method) {
-		if (jQuery.isFunction(data)) {
-			callback = data;
-			data = {};
-		}
-		return jQuery.ajax({
-			type: method,
-			url: url,
-			data: data,
-			success: callback,
-			dataType: type
-			});
-	}
+				console.log("Mise en place des variables ...");
 
-	jQuery.extend({
-		
-		delete_: function(url, data, callback, type) {
-			return _ajax_request(url, data, callback, type, 'DELETE');
-		}
-	});
-});
-	$(document).ready(function(){
+				var host = "localhost"
+				
+				var port = 50070;
+				
+				var path = "/webhdfs/v1/"
+				
+				var dir = "default/";
+				
+				var user = "user";
+				
+				var url = host+":"+port+path;
+				
+				//mettez le lien navigateur pour acceder au fichier curl.php
+				
+				var curl = "curl.php?adr=";
+				
+				var res;
+				
+				
+				$('.nav').click(function(){ 
+				
+					console.log("Parcourir dossier actuel");
+					op="?op=LISTSTATUS";
+					res = executeCurl(curl+op);
+					$('div').html(res);
+				});
+				
+				$('.open').click(function(){
+				
+					console.log("Ouverture fichier et obtenir le path webhdfs ...");
 
-		console.log("Mise en place des variables ...");
+				});
+				
+				
+				$('.upload').click(function(){
+				
+				
+				});
+				
+				$('.delete').click(function(){
+				
+				});
+				
+				console.log("fin mise en place ...");
+				
+				
+				console.log("En attente ...");
+				
+			}
+);
 
-		var host = "http://localhost"
-		
-		var port = 50070;
-		
-		var path = "/webhdfs/v1/"
-		
-		var dir = "default/";
-		
-		var user = "user";
-		
-		var url = host+":"+port+path;
-		
-		var op;
-		
-		var res;
-		
-		
-		
-		$('.nav').click(function(){
-		
-			console.log("Parcourir dossier actuel");
-			op="?op=LISTSTATUS";
-			
-		
-			
-		});
-		
-		
-		$('.open').click(function(){
-		
-			console.log("Ouverture fichier et obtenir le path webhdfs ...");
+function executeCurl( url )
+{
 
-		});
-		
-		
-		$('.upload').click(function(){
-		
-		
-		});
-		
-		$('.delete').click(function(){
-		
-		});
-		
-		console.log("fin mise en place ...");
-		
-		
-		console.log("En attente ...");
-		
-
-
-	});
-
-
-
+	return $.get({
+	
+	} );
+}
 
