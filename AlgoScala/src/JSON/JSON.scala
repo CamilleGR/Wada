@@ -12,7 +12,7 @@ class JSON{
 	def addStats(name:String,stat:Any):Unit = stats.append((name,stat))
 	
 	def statsToString():String ={
-		var temp ="\"stats\" = "+tabToString(this.stats.toArray[(String,Any)])
+		var temp ="\"stats\" : "+tabToString(this.stats.toArray[(String,Any)])
 		return temp
 	}
 
