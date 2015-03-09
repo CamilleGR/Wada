@@ -2,9 +2,10 @@ function association(){
   $(document).ready(function () {
 
 
-	var items = [];
+	window.items = [];
 		// 8080/EvoTweet
-      $.getJSON( "../data/exempleJSON.json", function( data )
+
+      $.getJSON( "http://localhost/bigdata/SiteFinal/data/exempleJSON.json", function( data )
       {
 
 		/*var jsonObj = JSON.parse(data);
@@ -19,13 +20,18 @@ function association(){
         });
 
        	console.log("items :"+items);
+        afficheetretourne();
 
        //affichage sur le body ( pas obligaoire )
         $( "<ul/>", {"class": "my-new-list",html: items.join( "" )}).appendTo( "body" );
 
       });
 
-		console.log("items 2 :"+items);
+      function afficheetretourne(){
+        console.log("items 2 :"+items);
+        return items;
+      }
+		
 
 
       var bubbleChart = new d3.svg.BubbleChart({
@@ -52,6 +58,8 @@ function association(){
             {text: "C/C++", count: "382"},
             {text: "Pascal", count: "10"},
             {text: "Something", count: "170"},
+            {text: "ali", count: "10"},
+            {text: "Pcal", count: "10"}
           ],
           eval: function (item) {return item.count;},
           classed: function (item) {return item.text.split(" ").join("");}
