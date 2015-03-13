@@ -34,10 +34,13 @@ $(document).ready( function()
 						op : op
 					}, function(reponse)
 						{
-							console.log("curl exécuté");
-							$("div").html(reponse);								
-							$('div').show();
-							$('div').hide(1000);
+							if(!reponse.ok)
+							{
+								
+								$("div").text(reponse);								
+								$('div').show();
+								$('div').hide(1000);
+							}
 						}
 					);
 				});
@@ -51,11 +54,10 @@ $(document).ready( function()
 						op : op
 					}, function(reponse)
 						{
-							console.log("curl exécuté");
-							$("div").html(reponse);								
-							$('div').show();
-							$('div').hide(1000);
-							
+							if(reponse.FileSatuses ==='[object Array]')
+							{
+								console.log("tableau trouve !");	
+							}
 							
 						}
 					);
@@ -67,15 +69,25 @@ $(document).ready( function()
 					
 					op="";
 					console.log("Ouverture fichier et obtenir le path webhdfs ...");
-					$.ajax( "PUT", curl ,
+					$.get( curl ,
 					{
 						adr : url+op
 					}, function(reponse)
 						{
-							console.log("curl exécuté");
-							$("div").html(reponse);								
-							$('div').show();
-							$('div').hide(1000);
+							var dataNode = reponse.getResponseHeader('Location');
+							if( dataNode!="")
+							{
+								$.get( curl, 
+								{
+									file : dataNode
+									
+								}, function( reponse ){
+									//genere le lien de DL
+									$('div').append('<a href=>"'+dataNode+'">'Telecharger+'</a>'));
+									
+								}
+								
+							}
 						}
 					);
 
@@ -90,22 +102,25 @@ $(document).ready( function()
 						adr : url+op
 					}, function(reponse)
 						{
-							console.log("curl exécuté");
-							$("div").html(reponse);								
-							$('div').show();
-							$('div').hide(1000);
-							
-							//si append fonctionne on peut recuperer le data node et y ajouter
-							$.post( curl, 
+							if(!reponse)
 							{
-								adr : reponse[1]
-							}, function(reponse)
+								$("div").text(reponse);								
+								$('div').show();
+								$('div').hide(1000);
+								
+								//si append fonctionne on peut recuperer le data node et y ajouter
+								request.getResponseHeader
+								$.post( curl, 
 								{
-									$("div").html(reponse);								
-									$('div').show();
-									$('div').hide(1000);
-								}
-							);
+									adr : reponse[1]
+								}, function(reponse)
+									{
+										$("div").html(reponse);								
+										$('div').show();
+										$('div').hide(1000);
+									}
+								);
+							}
 						}
 					);
 				}):
