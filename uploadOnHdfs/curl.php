@@ -6,14 +6,14 @@
 
 	if(isset($_GET['adr']))
 	{
+		//recupere le contenu de la page, entete y comrpris et renvoie sous JSON
 		$result = file_get_contents( 'http://'.$_GET['adr']);
 		if($result)
 		{
-			echo json_encode(result);
+			echo json_encode($result);
+		}else
+		{
+			$result = array( 'ok' => false);
+			echo json_encode($result);
 		}
-	}
-	else
-	{
-		$result = array[ 'ok' => false]
-		echo json_encode($result);
 	}
