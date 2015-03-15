@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="listFiles">
+	<head>
+		<meta charset="utf-8">
+
+		<script src="angular.min.js"></script>
+		<script src="controllers.js"></script>
+	</head>
+	<body ng-controller="listFilesCtrl">
+
+		<ul>
+			<li ng-repeat="file in fileStatuses">
+				<p><span>Path Suffix : {{file.pathSuffix}}</span> <span>owner : {{file.owner}} </span> <span>group : {{file.group}}</span></p>
+			</li>
+		</ul>
+
+	</body>
+</html>
