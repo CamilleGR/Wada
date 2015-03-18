@@ -1,0 +1,205 @@
+body {
+    font-family: "Noto Sans",sans-serif,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 1.428571429;
+    color: #949494;
+    background-color: #fff;
+}
+
+#demo-header {
+height: 180px;
+width: 100%;
+background: url('http://www.jqueryajaxphp.com/cdn/2013/11/jap-logo.png') center no-repeat;
+margin-bottom: 25px;
+border-bottom: 1px solid #999;
+padding-bottom: 25px;
+}
+
+footer {
+width: 786px;
+font: normal 16px Arial, Helvetica, sans-serif;
+padding: 15px 35px;
+position: fixed;
+bottom: 0;
+left: 50%;
+margin-left: -420px;
+background-color: #1f1f1f;
+background-image: -webkit-linear-gradient(top, #1f1f1f, #101010);
+background-image: -moz-linear-gradient(top, #1f1f1f, #101010);
+background-image: linear-gradient(top, #1f1f1f, #101010);
+border-radius: 2px 2px 0 0;
+box-shadow: 0 -1px 4px rgba(0,0,0,0.4);
+z-index: 1;
+text-align: center;
+}
+
+a:hover {
+color: #48B814;
+}
+
+a {
+color: #096;
+text-decoration: none;
+}
+
+.page-container:before, .page-container:after {
+content: " ";
+display: table;
+}
+
+.page-container {
+width:980px;
+margin:0 auto
+}
+
+.page-container:before, .page-container:after {
+content: " ";
+display: table;
+}
+
+*, *:before, *:after {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+.page-container .main-content {
+position: relative;
+float: left;
+width: 100%;
+padding: 20px;
+z-index: 2;
+background: #fff;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+@media (min-width: 992px)
+.col-md-12 {
+width: 100%;
+}
+
+.col-md-12 {
+position: relative;
+min-height: 1px;
+padding-left: 15px;
+padding-right: 15px;
+}
+
+.panel-primary {
+border-color: #ebebeb;
+-webkit-background-clip: padding-box;
+-moz-background-clip: padding;
+background-clip: padding-box;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+.panel {
+margin-bottom: 17px;
+background-color: #fff;
+border: 1px solid transparent;
+border-radius: 3px;
+}
+
+.panel-primary>.panel-heading {
+color: #373e4a;
+background-color: #fff;
+border-color: #ebebeb;
+}
+
+.panel-heading {
+border-bottom: 1px solid transparent;
+border-top-right-radius: 3px;
+border-top-left-radius: 3px;
+}
+
+.panel>.table-bordered, .panel>.table-responsive>.table-bordered {
+border: 0;
+}
+
+.panel>.table, .panel>.table-responsive {
+margin-bottom: 0;
+}
+
+.table {
+width: 100%;
+margin-bottom: 17px;
+}
+
+.table-bordered {
+border: 1px solid #ebebeb;
+}
+
+tbody {
+display: table-row-group;
+vertical-align: middle;
+border-color: inherit;
+}
+
+tr {
+display: table-row;
+vertical-align: inherit;
+border-color: inherit;
+}
+
+
+
+.panel-heading>.panel-title {
+float: left;
+padding: 10px 15px;
+}
+.panel-title {
+margin-top: 0;
+margin-bottom: 0;
+font-size: 14px;
+}
+
+
+.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
+border: 1px solid #ebebeb;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+padding: 8px;
+line-height: 1.428571429;
+vertical-align: top;
+border-top: 5px solid #ebebeb;
+}
+
+
+td, th {
+display: table-cell;
+vertical-align: inherit;
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+
+table {
+border-collapse: separate;
+border-spacing: 2px;
+border-color: gray;
+}
+
+b, strong {
+font-weight: bold;
+}
+
+.morris-hover.morris-default-style {
+border-radius: 10px;
+padding: 6px;
+color: #666;
+background: rgba(255,255,255,0.8);
+border: solid 2px rgba(230,230,230,0.8);
+font-family: sans-serif;
+font-size: 12px;
+text-align: center;
+}
+.morris-hover {
+position: absolute;
+z-index: 1000;
+}
