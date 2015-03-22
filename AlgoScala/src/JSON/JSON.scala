@@ -40,6 +40,26 @@ class JSON{
 		temp+="]"
 		return temp;
 	}
+  
+  def tabToString(array:Array[(String,(Double,Double,Double))]):String = {
+    var temp = "["
+    for (i<- 0 to array.length-1) {
+      if (i>0) temp +=","
+      temp += "\n\t{\"label\":\""+array(i)._1+"\",\"min\":" + array(i)._2._1 + ",\"max\":" +array(i)._2._2 + ",\"moy\":" + array(i)._2._3 + "}"
+    }
+    temp += "]"
+    return temp
+  }
+  
+  def tabToString(array: Array[(Int, Array[Double])]):String = {
+    var temp = "["
+    for (i<- 0 to array.length-1) {
+      if (i>0) temp +=","
+      temp += "\n\t{\"centre\":"+array(i)._1+",\"abscisse\":" + array(i)._2(0) + ",\"ordonnee\":" +array(i)._2(1) + "}"
+    }
+    temp += "]"
+    return temp
+  }
 
 	def varListToString(array:Array[(String,Any)]):String ={
 		var temp =""
