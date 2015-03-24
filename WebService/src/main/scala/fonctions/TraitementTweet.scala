@@ -52,8 +52,8 @@ class TraitementTweet(sparkContext:org.apache.spark.SparkContext){
 		}
 	}
 */
-	def traitement(path:String,inter:Int,target:String):Boolean = {
-	
+	def traitement(path:String,inter:Int,target:String):String = {
+	/*
 		try{
 			var file = new java.io.File(target)
 			var pw = new java.io.PrintWriter(file)
@@ -67,7 +67,13 @@ class TraitementTweet(sparkContext:org.apache.spark.SparkContext){
 		}catch{
 		case e : Exception => return false
 		}
-	}
+	*/
+    var json = new JSONcontainer
+    json.addTabs("evoTweet",evoTweet(path,inter).toArray[(String,Any)])
+    return json.toString()
+  }
+
+
 	
 	
 	def ArrayToJsonString(ar:Array[String],separateur:Char,label:String,value:String):String = {
