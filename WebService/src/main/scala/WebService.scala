@@ -114,14 +114,9 @@ trait WebService extends HttpService {
         post {
           formField("path","seg"){ (path,seg)=>
             var tt= new TraitementTweet(traitement.sc)
-            respondWithMediaType(`text/html`) {
+            respondWithMediaType(`application/json`) {
               complete {
-                <html>
-                  <body>
-                    <h1>Chemin</h1>
-                    <p><i>{tt.traitement(path,seg.toInt,cheminCible+"/"+path.split("/")(path.split("/").length-1)+".csv")}</i></p>
-                  </body>
-                </html>
+                tt.traitement(path,seg.toInt)
               }
             }
         }

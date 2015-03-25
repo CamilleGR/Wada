@@ -52,7 +52,7 @@ class TraitementTweet(sparkContext:org.apache.spark.SparkContext){
 		}
 	}
 */
-	def traitement(path:String,inter:Int,target:String):String = {
+	def traitement(path:String,inter:Int):String = {
 	/*
 		try{
 			var file = new java.io.File(target)
