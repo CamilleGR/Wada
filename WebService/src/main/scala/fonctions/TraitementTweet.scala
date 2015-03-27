@@ -1,8 +1,8 @@
 package fonctions
 
 import org.apache.spark.{SparkContext}
-import org.apache.spark.rdd.RDD
-import java.io._
+import org.apache.spark.SparkContext._
+import org.apache.spark.rdd._
 import scala.collection.mutable.ArrayBuffer
 import java.util.Date
 
@@ -10,6 +10,9 @@ import java.util.Date
 class TraitementTweet(sparkContext:org.apache.spark.SparkContext){
 
 	val sc = sparkContext
+
+
+
 
 	def evoTweet(path:String,inter:Int):Array[(String,Int)] = {
 		var interval = 60000*inter
@@ -29,13 +32,20 @@ class TraitementTweet(sparkContext:org.apache.spark.SparkContext){
 		return temp.toArray
 }
 
-	/*
-	Lol des barres ma lignes est complètement deygueux 
+
+	//Lol des barres ma lignes est complètement deygueux
 	
 	
-	def associatedHashtag(path:String):org.apache.spark.rdd.RDD[(String,Int)] = sc.textFile(path).filter(!_.equals("")).filter(_.split(";")(0).trim matches """[0-9]*""").flatMap(_.split(";")(1).toUpperCase.split(" ")).filter(!_.equals("")).map(x => (x,1)).reduceByKey((x,y)=>x+y)
+	def associatedHashtag(path:String):Array[(String,Double)] = {
+    val file = sc.textFile(path).filter(!_.equals("")).filter(_.split(";")(0).trim matches """[0-9]*""");
+    val datas = file.flatMap(_.split(";")(1).toUpperCase.split(" ")).filter(!_.equals(""));
+    val count = datas.count();
+    val data2 = datas.map(x => (x,1)).reduceByKey((x,y) => x+y).map(x => (x._1,x._2.toDouble*100.0/count.toDouble))
+    val filtered = data2.filter(x => x._2 >1)
+    return filtered.collect
+  }
 
-
+/*
 	def traitementHashTag(path:String,target:String):Boolean ={
 		try{
 			var ar = associatedHashtag(path)
@@ -53,26 +63,31 @@ class TraitementTweet(sparkContext:org.apache.spark.SparkContext){
 	}
 */
 	def traitement(path:String,inter:Int):String = {
-	/*
-		try{
-			var file = new java.io.File(target)
-			var pw = new java.io.PrintWriter(file)
-			pw.write("label, value\n")
-			val array = evoTweet(path,inter)
-				for( i <- 0 to array.length-1){
-					pw.write(array(i)._1+","+array(i)._2+"\n")
-				}
-			pw.close
-			return true
-		}catch{
-		case e : Exception => return false
-		}
-	*/
+
     var json = new JSONcontainer
     json.addTabs("evoTweet",evoTweet(path,inter).toArray[(String,Any)])
+    json.addTabs("hashtags",associatedHashtag(path).toArray[(String,Any)])
+
+  return json.toString()
+  }
+
+  def traitementHashtags(path:String):String = {
+
+    var json = new JSONcontainer
+    //json.addTabs("evoTweet",evoTweet(path,inter).toArray[(String,Any)])
+    json.addTabs("hashtags",associatedHashtag(path).toArray[(String,Any)])
+
     return json.toString()
   }
 
+  def traitementTweets(path:String,inter:Int):String = {
+
+    var json = new JSONcontainer
+    json.addTabs("evoTweet",evoTweet(path,inter).toArray[(String,Any)])
+    //json.addTabs("hashtags",associatedHashtag(path).toArray[(String,Any)])
+
+    return json.toString()
+  }
 
 	
 	

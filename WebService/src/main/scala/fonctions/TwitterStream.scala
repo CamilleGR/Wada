@@ -1,5 +1,10 @@
 package fonctions
 
+import java.io.File
+import java.io.FileReader
+import java.io.BufferedReader
+import java.io.FileWriter
+import java.io.BufferedWriter
 import org.apache.spark._
 import org.apache.spark.streaming._
 import org.apache.spark.streaming.StreamingContext._
@@ -21,6 +26,8 @@ class TwitterStream(sparkContext: SparkContext) extends java.io.Serializable {
   var ssc:StreamingContext= null
   var jssc:JavaStreamingContext=null
   var estLance = false
+  var path_to_source = "";
+  def changePath(newpath:String):Unit = path_to_source = newpath
   /*
   *@file : Fichier qui contiendra les 4 clés
   *
@@ -67,6 +74,7 @@ class TwitterStream(sparkContext: SparkContext) extends java.io.Serializable {
     }
     twwets.dstream.map(x => TweetMachin(x.getCreatedAt,x.getText.split(" ")).map(_.toString)*/
     tweets.dstream.map(x => x.getCreatedAt.getTime + " ; " + x.getText.split(" ").filter(_.startsWith("#")).mkString(" ").replace(";", "")).saveAsTextFiles(path)
+    this.ajouterStream(path);
   }
 
   def lancerStream:Boolean = {
@@ -103,6 +111,40 @@ class TwitterStream(sparkContext: SparkContext) extends java.io.Serializable {
       }
     }
 
+  }
+
+  def listerStreams():String = {
+    try{
+      var list = new File(path_to_source)
+      var fr = new FileReader(list)
+      var br = new BufferedReader(fr)
+      var liste = ""
+      var tmp = br.readLine()
+      while(tmp != null){
+        liste += tmp + "\n"
+        tmp = br.readLine()
+      }
+      br.close()
+      fr.close()
+
+      return liste}catch{
+      case e :Exception => return ""
+    }
+  }
+
+  def ajouterStream(path:String):Unit ={
+    var listStreams =listerStreams
+    var list = new File(path_to_source)
+    var fw = new FileWriter(list)
+    var bw = new BufferedWriter(fw)
+    var listeStr = listStreams + path + "\n"
+    var liste = listeStr.split("\n")
+    for(p <- liste) {
+      bw.write(p)
+      bw.newLine();
+    }
+    bw.close()
+    fw.close()
   }
 
 

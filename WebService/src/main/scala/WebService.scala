@@ -45,6 +45,8 @@ trait WebService extends HttpService {
   var lienCibleStats = servConf.lienCibleStats //Le lien vers lequel sera envoyé le get contenant le nom du fichier
   var cheminSource = servConf.cheminSource //Le chemin ou serons récupérés les fichiers Big-Data
 
+  tw.changePath(cheminSource + "listeStreams.txt");
+
   val myRoute = {
     path("attributs") {
       post {
@@ -93,21 +95,32 @@ trait WebService extends HttpService {
       } ~
       path("stream") {
         // Pour lancer ou arrêter un flux
-        post {
-          formFields("hashtags"){ (hashtags) =>
+        post{
+
+          formField("hashtags") { (hashtags) =>
+
             var path = cheminSource+ "Stream/"+hashtags.split(";")(0).replace("#","") +"/minute".replace("#","").trim
             tw.creerStream(hashtags.split(";") ,path)
-            redirect("http://www.google.fr"+"?q="+{tw.lancerStream}, StatusCodes.PermanentRedirect)
+            tw.lancerStream
+            respondWithMediaType(`application/json`){
+                complete{
+                  "{path:"+{path}+"}"
+                }
+            }
+      }}
 
-          }
-        }
       } ~
       path("stopstream") {
 
-      post {
-        formFields("action"){ (action) =>
-          val value = if (tw.estLance) tw.stopStream else false
-          redirect("http://www.google.fr" + "?q=" + {value}, StatusCodes.PermanentRedirect)}
+        tw.stopStream
+          respondWithMediaType(`application/json`){
+            complete {
+              "{reponse:" + {
+                tw.estLance
+              }+"}"
+            }
+
+          }
         }
       }~
       path("evoTweet"){
@@ -116,12 +129,24 @@ trait WebService extends HttpService {
             var tt= new TraitementTweet(traitement.sc)
             respondWithMediaType(`application/json`) {
               complete {
-                tt.traitement(path,seg.toInt)
+                tt.traitementTweets(path,seg.toInt)
               }
             }
         }
       }
-  }
+  }~
+      path("associatedHashtags"){
+        post {
+          formField("path"){ (path)=>
+            var tt= new TraitementTweet(traitement.sc)
+            respondWithMediaType(`application/json`) {
+              complete {
+                tt.traitementHashtags(path)
+              }
+            }
+          }
+        }
+      }
     }
   }
 
