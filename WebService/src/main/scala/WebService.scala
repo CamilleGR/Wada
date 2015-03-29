@@ -143,8 +143,8 @@ trait WebService extends HttpService {
           }
       }~
       path("evoTweet"){
-        post {
-          formField("path","seg"){ (path,seg)=>
+        get {
+          parameters("path","seg"){ (path,seg)=>
             var tt= new TraitementTweet(traitement.sc)
             respondWithMediaType(`application/json`) {
               complete {
