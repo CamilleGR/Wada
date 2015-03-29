@@ -52,7 +52,12 @@ trait WebService extends HttpService {
       post {
         formFields("nomFichier") { nomFichier =>
           //Dans le cas d'une demande de la liste des attributs, on renvoit en GET les attributs separés par des virgules, ainsi que le nom du fichier
-          redirect({lienCibleAttributs} + "?attributs=" + {traitement.listeAttributs(cheminSource + "/" + nomFichier)} + "&nomFichier=" + {nomFichier}, StatusCodes.PermanentRedirect)
+          respondWithMediaType(`application/json`) {
+            complete {
+              traitement.listeAttributs(cheminSource + "/" + nomFichier)
+            }
+          }
+          //redirect({lienCibleAttributs} + "?attributs=" + {traitement.listeAttributs(cheminSource + "/" + nomFichier)} + "&nomFichier=" + {nomFichier}, StatusCodes.PermanentRedirect)
         }
       }
     } ~
@@ -121,7 +126,6 @@ trait WebService extends HttpService {
             }
 
           }
-        }
       }~
       path("evoTweet"){
         post {

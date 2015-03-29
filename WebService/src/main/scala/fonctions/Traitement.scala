@@ -17,9 +17,8 @@ class Traitement {
   @returns: String  -> liste des atributs séparés par des virgules
   */
   def listeAttributs(file: String):String = {
-    var ret = "";
+    var ret = Array[Array[String]]()
     val extension = Fichier.extension(file)
-
     if ( extension=="csv" || extension=="tsv" ) { //Si c'est un csv ou tsv
       ret = listeAttributsCsvTsv(file)
     }
@@ -29,7 +28,14 @@ class Traitement {
     else
       throw new Exception()
 
-    return ret;
+    var json = "{\"attributs\": ["
+    for (i<- 0 to ret.length-1) {
+      if (i>0) json +=","
+      json += "\n\t{\"label\":\""+ret(i)(0)+"\",\"numerique\":"+ ret(i)(1) +"}"
+    }
+    json += "]}"
+
+    return json;
   }
 
   /*
@@ -38,13 +44,19 @@ class Traitement {
   file: String      -> nom du fichier
   @returns: String  -> liste des atributs séparés par des virgules
   */
-  private def listeAttributsCsvTsv(file: String): String = {
+  private def listeAttributsCsvTsv(file: String): Array[Array[String]] = {
     val textfile = sc.textFile(file);
     val sep = Csv.separateur(textfile)
-    return textfile
+    val tab = textfile
       .map(r => r.split(sep))
       .first()
-      .mkString(",")
+    val header = textfile.first()
+    val data = textfile.filter(r => !r.equals(header)).map(r => r.split(sep))
+    var tabR = Array[Array[String]]()
+    for (i <- 0 to tab.length-1) {
+      tabR :+= Array(tab(i), if (Colonne.numerique(data, i)) "true" else "false")
+    }
+    return tabR
   }
 
   /*
@@ -53,11 +65,15 @@ class Traitement {
   file: String      -> nom du fichier
   @returns: String  -> liste des atributs séparés par des virgules
   */
-  private def listeAttributsJson(file: String): String = {
+  private def listeAttributsJson(file: String): Array[Array[String]] = {
     val textFile = sqlContext.jsonFile(file)
-    var tabR = new Array[String](0)
-    textFile.schema.fieldNames.foreach(r => tabR :+= r) //On récupère les attributs
-    return tabR.mkString(",") //On les associe avec un separateur
+    var tab = new Array[String](0)
+    textFile.schema.fieldNames.foreach(r => tab :+= r) //On récupère les attributs
+    var tabR = Array[Array[String]]()
+    for (i <- 0 to tab.length-1) {
+      tabR :+= Array(tab(i), if (Colonne.numerique(textFile, tab(i))) "true" else "false")
+    }
+    return tabR
   }
 
   /*
