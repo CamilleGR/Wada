@@ -168,9 +168,9 @@ class Traitement {
                              le nombre de lignes
                              les stats (min,max,moyenne) (si colonne de valeurs numeriques)
   */
-  def traitementGraphe(cheminSource: String, cheminCible: String, nomFichier: String, attribut1: String, attribut2: String, filtre: String): Array[String] = {
+  def traitementGraphe(cheminSource: String, cheminCible: String, nomFichier: String, attribut1: String, attribut2: String, filtre: String): String = {
     var tab = new Array[(String, (Double, Double, Double))](0)
-    var stats = ""
+    var stats = Array[(String,Double)]()
     var nbRow:Long = 0
     var mediane = ""
 
@@ -191,7 +191,7 @@ class Traitement {
       mediane = Statistiques.mediane(data.map(r => r(col2)))
 
       tab = StatsAttribut.grapheMinMaxMoy(col1, col2, data)
-      //stats = Statistiques.otherStats(data, col2)
+      stats = Statistiques.otherStats(data, col2)
     }
     else if (Fichier.extension(nomFichier)=="json") {
       val textFile = sqlContext.jsonFile(cheminSource + nomFichier)//On charge le fichier avec spark, le type de textFile est SchemaRDD
@@ -202,13 +202,24 @@ class Traitement {
       nbRow = Statistiques.nbTuples(sqlContext, "textFile", filtreTable)
 
       tab = StatsAttribut.grapheMinMaxMoy(sqlContext, attribut1, attribut2, "textFile", filtreTable)
-      //stats = Statistiques.otherStats(sqlContext, "textFile", attribut2, filtreTable)
+      stats = Statistiques.otherStats(sqlContext, "textFile", attribut2, filtreTable)
     }
     else
       throw new Exception()
-    val nomFichierStats = Csv.creerGraphe(nomFichier + "_" + attribut1 + "_" + attribut2, cheminCible, tab) //On crée le fichier CSV à renvoyer à la webApp
 
-    return Array[String](nomFichierStats, nbRow.toString, stats, mediane)
+    val json = new JSONcontainer
+    json.addTabsCourbe("tab", tab)
+    json.addStats("count", nbRow)
+    if (mediane != "") json.addStats("med", mediane)
+    if (stats.length != 0) {
+      for (i <- 0 to stats.length-1) {
+        json.addStats(stats(i)._1, stats(i)._2)
+      }
+    }
+    //val nomFichierStats = Csv.creerGraphe(nomFichier + "_" + attribut1 + "_" + attribut2, cheminCible, tab) //On crée le fichier CSV à renvoyer à la webApp
+
+    return json.toStringCourbe()
+    //return Array[String](nomFichierStats, nbRow.toString, stats, mediane)
   }
 
   /*

@@ -9,16 +9,19 @@ class JSONcontainer{
 
 	var stats = ArrayBuffer.empty[(String,Any)]
 	var tabs = ArrayBuffer.empty[(String,Array[(String,Any)])]
+  var tabsCourbe = ArrayBuffer.empty[(String,Array[(String,(Double,Double,Double))])]
+  var tabsKmeans = ArrayBuffer.empty[(String,Array[(Int, Array[Double])])]
 	
 	def addTabs(name:String,array:Array[(String,Any)]):Unit = tabs.append((name,array))
+  def addTabsCourbe(name:String,array:Array[(String,(Double,Double,Double))]):Unit = tabsCourbe.append((name,array))
+  def addTabsKmeans(name:String,array:Array[(Int, Array[Double])]):Unit = tabsKmeans.append((name,array))
 	def addStats(name:String,stat:Any):Unit = stats.append((name,stat))
 	
 	def statsToString():String ={
 		var temp ="\"stats\" : "+tabToString(this.stats.toArray[(String,Any)])
 		return temp
 	}
-
-
+  
 	def tabsToString():String ={
 		var temp =""
 		for(i<- 0 to this.tabs.length-1){
@@ -28,8 +31,28 @@ class JSONcontainer{
 		return temp
 	}
 
+  def tabsToStringCourbe():String ={
+    var temp =""
+    for(i<- 0 to this.tabsCourbe.length-1){
+      if(i>0) temp+=",\n"
+      temp+="\""+this.tabsCourbe(i)._1+"\" : "+ tabToStringCourbe(this.tabsCourbe(i)._2)+"\n"
+    }
+    return temp
+  }
 
+  def tabsToStringKmeans():String ={
+    var temp =""
+    for(i<- 0 to this.tabsKmeans.length-1){
+      if(i>0) temp+=",\n"
+      temp+="\""+this.tabsKmeans(i)._1+"\" : "+ tabToStringKmeans(this.tabsKmeans(i)._2)+"\n"
+    }
+    return temp
+  }
+  
 	override def toString():String = "{\n"+statsToString+",\n"+tabsToString+"}"
+
+  def toStringCourbe():String = "{\n"+statsToString+",\n"+tabsToStringCourbe+"}"
+  def toStringKmeans():String = "{\n"+statsToString+",\n"+tabsToStringKmeans+"}"
 
 	def tabToString(array:Array[(String,Any)]):String = {
 		var temp ="["
