@@ -115,9 +115,9 @@ trait WebService extends HttpService {
       } ~
       path("stream") {
         // Pour lancer ou arrêter un flux
-        post{
+        get{
 
-          formField("hashtags") { (hashtags) =>
+          parameter("hashtags") { (hashtags) =>
 
             var path = cheminSource+ "Stream/"+hashtags.split(";")(0).replace("#","") +"/minute".replace("#","").trim
             tw.creerStream(hashtags.split(";") ,path)
