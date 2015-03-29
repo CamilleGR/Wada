@@ -125,22 +125,28 @@ object Kmeans {
   numIterations; Int                    -> le nombre d'itérations
   @returns: Array[(Int, Array[Double])] -> renvoit le tableau de kmeans
   */
-  def kmeans(sc: SparkContext, rdd: RDD[Array[String]], numClusters: Int, numIterations: Int): Array[(Int, Array[Double])]= {
+  def kmeans(sc: SparkContext, rdd: RDD[Array[String]], numClusters: Int, numIterations: Int): (Array[(Int, Array[Double])],Array[(Int, Array[Double])])= {
     val data = convertRddToDouble(rdd)
 
     val dataProjected = projectionData(data)
     val centres = centresClusters(dataProjected, numClusters, numIterations)
-    val centresRDD = sc.parallelize(centres.clusterCenters.map(r => (-1, r.toArray)))
+    //val centresRDD = sc.parallelize(centres.clusterCenters.map(r => (-1, r.toArray)))
+    val temp = centres.clusterCenters
+    var tabCentres = Array[(Int, Array[Double])]()
+    for (i <- 0 to temp.length-1) {
+      tabCentres :+= (i, temp.map(r => r.toArray).apply(i))
+    }
 
-    var array = dataProjected.map(r => (centres.predict(r),r.toArray)).union(centresRDD).sortBy(r => r._1)
+    var array = dataProjected.map(r => (centres.predict(r),r.toArray)).sortBy(r => r._1)
     for (i <- 0 to 1) {
       val min = array.map(r => r._2(i)).reduce((x,y) => Math.min(x,y))
       val max = array.map(r => r._2(i)).reduce((x,y) => Math.max(x,y))
       val valeurAdd = (max-min)/2
       array = array.map(r => (r._1, simplificationVal(i, valeurAdd/10, valeurAdd-max, r._2)))
+      tabCentres = tabCentres.map(r => (r._1, simplificationVal(i, valeurAdd/10, valeurAdd-max, r._2)))
     }
 
-    return array.collect
+    return (tabCentres,array.collect)
   }
 
   /*

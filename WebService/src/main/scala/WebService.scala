@@ -95,8 +95,13 @@ trait WebService extends HttpService {
       path("kmeans") {
         post {
           formFields("nomFichier", "nbClusters".as[Int], "filtre") { (nomFichier, nbClusters, filtre) =>
-            val fichier = traitement.traitementKmeans(cheminSource, cheminCible, nomFichier, nbClusters, filtre)
-            redirect({lienCibleStats} + "?fichier=" + {fichier} + "&nbCentres=" + {nbClusters}, StatusCodes.PermanentRedirect)
+            //val fichier = traitement.traitementKmeans(cheminSource, cheminCible, nomFichier, nbClusters, filtre)
+            //redirect({lienCibleStats} + "?fichier=" + {fichier} + "&nbCentres=" + {nbClusters}, StatusCodes.PermanentRedirect)
+            respondWithMediaType(`application/json`) {
+              complete {
+                traitement.traitementKmeans(cheminSource, cheminCible, nomFichier, nbClusters, filtre)
+              }
+            }
           }
         }
       } ~

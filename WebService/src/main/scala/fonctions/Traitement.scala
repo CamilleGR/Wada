@@ -263,8 +263,13 @@ class Traitement {
     else
       throw new Exception()
     val tab = Kmeans.kmeans(sc, textFile, nbClusters, 0)
-    val nomFichierKmeans = Csv.creerKmeans(nomFichier + "_kmeans", cheminCible, tab)
-    return nomFichierKmeans
+    val json = new JSONcontainer
+    json.addTabsKmeans("centres", tab._1)
+    json.addTabsKmeans("points", tab._2)
+    json.addStats("count", textFile.count())
+    return json.toStringKmeans()
+    //val nomFichierKmeans = Csv.creerKmeans(nomFichier + "_kmeans", cheminCible, tab)
+    //return nomFichierKmeans
   }
 
   /*
