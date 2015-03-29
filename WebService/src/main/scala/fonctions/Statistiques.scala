@@ -34,13 +34,13 @@ object Statistiques {
   tab: RDD[Array[String]]                 -> rdd de tableaux de string
   @returns: ArrayBuffer[(String,Double)]  -> tableau de moyennes par segment
   */
-  def moyenneSegment(seg: Int, col: Int, tab: RDD[Array[String]]):ArrayBuffer[(String,Double)] = {
+  def moyenneSegment(seg: Int, col: Int, tab: RDD[Array[String]]):Array[(String,Double)] = {
 
     val min = tab.map(r => r(col)).reduce((a,b)=> Math.min(a.toDouble,b.toDouble).toString).toDouble
     val max = tab.map(r => r(col)).reduce((a,b)=> Math.max(a.toDouble,b.toDouble).toString).toDouble
     val segment = (max-min)/seg
     var array = tab.map(r => r(col))
-    var ret = new ArrayBuffer[(String,Double)];
+    var ret = Array[(String,Double)]();
 
     for(i:Int<-0 to seg-1){
       ret :+= (min+segment*i +" - "+ (min+segment*(i+1)),tab.map(r=>r(col).toDouble).filter(r => r>min+segment*i && r<min+segment*(i+1)).mean)}
@@ -48,12 +48,12 @@ object Statistiques {
     return ret
   }
 
-  def StringMoyenneSegment(arrayBuffer: ArrayBuffer[(String,Double)]): String = {
+  def StringMoyenneSegment(array: Array[(String,Double)]): String = {
     var ret = ""
 
-    for (i <- 0 to arrayBuffer.length-1) {
-      ret += arrayBuffer(i)._1 + "," + arrayBuffer(i)._2
-      if (i < arrayBuffer.length-1) ret += ";"
+    for (i <- 0 to array.length-1) {
+      ret += array(i)._1 + "," + array(i)._2
+      if (i < array.length-1) ret += ";"
     }
 
     return ret
@@ -79,13 +79,14 @@ object Statistiques {
   col: Int                -> l'indice sur la colonne sur laquel on calcul les statistiques
   @returns: String        -> liste des statisitques séparés par des virgules
   */
-  def otherStats(tab: RDD[Array[String]], col: Int): String = {
+  def otherStats(tab: RDD[Array[String]], col: Int): Array[(String,Double)] = {
     var ar = tab.map(r => r(col))
-    val min = ar.reduce((a, b) => Math.min(a.toDouble, b.toDouble).toString).toDouble //On calcule la valeur minimale
-    val max = ar.reduce((a, b) => Math.max(a.toDouble, b.toDouble).toString).toDouble //et maximale
-    val moy = moyenne(ar)
-
-    return min + "," + max + "," + moy
+    var tabR = Array[(String,Double)]()
+    tabR :+= ("min", ar.reduce((a, b) => Math.min(a.toDouble, b.toDouble).toString).toDouble) //On calcule la valeur minimale
+    tabR :+= ("max", ar.reduce((a, b) => Math.max(a.toDouble, b.toDouble).toString).toDouble) //et maximale
+    tabR :+= ("moy", moyenne(ar))
+    return tabR
+    //return min + "," + max + "," + moy
   }
 
   /*
@@ -97,12 +98,15 @@ object Statistiques {
   filtre: String          -> String de filtre à ajouter dans la clause where
   @returns: String        -> liste des statisitques séparés par des virgules
   */
-  def otherStats(sQLContext: SQLContext, tab: String, col: String, filtre: String): String = {
+  def otherStats(sQLContext: SQLContext, tab: String, col: String, filtre: String): Array[(String,Double)] = {
     val where = if(filtre=="") "" else " WHERE " + filtre
-    val min = sQLContext.sql("SELECT min(" + col + ") FROM " + tab + where).map(t => t(0).toString).first().toDouble //On calcule la valeur minimale
-    val max = sQLContext.sql("SELECT max(" + col + ") FROM " + tab + where).map(t => t(0).toString).first().toDouble //et maximale
-    val moy = sQLContext.sql("SELECT avg(" + col + ") FROM " + tab + where).map(t => t(0).toString).first().toDouble
+    var tabR = Array[(String,Double)]()
+    println("\n\n\n\n\n" +tab+"\n\n\n\n\n" + "SELECT min(" + col + ") FROM " + tab + where + "\n\n\n\n\n")
+    tabR :+= ("min", sQLContext.sql("SELECT min(" + col + ") FROM " + tab + where).map(t => t(0).toString).first().toDouble) //On calcule la valeur minimale
+    tabR :+= ("max", sQLContext.sql("SELECT max(" + col + ") FROM " + tab + where).map(t => t(0).toString).first().toDouble) //et maximale
+    tabR :+= ("moy", sQLContext.sql("SELECT avg(" + col + ") FROM " + tab + where).map(t => t(0).toString).first().toDouble)
 
-    return min + "," + max + "," + moy
+    return tabR
+    //return min + "," + max + "," + moy
   }
 }

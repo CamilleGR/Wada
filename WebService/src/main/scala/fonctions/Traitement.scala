@@ -89,11 +89,11 @@ class Traitement {
                              le nombre de lignes
                              les stats (min,max,moyenne) (si colonne de valeurs numeriques)
   */
-  def traitementStats(cheminSource: String, cheminCible: String, nomFichier: String, attribut: String, segment: Int, filtre: String): Array[String] = {
+  def traitementStats(cheminSource: String, cheminCible: String, nomFichier: String, attribut: String, segment: Int, filtre: String): String = {
     var tab = new Array[(String, Int)](0)
-    var stats = ""
+    var stats = Array[(String,Double)]()
     var nbRow:Long = 0
-    var moyenneSegment = ""
+    var moyenneSegment = Array[(String,Double)]()
     var mediane = ""
 
     if (Fichier.extension(nomFichier)=="csv" || Fichier.extension(nomFichier)=="tsv") { //Si c'est un csv ou tsv...
@@ -115,7 +115,8 @@ class Traitement {
       if (Colonne.numerique(data,col)) {
         tab = StatsAttribut.numerique(segment, col, data) // <- Si c'est un Réel on execute segmentNum
         stats = Statistiques.otherStats(data, col)
-        moyenneSegment = Statistiques.StringMoyenneSegment(Statistiques.moyenneSegment(segment, col, data))
+        moyenneSegment = Statistiques.moyenneSegment(segment, col, data)
+        //moyenneSegment = Statistiques.StringMoyenneSegment(Statistiques.moyenneSegment(segment, col, data))
       }
       else
         tab = StatsAttribut.chaine(segment,col,data) // <- Si c'est un String on execute segmentStringArray
@@ -137,9 +138,21 @@ class Traitement {
     }
     else
       throw new Exception()
-    val nomFichierStats = Csv.creerStats(nomFichier + "_" + attribut, cheminCible, tab) //On crée le fichier CSV à renvoyer à la webApp
-
-    return Array[String](nomFichierStats, nbRow.toString, stats, moyenneSegment, mediane)
+    
+    val json = new JSONcontainer
+    json.addTabs("tab", tab.toArray[(String,Any)])
+    json.addStats("count", nbRow)
+    if (mediane != "") json.addStats("med", mediane)
+    if (stats.length != 0) {
+      for (i <- 0 to stats.length-1) {
+        json.addStats(stats(i)._1, stats(i)._2)
+      }
+    }
+    if (moyenneSegment.length != 0)
+      json.addTabs("moySeg", moyenneSegment.toArray[(String,Any)])
+    //val nomFichierStats = Csv.creerStats(nomFichier + "_" + attribut, cheminCible, tab) //On crée le fichier CSV à renvoyer à la webApp
+    return json.toString()
+    //return Array[String](nomFichierStats, nbRow.toString, stats, moyenneSegment, mediane)
   }
 
   /*
@@ -178,7 +191,7 @@ class Traitement {
       mediane = Statistiques.mediane(data.map(r => r(col2)))
 
       tab = StatsAttribut.grapheMinMaxMoy(col1, col2, data)
-      stats = Statistiques.otherStats(data, col2)
+      //stats = Statistiques.otherStats(data, col2)
     }
     else if (Fichier.extension(nomFichier)=="json") {
       val textFile = sqlContext.jsonFile(cheminSource + nomFichier)//On charge le fichier avec spark, le type de textFile est SchemaRDD
@@ -189,7 +202,7 @@ class Traitement {
       nbRow = Statistiques.nbTuples(sqlContext, "textFile", filtreTable)
 
       tab = StatsAttribut.grapheMinMaxMoy(sqlContext, attribut1, attribut2, "textFile", filtreTable)
-      stats = Statistiques.otherStats(sqlContext, "textFile", attribut2, filtreTable)
+      //stats = Statistiques.otherStats(sqlContext, "textFile", attribut2, filtreTable)
     }
     else
       throw new Exception()

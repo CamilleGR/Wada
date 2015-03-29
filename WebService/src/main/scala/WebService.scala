@@ -14,7 +14,7 @@ class WebServiceActor extends Actor with WebService {
 
   def actorRefFactory = context
 
-  def receive = runRoute(handleExceptions(RouteExceptionHandler)(myRoute))
+  def receive = runRoute/*(handleExceptions(RouteExceptionHandler)*/(myRoute)//)
 
   implicit def RouteExceptionHandler(implicit log: LoggingContext) =
     ExceptionHandler {
@@ -66,11 +66,16 @@ trait WebService extends HttpService {
           //On définie ce qui est envoyé SI on utilise la méthode POST
           formFields("nomFichier", "attribut", "segment".as[Int], "filtre") { (nomFichier, attribut, segment, filtre) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
             //Dans le cas d'une demande des stats, on renvoit en GET le chemin du fichier crée contenant les stats, ainsi que le nombre de tuples lus, et (si la colonne est numerique) le minimum, le maximum, la moyenne
-            val fichier = traitement.traitementStats(cheminSource, cheminCible, nomFichier, attribut, segment, filtre)
-            val stats = if (fichier(2) != "") "&stats=" + fichier(2) else ""
-            val moy = (if (fichier(3) != "") "&moy=" + fichier(3) else "").replace(" ", "+")
-            val mediane = (if (fichier(4) != "") "&med=" + fichier(4) else "")
-            redirect({lienCibleStats} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + {stats} + {moy} + {mediane}, StatusCodes.PermanentRedirect)
+            //val fichier = traitement.traitementStats(cheminSource, cheminCible, nomFichier, attribut, segment, filtre)
+            //val stats = if (fichier(2) != "") "&stats=" + fichier(2) else ""
+            //val moy = (if (fichier(3) != "") "&moy=" + fichier(3) else "").replace(" ", "+")
+            //val mediane = (if (fichier(4) != "") "&med=" + fichier(4) else "")
+            //redirect({lienCibleStats} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + {stats} + {moy} + {mediane}, StatusCodes.PermanentRedirect)
+            respondWithMediaType(`application/json`) {
+              complete {
+                traitement.traitementStats(cheminSource, cheminCible, nomFichier, attribut, segment, filtre)
+              }
+            }
           }
         }
       } ~
