@@ -14,7 +14,7 @@ class WebServiceActor extends Actor with WebService {
 
   def actorRefFactory = context
 
-  def receive = runRoute(handleExceptions(RouteExceptionHandler)(myRoute))
+  def receive = runRoute/*(handleExceptions(RouteExceptionHandler)*/(myRoute)//)
 
   implicit def RouteExceptionHandler(implicit log: LoggingContext) =
     ExceptionHandler {
@@ -109,7 +109,12 @@ trait WebService extends HttpService {
         get {
           parameters("nomFichier", "nbClusters".as[Int], "attribut", "segment".as[Int], "filtre") { (nomFichier, nbClusters, attribut, segment, filtre) =>
             val dossier = traitement.traitementKmeansStats(cheminSource, cheminCible, nomFichier, nbClusters, attribut, segment, filtre)
-            redirect({lienCibleStats} + "?dossier=" + {dossier} + "&nbClusters=" + {nbClusters}, StatusCodes.PermanentRedirect)
+            //redirect({lienCibleStats} + "?dossier=" + {dossier} + "&nbClusters=" + {nbClusters}, StatusCodes.PermanentRedirect)
+            respondWithMediaType(`application/json`) {
+              complete {
+                traitement.traitementKmeansStats(cheminSource, cheminCible, nomFichier, nbClusters, attribut, segment, filtre)
+              }
+            }
           }
         }
       } ~
