@@ -1,4 +1,7 @@
 //Exemple d'utilisation du webhdfs ...
+
+
+
 $(document).ready( function()
 {
 
@@ -24,25 +27,8 @@ $(document).ready( function()
 	var op, destination;
 
 	//avec JsTreeFile utilisez ces fonctions ...
-	$('.nav').click(function() 
-	{
-		console.log("Parcourir dossier actuel");
-		op="LISTSTATUS";
-		$.get( curl ,
-				{
-					adr : url+dir+op,
-					method : 'get'
-		
-				}, function(reponse)
-				{
-					
-					//console.log(JSON.stringify(reponse.FileStatuses));
-					$('div').text( JSON.stringify(reponse));								
-					$('div').show();
-					$('div').hide(1000);
-					
-				}
-		);
+	$('.nav').click(function(){
+		Lister();
 	});
 
 	$('.info').click(function(){
@@ -75,10 +61,12 @@ $(document).ready( function()
 					method : 'header'
 				}, function(reponse)
 				{
-					console.log("DataNode : " +reponse);
+					//console.log("DataNode : " +reponse);
 					var tab = reponse.split('\n');
-					console.log(tab[9]);
+					//console.log(tab[9]);
+					
 					destination = tab[9].split("Location:").join("");
+					
 					console.log(destination);
 					
 				}
@@ -88,32 +76,24 @@ $(document).ready( function()
 
 
 	$('.upload').click(function(){
-		op="APPEND";
+		op="APPEND&buffersize=512";
 		console.log("Envoie de fichier, requÃªte POST obvious ...");
-		$.post( curl ,
+		$.get( curl ,
 				{
-			adr : url+op
+			adr : url+op,
+			method : 'post'
 				}, function(reponse)
 				{
-					if(!reponse)
-					{
-						$("div").text(reponse);								
-						$('div').show();
-						$('div').hide(1000);
-
-						//si append fonctionne on peut recuperer le data node et y ajouter
-						request.getResponseHeader
-						$.post( curl, 
-								{
-							adr : reponse[1]
-								}, function(reponse)
-								{
-									$("div").html(reponse);								
-									$('div').show();
-									$('div').hide(1000);
-								}
-						);
-					}
+					console.log("reponse  : " +reponse);
+					//on peut recuperer le data node et y ajouter le fichier
+					var tab = reponse.split('\n');
+					
+					destination = tab[11].split("Location:").join("");
+					console.log(destination);
+					
+						
+				
+					
 				}
 			);
 	});
@@ -139,9 +119,10 @@ $(document).ready( function()
 	$('.delete').click(function(){
 		op="DELETE";
 		console.log("Suppression requÃªte delete ...");
-		$.post( curl ,
+		$.get( curl ,
 				{
-			adr : url+op
+			adr : url+op,
+			method : 'delete'
 				}, function(reponse)
 				{
 					console.log("curl exÃ©cutÃ©");
@@ -157,11 +138,50 @@ $(document).ready( function()
 
 
 	console.log("En attente ...");
+	
+	function currentUser(){
+	op="GETHOMEDIRECTORY";
+		
+		$.getJSON( curl,
+		{
+		adr : url+dir+op,
+		method : 'get'
+		}, function(reponse)
+			{
+				console.log(reponse);
+		
+			}
+		);
+	}
 
-		}
+	function Lister()
+	{
+		console.log("Parcourir dossier actuel");
+		op="LISTSTATUS";
+		$.getJSON( curl ,
+				{
+					adr : url+dir+op,
+					method : 'get'
+		
+				}, function(reponse)
+				{
+					
+					//console.log(JSON.stringify(reponse.FileStatuses));
+					$('div').text( JSON.stringify(reponse));								
+					$('div').show();
+					$('div').hide(1000);
+					console.log("Fichiers : ");
+					var objet = reponse.FileStatuses.FileStatus;
+					for ( i = 0; i< objet.length; i++)
+					{
+						console.log(objet[i]);
+					}
+				}
+		);
+	}
+
+	}
 );
 
 
-
-
-
+	
