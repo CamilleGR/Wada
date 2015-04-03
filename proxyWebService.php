@@ -52,7 +52,7 @@
 				$seg = "segment=".urlencode($_GET["segment"]);
 				$clust = "nbClusters=".urlencode($_GET["nbClusters"]);
 				$filtre = "filtre=".urlencode($_GET["filtre"]);
-				$url = "localhost:8080/kmeans?$file&$attr&$seg&$clust&$filtre";
+				$url = "localhost:8080/kmeans_Stats?$file&$attr&$seg&$clust&$filtre";
 				break;
 		}
 	curl_setopt($ch, CURLOPT_URL, $url);
