@@ -132,7 +132,7 @@ trait WebService extends HttpService {
       } ~
       path("stopstream") {
 
-        tw.stopStream
+        if( tw.estLance) tw.stopStream
           respondWithMediaType(`application/json`){
             complete {
               "{reponse:" + {
