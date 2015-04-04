@@ -1,51 +1,60 @@
 <?php
 
 	header("Access-Control-Allow-Origin:http://localhost:50070"); 
+	header("Access-Control-Allow-Origin:http://sandbox.hortonworks.com:50075"); 
 	header("Access-Control-Allow-Methods : POST, GET, OPTIONS, PUT, PATCH, DELETE");
 	header("Access-Control-Allow-Headers : Content-Type,api_key,Authorization,X-Auth-Token");
 	header('Content-Type: text/html; charset=utf-8');
 	//header('Content-type: application/json');
 
 	if(isset($_GET['adr'])&&isset($_GET['method']))
-	{
+	{	
+		
 		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_HTTPGET, true);
 		curl_setopt($ch, CURLOPT_HEADER, false);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_URL, $_GET['adr']);
 		
 		switch ($_GET['method']) {
 			case 'put':
-				curl_setopt($ch, CURLOPT_PUT, true);						
+				curl_setopt($ch, CURLOPT_PUT, true);
+			
+				echo curl_exec($ch);
 				break;
 			
-			case 'get':									
+			case 'get':		
+				echo curl_exec($ch);			
 				break;
-			
+			case 'header-put' :
+				curl_setopt($ch, CURLOPT_HEADER, true);
+				curl_setopt($ch, CURLOPT_PUT, true);
+				echo curl_exec($ch);
+				break;
 			case 'post':
 				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_HEADER, true);				
+				
+				echo curl_exec($ch);				
 				break;		
 				
 			case 'delete':
 				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "delete");
+				echo curl_exec($ch);
 				break;
 			
-			case 'header' :	
-				curl_setopt($ch, CURLOPT_HEADER, true);
-				break;
-			
+		
 			default:
 			
 			echo json_encode(array( false));
 			curl_close($ch);
 			break;
 		}
-		echo curl_exec($ch);
+		
 		curl_close($ch);
 		
 	}
 	
-	if(isset($_POST['target'])&& $_FILES!=null)
+	if(!empty($_FILES))
 	{
 		
 		$fileName = $_FILES["file1"]["name"]; 
@@ -65,22 +74,37 @@
 			} 
 			if(move_uploaded_file($fileTmpLoc, "$fileName"))
 			{
+				if($_POST['target'])
+				{
+					$dataNode = $_POST['target'];
+					
+					$ch = curl_init();		
+					curl_setopt($ch, CURLOPT_HEADER, true);				
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					curl_setopt($ch, CURLOPT_PUT, true);
+					curl_setopt($ch, CURLOPT_URL, $dataNode);
+					
+					$file = fopen($fileName, "rb");
+					
+					if(!$file)
+					{
+						echo "fichier introuvable sur le serveur";
+					}
+					curl_setopt($ch, CURLOPT_INFILE, $file);		
+					curl_setopt($ch, CURLOPT_INFILESIZE, $fileSize);
+								
+					echo curl_exec($ch);
+					
+					curl_close($ch);
+					fclose($file);
+					//unlink($fileName);
+					
+				}
 				
-				$dataNode = $_POST['target'];
-				
-				$ch = curl_init();				
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_HEADER, true);
-				curl_setopt($ch, CURLOPT_URL, $dataNode);
-				$args['file'] = new CurlFile($fileTmpLoc);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $args); 
-				echo curl_exec($ch);
-				unlink($fileName);
-				
-				curl_close($ch);
-				//echo "$fileName upload is complete";
-			
+				else
+				{
+					echo "$fileName upload is complete";
+				}
 				
 			}
 			else 

@@ -8,7 +8,7 @@
 			// alert(file.name+" | "+file.size+" | "+file.type);
 			
 			var formdata = new FormData(); 
-			
+			console.log("uploadFile en action ... " +dataNode);
 			formdata.append("file1", file); 
 			formdata.append("target",dataNode);
 			var ajax = new XMLHttpRequest(); 
@@ -16,8 +16,8 @@
 			ajax.addEventListener("load", completeHandler, false);
 			ajax.addEventListener("error", errorHandler, false); 
 			ajax.addEventListener("abort", abortHandler, false); 
-			ajax.addEventListener("sucess", sucessHandler,false);
-			ajax.open("POST", "curl.php"); 
+			ajax.addEventListener("success", sucessHandler,false);
+			ajax.open("post", "curl.php"); 
 			
 			ajax.send(formdata); 
 		} 
@@ -37,5 +37,5 @@
 			_("status").innerHTML = "Upload Aborted"; 
 		} 
 		function sucessHandler(event){
-			_("statis").innerHTML = "Horton is blind ...";
+			_("status").innerHTML = "Horton is blind ...";
 		}

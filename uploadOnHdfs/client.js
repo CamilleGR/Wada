@@ -6,22 +6,32 @@ $(document).ready( function()
 
 	var host = "localhost"
 
-	var port = 50070, permission=755;
+	var port = 50070;
 
 	var path = "/webhdfs/v1/"
 
-	//répertoire ou fichier courant lorsque le fichier est cliqué
-	var dir = "tmp"+"?op=";
-
-	var user = "user";
-
+	var curl = "curl.php";
+	
 	var url = host+":"+port+path;
+	//répertoire pour Wada
+	var dir = "user/wada";
+	$.getJSON( curl, 
+	{ adr : url+dir+"?op=MKDIRS&permission=777", 
+		method : "put" },
+	function(reponse)
+	{
+	
+			if(reponse.boolean)
+			{
+				console.log("dossier crée");
+			}
+	});
+	var user = "user";
 
 	//mettez le lien navigateur pour acceder au fichier curl.php
 
-	var curl = "curl.php";
 
-	var op, destination;
+	var op;
 
 	//avec JsTreeFile AngularJs utilisez ces fonctions ...
 	
@@ -35,11 +45,11 @@ $(document).ready( function()
 
 	$('.info').click(function(){
 
-		op="GETFILESTATUS";
+		op="GETFILECHECKSUM";
 		$.get( curl ,
 				{
-			adr : url+dir,
-			op : op
+			adr : url+"?op="+op,
+			method : 'get'
 				}, function(reponse)
 				{
 					if(reponse.FileStatuses)
@@ -77,25 +87,25 @@ $(document).ready( function()
 	});
 
 
-	$('#file').click(function(){
-		op="APPEND&buffersize=512";
+	$('#upload_form').click(function(){
+		op="CREATE&overwrite=true&permission=777";
 		
 		$.get( curl ,
 				{
-			adr : url+dir+op,
-			method : 'post'
+			adr : url+"?op="+op,
+			method : 'header-put'
 				}, function(reponse)
 				{
-					console.log("reponse  : " +reponse);
-					//on peut recuperer le data node et y ajouter le fichier
-					var tab = reponse.split('\n');
-					destination = tab[11].split("Location:").join("");
-					uploadFile(destination);
-			
+					destination = reponse.split('\n')[11];
+					destination = destination.split("Location: http://").join("");
 				}
 			);
 	});
-
+	
+	$('#transfer').click(function(){
+		
+		uploadFile(destination);
+	});
 
 	$('.rename').click(function(){
 			op="RENAME";
@@ -157,26 +167,26 @@ $(document).ready( function()
 
 	function Lister()
 	{
-		console.log("Parcourir dossier actuel");
+		console.log("Parcourir " +dir);
 		op="LISTSTATUS";
 		$.getJSON( curl ,
 				{
-					adr : url+dir+op,
+					adr : url+dir+"?op="+op,
 					method : 'get'
 		
 				}, function(reponse)
 				{
-					return reponse.FileStatus;
-					/*console.log(JSON.stringify(reponse.FileStatuses));
-					$('div').text( JSON.stringify(reponse));								
+					
+					//console.log(JSON.stringify(reponse.FileStatuses));
+					/*$('div').text( JSON.stringify(reponse));								
 					$('div').show();
-					$('div').hide(1000);
+					$('div').hide(1000);*/
 					console.log("Fichiers : ");
 					var objet = reponse.FileStatuses.FileStatus;
 					for ( i = 0; i< objet.length; i++)
 					{
 						console.log(objet[i]);
-					}*/
+					}
 				}
 		);
 	}
