@@ -1,6 +1,0 @@
-{"attributs": [
-	{"label":"name","numerique":false},
-	{"label":"sexe","numerique":false},
-	{"label":"age","numerique":true},
-	{"label":"country","numerique":false},
-	{"label":"score","numerique":true}]}
