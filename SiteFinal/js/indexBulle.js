@@ -8,8 +8,7 @@ function association(){
 	window.items = [];
 
 
-
-      $.getJSON( "data/exempleJSON.json", function( data )
+      $.getJSON( "data/exempleJSON2.json", function( data )
       {
 
         ali.Items.push({"text":"Maxi","count":"90"});
@@ -26,7 +25,7 @@ function association(){
 
 
 	 // load the external data
-	 d3.json("data/exempleJSON.json", function(error, dataJson) {
+	 d3.json("data/exempleJSON2.json", function(error, dataJson) {
 	 	creation(dataJson);
 	 });
 	  
