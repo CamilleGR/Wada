@@ -1,7 +1,4 @@
 //Exemple d'utilisation du webhdfs ...
-
-
-
 $(document).ready( function()
 {
 
@@ -13,12 +10,12 @@ $(document).ready( function()
 
 	var path = "/webhdfs/v1/"
 
-		//répertoire ou fichier courant lorsque le fichier est cliqué
-	var dir = "";
+	//répertoire ou fichier courant lorsque le fichier est cliqué
+	var dir = "tmp"+"?op=";
 
 	var user = "user";
 
-	var url = host+":"+port+path+"?op=";
+	var url = host+":"+port+path;
 
 	//mettez le lien navigateur pour acceder au fichier curl.php
 
@@ -26,9 +23,14 @@ $(document).ready( function()
 
 	var op, destination;
 
-	//avec JsTreeFile utilisez ces fonctions ...
+	//avec JsTreeFile AngularJs utilisez ces fonctions ...
+	
+	
 	$('.nav').click(function(){
-		Lister();
+	
+		 Lister();
+	
+	
 	});
 
 	$('.info').click(function(){
@@ -75,31 +77,27 @@ $(document).ready( function()
 	});
 
 
-	$('.upload').click(function(){
+	$('#file').click(function(){
 		op="APPEND&buffersize=512";
-		console.log("Envoie de fichier, requÃªte POST obvious ...");
+		
 		$.get( curl ,
 				{
-			adr : url+op,
+			adr : url+dir+op,
 			method : 'post'
 				}, function(reponse)
 				{
 					console.log("reponse  : " +reponse);
 					//on peut recuperer le data node et y ajouter le fichier
 					var tab = reponse.split('\n');
-					
 					destination = tab[11].split("Location:").join("");
-					console.log(destination);
-					
-						
-				
-					
+					uploadFile(destination);
+			
 				}
 			);
 	});
 
 
-		$('.rename').click(function(){
+	$('.rename').click(function(){
 			op="RENAME";
 			console.log("Demande au serveur de changer ...");
 			$.post( curl ,
@@ -139,6 +137,9 @@ $(document).ready( function()
 
 	console.log("En attente ...");
 	
+
+
+
 	function currentUser(){
 	op="GETHOMEDIRECTORY";
 		
@@ -165,8 +166,8 @@ $(document).ready( function()
 		
 				}, function(reponse)
 				{
-					
-					//console.log(JSON.stringify(reponse.FileStatuses));
+					return reponse.FileStatus;
+					/*console.log(JSON.stringify(reponse.FileStatuses));
 					$('div').text( JSON.stringify(reponse));								
 					$('div').show();
 					$('div').hide(1000);
@@ -175,13 +176,12 @@ $(document).ready( function()
 					for ( i = 0; i< objet.length; i++)
 					{
 						console.log(objet[i]);
-					}
+					}*/
 				}
 		);
 	}
-
-	}
-);
+	
+});
 
 
 	
