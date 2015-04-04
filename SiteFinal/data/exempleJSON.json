@@ -1,0 +1,51 @@
+{
+	
+	"stats" : 
+	[
+		{"label":"Max","value":53},
+		{"label":"Pein","value":22},
+		{"label":"Min","value":42}
+	],
+
+
+	"Items" :
+  	[
+		  {"text": ".Net", "count": "382"},
+		  {"text": "Php", "count": "170"},
+		  {"text": "Ruby", "count": "123"},
+		  {"text": "D", "count": "12"},
+		  {"text": "Python", "count": "170"},
+		  {"text": "grdeVal", "count": "900"},
+		  {"text": "C/C++", "count": "382"},
+		  {"text": "Pascal", "count": "10"},
+		  {"text": "ali", "count": "10"},
+		  {"text": "Livio", "count": "10"}  
+    ],
+
+
+
+	"EvoTweet" : 
+	{
+		
+		"line1" : {"label": "jourI", "value": "34" }, 
+		"line2" : {"label": "jourII", "value": "24" }, 
+		"line3" : {"label": "moisIII", "value": "3"}, 
+		"line4" : {"label": "anIV", "value": "12"}, 
+		"line5" : {"label": "dcenieV", "value": "13"}, 
+		"line6" : {"label": "siecleVI", "value": "22"}, 
+		"line7" : {"label": "VII", "value": "5"}, 
+		"line8" : {"label": "VIII", "value": "26"}, 
+		"line9" : {"label": "IX","value": "12"}, 
+		"line10" : {"label": "Xza", "value": "19"},
+		"line11" : {"label": "Xds", "value": "29"},
+		"line12" : {"label": "sdX", "value": "59"},
+		"line13" : {"label": "Xd", "value": "9"},
+		"line14" : {"label": "d", "value": "1"},
+		"line15" : {"label": "ad", "value": "2"},
+		"line16" : {"label": "f", "value": "3"},
+		"line17" : {"label": "v", "value": "5"},
+		"line18" : {"label": "s", "value": "6"},
+		"line19" : {"label": "21 mars 2015 a 19h", "value": "100"}	
+	}
+
+}
