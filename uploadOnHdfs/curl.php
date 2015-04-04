@@ -16,43 +16,32 @@
 		switch ($_GET['method']) {
 			case 'put':
 				curl_setopt($ch, CURLOPT_PUT, true);						
-				echo curl_exec($ch);
-				curl_close($ch);
 				break;
 			
 			case 'get':									
-				echo curl_exec($ch);
-				curl_close($ch);			
 				break;
 			
 			case 'post':
-				curl_setopt($ch, CURLOPT_POST, true);				
-				echo curl_exec($ch);
-				curl_close($ch);
+				curl_setopt($ch, CURLOPT_POST, true);
+				curl_setopt($ch, CURLOPT_HEADER, true);				
 				break;		
 				
 			case 'delete':
-				curl_setopt($ch, CURLOPT_DELETE, true);
-				
-				echo json_encode(curl_exec($ch));
-				curl_close($ch);
+				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "delete");
 				break;
 			
 			case 'header' :	
 				curl_setopt($ch, CURLOPT_HEADER, true);
-				echo curl_exec($ch);
-				curl_close($ch);
-				
-				
 				break;
 			
 			default:
-			$result = array( 'ok' => false);
-			echo json_encode($result);
+			
+			echo json_encode(array( 'ok' => false));
 			curl_close($ch);
 			break;
 		}
-		
+		echo curl_exec($ch);
+		curl_close($ch);
 		
 	}
 ?>

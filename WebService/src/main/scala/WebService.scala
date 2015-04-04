@@ -49,8 +49,8 @@ trait WebService extends HttpService {
 
   val myRoute = {
     path("attributs") {
-      post {
-        formFields("nomFichier") { nomFichier =>
+      get {
+        parameters("nomFichier") { nomFichier =>
           //Dans le cas d'une demande de la liste des attributs, on renvoit en GET les attributs separés par des virgules, ainsi que le nom du fichier
           respondWithMediaType(`application/json`) {
             complete {
@@ -62,9 +62,9 @@ trait WebService extends HttpService {
       }
     } ~
       path("stats") {
-        post {
+        get {
           //On définie ce qui est envoyé SI on utilise la méthode POST
-          formFields("nomFichier", "attribut", "segment".as[Int], "filtre") { (nomFichier, attribut, segment, filtre) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
+          parameters("nomFichier", "attribut", "segment".as[Int], "filtre") { (nomFichier, attribut, segment, filtre) => //Les paramètres de la méthode POST sont mentionnés par la fonction formFields
             //Dans le cas d'une demande des stats, on renvoit en GET le chemin du fichier crée contenant les stats, ainsi que le nombre de tuples lus, et (si la colonne est numerique) le minimum, le maximum, la moyenne
             //val fichier = traitement.traitementStats(cheminSource, cheminCible, nomFichier, attribut, segment, filtre)
             //val stats = if (fichier(2) != "") "&stats=" + fichier(2) else ""
@@ -80,8 +80,8 @@ trait WebService extends HttpService {
         }
       } ~
       path("courbe") {
-        post {
-          formFields("nomFichier", "attribut1", "attribut2", "filtre") { (nomFichier, attribut1, attribut2, filtre) =>
+        get {
+          parameters("nomFichier", "attribut1", "attribut2", "filtre") { (nomFichier, attribut1, attribut2, filtre) =>
             //val fichier = traitement.traitementGraphe(cheminSource, cheminCible, nomFichier, attribut1, attribut2, filtre)
             //redirect({lienCibleStats} + "?fichier=" + {fichier(0)} + "&count=" + {fichier(1)} + "&stats=" + {fichier(2)} + "&med=" + {fichier(3)}, StatusCodes.PermanentRedirect)
             respondWithMediaType(`application/json`) {
@@ -93,8 +93,8 @@ trait WebService extends HttpService {
         }
       } ~
       path("kmeans") {
-        post {
-          formFields("nomFichier", "nbClusters".as[Int], "filtre") { (nomFichier, nbClusters, filtre) =>
+        get {
+          parameters("nomFichier", "nbClusters".as[Int], "filtre") { (nomFichier, nbClusters, filtre) =>
             //val fichier = traitement.traitementKmeans(cheminSource, cheminCible, nomFichier, nbClusters, filtre)
             //redirect({lienCibleStats} + "?fichier=" + {fichier} + "&nbCentres=" + {nbClusters}, StatusCodes.PermanentRedirect)
             respondWithMediaType(`application/json`) {
@@ -106,10 +106,15 @@ trait WebService extends HttpService {
         }
       } ~
       path("kmeans_Stats") {
-        post {
-          formField("nomFichier", "nbClusters".as[Int], "attribut", "segment".as[Int], "filtre") { (nomFichier, nbClusters, attribut, segment, filtre) =>
+        get {
+          parameters("nomFichier", "nbClusters".as[Int], "attribut", "segment".as[Int], "filtre") { (nomFichier, nbClusters, attribut, segment, filtre) =>
             val dossier = traitement.traitementKmeansStats(cheminSource, cheminCible, nomFichier, nbClusters, attribut, segment, filtre)
-            redirect({lienCibleStats} + "?dossier=" + {dossier} + "&nbClusters=" + {nbClusters}, StatusCodes.PermanentRedirect)
+            //redirect({lienCibleStats} + "?dossier=" + {dossier} + "&nbClusters=" + {nbClusters}, StatusCodes.PermanentRedirect)
+            respondWithMediaType(`application/json`) {
+              complete {
+                traitement.traitementKmeansStats(cheminSource, cheminCible, nomFichier, nbClusters, attribut, segment, filtre)
+              }
+            }
           }
         }
       } ~
@@ -155,8 +160,8 @@ trait WebService extends HttpService {
       }
   }~
       path("associatedHashtags"){
-        post {
-          formField("path"){ (path)=>
+        get {
+          parameter("path"){ (path)=>
             var tt= new TraitementTweet(traitement.sc)
             respondWithMediaType(`application/json`) {
               complete {

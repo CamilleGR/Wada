@@ -84,10 +84,10 @@
 
 
 		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-	  	<script src="js/charts.js"></script>
+	  	<script src="js/charts.js"></script> <!-- fait les requetes pour levolution des tweets -->
 		<script src="js/raphael-min.js"></script>
 		<script src="js/morris.min.js"></script>
-	  	<script src="js/indexBulle.js"></script>
+	  	<script src="js/indexBulle.js"></script> <!--  fait les requetes pour les hashtags  -->
 
 		<script src="http://phuonghuynh.github.io/js/bower_components/jquery/dist/jquery.min.js"></script>
 	  	<script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script>

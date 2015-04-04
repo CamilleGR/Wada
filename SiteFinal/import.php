@@ -58,7 +58,7 @@
 							<!-- <img id="uploaderIco" class="glyphicon glyphicon-open-file" src="img/upload.png" alt="Preview" width="50"> -->
 						</li>
 						<li role="presentation">
-							<input type="file" id="uploader">
+							<input type="file" class="btn btn-success btn-large" id="uploader" hidden>
 						</li>
 					</ul>
 					</div>

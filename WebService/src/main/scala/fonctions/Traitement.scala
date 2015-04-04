@@ -325,8 +325,11 @@ class Traitement {
     else {
       tab = Kmeans.kmeansArrayChaine(textFile, nbClusters, 0, segment, col)
     }
-    val nom = Csv.creerMultiplesStats(nomFichier + "_kmeans_" + attribut, cheminCible, tab)
-
-    return nom
+    val json = new JSONcontainer
+    json.addStats("count", textFile.count())
+    for (i <- 0 to tab.length-1) json.addTabs("tab" + i, tab(i).toArray[(String, Any)])
+    //val nom = Csv.creerMultiplesStats(nomFichier + "_kmeans_" + attribut, cheminCible, tab)
+    return json.toString()
+    //return nom
   }
 }
