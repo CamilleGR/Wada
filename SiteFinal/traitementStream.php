@@ -49,16 +49,16 @@
 			</center>
 		</div>
 		
-	<center><p> Entrez le chemin correspondant à votre enregistrement et l'interval de temps que vous souhaitez pour visualiser l'evolution de votre hashtag </p></center>
+
 	
 	<div id="formulaire" style="display:none;">
-		<form  method="GET" action="api2.php" style="z-index:98; position:relative; top:auto;  width:300px; height: 18px; margin-left: 39%;" >
+		<form  method="GET" style="z-index:98; position:relative; top:auto;  width:300px; height: 18px; margin-left: 39%;" >
 			<div class="bfh-timepicker" runat="server" id="Arrivo" data-time="" style="margin-top:5em;">
 
 				<div class="input-group" style="margin-top:7px;">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
-			    	<input type="text" name="path" class="form-control" placeholder="chemin vers l'enregistrement ..."  />
-			    	<input type="number" name="seg" class="form-control" placeholder="Entrez votre interval de temps ..." />
+			    	<input type="text" id="path" class="form-control" placeholder="chemin vers l'enregistrement ..."  />
+			    	<input type="number" id="seg" class="form-control" placeholder="Entrez votre interval de temps ..." />
 			    	<a id="boutonSubmit"class="btn btn-default"><span class="glyphicon glyphicon-play"></span> Lancer Stream</a>
 			    </div>
 			</div>
@@ -98,8 +98,9 @@
 
 	<div id="bulles" style="display:none;">
 		<div class="center-block" >
-			<p><button class="btn btn-success btn-large" onclick="association()">Hashtags associés</button></p>
-			<div class="bubbleChart"></div>
+			<!--<p><button class="btn btn-success btn-large" onclick="association()">Hashtags associés</button></p>
+			<div class="bubbleChart"></div>-->
+			<div id="hashtagsChart"></div>
 		</div>
 	</div>
 
@@ -107,7 +108,7 @@
 
   	<!-- pour le traitement des graphes -->
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script src="js/charts.js"></script> <!-- fait les requetes pour levolution des tweets -->
+	<!--<script src="js/charts.js"></script> -->
 	<script src="js/raphael-min.js"></script>
 	<script src="js/morris.min.js"></script>
   	<script src="js/indexBulle.js"></script> <!--  fait les requetes pour les hashtags  -->

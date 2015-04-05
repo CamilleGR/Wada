@@ -136,8 +136,8 @@ trait WebService extends HttpService {
 
       } ~
       path("stopstream") {
-
-        if( tw.estLance) tw.stopStream
+        get{
+          if( tw.estLance) tw.stopStream
           respondWithMediaType(`application/json`){
             complete {
               "{reponse:" + {
@@ -146,6 +146,7 @@ trait WebService extends HttpService {
             }
 
           }
+        }
       }~
       path("evoTweet"){
         get {

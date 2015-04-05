@@ -46,6 +46,12 @@
 
 	<!-- Formulaire de saisie -->
 	<!-- http://localhost:8080/stream">  -->
+	<center>
+		<input id="commencer" type="submit" name="butt" class="btn btn-success" value=" Commencer un enregistrement " style="margin-top:22px;" >
+		<input id="arreter" type="submit" name="butt" class="btn btn-success" value=" arreter un enregistrement " style="margin-top:22px;" >
+		<input id="traiter" type="submit" name="butt" class="btn btn-success" value=" traiter un stream " style="margin-top:22px;" >
+	</center>
+		</br></br></br>
 	<div id="formulaire" style="display:none";>
 		<form  method="GET" action="api2.php" style="z-index:98; position:relative; top:auto;  width:300px; height: 18px; margin-left: 39%;" >
 			<div class="bfh-timepicker" runat="server" id="Arrivo" data-time="" style="margin-top:5em;">
@@ -59,13 +65,8 @@
 		</form>
 	</div>
 
-	</br></br></br>
 
-	<center>
-		<input id="commencer" type="submit" name="butt" class="btn btn-success" value=" Commencer un enregistrement " style="margin-top:22px;" >
-		<input id="arreter" type="submit" name="butt" class="btn btn-success" value=" arreter un enregistrement " style="margin-top:22px;" >
-		<input id="traiter" type="submit" name="butt" class="btn btn-success" value=" traiter un stream " style="margin-top:22px;" >
-	</center>
+
 	
 	<script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -87,7 +88,7 @@
 			});
 
 			$('input#traiter').click(function(){
-				document.location.href="api2.php";
+				document.location.href="traitementStream.php";
 			});
 		});
 	</script>
@@ -96,12 +97,12 @@
 
 
 
-
+<!--
 	<script>
 		$.get('proxyWebService.php',{action:"evoTweet",seg:$('#input_seg').val(),path:$('#input_path').val()},function(reponse){
 
 		});
-	</script>
+	</script>-->
 	
 	</body>
 </html>
