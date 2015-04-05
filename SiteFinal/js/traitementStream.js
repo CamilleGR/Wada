@@ -13,7 +13,40 @@ $(document).ready( function(){
 						Debut du traitement pour l'évolution => Courbes pour l'évolution
 		*********************************************************************************************************************************
 		*********************************************************************************************************************************/
+<<<<<<< HEAD
 		$.get( "proxyWebService.php",{action:"evoTweet",path:pathVar,seg:$('#seg').val()}, function( json ) {
+=======
+		$.get( "proxyWebService.php",
+		{
+			action:"evoTweet",
+			path:$('#path').val(),
+			seg:$('#seg').val()
+		}
+		, function( json ) 
+        {
+        	  console.log(json);
+		//console.log(Object.keys(json.line).map(function(key) {return json.line[key]}));
+            if (typeof Morris != 'undefined')
+            {	
+    			//Morris Line chart
+                Morris.Line({
+                      element: 'morrisline',
+                      data: Object.keys(json.evoTweet).map(function(key) {return json.evoTweet[key]}),
+                      xkey: 'label',
+                      ykeys: ['value'],
+                      labels: ['value'],
+                      parseTime: false,
+                      lineColors: ['#242d3c']
+                  });
+            }      
+        
+        /********************************************************************************************************************************
+		*********************************************************************************************************************************
+						Debut du traitement pour les hashtags => Courbes pour les hashtags
+		*********************************************************************************************************************************
+		*********************************************************************************************************************************/
+		$.get( "proxyWebService.php",{action:"associatedHashtags",path:$('#path').val()}, function( json ) {
+>>>>>>> 4307ec271f8aa9684c2c5b8377ce19abbc12bc4e
         	  console.log(json);
 		//console.log(Object.keys(json.line).map(function(key) {return json.line[key]}));
            		 if (typeof Morris != 'undefined')

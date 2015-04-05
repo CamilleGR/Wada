@@ -16,6 +16,7 @@
 		@font-face {  font-family: 'quadranta';		src: url('fonts/aspace_demo.otf') format('truetype');	font-weight: normal;	font-style: normal; }	 
 		h2 {  font-family:quadranta, sans-serif;	font-size:3em; }
 		h3{	font-family:quadranta, sans-serif;	font-size:2em; }
+		
 		.bubbleChart {
 	      min-width: 100px;
 	      max-width: 500px;
