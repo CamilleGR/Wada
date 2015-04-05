@@ -15,9 +15,9 @@ $(document).ready( function(){
 		*********************************************************************************************************************************/
 		$.get( "proxyWebService.php",
 		{
-		action:"evoTweet",
-		path:$('#path').val(),
-		seg:$('#seg').val()
+			action:"evoTweet",
+			path:$('#path').val(),
+			seg:$('#seg').val()
 		}
 		, function( json ) 
         {
