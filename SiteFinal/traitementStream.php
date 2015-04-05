@@ -16,7 +16,6 @@
 		@font-face {  font-family: 'quadranta';		src: url('fonts/aspace_demo.otf') format('truetype');	font-weight: normal;	font-style: normal; }	 
 		h2 {  font-family:quadranta, sans-serif;	font-size:3em; }
 		h3{	font-family:quadranta, sans-serif;	font-size:2em; }
-
 		.bubbleChart {
 	      min-width: 100px;
 	      max-width: 500px;
@@ -39,7 +38,7 @@
 		<div class="jumbotron">
 			<div class="container">
 				<center><h2><a href="accueil.php" style="text-decoration:none">Wada</a> API for Twitter</h2></center>
-				<p> <center><h3>  Mesurez l’impact d’un évènement avec Wada !</h3></center> </p>
+				<p> <center><h3>  Mesurez l’impact d’un évènement avec Wada !</h3></center> </p>
 			</div>
 			<center>
 				<ul>
@@ -52,7 +51,7 @@
 
 	
 	<div id="formulaire" style="display:none;">
-		<form  method="GET" style="z-index:98; position:relative; top:auto;  width:300px; height: 18px; margin-left: 39%;" >
+		<form  method="GET" style="z-index:98; position:relative; top:auto;  width:300px; height: 18px; margin-left: 39%;" >
 			<div class="bfh-timepicker" runat="server" id="Arrivo" data-time="" style="margin-top:5em;">
 
 				<div class="input-group" style="margin-top:7px;">
@@ -100,7 +99,7 @@
 		<div class="center-block" >
 			<!--<p><button class="btn btn-success btn-large" onclick="association()">Hashtags associés</button></p>
 			<div class="bubbleChart"></div>-->
-			<div id="hashtagsChart"></div>
+			<center><div id="hashtagsChart"></div></center>
 		</div>
 	</div>
 
@@ -133,4 +132,3 @@
 	
 	</body>
 </html>
-

@@ -36,10 +36,8 @@ $(document).ready( function(){
                       lineColors: ['#242d3c']
                   });
             }      
-        });
-		$('#courbes').fadeIn();
-		
-		/********************************************************************************************************************************
+        
+        /********************************************************************************************************************************
 		*********************************************************************************************************************************
 						Debut du traitement pour les hashtags => Courbes pour les hashtags
 		*********************************************************************************************************************************
@@ -50,7 +48,7 @@ $(document).ready( function(){
 		path:$('#path').val(),
 		}
 		, function( json ) 
-        {
+        	{
         	  console.log(json);
 		//console.log(Object.keys(json.line).map(function(key) {return json.line[key]}));
             if (typeof Morris != 'undefined')
@@ -67,9 +65,15 @@ $(document).ready( function(){
                   });
             }      
         });
-		$('#bulles').fadeIn();
+		$('#hashtagsChart').fadeIn();
+        
+        
+        
+        });
+		$('#courbes').fadeIn();
+		
+		
 
-		//$('#global').fadeIn();
 	});
 
 

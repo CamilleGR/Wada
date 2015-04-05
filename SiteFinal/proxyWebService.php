@@ -20,8 +20,8 @@
 			case "stream" :
 				$url = "localhost:8080/stream?hashgtags=".urlencode($_GET['hashtags']);
 				break;
-			case "stopStream" :
-				$url = "localhost:8080/stopStream";
+			case "stopstream" :
+				$url = "localhost:8080/stopstream";
 				break;
 			case "attributs" :
 				$url = "localhost:8080/attributs?nomFichier=".urlencode($_GET['nomFichier']);
