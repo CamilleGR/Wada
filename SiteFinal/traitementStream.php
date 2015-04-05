@@ -36,7 +36,7 @@
 		
 	<p> Entrez le chemin correspondant à votre enregistrement et l'interval de temps que vous souhaitez pour visualiser l'evolution de votre hashtag </p>
 	
-	<div id="formulaire" >
+	<div id="formulaire" style="display:none;">
 		<form  method="GET" action="api2.php" style="z-index:98; position:relative; top:auto;  width:300px; height: 18px; margin-left: 39%;" >
 			<div class="bfh-timepicker" runat="server" id="Arrivo" data-time="" style="margin-top:5em;">
 
@@ -44,7 +44,7 @@
 					<span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
 			    	<input type="text" name="path" class="form-control" placeholder="chemin vers l'enregistrement ..."  />
 			    	<input type="number" name="seg" class="form-control" placeholder="Entrez votre interval de temps ..." />
-			    	<a href="proxyWebService.php" class="btn btn-default"><span class="glyphicon glyphicon-play"></span> Lancer Stream</a>
+			    	<a id="boutonSubmit"class="btn btn-default"><span class="glyphicon glyphicon-play"></span> Lancer Stream</a>
 			    </div>
 			</div>
 		</form>
