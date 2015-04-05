@@ -125,11 +125,13 @@ trait WebService extends HttpService {
           parameter("hashtags") { (hashtags) =>
 
             var path = cheminSource+ "Stream/"+hashtags.split(";")(0).replace("#","") +"/minute".replace("#","").trim
+            var rep = "{\"path\":\""+path+"\"}"
             tw.creerStream(hashtags.split(";") ,path)
             tw.lancerStream
+            tw.estLance=true;
             respondWithMediaType(`application/json`){
                 complete{
-                  "{path:"+{path}+"}"
+                  rep
                 }
             }
       }}
@@ -137,14 +139,15 @@ trait WebService extends HttpService {
       } ~
       path("stopstream") {
         get{
-          if( tw.estLance) tw.stopStream
+        	parameters("action"){(action) =>
+          var rep = "{\n\"reponse\":\""+tw.estLance+"\"\n}"
+          tw.stopStream
+          tw.estLance=false;
           respondWithMediaType(`application/json`){
             complete {
-              "{reponse:" + {
-                tw.estLance
-              }+"}"
+              rep
             }
-
+	   }
           }
         }
       }~
