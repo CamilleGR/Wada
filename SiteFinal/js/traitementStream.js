@@ -42,29 +42,22 @@ $(document).ready( function(){
 						Debut du traitement pour les hashtags => Courbes pour les hashtags
 		*********************************************************************************************************************************
 		*********************************************************************************************************************************/
-		$.get( "proxyWebService.php",
-		{
-		action:"associatedHashtags",
-		path:$('#path').val(),
-		}
-		, function( json ) 
-        	{
+		$.get( "proxyWebService.php",{action:"associatedHashtags",path:$('#path').val()}, function( json ) {
         	  console.log(json);
 		//console.log(Object.keys(json.line).map(function(key) {return json.line[key]}));
-            if (typeof Morris != 'undefined')
-            {	
-    			//Morris Line chart
-                Morris.Line({
-                      element: 'hashtagsChart',
-                      data: Object.keys(json.hashtags).map(function(key) {return json.hashtags[key]}),
-                      xkey: 'label',
-                      ykeys: ['value'],
-                      labels: ['value'],
-                      parseTime: false,
-                      lineColors: ['#242d3c']
-                  });
-            }      
-        });
+          		  if (typeof Morris != 'undefined')  {	
+             			   Morris.Line({
+                      			element: 'hashtagsChart',
+                    			  data: Object.keys(json.hashtags).map(function(key) {return json.hashtags[key]}),
+                   			   xkey: 'label',
+                   			   ykeys: ['value'],
+                   			   labels: ['value'],
+                   			   parseTime: false,
+                   			   lineColors: ['#242d3c']
+                  			});
+            			}      
+        	});
+        	
 		$('#hashtagsChart').fadeIn();
         
         

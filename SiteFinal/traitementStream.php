@@ -96,13 +96,13 @@
 
 
 
-	<div id="bulles" style="display:none;">
+
 		<div class="center-block" >
 			<!--<p><button class="btn btn-success btn-large" onclick="association()">Hashtags associés</button></p>
 			<div class="bubbleChart"></div>-->
 			<center><div id="hashtagsChart"></div></center>
 		</div>
-	</div>
+
 
 
 
