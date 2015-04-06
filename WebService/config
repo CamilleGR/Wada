@@ -6,4 +6,4 @@
 CHEMIN_CIBLE=../SiteIntegration/
 LIEN_CIBLE_ATTRIBUTS=http://localhost/bigdata/SiteIntegration/sondage.php
 LIEN_CIBLE_STATS=http://localhost/bigdata/SiteIntegration/sondage.php
-CHEMIN_SOURCE=../scripts/
+CHEMIN_SOURCE=../../

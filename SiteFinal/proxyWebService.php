@@ -18,7 +18,10 @@
 				$url = "localhost:8080/associatedHashtags?path=".urlencode($_GET['path']);
 				break;
 			case "stream" :
-				$url = "localhost:8080/stream?hashgtags=".urlencode($_GET['hashtags']);
+				$url = "localhost:8080/stream?hashtags=".urlencode($_GET['hashtags']);
+				break;
+			case "stopstream" :
+				$url = "localhost:8080/stopstream?action=stopStream";
 				break;
 			case "attributs" :
 				$url = "localhost:8080/attributs?nomFichier=".urlencode($_GET['nomFichier']);
