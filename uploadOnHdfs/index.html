@@ -12,26 +12,32 @@
 		<h3>Explorateur WebHDFS :</h3>
 		<ul>
 			<li><button  class="nav" type="button">Parcourir</button></li>
-			<li><button class="open" type="button" >Ouvrir</button></li>
-			<li><button  class="upload" type="button" >Envoyer</button></li>
-			<li><button  class="delete" type="button">Supprimer</button></li>
-			<li><button  class="info" type="button">Checksum</button></li>
+			<li><button class="open" type="button" disabled>Ouvrir</button></li>		
+			<li><button  class="delete" type="button" disabled>Supprimer</button></li>
+			<li><button  class="info" type="button" disabled>Checksum</button></li>
 		</ul>
 		
-		<div>
+		<div id="fichiers">
+			<h3>Fichiers :</h3>
+			<ul></ul>
 		</div>
 		
 	
 
 		
-		<h2>HTML5 File Upload</h2>
-			<form id="upload_form" enctype="multipart/form-data" method="post" > 
-			<input id="file1" type="file" name="file1" ><br> 
-			<input id ="transfer" type="button" value="Put on HDFS" > 
-			<progress id="progressBar" value="0" max="100" style="width:300px;"></progress> 
+		<h2>File Upload</h2>
+			<form  action="curl.php" method="post" enctype="multipart/form-data">
+				<input id="file1" name ="file1" type="file" /><br>
+				<input id="transfer" disabled type="button" value="Upload On HDFS" />
 			
-			<h3 id="status"></h3> <p id="loaded_n_total"></p> 
-			</form> 
+				<progress id="progressBar" value="0" max="100" style="width:300px;">
+				</progress>
+				<p id="loaded_n_total"></p>
+				
+				
+			</form>
+
+			<p id="status"></p>
 		
 	</body>
 </html>
