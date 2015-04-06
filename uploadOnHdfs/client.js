@@ -13,6 +13,7 @@ $(document).ready( function()
 	var dir = "wada/";
 	
 	
+	
 	$.getJSON( curl, 
 	{ host : host,
 			port : port,
@@ -69,28 +70,9 @@ $(document).ready( function()
 
 	});
 
-	$('.open').click(function(){
-
-		op="OPEN";  
-		console.log("Ouverture fichier et obtenir le path webhdfs ...");
-		$.get( curl ,
-				{
-					adr : url+op,
-					method : 'header'
-				}, function(reponse)
-				{
-					//console.log("DataNode : " +reponse);
-					var tab = reponse.split('\n');
-					//console.log(tab[9]);
-					
-					destination = tab[9].split("Location:").join("");
-					
-					console.log(destination);
-					
-				}
-			);
 	
-	});
+		
+	
 
 	$('#file1').change(function(){
 		uploadFile();
@@ -148,36 +130,28 @@ $(document).ready( function()
 	});
 	
 
-	$('.rename').click(function(){
-			op="RENAME";
-			console.log("Demande au serveur de changer ...");
-			$.post( curl ,
-					{
-				adr : url+op
-					}, function(reponse)
-					{
-						console.log("curl exÃ©cutÃ©");
-						$("div").html(reponse);								
-						$('div').show();
-						$('div').hide(1000);
-					}
-			);
-
-
-		});
+	
+	
 	$('.delete').click(function(){
 		op="DELETE";
 		console.log("Suppression requÃªte delete ...");
+		if(fileName=="")
+		{
+			return;
+		}
 		$.get( curl ,
 				{
-			adr : url+op,
-			method : 'delete'
+					host : host,
+					port : port,
+					path : path,
+					dir : dir+fileName,
+					op : "?op="+op,					
+					method : 'delete'
 				}, function(reponse)
 				{
-					console.log("curl exÃ©cutÃ©");
-					$("div").html(reponse);								
-					$('div').show();
-
+					$('#dl').empty();
+					console.log(reponse);
+					Lister();
 				}
 		);
 
@@ -188,26 +162,58 @@ $(document).ready( function()
 
 	console.log("En attente ...");
 	
+	//selection fichiers
+	
+	$('#fichiers').on( 'click','li',function(){
 	
 	
-
-	function currentUser(){
-	op="GETHOMEDIRECTORY";
+		fileName = $(this).text();
 		
-		$.getJSON( curl,
+		
+		
+		console.log('fichier selectionné : ' +fileName);		
+		
+		if(fileName=="")
 		{
-		adr : url+dir+op,
-		method : 'get'
-		}, function(reponse)
-			{
-				console.log(reponse);
+			return;
+		}
+		op="OPEN";  
+		console.log("Ouverture fichier et obtenir le path webhdfs ...");
+		$.get( curl ,
+				{
+					host : host,
+					port : port,
+					path : path,
+					dir : dir+fileName, 
+					method : 'header',
+					op : "?op="+op
+				}, function(reponse)
+				{
+					//console.log("DataNode : " +reponse);
+					var tab = reponse.split('\n');
+					//console.log(tab[9]);					
+					destination = tab[8].split("Location:").join("");
+					destination = destination.replace("sandbox.hortonworks.com","localhost");
+					console.log(destination);			
+					$('.delete').prop("disabled",false);
+					$('#fichiers h3').replaceWith('<h3>Fichiers :<a  href="'+destination+'" id="dl" >'+'télécharger'+'</a> </h3>');
+				}
+			);
 		
-			}
-		);
-	}
-
+	});
+	
+	$('#fichiers').on( "click", "a", function(){
+		$(this).empty();
+	});
+	
+	
+		
+	
+	
 	function Lister()
 	{
+		$('#fichiers ul').empty();
+		fileName ="";
 		console.log("Parcourir " +dir);
 		op="LISTSTATUS";
 		$.getJSON( curl ,
@@ -225,14 +231,10 @@ $(document).ready( function()
 					//console.log(JSON.stringify(reponse.FileStatuses));
 					/*$('div').text( JSON.stringify(reponse));								
 					$('div').show();
-					$('div').hide(1000);*/
-					console.log("Fichiers : ");
-					
+					$('div').hide(1000);*/					
 					if( reponse !=null )
-					{
-						
-						var objet = reponse.FileStatuses.FileStatus;
-						
+					{						
+						var objet = reponse.FileStatuses.FileStatus;						
 						for ( i = 0; i< objet.length; i++)
 						{
 							var lignes =(objet[i].pathSuffix);

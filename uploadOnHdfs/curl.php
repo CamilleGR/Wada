@@ -6,7 +6,7 @@
 	header('Content-Type: text/html; charset=utf-8');	
 	//header('Content-type: application/json');
 
-	if($_GET)
+	if(!empty($_GET))
 	{	
 		$url = $_GET['host'].$_GET['port'].$_GET['path'].$_GET['dir'].$_GET['op'];
 		
@@ -39,7 +39,7 @@
 					echo curl_exec($ch);
 					
 					fclose($file);
-					
+					unlike($fileName);
 					
 				}
 				else
@@ -50,6 +50,11 @@
 			
 			case 'get':		
 				echo curl_exec($ch);			
+				break;
+				
+			case 'header' :
+				curl_setopt($ch, CURLOPT_HEADER, true);
+				echo curl_exec($ch);
 				break;
 			case 'header-put' :
 				curl_setopt($ch, CURLOPT_HEADER, true);
