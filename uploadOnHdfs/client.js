@@ -213,6 +213,7 @@ $(document).ready( function()
 	function Lister()
 	{
 		$('#fichiers ul').empty();
+		$('.delete').prop("disabled",true);
 		fileName ="";
 		console.log("Parcourir " +dir);
 		op="LISTSTATUS";
