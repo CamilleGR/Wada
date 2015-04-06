@@ -289,7 +289,7 @@
 								});
 							}
 						);
-						$('.panel-title span').text(attr + ' - ' + nomFichier)
+						$('.panel-title span').text('diagramme ' + attr + ' - ' + nomFichier)
 						$('#vizu').show();
 					});
 				});

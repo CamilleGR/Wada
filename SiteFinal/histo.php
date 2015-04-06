@@ -281,7 +281,7 @@
 								});
 							}
 						);
-						$('.panel-title span').text(attr + ' - ' + nomFichier)
+						$('.panel-title span').text('histogramme ' + attr + ' - ' + nomFichier)
 						$('#vizu').show();
 					});
 

@@ -173,11 +173,12 @@ function histo(target, data, bool) {
 	}
 	
 	if (keys.length > 2) {
-		keys.forEach(function(d) {
+		for (var i=1; i<keys.length; i++) drawAttributeLine(data, keys[i], svg);
+		/*keys.forEach(function(d) {
 			if (d != keys[0] || d != keys[2] ) {
 				drawAttributeLine(data, d, svg);
 			}
-		});
+		});*/
 	}
 	
 
