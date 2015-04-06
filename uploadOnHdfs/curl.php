@@ -100,7 +100,7 @@
 			} 
 			if(move_uploaded_file($fileTmpLoc, "$fileName"))
 			{
-				echo "Upload done";
+				echo "Done";
 				
 			}
 			else 

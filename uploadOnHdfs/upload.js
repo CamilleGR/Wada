@@ -14,9 +14,10 @@
 			ajax.addEventListener("load", completeHandler, false);
 			ajax.addEventListener("error", errorHandler, false); 
 			ajax.addEventListener("abort", abortHandler, false); 
+			ajax.addEventListener("success", finishHandler, false);
 			ajax.open("post","curl.php");
 			ajax.send(formdata);			
-			
+		
 		} 
 		function progressHandler(event){ 
 			_("loaded_n_total").innerHTML = "Uploaded "+event.loaded+" bytes of "+event.total; 
@@ -33,4 +34,6 @@
 		function abortHandler(event){ 
 			_("status").innerHTML = "Upload Aborted"; 
 		} 
-		
+		function finishHandler(event){
+			_("status").innerHTML = "Upload Done";
+		}	

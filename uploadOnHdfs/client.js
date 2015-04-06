@@ -36,6 +36,7 @@ $(document).ready( function()
 
 	//avec JsTreeFile AngularJs utilisez ces fonctions ...
 	
+	Lister();
 	
 	$('.nav').click(function(){
 	
@@ -91,7 +92,8 @@ $(document).ready( function()
 	
 	});
 
-	$('form').change(function(){
+	$('#file1').change(function(){
+		uploadFile();
 		op="CREATE";
 		fileName = $("#file1").val();
 		dataNode = $.get( curl, {
@@ -111,10 +113,14 @@ $(document).ready( function()
 				console.log(prefixe);
 				dataNode = dataNode.replace(prefixe,"");				
 				console.log(dataNode);
+				$('#transfer').removeAttr("disabled");
 				return dataNode;
+				
 			}
 		});
-		uploadFile();
+		
+		
+		
 		
 	});
 	
@@ -137,7 +143,8 @@ $(document).ready( function()
 			fileName ="";
 		});
 		
-		
+		$(this).prop("disabled",true);
+		Lister();
 	});
 	
 
@@ -182,9 +189,7 @@ $(document).ready( function()
 	console.log("En attente ...");
 	
 	
-
-
-
+	
 
 	function currentUser(){
 	op="GETHOMEDIRECTORY";
@@ -222,10 +227,18 @@ $(document).ready( function()
 					$('div').show();
 					$('div').hide(1000);*/
 					console.log("Fichiers : ");
-					var objet = reponse.FileStatuses.FileStatus;
-					for ( i = 0; i< objet.length; i++)
+					
+					if( reponse !=null )
 					{
-						console.log(JSON.stringify(objet[i]));
+						
+						var objet = reponse.FileStatuses.FileStatus;
+						
+						for ( i = 0; i< objet.length; i++)
+						{
+							var lignes =(objet[i].pathSuffix);
+							
+							$('#fichiers ul').append('<li>'+lignes+'</li>');
+						}
 					}
 				}
 		);
