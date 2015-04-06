@@ -36,7 +36,7 @@
 
 	
 		<!-- Header de la page  -->
-		<div class="jumbotron">
+	<div class="jumbotron">
 			<div class="container">
 				<center><h2><a href="accueil.php" style="text-decoration:none">Wada</a> API for Twitter</h2></center>
 				<p> <center><h3>  Mesurez l’impact d’un évènement avec Wada !</h3></center> </p>
@@ -47,7 +47,7 @@
 					<a href="api2.php"><li class="bouton_gauche btn btn-default" style="cursor: auto;">Stream</li></a>
 				</ul>
 			</center>
-		</div>
+	</div>
 		
 
 	
@@ -65,30 +65,34 @@
 		</form>
 	</div>
 
+
+
 	<div  style="margin-top:2em ; display:none;" id="hashtagButton"><a class="btn btn-block btn-primary" >
-		<span class="glyphicon glyphicon-eye-open"></span> Hashtags Associés</a></div>
+			<span class="glyphicon glyphicon-eye-open"></span> Hashtags Associés</a>
+	</div>
+
+
 
 	<br/>
 
 	<!-- evolution du tweet -->
+
 	<div id="courbes" style="display:none;">
-		<div class="page-container" >	
+		<div class="page-container" >
 			<div class="main-content">
 				<div class="row">
-					<div class="col-md-12">		
+					<div class="col-md-12">
 						<div class="panel panel-primary">
-							
 							<table class="table table-bordered">
 								<tbody>
-				                    <tr>
+									<tr>
 										<td>
 											<div id="morrisline" style="height: 300px"></div>
 										</td>
 									</tr>
 								</tbody>
 							</table>
-							
-						</div>	
+						</div>
 					</div>
 				</div>
 			</div>
@@ -98,28 +102,6 @@
 
 	
 	<div id="hashContainer" style="display:none;" class="col-md-6 col-md-offset-3">
-	<!--	<div class="page-container" >	
-			<div class="main-content">
-				<div class="row">
-					<div class="col-md-12">		
-						<div class="panel panel-primary">
-							
-							<table class="table table-bordered">
-								<tbody>
-				                    <tr>
-										<td>
-											<div id="hashtagsChart" style="height:300px"></div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-							
-						</div>	
-					</div>
-				</div>
-			</div>
-		</div>-->
-		
 	<table class="table" id="hashtagTable">
         	<thead>
         		<tr>
