@@ -58,40 +58,27 @@
 
 				<div class="input-group" style="margin-top:7px;">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
-			    	<input type="text" name="hashtags" class="form-control" placeholder="Mot clés à rechercher ..."  />
-			    	<a href="proxyWebService.php" class="btn btn-default"><span class="glyphicon glyphicon-play"></span> Lancer Stream</a>
+			    	<input type="text" id="hashtags" class="form-control" placeholder="Mot clés à rechercher ..."  />
+			    	<a id="computeStream" class="btn btn-default"><span class="glyphicon glyphicon-play"></span> Lancer Stream</a>
 			    </div>
 			</div>
 		</form>
 	</div>
 
+	<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+
 
 
 	
-	<script src="js/jquery-1.10.2-min.js"></script>
+
+
+
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="bootstrap-formhelpers-min.js"></script>
-	<script src="bootstrap-formhelpers-datepicker.js"></script>
-	
+    <script src="js/api1.js"></script>
+    <!--<script src="js/bootstrap-formhelpers.min.js"></script>-->
+    <!--<script src="bootstrap-formhelpers-datepicker.js"></script>-->
 
-	<script>
-		$(document).ready(function(){
-			console.log('test');
-			$('input#commencer').click(function(){
-				$('#formulaire').show();
-			});
-
-			$('input#arreter').click(function(){
-				$.get('proxyWebService.php',{action:"stopstream"},function(reponse){
-					alert("reponse");
-				});
-			});
-
-			$('input#traiter').click(function(){
-				document.location.href="traitementStream.php";
-			});
-		});
-	</script>
 
 
 

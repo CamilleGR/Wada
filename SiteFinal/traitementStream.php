@@ -16,6 +16,7 @@
 		@font-face {  font-family: 'quadranta';		src: url('fonts/aspace_demo.otf') format('truetype');	font-weight: normal;	font-style: normal; }	 
 		h2 {  font-family:quadranta, sans-serif;	font-size:3em; }
 		h3{	font-family:quadranta, sans-serif;	font-size:2em; }
+		
 		.bubbleChart {
 	      min-width: 100px;
 	      max-width: 500px;
@@ -64,9 +65,10 @@
 		</form>
 	</div>
 
+	<div  style="margin-top:2em ; display:none;" id="hashtagButton"><a class="btn btn-block btn-primary" >
+		<span class="glyphicon glyphicon-eye-open"></span> Hashtags Associés</a></div>
 
-
-
+	<br/>
 
 	<!-- evolution du tweet -->
 	<div id="courbes" style="display:none;">
@@ -92,15 +94,43 @@
 			</div>
 		</div>
 	</div>
+	
 
+	
+	<div id="hashContainer" style="display:none;" class="col-md-6 col-md-offset-3">
+	<!--	<div class="page-container" >	
+			<div class="main-content">
+				<div class="row">
+					<div class="col-md-12">		
+						<div class="panel panel-primary">
+							
+							<table class="table table-bordered">
+								<tbody>
+				                    <tr>
+										<td>
+											<div id="hashtagsChart" style="height:300px"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>-->
+		
+	<table class="table" id="hashtagTable">
+        	<thead>
+        		<tr>
+        			<th>hashtags</th><th>Fréquence ( % ) </th>
+        		</tr>
+        	</thead>
+        	<tbody>
+        	</tbody>
+       	</table>
+	</div>
 
-
-
-		<div class="center-block" >
-			<!--<p><button class="btn btn-success btn-large" onclick="association()">Hashtags associés</button></p>
-			<div class="bubbleChart"></div>-->
-			<center><div id="hashtagsChart"></div></center>
-		</div>
 
 
 
