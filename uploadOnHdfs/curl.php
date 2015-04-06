@@ -1,26 +1,51 @@
 <?php
 
-	header("Access-Control-Allow-Origin:http://localhost:50070"); 
-	header("Access-Control-Allow-Origin:http://sandbox.hortonworks.com:50075"); 
+	header("Access-Control-Allow-Origin:http://localhost:50070");  
 	header("Access-Control-Allow-Methods : POST, GET, OPTIONS, PUT, PATCH, DELETE");
 	header("Access-Control-Allow-Headers : Content-Type,api_key,Authorization,X-Auth-Token");
-	header('Content-Type: text/html; charset=utf-8');
+	header('Content-Type: text/html; charset=utf-8');	
 	//header('Content-type: application/json');
 
-	if(isset($_GET['adr'])&&isset($_GET['method']))
+	if($_GET)
 	{	
+		$url = $_GET['host'].$_GET['port'].$_GET['path'].$_GET['dir'].$_GET['op'];
 		
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_HTTPGET, true);
 		curl_setopt($ch, CURLOPT_HEADER, false);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL, $_GET['adr']);
+		curl_setopt($ch, CURLOPT_URL, $url);
 		
 		switch ($_GET['method']) {
 			case 'put':
 				curl_setopt($ch, CURLOPT_PUT, true);
-			
-				echo curl_exec($ch);
+				if($_GET['hdfs'])
+				{
+					$fileName = $_GET['file'];
+					$url= $url.$_GET['datanode'];
+					$file = fopen($fileName, "rb");
+					if(!$file)
+					{
+						echo "fichier introuvable sur le serveur";
+						return;
+					}					
+					print($url);
+					curl_setopt($ch, CURLOPT_HEADER, true);							
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);						
+					curl_setopt($ch, CURLOPT_URL, trim($url));
+					curl_setopt($ch, CURLOPT_INFILESIZE, filesize($fileName));
+					curl_setopt($ch, CURLOPT_INFILE, $file);		
+				
+																			
+					echo curl_exec($ch);
+					
+					fclose($file);
+					
+					
+				}
+				else
+				{
+					echo curl_exec($ch);
+				}
 				break;
 			
 			case 'get':		
@@ -29,6 +54,7 @@
 			case 'header-put' :
 				curl_setopt($ch, CURLOPT_HEADER, true);
 				curl_setopt($ch, CURLOPT_PUT, true);
+				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
 				echo curl_exec($ch);
 				break;
 			case 'post':
@@ -74,42 +100,12 @@
 			} 
 			if(move_uploaded_file($fileTmpLoc, "$fileName"))
 			{
-				if($_POST['target'])
-				{
-					$dataNode = $_POST['target'];
-					
-					$ch = curl_init();		
-					curl_setopt($ch, CURLOPT_HEADER, true);				
-					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-					curl_setopt($ch, CURLOPT_PUT, true);
-					curl_setopt($ch, CURLOPT_URL, $dataNode);
-					
-					$file = fopen($fileName, "rb");
-					
-					if(!$file)
-					{
-						echo "fichier introuvable sur le serveur";
-					}
-					curl_setopt($ch, CURLOPT_INFILE, $file);		
-					curl_setopt($ch, CURLOPT_INFILESIZE, $fileSize);
-								
-					echo curl_exec($ch);
-					
-					curl_close($ch);
-					fclose($file);
-					//unlink($fileName);
-					
-				}
-				
-				else
-				{
-					echo "$fileName upload is complete";
-				}
+				echo "Upload done";
 				
 			}
 			else 
 			{
-				echo "move_uploaded_file function failed"; 
+				echo  json_encode(array("success"=> false, "name" =>""));
 			}
 	}
 ?>

@@ -4,20 +4,23 @@ $(document).ready( function()
 
 	console.log("Mise en place des variables ...");
 
-	var host = "localhost"
-
+	var host = "localhost:"
 	var port = 50070;
-
 	var path = "/webhdfs/v1/"
-
-	var curl = "curl.php";
+	var curl = "curl.php";	
+	var permission = 755;
+	//Initialisation du répertoire pour Wada
+	var dir = "wada/";
 	
-	var url = host+":"+port+path;
-	//répertoire pour Wada
-	var dir = "user/wada";
+	
 	$.getJSON( curl, 
-	{ adr : url+dir+"?op=MKDIRS&permission=777", 
-		method : "put" },
+	{ host : host,
+			port : port,
+			path : path,
+			dir : dir,
+			method : 'put',
+			op : "?op=MKDIRS&permission="+permission
+			},
 	function(reponse)
 	{
 	
@@ -26,11 +29,9 @@ $(document).ready( function()
 				console.log("dossier crée");
 			}
 	});
-	var user = "user";
+	var fileName, dataNode;
 
 	//mettez le lien navigateur pour acceder au fichier curl.php
-
-
 	var op;
 
 	//avec JsTreeFile AngularJs utilisez ces fonctions ...
@@ -44,17 +45,21 @@ $(document).ready( function()
 	});
 
 	$('.info').click(function(){
-
+		
 		op="GETFILECHECKSUM";
 		$.get( curl ,
 				{
-			adr : url+"?op="+op,
+			host : host,
+			port : port,
+			path : path,
+			dir : dir+"Avatar.png",
+			op : "?op="+op,		
 			method : 'get'
 				}, function(reponse)
 				{
-					if(reponse.FileStatuses)
+					if(reponse)
 					{
-						console.log("tableau trouve !");	
+						console.log(reponse);	
 					}
 
 				}
@@ -86,26 +91,55 @@ $(document).ready( function()
 	
 	});
 
-
-	$('#upload_form').click(function(){
-		op="CREATE&overwrite=true&permission=777";
-		
-		$.get( curl ,
-				{
-			adr : url+"?op="+op,
+	$('form').change(function(){
+		op="CREATE";
+		fileName = $("#file1").val();
+		dataNode = $.get( curl, {
+			host : host,
+			port : port,
+			path : path,
+			dir : dir,
+			op : "?op="+op+"&overwrite=true&permission="+permission,							
 			method : 'header-put'
-				}, function(reponse)
-				{
-					destination = reponse.split('\n')[11];
-					destination = destination.split("Location: http://").join("");
-				}
-			);
+			}, function( reponse ){
+			{
+				
+				
+				dataNode = reponse.split("\n");
+				dataNode = dataNode[11].replace("Location: ","");
+				var prefixe = "http://sandbox.hortonworks.com:"+50075+path+dir+"?op="+op;
+				console.log(prefixe);
+				dataNode = dataNode.replace(prefixe,"");				
+				console.log(dataNode);
+				return dataNode;
+			}
+		});
+		uploadFile();
+		
 	});
 	
-	$('#transfer').click(function(){
+	$("#transfer").click(function()
+	{
+		console.log("upload de : " + fileName + " vers : " + dataNode);
 		
-		uploadFile(destination);
+		$.get( curl ,{
+			host : host,
+			port : 50075,
+			path : path,
+			dir : dir+fileName, 
+			op : "?op=CREATE&overwrite=true&permission="+permission,
+			datanode : dataNode,
+			method : 'put', 
+			hdfs : true  ,
+			file : fileName}, 
+			function(reponse){
+			console.log(reponse);
+			fileName ="";
+		});
+		
+		
 	});
+	
 
 	$('.rename').click(function(){
 			op="RENAME";
@@ -147,6 +181,8 @@ $(document).ready( function()
 
 	console.log("En attente ...");
 	
+	
+
 
 
 
@@ -171,7 +207,11 @@ $(document).ready( function()
 		op="LISTSTATUS";
 		$.getJSON( curl ,
 				{
-					adr : url+dir+"?op="+op,
+					host : host,
+					port : port,
+					path : path,
+					dir : dir,
+					op : "?op="+op,					
 					method : 'get'
 		
 				}, function(reponse)
@@ -185,7 +225,7 @@ $(document).ready( function()
 					var objet = reponse.FileStatuses.FileStatus;
 					for ( i = 0; i< objet.length; i++)
 					{
-						console.log(objet[i]);
+						console.log(JSON.stringify(objet[i]));
 					}
 				}
 		);
