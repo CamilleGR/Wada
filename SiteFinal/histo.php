@@ -22,28 +22,76 @@
 
   <body> 
     <?php include "menu.html"; ?>
+        <?php
+        	$fp = fopen('listefichiers.txt', 'r');
+	?>
 
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 
 		<div class="container">
 			<div class="row">
 				<div class="page-header">
-					<h1>Histogramme <small>Sélectionner puis filter vos données.</small></h1>
+					<h1>Histogramme</h1>
 				</div>
 			</div>
-			<div class="panel panel-default">
+			<div id="form" class="row">
+				<div class="col-md-6">
+				<div id="formFichier">
+					<center><div class="btn-group">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+							<span id="textbtn">Choix fichier</span> <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+			<?php 
+				while (!feof($fp)){
+					$line = trim(fgets($fp));
+					echo '<li value="'.$line.'"><a>'.$line.'</a></option>';
+				}
+			?>
+						</ul>
+					</div></center>
+				</div>
+				<div id="formAttr"style="display:none">
+					<p>
+						<center><div class="input-group">
+							<div><center><label>Attributs <select class="form-control attribut" name="attribut"></select></label></center></div>
+							<div><center><label>Segments :</label></div>
+							<div><center><ul class="segment pagination">
+								<li class="active"><a>2</a></li>
+								<li><a>3</a></li>
+								<li><a>4</a></li>
+								<li><a>5</a></li>
+								<li><a>6</a></li>
+								<li><a>7</a></li>
+								<li><a>8</a></li>
+								<li><a>9</a></li>
+								<li><a>10</a></li>
+							</ul></center></div>
+							<!--<div><center><label>Filtres : <input type="text" class="form-control filtres" name="filtre"/></label></center></div>-->
+							<div><center><button id="buttonStats" type="button" class="btn btn-primary">Lancer</button></center></div>
+						</div></center>
+					</p>
+				</div>
+				</div>
+				<div class="panelFiltres col-md-6" style="display:none">
+					<div><center><button id="addFilter" type="button" class="btn btn-primary">Ajouter filtre</button></center></div>
+					<div class="filtres">
+					</div>
+				</div>
+			</div>
+			<div id="vizu" class="panel panel-primary" style="display:none">
 
 				<div class="panel-heading" role="tab" id="headingOne">
 
 					<div class="container">
 						<div class="row">
 							<div class="col-md-4">
-								<h3 class="panel-title">
-									<a class="label label-default" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Cacher </a> 									
+
+								<h3 class="panel-title"><span></span>  									
 								</h3>
 
 							</div>
-							<div class="col-md-3">
+							<!--<div class="col-md-3">
 								
 										<a id="open2" class="btn btn-default btn-xs" data-placement="bottom" data-toggle="popover" data-title="Use client side csv files" data-container="body" type="button" data-html="true" href="#"  >Selection de données</a>
 									
@@ -73,13 +121,13 @@
 
 									</ul>
 								</div>
-							</div>
-							<div id="tools" class="col-md-3 col-md-offset-2">
-								<button type="button" class="btn btn-default btn-xs">
+							</div>-->
+							<div id="tools" class="col-md-2 col-md-offset-6">
+								<!--<button type="button" class="btn btn-default btn-xs">
 									<span class="glyphicon glyphicon-option-horizontal"></span>
 								</button>
-								<a id="dl1" class="btn btn-default btn-xs" download="data.svg">Download <span class="glyphicon glyphicon-send" ></span></a>
-
+								<a id="dl1" class="btn btn-default btn-xs" download="data.svg">Download <span class="glyphicon glyphicon-send" ></span></a>-->
+								<a class="btn btn-success btn-xs" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Cacher </a>
 							</div>
 						</div>
 					</div>
@@ -104,7 +152,7 @@
 						<div class="row">
 
 							<div class="col-md-4">
-								<h4 class="text-center">Csv File</h4>
+								<h4 class="text-center">Statistiques</h4>
 								<h5 id="stats" class="blockquote"></h5>
 
 							</div>
@@ -123,13 +171,13 @@
 			<div class="row">
 				
 
-				<blockquote>
+<!--				<blockquote>
 
 					<p>
 						En statistiques, un histogramme est un graphique permettant de représenter la répartition d'une variable continue.
 					</p>
 				</blockquote>
-
+-->
 			</div>
 
 			<hr>
@@ -146,22 +194,95 @@
 			<!-- Placed at the end of the document so the pages load faster -->
 			<script src="js/jquery.min.js"></script>
 			<script src="js/d3.min.js"></script>
+			<script src="js/d3.tip.js"></script>
 			
 			
 			<!-- perso -->
 			<script src="js/common.js"></script>
-			<script src="js/histo.js"></script>
+			<script src="js/stats/histo.js"></script>
 <!--  <script src="histogram.js"></script>  -->
-			<script src="js/upload.js"></script>
+			<script src="js/stats/upload.js"></script>
 			
 			<script>
 				$(document).ready(function() {
-					$("#credits").replaceWith(" { Bootstrap - " + $.fn.tooltip.Constructor.VERSION + ", JQuery - " + $.fn.jquery + ", D3.js - " + d3.version + " } ");
+					function MajStats() {
+						$('.attribut').html('');
+						$('div.filtres').html('');
+						for (var i = 0; i<attrFichiers.attributs.length; i++) {
+							$('.attribut').append('<option value="' + attrFichiers.attributs[i].label + '">' + attrFichiers.attributs[i].label + '</option>')
+						}
+					}
+					function stringFiltres(liste) {
+						console.log(liste.length);
+						var s = "";
+						for (i = 0; i < liste.length; i++) {
+							if (i > 0) s += ";";
+							s+=liste.find('.attrFiltre').val();
+							s+=liste.find('.signFiltre').val();
+							s+=liste.find('input').val();
+						}
+						console.log(s);
+						return s;
+					}
+					var attrFichiers;
+					var nomFichier;
+					$('#addFilter').click(function(e){
+						var line = $('<div class="form-group"></div>');
+						line.append('<select class="attrFiltre col-xs-3">' + $('.attribut').html() + '</select>');
+						line.append('<select class="signFiltre col-xs-3"><option value=">">&gt;</option><option value=">=">&ge;</option><option value="<">&lt;</option><option value="<=">&le;</option><option value="!=">!=</option><option value="=">=</option></select><input type="text" class="col-xs-3 form-control filtres" name="filtre"/\>');
+						line.append('<button class="col-xs-3 btn btn-danger suppr">Retirer</button>');
+						$('div.filtres').append(line);
+					});
+					$('div.filtres').on('click','.suppr', function(){
+						console.log("remove");
+						$(this).parent().remove();
+					});
+					$('#formFichier li').on('click','a',function() {
+						nomFichier = $(this).text();
+						console.log("click sur " + nomFichier);
+						$('#textbtn').text(nomFichier);
+						$.get("http://localhost/BD/proxyWebService.php",
+							{"action":"attributs",
+							"nomFichier":nomFichier},
+							function(reponse) {
+								attrFichiers = reponse
+								console.log(reponse);
+								MajStats();
+							}
+						);	
+						$('#formAttr').show();
+						$('.panelFiltres').show()
+					});
+					$('.segment li').click(function(e) {
+						$('.segment .active').removeClass('active');
+						$(this).addClass('active');
+						console.log($(this).find('a').text());
+					});
+					$('#buttonStats').click(function() {
+						var attr = $("#formAttr .attribut").val();
+						var seg = $("#formAttr .segment .active a").text();
+						//var filtre = $("#formAttr .filtres").val();
+						var filtre = stringFiltres($('div.filtres div'));
+						$.get("http://localhost/BD/proxyWebService.php",
+							{"action":"stats",
+							"nomFichier":nomFichier,
+							"attribut":attr,
+							"segment":seg,
+							"filtre":filtre},
+							function(reponse) {
+								console.log("test" + reponse);
+								console.log(reponse);
+								$("#credits").replaceWith(" { Bootstrap - " + $.fn.tooltip.Constructor.VERSION + ", JQuery - " + $.fn.jquery + ", D3.js - " + d3.version + " } ");
 
-					createViz();
+								createViz(reponse);
 
-					$(function() {
-						$('[data-toggle="popover"]').popover()
+								$(function() {
+									$('[data-toggle="popover"]').popover()
+								});
+							}
+						);
+						$('.panel-title span').text(attr + ' - ' + nomFichier)
+						$('#vizu').show();
 					});
 
 					//upload_button("uploader", load_dataset);

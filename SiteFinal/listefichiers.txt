@@ -1,0 +1,11 @@
+score.csv
+score.json
+banque.csv
+banque.tsv
+banque.json
+sondage.csv
+sondage.tsv
+sondage.json
+iris.csv
+adult.csv
+forestfires.csv
