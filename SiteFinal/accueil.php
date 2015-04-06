@@ -82,7 +82,7 @@
 										</div>
 									</a>
 									<div class="bg-light pad-ver">
-										<a href="courbe.php"><h4 class="text-thin">Courbe</h4></a> La courbe permt de visualiser l'évolution d'un element à long, moyen ou court terme
+										<a href="courbe.php"><h4 class="text-thin">Courbe</h4></a> La courbe permt de visualiser l'évolution d'un element à long, moyen ou court terme.
 									</div>
 								</div>
 							</div>
@@ -98,7 +98,22 @@
 										</div>
 									</a>
 									<div class="bg-light pad-ver">
-										<a href="import.php"><h4 class="text-thin">Importer</h4></a> Importez et visualisez vos propore fichier CSV
+										<a href="import.php"><h4 class="text-thin">Importer</h4></a> Importez et visualisez vos propore fichier CSV.
+									</div>
+								</div>
+							</div>
+
+							<div class="col-sm-6 col-lg-3 col-lg-offset-3">
+								<!--Sparkline Pie Chart-->
+								<div class="panel panel-info panel-colorful text-center">
+									<a href="kmeans.php">
+										<div class="panel-body">
+											<!-- Placeholder -->
+											<div id="demo-sparkline-pie" class="box-inline "><img src="img/courbe2.png" alt="Preview" width="268"></div>
+										</div>
+									</a>
+									<div class="bg-light pad-ver">
+										<a href="kmeans.php"><h4 class="text-thin">Kmeans, Nuage de points</h4></a>Le nuage de points permet de mettre en évidence le degré de corrélation entre au moins deux variables liées.
 									</div>
 								</div>
 							</div>

@@ -197,7 +197,7 @@ function create_table_kmeans(data, statsData, centers) {
 	s += "<tr><td>" + centers[key].centre + "</td><td>" + centers[key].abscisse + "</td><td>" + centers[key].ordonnee + "</td></tr>";
   }
   s += "</table>";
-  console.log(stats.html);
+  $('#statsPanel table').remove();
   d3.select("#statsPanel").html(d3.select("#statsPanel").html() + s);
 
   d3.select("#table")

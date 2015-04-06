@@ -6,10 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-    <title>Wada - Courbes</title>
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
-  <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.min.css">
+    <title>Wada - Kmeans, Nuage de points</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.min.css">
     
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -31,7 +31,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="page-header">
-					<h1>Courbe</h1>
+					<h1>Kmeans, Nuage de points</h1>
 				</div>
 			</div>
 			<div id="form" class="row">
@@ -54,10 +54,9 @@
 				<div id="formAttr"style="display:none">
 					<p>
 						<center><div class="input-group">
-							<div><center><label>Attribut en abscisse <select class="form-control attribut1" name="attribut"></select></label></center></div>
-							<div><center><label>Attribut en ordonnée <select class="form-control attribut2" name="attribut"></select></label></center></div>
-							<!--<div><center><label>Segments :</label></div>
-							<div><center><ul class="segment pagination">
+							<!--<div><center><label>Attributs <select class="form-control attribut" name="attribut"></select></label></center></div>-->
+							<div><center><label>Nombre de clusters :</label></div>
+							<div><center><ul class="clust pagination">
 								<li class="active"><a>2</a></li>
 								<li><a>3</a></li>
 								<li><a>4</a></li>
@@ -67,7 +66,7 @@
 								<li><a>8</a></li>
 								<li><a>9</a></li>
 								<li><a>10</a></li>
-							</ul></center></div>-->
+							</ul></center></div>
 							<!--<div><center><label>Filtres : <input type="text" class="form-control filtres" name="filtre"/></label></center></div>-->
 							<div><center><button id="buttonStats" type="button" class="btn btn-primary">Lancer</button></center></div>
 						</div></center>
@@ -152,7 +151,7 @@
 					<div class="container">
 						<div class="row">
 
-							<div class="col-md-4">
+							<div id="statsPanel" class="col-md-4">
 								<h4 class="text-center">Statistiques</h4>
 								<h5 id="stats" class="blockquote"></h5>
 
@@ -169,55 +168,50 @@
 
 			</div>
 
-         <!--<blockquote>
+			<div class="row">
+				
 
-         <p>
-            En statistiques, un histogramme est un graphique permettant de représenter la répartition d'une variable continue.
-          </p>
-        </blockquote>
+<!--				<blockquote>
 
-      </div>-->
+					<p>
+						En statistiques, un histogramme est un graphique permettant de représenter la répartition d'une variable continue.
+					</p>
+				</blockquote>
+-->
+			</div>
 
-      <hr>
+			<hr>
 
-     <!-- <footer>
-        <p id="credits">
-          &copy; Either JQuery or bootstrap or Javascript is not running or your browser.
-        </p>
+			<footer>
+				
 
-      </footer> -->
+			</footer>
 
-      <!-- /container -->
+			<!-- /container -->
 
-      <!-- Bootstrap core JavaScript
-      ================================================== -->
-      <!-- Placed at the end of the document so the pages load faster -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-      <script src="js/d3.min.js"></script>
-<script src="js/d3.tip.js"></script>
-      
-      
-      <!-- perso -->
-      <script src="js/common.js"></script>
-      <script src="js/stats/histo.js"></script>
-
-      <script src="js/stats/upload.js"></script>
-      
-      <script>
+			<!-- Bootstrap core JavaScript
+			================================================== -->
+			<!-- Placed at the end of the document so the pages load faster -->
+			<script src="js/jquery.min.js"></script>
+			<script src="js/d3.min.js"></script>
+			<script src="js/d3.tip.js"></script>
+			
+			
+			<!-- perso -->
+			<script src="js/common.js"></script>
+			<script src="js/stats/graphPoints.js"></script>
+<!--  <script src="histogram.js"></script>  -->
+			<script src="js/stats/upload.js"></script>
+			
+			<script>
 				$(document).ready(function() {
-					function MajStats() {
-						$('.attribut1').html('');
-						$('.attribut2').html('')
+					/*function MajStats() {
+						$('.attribut').html('');
 						$('div.filtres').html('');
-						var attr = attrFichiers.attributs
 						for (var i = 0; i<attrFichiers.attributs.length; i++) {
-							//$('.attribut1').append('<option value="' + attrFichiers.attributs[i].label + '">' + attrFichiers.attributs[i].label + '</option>')
-							if (attr[i].numerique) {
-								$('.attribut1').append('<option value="' + attr[i].label + '">' + attr[i].label + '</option>')
-								$('.attribut2').append('<option value="' + attr[i].label + '">' + attr[i].label + '</option>')
-							}
+							$('.attribut').append('<option value="' + attrFichiers.attributs[i].label + '">' + attrFichiers.attributs[i].label + '</option>')
 						}
-					}
+					}*/
 					function stringFiltres(liste) {
 						console.log(liste.length);
 						var s = "";
@@ -230,8 +224,8 @@
 						console.log(s);
 						return s;
 					}
-					var attrFichiers;
 					var nomFichier;
+					var attrFichiers;
 					$('#addFilter').click(function(e){
 						var line = $('<div class="form-group"></div>');
 						var selectAttr = "";
@@ -241,6 +235,7 @@
 						line.append('<select class="attrFiltre col-xs-3">' + selectAttr + '</select>');
 						line.append('<select class="signFiltre col-xs-3"><option value=">">&gt;</option><option value=">=">&ge;</option><option value="<">&lt;</option><option value="<=">&le;</option><option value="!=">!=</option><option value="=">=</option></select><input type="text" class="col-xs-3 form-control filtres" name="filtre"/\>');
 						line.append('<button class="col-xs-3 btn btn-danger suppr">Retirer</button>');
+						console.log(line);
 						$('div.filtres').append(line);
 					});
 					$('div.filtres').on('click','.suppr', function(){
@@ -259,50 +254,54 @@
 								console.log(reponse);
 								MajStats();
 							}
-						);	
+						);
+						$('div.filtres').html('');
+						
 						$('#formAttr').show();
 						$('.panelFiltres').show()
 					});
-					/*$('.segment li').click(function(e) {
-						$('.segment .active').removeClass('active');
+					$('.clust li').click(function(e) {
+						$('.clust .active').removeClass('active');
 						$(this).addClass('active');
 						console.log($(this).find('a').text());
-					});*/
+					});
 					$('#buttonStats').click(function() {
-						var attr1 = $("#formAttr .attribut1").val();
-						var attr2 = $("#formAttr .attribut2").val();
-						var seg = $("#formAttr .segment .active a").text();
+						//var attr = $("#formAttr .attribut").val();
+						var clust = $("#formAttr .clust .active a").text();
+						console.log(clust);
 						//var filtre = $("#formAttr .filtres").val();
 						var filtre = stringFiltres($('div.filtres div'));
 						$.get("http://localhost/BD/proxyWebService.php",
-							{"action":"courbe",
+							{"action":"kmeans",
 							"nomFichier":nomFichier,
-							"attribut1":attr1,
-							"attribut2":attr2,
+							"nbClusters":clust,
 							"filtre":filtre},
 							function(reponse) {
 								console.log("test" + reponse);
 								console.log(reponse);
 								$("#credits").replaceWith(" { Bootstrap - " + $.fn.tooltip.Constructor.VERSION + ", JQuery - " + $.fn.jquery + ", D3.js - " + d3.version + " } ");
 
-								createViz2(reponse);
+								myGraph(reponse);
 
 								$(function() {
 									$('[data-toggle="popover"]').popover()
 								});
 							}
 						);
-						$('.panel-title span').text('courbe ' + attr2 + ' en fonction de ' + attr1 + " - " + nomFichier)
+						$('.panel-title span').text('kmeans - ' + nomFichier)
 						$('#vizu').show();
 					});
 
 					//upload_button("uploader", load_dataset);
 				});
-      </script>
+			</script>
 
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/holder.js"></script>
-      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-      <script src="js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+			<script src="js/bootstrap.min.js"></script>
+			<script src="js/holder.js"></script>
+			<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+			<script src="js/ie10-viewport-bug-workaround.js"></script>
+
+
+
+	</body>
 </html>
