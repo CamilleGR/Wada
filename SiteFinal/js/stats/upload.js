@@ -159,6 +159,7 @@ function create_table(data, statsData) {
 
 function create_table_kmeans(data, statsData, centers) {
   // table stats
+  $('#statsPanel h5.titre').remove();
   console.log(data);
   var keys = d3.keys(data[0]);
   
@@ -184,8 +185,7 @@ function create_table_kmeans(data, statsData, centers) {
 	if (statsData[key].label == "moy") label = "Moyenne";
 	stats.append("div").text(label + " : " + statsData[key].value);
   }
-
-  d3.select("#statsPanel").html(d3.select("#statsPanel").html() + "<h5>Centres des clusters :</h5>");
+  d3.select("#statsPanel").html(d3.select("#statsPanel").html() + '<h5 class="titre">Centres des clusters :</h5>');
   //var tab = d3.select("table");
   //var header = d3.select("tr");
   var s = "<table class='table' ><tr><th>centre</th><th>abscisse</th><th>ordonnée</th></tr>";

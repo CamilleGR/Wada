@@ -19,7 +19,13 @@ class WebServiceActor extends Actor with WebService {
   implicit def RouteExceptionHandler(implicit log: LoggingContext) =
     ExceptionHandler {
       case e: Exception =>
-        respondWithMediaType(`text/html`) {
+        respondWithMediaType(`application/json`) {
+          complete {
+            //println("{\"erreur\":\""+{e.getMessage}+"\"}")
+            "{\"erreur\":\""+{e.getMessage.split("\n").apply(0)}+"\"}"
+          }
+        }
+        /*respondWithMediaType(`text/html`) {
           complete {
             <html>
               <body>
@@ -28,7 +34,7 @@ class WebServiceActor extends Actor with WebService {
               </body>
             </html>
           }
-        }
+        }*/
     }
 }
 

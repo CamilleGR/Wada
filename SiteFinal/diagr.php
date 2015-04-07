@@ -35,7 +35,7 @@
 					<h1>Diagramme</h1>
 				</div>
 			</div>
-
+			<div id="error"></div>
 			<div id="form" class="row">
 				<div class="col-md-6">
 				<div id="formFichier">
@@ -81,6 +81,7 @@
 					</div>
 				</div>
 			</div>
+			<div id="loading" class="alert alert-info" style="display:none"><img src="img/load.gif"/> <strong>Patientez</strong></div>
 			<div id="vizu" class="panel panel-primary" style="display:none">
 
 				<div class="panel-heading" role="tab" id="headingOne">
@@ -141,9 +142,9 @@
 								<span class="sr-only">60% Complete</span>
 							</div>
 						</div>
-						<div class="container holder">
+						<!--<div class="container holder">
 							<img class="holder" src="holder.js/90%x400" alt="Mickey" >
-						</div>
+						</div>-->
 
 					</div>
 				</div>
@@ -245,16 +246,23 @@
 						$(this).parent().remove();
 					});
 					$('#formFichier li').on('click','a',function() {
+						$('#loading').show();
 						nomFichier = $(this).text();
 						console.log("click sur " + nomFichier);
 						$('#textbtn').text(nomFichier);
-						$.get("http://localhost/BD/proxyWebService.php",
+						$.get("proxyWebService.php",
 							{"action":"attributs",
 							"nomFichier":nomFichier},
 							function(reponse) {
-								attrFichiers = reponse
-								console.log(reponse);
-								MajStats();
+								if(reponse.hasOwnProperty('erreur')) {
+									erreur(reponse.erreur);
+								}
+								else {
+									attrFichiers = reponse
+									console.log(reponse);
+									MajStats();
+								}
+								$('#loading').hide();
 							}
 						);
 						$('#formAttr').show();
@@ -266,11 +274,12 @@
 						console.log($(this).find('a').text());
 					});
 					$('#buttonStats').click(function() {
+						$('#loading').show();
 						var attr = $("#formAttr .attribut").val();
 						var seg = $("#formAttr .segment .active a").text();
 						//var filtre = $("#formAttr .filtres").val();
 						var filtre = stringFiltres($('div.filtres div'));
-						$.get("http://localhost/BD/proxyWebService.php",
+						$.get("proxyWebService.php",
 							{"action":"stats",
 							"nomFichier":nomFichier,
 							"attribut":attr,
@@ -279,19 +288,30 @@
 							function(reponse) {
 								console.log("test" + reponse);
 								console.log(reponse);
-								$("#credits").replaceWith(" { Bootstrap - " + $.fn.tooltip.Constructor.VERSION + ", JQuery - " + $.fn.jquery + ", D3.js - " + d3.version + " } ");
+								if(reponse.hasOwnProperty('erreur')) {
+									erreur(reponse.erreur);
+								}
+								else {
+									$('#vizu').show();
+									$("#credits").replaceWith(" { Bootstrap - " + $.fn.tooltip.Constructor.VERSION + ", JQuery - " + $.fn.jquery + ", D3.js - " + d3.version + " } ");
 
-								createVizPie(reponse);
+									createVizPie(reponse);
 
-								$(function() {
-									$('[data-toggle="popover"]').popover()
+									$(function() {
+										$('[data-toggle="popover"]').popover()
 
-								});
+									});
+									$('.panel-title span').text('diagramme ' + attr + ' - ' + nomFichier)
+								}
+								$('#loading').hide();
 							}
 						);
-						$('.panel-title span').text('diagramme ' + attr + ' - ' + nomFichier)
-						$('#vizu').show();
 					});
+					function erreur(erreur_message) {
+						var div = $('<div class="alert alert-danger"></danger>');
+						div.html("<strong>ERREUR : </strong>" + erreur_message + '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>');
+						$('#error').append(div);
+					}
 				});
 			</script>
 
