@@ -81,7 +81,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="loading" class="alert alert-info" style="display:none"><img src="img/load.gif"/> <strong>Patientez</strong></div>
+			<div id="loading" class="alert alert-info" style="display:none; margin-top:5px"><img src="img/load.gif"/> <strong>Patientez</strong></div>
 			<div id="vizu" class="panel panel-primary" style="display:none">
 
 				<div class="panel-heading" role="tab" id="headingOne">
@@ -253,6 +253,8 @@
 									erreur(reponse.erreur);
 								}
 								else {
+									$('#formAttr').show();
+									$('.panelFiltres').show();
 									attrFichiers = reponse
 									console.log(reponse);
 									MajStats();
@@ -260,8 +262,6 @@
 								$('#loading').hide();
 							}
 						);	
-						$('#formAttr').show();
-						$('.panelFiltres').show();
 					});
 					$('.segment li').click(function(e) {
 						$('.segment .active').removeClass('active');

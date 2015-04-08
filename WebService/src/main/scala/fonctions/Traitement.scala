@@ -8,6 +8,7 @@ import org.apache.spark.{sql, SparkContext, SparkConf}
 class Traitement {
   val conf = new SparkConf().setAppName("test").setMaster("local[*]")
   val sc = new SparkContext(conf)
+  sc.setLocalProperty("spark.driver.allowMultipleContexts", "true")
   val sqlContext = new SQLContext(sc)
 
   /*
