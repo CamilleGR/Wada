@@ -39,14 +39,14 @@ $(document).ready( function()
 	
 	Lister();
 	
-	$('.nav').click(function(){
+	$('#nav').click(function(){
 	
 		 Lister();
 	
 	
 	});
 
-	$('.info').click(function(){
+	$('#info').click(function(){
 		
 		op="GETFILECHECKSUM";
 		$.get( curl ,
@@ -132,7 +132,7 @@ $(document).ready( function()
 
 	
 	
-	$('.delete').click(function(){
+	$('#delete').click(function(){
 		op="DELETE";
 		console.log("Suppression requÃªte delete ...");
 		if(fileName=="")
@@ -164,11 +164,9 @@ $(document).ready( function()
 	
 	//selection fichiers
 	
-	$('#fichiers').on( 'click','li',function(){
+	$('#fichiers').on( 'click','li',function(){	
 	
-	
-		fileName = $(this).text();
-		
+		fileName = $(this).text();	
 		
 		
 		console.log('fichier selectionné : ' +fileName);		
@@ -195,7 +193,7 @@ $(document).ready( function()
 					destination = tab[8].split("Location:").join("");
 					destination = destination.replace("sandbox.hortonworks.com","localhost");
 					console.log(destination);			
-					$('.delete').prop("disabled",false);
+					$('#delete').prop("disabled",false);
 					$('#fichiers h3').replaceWith('<h3>Fichiers :<a  href="'+destination+'" id="dl" >'+'télécharger'+'</a> </h3>');
 				}
 			);
@@ -205,7 +203,6 @@ $(document).ready( function()
 	$('#fichiers').on( "click", "a", function(){
 		$(this).empty();
 	});
-	
 	
 		
 	
