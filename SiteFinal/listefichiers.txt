@@ -9,3 +9,6 @@ sondage.json
 iris.csv
 adult.csv
 forestfires.csv
+wine.csv
+car.csv
+abalone.csv

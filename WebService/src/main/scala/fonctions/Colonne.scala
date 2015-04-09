@@ -48,7 +48,7 @@ object Colonne {
   def numerique(file: RDD[Array[String]], col: Int) : Boolean = {
     var ar = file.map(r => r(col))
 
-    return ar.filter(line => !line.matches("^(-?[0-9]+(?:\\.[0-9]+)?)$")).count() == 0
+    return ar.filter(line => !line.matches("(^(-?[0-9]*(?:\\.[0-9]+)?)$)")).count() == 0
   }
 
   /*

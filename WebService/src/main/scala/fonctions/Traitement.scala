@@ -114,7 +114,8 @@ class Traitement {
       mediane = Statistiques.mediane(data.map(r => r(col)))
 
       if (Colonne.numerique(data,col)) {
-        tab = StatsAttribut.numerique(segment, col, data) // <- Si c'est un Réel on execute segmentNum
+        if (data.map(_(col)).distinct().count() <= segment) tab = StatsAttribut.chaine(segment,col,data)
+        else tab = StatsAttribut.numerique(segment, col, data) // <- Si c'est un Réel on execute segmentNum
         stats = Statistiques.otherStats(data, col)
         moyenneSegment = Statistiques.moyenneSegment(segment, col, data)
         //moyenneSegment = Statistiques.StringMoyenneSegment(Statistiques.moyenneSegment(segment, col, data))
