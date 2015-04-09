@@ -14,22 +14,30 @@
 	</head> 
 	<body> 
 	
-		<h3>Explorateur WebHDFS :</h3>
-		<ul>
-			<li><button  class="nav" type="button">Parcourir</button></li>			
-			<li><button  class="delete" type="button" disabled>Supprimer</button></li>
-			<li><button  class="info" type="button" disabled>Checksum</button></li>
+	<div class ="container">
+		<div class ="jumbotron">
+			<h1>Explorateur WebHDFS :</h1>
+		</div>
+		<ul class="list-unstyled">			
+				<li><button class="btn btn-info btn-lg" id="nav" type="button">Parcourir</button></li>			
+				<li><button  class="btn btn-info btn-lg" id="delete" type="button" disabled>Supprimer</button></li>
+				<li><button  class="btn btn-info btn-lg" id="info" type="button" disabled>Checksum</button></li>
+			
 		</ul>
 		
 		<div id="fichiers">
 			<h3>Fichiers :</h3>
-			<ul></ul>
+				<pre class="pre-scrollable">
+					<ul class ="list-unstyled">
+					</ul>
+				</pre>
+			
 		</div>
 		
 	
 
 		
-		<h2>File Upload</h2>
+		<h2>Envoyer un fichier</h2>
 			<form  action="curl.php" method="post" enctype="multipart/form-data">
 				<input id="file1" name ="file1" type="file" /><br>
 				<input id="transfer" disabled type="button" value="Upload On HDFS" />
@@ -42,6 +50,6 @@
 			</form>
 
 			<p id="status"></p>
-		
+	</div>
 	</body>
 </html>
